@@ -1,6 +1,6 @@
 extends Area2D
 
-var bullet = preload("res://Bullet.tscn")
+var bullet = preload("res://combat/Bullet.tscn")
 
 func _ready() -> void:
 	randomize()

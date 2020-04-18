@@ -3,11 +3,11 @@
 [ext_resource path="res://combat/Lane.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/Timer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://GUI/MonsterSelector.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Blockade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://combat/Blockade.tscn" type="PackedScene" id=4]
 [ext_resource path="res://actors/ArmyDude.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI/MonsterCounter.tscn" type="PackedScene" id=6]
-[ext_resource path="res://GUI/WinDialogue.tscn" type="PackedScene" id=7]
-[ext_resource path="res://GUI/LoseDialogue.tscn" type="PackedScene" id=8]
+[ext_resource path="res://GUI/CombatWinDialogue.tscn" type="PackedScene" id=7]
+[ext_resource path="res://GUI/CombatLoseDialogue.tscn" type="PackedScene" id=8]
 
 [node name="CombatScreen" type="Control"]
 anchor_right = 1.0

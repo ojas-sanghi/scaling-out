@@ -12,6 +12,9 @@ var monsters_remaining = max_monsters
 var monsters_died = 0
 var can_deploy = true
 
+var player_caught = false
+var coins = 0
+
 func _ready() -> void:
 	OS.window_maximized = true
 	var lanes = get_tree().get_nodes_in_group("lanes")

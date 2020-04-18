@@ -1,0 +1,62 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/Font75.tres" type="DynamicFont" id=2]
+
+[node name="StealthWinDialogue" type="Control"]
+pause_mode = 2
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -960.0
+margin_top = -540.0
+margin_right = 90.0
+margin_bottom = 110.0
+rect_scale = Vector2( 0.8, 0.8 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 870.0
+margin_bottom = 430.0
+color = Color( 0.0196078, 0.0156863, 0.0156863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 217.494
+margin_top = 197.904
+margin_right = 870.494
+margin_bottom = 282.904
+custom_fonts/font = ExtResource( 2 )
+text = "You got the info!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 400.15
+margin_top = 317.0
+margin_right = 686.15
+margin_bottom = 363.0
+custom_fonts/font = ExtResource( 1 )
+text = "Unstoppable!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+margin_left = 395.033
+margin_top = 433.376
+margin_right = 701.037
+margin_bottom = 509.376
+text = "[ B U T T O N ]"
+__meta__ = {
+"_edit_use_anchors_": false
+}
