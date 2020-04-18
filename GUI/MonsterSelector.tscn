@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=1]
+[ext_resource path="res://GUI/MonsterSelector.gd" type="Script" id=2]
+[ext_resource path="res://assets/temp/monster_icon.png" type="Texture" id=3]
+
+[node name="MonsterSelector" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 66.5275
+margin_top = -22.7168
+margin_right = 102.528
+margin_bottom = 6.2832
+custom_fonts/font = ExtResource( 1 )
+text = "1"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Line2D" type="Line2D" parent="."]
+points = PoolVector2Array( 0.128174, -0.687319, 0.121918, 61.0609, 61.3758, 61.0696, 61.2943, -0.764832, -2.35486, -0.759277 )
+width = 5.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 31.0525, 30.2203 )
+scale = Vector2( 0.115196, 0.115196 )
+texture = ExtResource( 3 )
