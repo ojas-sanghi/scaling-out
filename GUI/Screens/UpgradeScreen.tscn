@@ -9,9 +9,9 @@
 [ext_resource path="res://assets/music/Upgrade screen and menu.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/abilities/health.png" type="Texture" id=9]
-[ext_resource path="res://assets/dinos/warrior_lizard/warrior.png" type="Texture" id=10]
-[ext_resource path="res://assets/dinos/icons/mega_lizard.png" type="Texture" id=11]
-[ext_resource path="res://assets/dinos/tanky_lizard/tank.png" type="Texture" id=12]
+[ext_resource path="res://assets/dinos/warrior_lizard/Tribal_Dino_icon.png" type="Texture" id=10]
+[ext_resource path="res://assets/dinos/mega_lizard/mega_lizard.png" type="Texture" id=11]
+[ext_resource path="res://assets/dinos/tanky_lizard/Armored_Dino_ICON.png" type="Texture" id=12]
 [ext_resource path="res://GUI/CoinCounter.tscn" type="PackedScene" id=13]
 
 [node name="UpgradeScreen" type="Control"]

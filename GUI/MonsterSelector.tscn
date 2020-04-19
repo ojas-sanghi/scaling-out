@@ -2,9 +2,9 @@
 
 [ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/MonsterSelector.gd" type="Script" id=2]
-[ext_resource path="res://assets/dinos/icons/mega_lizard.png" type="Texture" id=3]
-[ext_resource path="res://assets/dinos/tanky_lizard/tank.png" type="Texture" id=4]
-[ext_resource path="res://assets/dinos/warrior_lizard/warrior.png" type="Texture" id=5]
+[ext_resource path="res://assets/dinos/mega_lizard/mega_lizard.png" type="Texture" id=3]
+[ext_resource path="res://assets/dinos/tanky_lizard/Armored_Dino_ICON.png" type="Texture" id=4]
+[ext_resource path="res://assets/dinos/warrior_lizard/Tribal_Dino_icon.png" type="Texture" id=5]
 [ext_resource path="res://assets/abilities/ice.png" type="Texture" id=6]
 [ext_resource path="res://assets/abilities/fire.png" type="Texture" id=7]
 [ext_resource path="res://assets/x.png" type="Texture" id=8]
@@ -47,7 +47,7 @@ texture = ExtResource( 3 )
 
 [node name="Sprite2" type="Sprite" parent="."]
 position = Vector2( 170, 26.981 )
-scale = Vector2( 0.342749, 0.208463 )
+scale = Vector2( 0.511, 0.519 )
 texture = ExtResource( 4 )
 
 [node name="Label2" type="Label" parent="."]
@@ -64,7 +64,7 @@ __meta__ = {
 
 [node name="Sprite3" type="Sprite" parent="."]
 position = Vector2( 297.737, 28.5607 )
-scale = Vector2( 0.636116, 0.208404 )
+scale = Vector2( 0.511, 0.519 )
 texture = ExtResource( 5 )
 
 [node name="Label3" type="Label" parent="."]

@@ -23,13 +23,13 @@ var monsters_died = 0
 var can_deploy = true
 
 var player_caught = false
-var coins = 500
+var coins = 100
 
 var monster_health = 100
 var monster_speed := Vector2(50, 0)
 var tank_monster_health = 200
 var tank_monster_speed := Vector2(35, 0)
-var warrior_monster_health = 50
+var warrior_monster_health = 45
 var warrior_monster_speed := Vector2(100, 0)
 
 var shop_monster = "mega"
