@@ -75,14 +75,6 @@ __meta__ = {
 [node name="MonsterSelector" parent="Selectors" instance=ExtResource( 3 )]
 position = Vector2( 330, 980 )
 
-[node name="MonsterSelector2" parent="Selectors" instance=ExtResource( 3 )]
-position = Vector2( 570, 980 )
-id = 2
-
-[node name="MonsterSelector3" parent="Selectors" instance=ExtResource( 3 )]
-position = Vector2( 810, 980 )
-id = 3
-
 [node name="Army" type="Node2D" parent="."]
 
 [node name="GUI" type="Node2D" parent="Army"]

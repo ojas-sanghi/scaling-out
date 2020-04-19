@@ -4,9 +4,9 @@ signal monster_deployed
 
 var spawn_point = Vector2(50, 150)
 # TODO: change what we load based on the current active id
-var monster1 = preload("res://actors/GeneralMonster.tscn")
-var monster2 = preload("res://actors/GeneralMonster.tscn")
-var monster3 = preload("res://actors/GeneralMonster.tscn")
+var monster1 = preload("res://actors/MegaLizard.tscn")
+var monster2 = preload("res://actors/TankyLizard.tscn")
+var monster3 = preload("res://actors/WarriorLizard.tscn")
 
 func _on_Lane_pressed() -> void:
 	var monster_node

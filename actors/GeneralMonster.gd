@@ -2,15 +2,20 @@ extends Area2D
 class_name GeneralMonster
 
 # Speed
-export var speed := Vector2(50, 0)
-var monster_health = 16
-var animated_health = monster_health
+var speed: Vector2
+var monster_health: int
+var animated_health: int
 var monster_dead = false
 
 onready var bar = $HealthBar
 
 var monster_color = "blue"
 signal game_over
+
+func _init(_speed = Globals.monster_speed, _health = Globals.monster_health) -> void:
+	speed = _speed
+	monster_health = _health
+	animated_health = _health
 
 func _ready() -> void:
 	$ThumpSound.play()

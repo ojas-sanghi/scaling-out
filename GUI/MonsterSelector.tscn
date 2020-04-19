@@ -1,18 +1,18 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/MonsterSelector.gd" type="Script" id=2]
 [ext_resource path="res://assets/dinos/icons/mega_lizard.png" type="Texture" id=3]
+[ext_resource path="res://assets/dinos/tanky_lizard/tank.png" type="Texture" id=4]
+[ext_resource path="res://assets/dinos/warrior_lizard/warrior.png" type="Texture" id=5]
 
-
-
-[sub_resource type="Gradient" id=2]
+[sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.0196078, 0.145098, 0.478431, 1, 1, 0.309804, 0.0392157, 1 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
 
-[sub_resource type="ParticlesMaterial" id=1]
+[sub_resource type="ParticlesMaterial" id=3]
 emission_shape = 2
 emission_box_extents = Vector3( 25, 5, 1 )
 flag_disable_z = true
@@ -21,26 +21,60 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 45.0
 angle_random = 1.0
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 2 )
 
 [node name="MonsterSelector" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Label" type="Label" parent="."]
-margin_left = 66.5275
-margin_top = -22.7168
-margin_right = 102.528
-margin_bottom = 6.2832
+[node name="Label1" type="Label" parent="."]
+margin_left = 67.0
+margin_top = -23.0
+margin_right = 77.0
+margin_bottom = 6.0
 custom_fonts/font = ExtResource( 1 )
 text = "1"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="Sprite1" type="Sprite" parent="."]
 position = Vector2( 30.8782, 30.1496 )
 scale = Vector2( 0.5115, 0.519267 )
 texture = ExtResource( 3 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 170, 26.981 )
+scale = Vector2( 0.342749, 0.208463 )
+texture = ExtResource( 4 )
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 198.307
+margin_top = -23.0
+margin_right = 208.307
+margin_bottom = 6.0
+custom_fonts/font = ExtResource( 1 )
+text = "2
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite3" type="Sprite" parent="."]
+position = Vector2( 297.737, 28.5607 )
+scale = Vector2( 0.636116, 0.208404 )
+texture = ExtResource( 5 )
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 343.664
+margin_top = -23.0
+margin_right = 353.664
+margin_bottom = 6.0
+custom_fonts/font = ExtResource( 1 )
+text = "3
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Particles" type="Node2D" parent="."]
 
@@ -48,25 +82,25 @@ texture = ExtResource( 3 )
 position = Vector2( 30.4203, -7.83146 )
 scale = Vector2( 1.5, 1.5 )
 amount = 50
-process_material = SubResource( 1 )
+process_material = SubResource( 3 )
 
 [node name="Particles2D2" type="Particles2D" parent="Particles"]
 position = Vector2( -7.99925, 29.6661 )
 rotation = -1.57079
 scale = Vector2( 1.5, 1.5 )
 amount = 50
-process_material = SubResource( 1 )
+process_material = SubResource( 3 )
 
 [node name="Particles2D3" type="Particles2D" parent="Particles"]
 position = Vector2( 32.5096, 65.5146 )
 rotation = -3.14159
 scale = Vector2( 1.5, 1.5 )
 amount = 50
-process_material = SubResource( 1 )
+process_material = SubResource( 3 )
 
 [node name="Particles2D4" type="Particles2D" parent="Particles"]
 position = Vector2( 69.0752, 32.5339 )
 rotation = 1.5708
 scale = Vector2( 1.5, 1.5 )
 amount = 50
-process_material = SubResource( 1 )
+process_material = SubResource( 3 )

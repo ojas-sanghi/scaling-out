@@ -13,6 +13,8 @@ var coins_in_level = 0
 
 var guards
 
+var node_path
+
 func _ready() -> void:
 	guards = get_tree().get_nodes_in_group("guards")
 	if guards:
@@ -26,6 +28,11 @@ func _ready() -> void:
 	if vaults:
 		for v in vaults:
 			v.connect("level_passed", self, "_on_level_passed")
+
+	if Globals.finding_ice:
+		node_path = "/root/StealthIce/"
+	else:
+		node_path = "/root/StealthFire/"
 
 func get_input():
 	# Detect up/down/left/right keystate and only move when pressed
@@ -84,12 +91,12 @@ func _on_level_passed():
 	$Win.play()
 
 	SceneChanger.fade()
-	get_node("/root/StealthScreen/CanvasModulate").hide()
-	get_node("/root/StealthScreen/CoinCounter").hide()
+	get_node(node_path + "CanvasModulate").hide()
+	get_node(node_path + "CoinCounter").hide()
 	yield($Win, "finished")
-	get_node("/root/StealthScreen/Vault").hide()
-	get_node("/root/StealthScreen/StealthWinDialogue").show()
-	Globals.coins = coins_in_level
+	get_node(node_path + "Vault").hide()
+	get_node(node_path + "StealthWinDialogue").show()
+	Globals.coins += coins_in_level
 
 func _on_level_failed():
 	set_physics_process(false)
@@ -98,10 +105,11 @@ func _on_level_failed():
 	$Caught.play()
 
 	SceneChanger.fade()
-	get_node("/root/StealthScreen/CanvasModulate").hide()
-	get_node("/root/StealthScreen/CoinCounter").hide()
+	get_node(node_path + "CanvasModulate").hide()
+	get_node(node_path + "CoinCounter").hide()
 	yield($Caught, "finished")
-	get_node("/root/StealthScreen/StealthLoseDialogue").show()
+	get_node(node_path + "Vault").hide()
+	get_node(node_path + "StealthLoseDialogue").show()
 
 func _on_coin_grabbed(value):
 	coins_in_level += value
