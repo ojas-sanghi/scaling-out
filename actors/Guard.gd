@@ -62,3 +62,6 @@ func _on_Area2D_body_entered(body: Node) -> void:
 	rotation_degrees += rotate_deg
 	if body.name == "Player":
 		emit_signal("level_failed")
+
+func stop_moving():
+	$Follow/Area2D/AnimatedSprite.stop()

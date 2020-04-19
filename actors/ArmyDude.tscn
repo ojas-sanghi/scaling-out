@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/army/rifle/survivor-shoot_rifle_2.png" type="Texture" id=1]
 [ext_resource path="res://assets/army/handgun/survivor-shoot_handgun_1.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/army/shotgun/survivor-shoot_shotgun_1.png" type="Texture" id=8]
 [ext_resource path="res://assets/army/shotgun/survivor-shoot_shotgun_2.png" type="Texture" id=9]
 [ext_resource path="res://actors/ArmyDude.gd" type="Script" id=10]
+[ext_resource path="res://assets/music/Gun shot.wav" type="AudioStream" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "shoot_handgun"
@@ -61,7 +62,9 @@ tracks/0/keys = {
 "values": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ]
 }
 
-[node name="ArmyDude" type="Area2D"]
+[node name="ArmyDude" type="Area2D" groups=[
+"army",
+]]
 script = ExtResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -78,4 +81,8 @@ anims/shoot_shotgun = SubResource( 3 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -27.0
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

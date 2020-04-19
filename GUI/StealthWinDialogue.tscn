@@ -31,9 +31,9 @@ __meta__ = {
 
 [node name="Label" type="Label" parent="."]
 margin_left = 217.494
-margin_top = 197.904
+margin_top = 325.134
 margin_right = 870.494
-margin_bottom = 282.904
+margin_bottom = 410.134
 custom_fonts/font = ExtResource( 2 )
 text = "You got the info!"
 __meta__ = {
@@ -42,9 +42,9 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 400.15
-margin_top = 317.0
+margin_top = 444.23
 margin_right = 686.15
-margin_bottom = 363.0
+margin_bottom = 490.23
 custom_fonts/font = ExtResource( 1 )
 text = "Unstoppable!"
 __meta__ = {
@@ -53,9 +53,9 @@ __meta__ = {
 
 [node name="Button" type="Button" parent="."]
 margin_left = 395.033
-margin_top = 433.376
+margin_top = 560.606
 margin_right = 701.037
-margin_bottom = 509.376
+margin_bottom = 636.606
 text = "[ B U T T O N ]"
 __meta__ = {
 "_edit_use_anchors_": false

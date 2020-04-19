@@ -4,15 +4,15 @@ export var id = 1
 var active_id := 1
 
 func _ready() -> void:
-	$Line2D.visible = false
+	$Particles.visible = false
 	var str_id = str(id)
 	$Label.text = str_id
 
 func _process(delta: float) -> void:
 	if id == active_id:
-		$Line2D.visible = true
+		$Particles.visible = true
 	else:
-		$Line2D.visible = false
+		$Particles.visible = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("monster_1"):

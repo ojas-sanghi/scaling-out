@@ -27,7 +27,6 @@ signal enemy_spotted
 var points_arc = []
 var is_update = false
 func _ready():
-
 	pass
 
 func _process(delta):
