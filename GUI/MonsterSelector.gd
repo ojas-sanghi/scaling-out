@@ -3,10 +3,37 @@ extends Node2D
 export var id = 1
 var active_id := 1
 
+var shot_ice = false
+var shot_fire = false
+
+var ice_disabled = true
+var fire_disabled = true
+
+func enable_ice():
+	$Sprite4X.hide()
+	ice_disabled = false
+
+func enable_fire():
+	$Sprite5X.hide()
+	fire_disabled = false
+
+func disable_ice():
+	$Sprite4X.show()
+	ice_disabled = true
+
+func disable_fire():
+	$Sprite5X.show()
+	fire_disabled = true
+
 func _ready() -> void:
 	$Label1.text = "1"
 	$Label2.text = "2"
 	$Label3.text = "3"
+
+	var lanes = get_tree().get_nodes_in_group("lanes")
+	if lanes:
+		for lane in lanes:
+			lane.connect("monster_deployed", self, "_on_monster_deployed")
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("monster_1"):
@@ -18,6 +45,48 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("monster_3"):
 		active_id = 3
 		$Particles.position.x = 270
+	# on ready remove X if need be
+	# on button pressed:
+	# just do the thing
+	# then deactivate it
+	elif event.is_action_pressed("monster_4"):
+		if shot_ice or ice_disabled:
+			return
+		active_id = 4
+		for m in get_all_monsters():
+			if "TankyLizard" in m.name:
+				m.shoot_projectile()
+				disable_ice()
+				return
+	elif event.is_action_pressed("monster_5"):
+		if shot_fire or fire_disabled:
+			return
+		active_id = 5
+		for m in get_all_monsters():
+			if "WarriorLizard" in m.name:
+				m.shoot_projectile()
+				disable_fire()
+				return
 	else:
 		pass
 	Globals.monster_id = active_id
+
+func _on_monster_deployed():
+	for m in get_all_monsters():
+		if "TankyLizard" in m.name:
+			if not shot_ice and Globals.upgrades["ice"]:
+				enable_ice()
+		if "WarriorLizard" in m.name:
+			if not shot_fire and Globals.upgrades["fire"]:
+				enable_fire()
+
+func get_all_monsters():
+	var monsters = []
+	var lanes = get_node("/root/CombatScreen/Lanes")
+	for lane in lanes.get_children():
+		var m = lane.get_children()
+		if m:
+			for monster in m:
+				if "TankyLizard" in monster.name or "WarriorLizard" in monster.name:
+					monsters.append(monster)
+	return monsters

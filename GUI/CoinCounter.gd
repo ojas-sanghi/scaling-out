@@ -15,3 +15,6 @@ func _on_coin_grabbed(value):
 
 func update_coin_amt():
 	$HBoxContainer/Num.text = str(coin_amt)
+
+func update_coin_from_global():
+	$HBoxContainer/Num.text = str(Globals.coins)

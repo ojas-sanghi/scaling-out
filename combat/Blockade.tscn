@@ -1,16 +1,20 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/barriers/tribune_overhang_red.png" type="Texture" id=1]
 [ext_resource path="res://assets/barriers/tribune_overhang_striped.png" type="Texture" id=2]
 [ext_resource path="res://assets/barriers/barrier_white.png" type="Texture" id=3]
 [ext_resource path="res://assets/barriers/barrier_red.png" type="Texture" id=4]
+[ext_resource path="res://combat/Blockade.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 546.031, 132.664 )
 
-[node name="Blockade" type="Area2D"]
+[node name="Blockade" type="Area2D" groups=[
+"blockade",
+]]
 position = Vector2( 231.814, 163.634 )
 rotation = -1.57079
+script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( -466.162, 53.5217 )
@@ -43,3 +47,4 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -369.254, 142.006 )
 shape = SubResource( 1 )
+[connection signal="area_entered" from="." to="." method="_on_Blockade_area_entered"]

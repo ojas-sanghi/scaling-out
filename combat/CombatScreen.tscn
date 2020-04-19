@@ -73,7 +73,7 @@ __meta__ = {
 }
 
 [node name="MonsterSelector" parent="Selectors" instance=ExtResource( 3 )]
-position = Vector2( 330, 980 )
+position = Vector2( 203.274, 980 )
 
 [node name="Army" type="Node2D" parent="."]
 

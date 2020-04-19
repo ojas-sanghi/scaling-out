@@ -4,8 +4,10 @@
 [ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=2]
 
 [node name="CoinCounter" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_right = 0.049
+anchor_bottom = 0.042
+margin_right = 0.919998
+margin_bottom = -0.360004
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false

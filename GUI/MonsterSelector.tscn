@@ -1,10 +1,13 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/MonsterSelector.gd" type="Script" id=2]
 [ext_resource path="res://assets/dinos/icons/mega_lizard.png" type="Texture" id=3]
 [ext_resource path="res://assets/dinos/tanky_lizard/tank.png" type="Texture" id=4]
 [ext_resource path="res://assets/dinos/warrior_lizard/warrior.png" type="Texture" id=5]
+[ext_resource path="res://assets/abilities/ice.png" type="Texture" id=6]
+[ext_resource path="res://assets/abilities/fire.png" type="Texture" id=7]
+[ext_resource path="res://assets/x.png" type="Texture" id=8]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.0196078, 0.145098, 0.478431, 1, 1, 0.309804, 0.0392157, 1 )
@@ -72,6 +75,54 @@ margin_bottom = 6.0
 custom_fonts/font = ExtResource( 1 )
 text = "3
 "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite4" type="Sprite" parent="."]
+position = Vector2( 591.888, 33.9254 )
+scale = Vector2( 0.0471485, 0.0401828 )
+texture = ExtResource( 6 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Sprite4X" type="Sprite" parent="."]
+position = Vector2( 578.038, 51.0933 )
+scale = Vector2( 0.389157, 0.376889 )
+texture = ExtResource( 8 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 623.168
+margin_top = -23.0
+margin_right = 639.168
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "4"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite5" type="Sprite" parent="."]
+position = Vector2( 760.135, 33.9254 )
+scale = Vector2( 0.0471485, 0.0401828 )
+texture = ExtResource( 7 )
+
+[node name="Sprite5X" type="Sprite" parent="."]
+position = Vector2( 736.173, 55.6982 )
+scale = Vector2( 0.389, 0.387 )
+texture = ExtResource( 8 )
+
+[node name="Label5" type="Label" parent="."]
+margin_left = 786.069
+margin_top = -23.0
+margin_right = 802.069
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 1 )
+text = "5"
 __meta__ = {
 "_edit_use_anchors_": false
 }

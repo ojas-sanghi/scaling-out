@@ -111,28 +111,24 @@ value = 10
 position = Vector2( 890.294, 186.109 )
 value = 10
 
-[node name="CoinCounter" parent="." instance=ExtResource( 9 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CoinCounter" parent="CanvasLayer" instance=ExtResource( 9 )]
 margin_left = 36.8894
 margin_top = 22.0462
 margin_right = 36.8894
-margin_bottom = 22.0462
+margin_bottom = 22.0461
+
+[node name="StealthLoseDialogue" parent="CanvasLayer" instance=ExtResource( 4 )]
+visible = false
+margin_right = 1320.0
+margin_bottom = 817.0
+
+[node name="StealthWinDialogue" parent="CanvasLayer" instance=ExtResource( 10 )]
+visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
-
-[node name="StealthLoseDialogue" parent="." instance=ExtResource( 4 )]
-visible = false
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 1050.0
-margin_bottom = 650.0
-
-[node name="StealthWinDialogue" parent="." instance=ExtResource( 10 )]
-visible = false
-margin_left = 0.0
-margin_top = 0.0
-margin_right = 1050.0
-margin_bottom = 650.0
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )

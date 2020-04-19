@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/Font75.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/Button.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/dinos/warrior_lizard/warrior.png" type="Texture" id=10]
 [ext_resource path="res://assets/dinos/icons/mega_lizard.png" type="Texture" id=11]
 [ext_resource path="res://assets/dinos/tanky_lizard/tank.png" type="Texture" id=12]
+[ext_resource path="res://GUI/CoinCounter.tscn" type="PackedScene" id=13]
 
 [node name="UpgradeScreen" type="Control"]
 anchor_right = 1.0
@@ -199,6 +200,14 @@ margin_bottom = 701.0
 icon = ExtResource( 4 )
 button_mode = "fire"
 cost = 25
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CoinCounter" parent="CanvasLayer" instance=ExtResource( 13 )]
+margin_left = 641.161
+margin_top = 88.4404
+margin_right = 641.161
+margin_bottom = 88.4404
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )

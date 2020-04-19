@@ -82,7 +82,12 @@ anims/shoot_shotgun = SubResource( 3 )
 wait_time = 2.0
 autostart = true
 
+[node name="IceTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = -27.0
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="IceTimer" to="." method="_on_IceTimer_timeout"]
