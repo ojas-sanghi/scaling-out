@@ -20,10 +20,10 @@ margin_bottom = 766.0
 color = Color( 0, 0, 0, 0.482353 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 735.64
-margin_top = 298.546
-margin_right = 1222.64
-margin_bottom = 411.546
+margin_left = 709.865
+margin_top = 338.641
+margin_right = 1196.86
+margin_bottom = 451.641
 custom_fonts/font = ExtResource( 2 )
 text = "You Lost!"
 __meta__ = {
@@ -31,10 +31,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 744.516
-margin_top = 480.758
-margin_right = 1223.52
-margin_bottom = 526.758
+margin_left = 718.74
+margin_top = 520.853
+margin_right = 1197.74
+margin_bottom = 566.853
 custom_fonts/font = ExtResource( 1 )
 text = "We'll get 'em next time.."
 __meta__ = {
@@ -42,8 +42,9 @@ __meta__ = {
 }
 
 [node name="Button" parent="." instance=ExtResource( 3 )]
+visible = false
 margin_left = -103.82
 margin_top = 54.7933
 margin_right = 127.18
 margin_bottom = 149.793
-button_mode = "retry level"
+button_mode = "return home screen"

@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/Lab_Table.png" type="Texture" id=1]
+[ext_resource path="res://assets/music/Upgrade screen and menu.wav" type="AudioStream" id=2]
+[ext_resource path="res://GUI/TextureButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/homeButtons/flask-out.png" type="Texture" id=4]
+[ext_resource path="res://assets/homeButtons/map-normal.png" type="Texture" id=5]
+[ext_resource path="res://assets/homeButtons/map-out.png" type="Texture" id=6]
+[ext_resource path="res://assets/homeButtons/flask-normal.png" type="Texture" id=7]
+
+[node name="HomeScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 2.65002
+margin_bottom = 2.65002
+texture = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Map" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 119.402
+margin_top = 363.945
+margin_right = 644.402
+margin_bottom = 733.945
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 6 )
+texture_focused = ExtResource( 6 )
+button_mode = "map"
+
+[node name="Flask" parent="." instance=ExtResource( 3 )]
+anchor_left = 0.79
+anchor_top = 0.566
+anchor_right = 0.79
+anchor_bottom = 0.566
+margin_left = -147.287
+margin_top = -187.629
+margin_right = 73.7131
+margin_bottom = 157.371
+texture_normal = ExtResource( 7 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
+button_mode = "upgrades"
+
+[node name="Label" parent="Flask" index="0"]
+margin_left = -26.4207
+margin_right = 144.579
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[editable path="Flask"]

@@ -51,7 +51,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 19.4228, 12.454 )
+extents = Vector2( 15.1388, 11.4609 )
 
 [node name="Player" type="KinematicBody2D" groups=[
 "player",
@@ -65,7 +65,7 @@ animation = "idle"
 playing = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -5.66029 )
+position = Vector2( -2.4075, -3.77616 )
 shape = SubResource( 8 )
 
 [node name="Light2D" type="Light2D" parent="."]

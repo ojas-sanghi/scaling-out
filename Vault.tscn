@@ -1,16 +1,20 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://assets/vault/Vault_Green.png" type="Texture" id=1]
 [ext_resource path="res://assets/vault/Vault_Colbalt.png" type="Texture" id=2]
 [ext_resource path="res://assets/vault/Vault_Metal.png" type="Texture" id=3]
 [ext_resource path="res://Vault.gd" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 3 ) ],
+"frames": [ ExtResource( 2 ) ],
 "loop": true,
-"name": "default",
+"name": "ice",
 "speed": 2.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "fire",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -23,7 +27,7 @@ script = ExtResource( 4 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
+animation = "fire"
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
