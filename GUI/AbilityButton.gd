@@ -116,6 +116,7 @@ func _on_Button_pressed() -> void:
 	if Globals.coins >= cost and not dino_option:
 		Globals.coins -= cost
 		self.disabled = true
+		get_node("/root/UpgradeScreen/CanvasLayer/CoinCounter").update_coin_from_global()
 		bought_purchase = true
 	match button_mode:
 		"health":

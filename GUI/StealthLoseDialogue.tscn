@@ -6,35 +6,30 @@
 
 [node name="StealthLoseDialogue" type="Control"]
 pause_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -960.0
-margin_top = -540.0
-margin_right = 90.0
-margin_bottom = 110.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 494.0
+margin_bottom = 283.0
 rect_scale = Vector2( 0.8, 0.8 )
 __meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
+"_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 870.0
-margin_bottom = 430.0
+margin_right = 189.0
+margin_bottom = 105.0
 color = Color( 0.0196078, 0.0156863, 0.0156863, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 367.74
-margin_top = 266.664
-margin_right = 788.74
-margin_bottom = 351.664
+margin_left = 1045.74
+margin_top = 506.722
+margin_right = 1466.74
+margin_bottom = 591.722
 custom_fonts/font = ExtResource( 2 )
 text = "You failed!"
 __meta__ = {
@@ -42,10 +37,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 352.1
-margin_top = 386.056
-margin_right = 816.096
-margin_bottom = 432.056
+margin_left = 1030.1
+margin_top = 626.114
+margin_right = 1494.09
+margin_bottom = 672.114
 custom_fonts/font = ExtResource( 1 )
 text = "Maybe next time, eh?"
 __meta__ = {
@@ -53,8 +48,8 @@ __meta__ = {
 }
 
 [node name="Button" parent="." instance=ExtResource( 3 )]
-margin_left = -75.4739
-margin_top = 169.128
-margin_right = 155.526
-margin_bottom = 253.128
+margin_left = 22.479
+margin_top = 56.4492
+margin_right = 253.479
+margin_bottom = 140.449
 button_mode = "retry level"

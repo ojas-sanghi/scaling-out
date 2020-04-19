@@ -84,6 +84,12 @@ func stop_guards():
 		for g in guards:
 			g.stop_moving()
 
+func set_cam_limits_fhd():
+#	$Camera2D.limit_right = 1920
+#	$Camera2D.limit_right = 1080
+#	$Camera2D.zoom = Vector2(1, 1)
+	pass
+
 func _on_level_passed():
 	set_physics_process(false)
 	stop_guards()
@@ -92,10 +98,11 @@ func _on_level_passed():
 
 	SceneChanger.fade()
 	get_node(node_path + "CanvasModulate").hide()
-	get_node(node_path + "CoinCounter").hide()
+	get_node(node_path + "CanvasLayer/CoinCounter").hide()
 	yield($Win, "finished")
 	get_node(node_path + "Vault").hide()
-	get_node(node_path + "StealthWinDialogue").show()
+	set_cam_limits_fhd()
+	get_node(node_path + "/CanvasLayer/StealthWinDialogue").show()
 	Globals.coins += coins_in_level
 
 func _on_level_failed():
@@ -106,10 +113,11 @@ func _on_level_failed():
 
 	SceneChanger.fade()
 	get_node(node_path + "CanvasModulate").hide()
-	get_node(node_path + "CoinCounter").hide()
+	get_node(node_path + "CanvasLayer/CoinCounter").hide()
 	yield($Caught, "finished")
 	get_node(node_path + "Vault").hide()
-	get_node(node_path + "StealthLoseDialogue").show()
+	set_cam_limits_fhd()
+	get_node(node_path + "/CanvasLayer/StealthLoseDialogue").show()
 
 func _on_coin_grabbed(value):
 	coins_in_level += value

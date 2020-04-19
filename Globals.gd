@@ -17,7 +17,7 @@ var upgrades = {
 var finding_ice = false
 var finding_fire = false
 
-var max_monsters = 15
+var max_monsters = 7
 var monsters_remaining = max_monsters
 var monsters_died = 0
 var can_deploy = true
@@ -27,8 +27,8 @@ var coins = 500
 
 var monster_health = 100
 var monster_speed := Vector2(50, 0)
-var tank_monster_health = 160
-var tank_monster_speed := Vector2(30, 0)
+var tank_monster_health = 200
+var tank_monster_speed := Vector2(35, 0)
 var warrior_monster_health = 50
 var warrior_monster_speed := Vector2(100, 0)
 

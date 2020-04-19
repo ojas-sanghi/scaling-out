@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://actors/WarriorLizard.gd" type="Script" id=1]
+[ext_resource path="res://combat/FireProjectile.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/lifebar_fill.png" type="Texture" id=3]
 [ext_resource path="res://assets/lifebar_bg.png" type="Texture" id=4]
 [ext_resource path="res://assets/dinos/warrior_lizard/warrior.png" type="Texture" id=5]
@@ -16,12 +17,7 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": false,
-"name": "blue_death0",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 5 ) ],
-"loop": false,
-"name": "orange_death1",
+"name": "green_death1",
 "speed": 6.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -36,12 +32,12 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": false,
-"name": "green_death1",
-"speed": 6.0
+"name": "blue_death0",
+"speed": 3.0
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "orange_walk",
+"name": "blue_walk",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 5 ) ],
@@ -51,8 +47,13 @@ animations = [ {
 }, {
 "frames": [ ExtResource( 5 ) ],
 "loop": true,
-"name": "blue_walk",
+"name": "orange_walk",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": false,
+"name": "orange_death1",
+"speed": 6.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -94,5 +95,8 @@ volume_db = 3.0
 [node name="ThumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
 volume_db = 10.0
+
+[node name="FireProjectile" parent="." instance=ExtResource( 2 )]
+visible = false
 [connection signal="area_entered" from="." to="." method="_on_GeneralMonster_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_GeneralMonster_body_entered"]

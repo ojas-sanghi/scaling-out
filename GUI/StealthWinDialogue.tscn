@@ -6,55 +6,51 @@
 
 [node name="StealthWinDialogue" type="Control"]
 pause_mode = 2
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -960.0
-margin_top = -540.0
-margin_right = 90.0
-margin_bottom = 110.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 rect_scale = Vector2( 0.8, 0.8 )
 __meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
+"_edit_use_anchors_": false
 }
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 870.0
-margin_bottom = 430.0
+margin_right = 683.0
+margin_bottom = 388.0
 color = Color( 0.0196078, 0.0156863, 0.0156863, 1 )
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 175.855
-margin_top = 325.134
-margin_right = 1017.86
-margin_bottom = 410.134
+margin_left = 891.277
+margin_top = 504.594
+margin_right = 1544.28
+margin_bottom = 589.594
 custom_fonts/font = ExtResource( 2 )
-text = "You found the secret!"
+text = "You got the info!"
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 434.849
-margin_top = 444.23
-margin_right = 720.849
-margin_bottom = 490.23
+margin_left = 1001.31
+margin_top = 624.476
+margin_right = 1465.3
+margin_bottom = 670.476
 custom_fonts/font = ExtResource( 1 )
-text = "Unstoppable!"
+text = "U n s t o p p a b l e !"
 __meta__ = {
-"_edit_use_anchors_": false
+"_edit_use_anchors_": false,
+"_editor_description_": ""
 }
 
 [node name="Button2" parent="." instance=ExtResource( 3 )]
-margin_left = -167.819
-margin_top = 224.0
-margin_right = 297.181
-margin_bottom = 338.0
+margin_left = 81.056
+margin_top = 199.57
+margin_right = 312.056
+margin_bottom = 283.57
 button_mode = "return upgrades"

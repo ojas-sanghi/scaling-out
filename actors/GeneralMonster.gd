@@ -66,8 +66,6 @@ func monster_died():
 	if Globals.monsters_died == Globals.max_monsters:
 		emit_signal("game_over")
 
-
-
 func update_health():
 	monster_health -= 17
 	bar.value = monster_health
