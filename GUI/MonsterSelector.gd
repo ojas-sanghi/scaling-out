@@ -52,7 +52,6 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("monster_4"):
 		if shot_ice or ice_disabled:
 			return
-		active_id = 4
 		for m in get_all_monsters():
 			if "TankyLizard" in m.name:
 				m.shoot_projectile()
@@ -61,7 +60,6 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed("monster_5"):
 		if shot_fire or fire_disabled:
 			return
-		active_id = 5
 		for m in get_all_monsters():
 			if "WarriorLizard" in m.name:
 				m.shoot_projectile()

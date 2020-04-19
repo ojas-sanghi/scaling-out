@@ -20,9 +20,14 @@ _global_script_class_icons={
 
 [application]
 
-config/name="2020 Game Jam"
+config/name="Scaling Out"
+config/description="Project for DevFest 2020 Game Jam.
+
+Go on undercover missions, upgrade your monsters, and destroy some cities!"
 run/main_scene="res://GUI/Screens/HomeScreen.tscn"
-config/icon="res://icon.png"
+config/icon="res://assets/dinos/mega_lizard/mega_lizard.png"
+config/macos_native_icon="res://assets/dinos/mega_lizard.icns"
+config/windows_native_icon="res://assets/dinos/mega_lizard.ico"
 
 [autoload]
 
