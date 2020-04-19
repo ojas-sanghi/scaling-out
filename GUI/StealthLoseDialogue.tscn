@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/Font75.tres" type="DynamicFont" id=2]
+[ext_resource path="res://GUI/Button.tscn" type="PackedScene" id=3]
 
 [node name="StealthLoseDialogue" type="Control"]
 pause_mode = 2
@@ -30,9 +31,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 336.21
+margin_left = 535.156
 margin_top = 197.904
-margin_right = 757.21
+margin_right = 956.156
 margin_bottom = 282.904
 custom_fonts/font = ExtResource( 2 )
 text = "You failed!"
@@ -41,9 +42,9 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 330.31
+margin_left = 519.516
 margin_top = 317.296
-margin_right = 794.306
+margin_right = 983.512
 margin_bottom = 363.296
 custom_fonts/font = ExtResource( 1 )
 text = "Maybe next time, eh?"
@@ -51,12 +52,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" type="Button" parent="."]
-margin_left = 395.033
-margin_top = 433.376
-margin_right = 701.037
-margin_bottom = 509.376
-text = "[ B U T T O N ]"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Button" parent="." instance=ExtResource( 3 )]
+margin_left = 106.89
+margin_top = 100.368
+margin_right = 337.89
+margin_bottom = 184.368
+button_mode = "retry level"

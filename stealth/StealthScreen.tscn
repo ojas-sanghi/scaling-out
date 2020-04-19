@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/tilesets/gray.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/tilesets/gray_bg.tres" type="TileSet" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://GUI/StealthWinDialogue.tscn" type="PackedScene" id=7]
 [ext_resource path="res://GUI/CoinCounter.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Coin.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/music/stealth music.wav" type="AudioStream" id=10]
+[ext_resource path="res://Vault.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -131,6 +133,12 @@ value = 10
 position = Vector2( 414.672, 181.596 )
 value = 10
 
+[node name="CoinCounter" parent="." instance=ExtResource( 8 )]
+margin_left = 36.8894
+margin_top = 22.0462
+margin_right = 36.8894
+margin_bottom = 22.0462
+
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0.196078, 0.196078, 0.196078, 1 )
 
@@ -148,8 +156,10 @@ margin_top = 0.0
 margin_right = 1050.0
 margin_bottom = 650.0
 
-[node name="CoinCounter" parent="." instance=ExtResource( 8 )]
-margin_left = 36.8894
-margin_top = 22.0462
-margin_right = 36.8894
-margin_bottom = 22.0462
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
+
+[node name="Vault" parent="." instance=ExtResource( 11 )]
+position = Vector2( 53.805, 598.062 )
+scale = Vector2( 0.53, 0.53 )

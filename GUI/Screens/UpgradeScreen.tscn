@@ -1,0 +1,152 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/fonts/Font75.tres" type="DynamicFont" id=1]
+[ext_resource path="res://GUI/Button.tscn" type="PackedScene" id=2]
+[ext_resource path="res://GUI/AbilityButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/abilities/fire.png" type="Texture" id=4]
+[ext_resource path="res://assets/abilities/speed.png" type="Texture" id=5]
+[ext_resource path="res://assets/abilities/ice.png" type="Texture" id=6]
+[ext_resource path="res://assets/music/Upgrade screen and menu.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=8]
+
+[node name="UpgradeScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0431373, 0.427451, 0.27451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 953.521
+margin_top = 41.3685
+margin_right = 1385.53
+margin_bottom = 126.369
+custom_fonts/font = ExtResource( 1 )
+text = "Upgrades"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 1063.92
+margin_top = 665.131
+margin_right = 1241.92
+margin_bottom = 711.131
+custom_fonts/font = ExtResource( 8 )
+text = "Specials"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 1063.92
+margin_top = 194.585
+margin_right = 1241.92
+margin_bottom = 240.585
+custom_fonts/font = ExtResource( 8 )
+text = "Stats"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" parent="." instance=ExtResource( 2 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 86.0
+margin_top = 876.0
+margin_right = 421.0
+margin_bottom = 1023.0
+button_mode = "return home screen"
+
+[node name="Line2D" type="Line2D" parent="."]
+position = Vector2( 0, -41.0109 )
+points = PoolVector2Array( 353.278, 125.513, 100.737, 278.764, 366.229, 408.272, 83.4697, 548.573, 383.497, 719.092, 66.202, 794.638 )
+width = 50.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 463.842
+margin_top = 284.098
+margin_right = 1845.84
+margin_bottom = 997.098
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_constants/separation = 300
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 191.0
+margin_right = 541.0
+margin_bottom = 713.0
+custom_constants/separation = 401
+
+[node name="HP" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 350.0
+margin_bottom = 150.0
+button_mode = "health"
+
+[node name="Fire" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 551.0
+margin_right = 350.0
+margin_bottom = 701.0
+icon = ExtResource( 4 )
+button_mode = "fire"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
+margin_left = 841.0
+margin_right = 1191.0
+margin_bottom = 713.0
+custom_constants/separation = 401
+
+[node name="Speed" parent="HBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 350.0
+margin_bottom = 150.0
+icon = ExtResource( 5 )
+button_mode = "speed"
+
+[node name="Ice" parent="HBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 551.0
+margin_right = 350.0
+margin_bottom = 701.0
+icon = ExtResource( 6 )
+button_mode = "ice"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+autoplay = true

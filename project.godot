@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="2020 Game Jam"
-run/main_scene="res://stealth/StealthScreen.tscn"
+run/main_scene="res://combat/CombatScreen.tscn"
 config/icon="res://icon.png"
 
 [autoload]

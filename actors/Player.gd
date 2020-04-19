@@ -11,8 +11,10 @@ var player_powerups = []
 var direction_from_player = Vector2()
 var coins_in_level = 0
 
+var guards
+
 func _ready() -> void:
-	var guards = get_tree().get_nodes_in_group("guards")
+	guards = get_tree().get_nodes_in_group("guards")
 	if guards:
 		for g in guards:
 			g.connect("level_failed", self, "_on_level_failed", [], CONNECT_ONESHOT)
@@ -20,6 +22,10 @@ func _ready() -> void:
 	if coins:
 		for coin in coins:
 			coin.connect("coin_grabbed", self, "_on_coin_grabbed")
+	var vaults = get_tree().get_nodes_in_group("vaults")
+	if vaults:
+		for v in vaults:
+			v.connect("level_passed", self, "_on_level_passed")
 
 func get_input():
 	# Detect up/down/left/right keystate and only move when pressed
@@ -45,15 +51,16 @@ func animate_player():
 
 	# If we're moving, change rotation
 	if velocity_length >= 1:
-		$Sprite.rotation_degrees = velocity_angle
-		$Collision.rotation_degrees = velocity_angle
+#		$AnimatedSprite.rotation_degrees = velocity_angle
+#		$Collision.rotation_degrees = velocity_angle
+		rotation_degrees = velocity_angle - 180
 
-#	if velocity_length >= 1:
-#		# If moving in any direction, play walk animation.
-#		$AnimationPlayer.play("walk")
-#	else:
-#		# Not moving, idle anim
-#		$AnimationPlayer.play("idle")
+	if velocity_length >= 1:
+		# If moving in any direction, play walk animation.
+		$AnimatedSprite.play("walk")
+	else:
+		# Not moving, idle anim
+		$AnimatedSprite.play("idle")
 
 func _physics_process(delta):
 	# Disable any movement if the player died
@@ -65,17 +72,35 @@ func _physics_process(delta):
 	animate_player()
 	move_and_slide(velocity)
 
+func stop_guards():
+	if guards:
+		for g in guards:
+			g.stop_moving()
+
 func _on_level_passed():
 	set_physics_process(false)
-	yield(SceneChanger.fade(), "completed")
+	stop_guards()
+	$AnimatedSprite.stop()
+	$Win.play()
+
+	SceneChanger.fade()
 	get_node("/root/StealthScreen/CanvasModulate").hide()
+	get_node("/root/StealthScreen/CoinCounter").hide()
+	yield($Win, "finished")
+	get_node("/root/StealthScreen/Vault").hide()
 	get_node("/root/StealthScreen/StealthWinDialogue").show()
 	Globals.coins = coins_in_level
 
 func _on_level_failed():
 	set_physics_process(false)
-	yield(SceneChanger.fade(), "completed")
+	stop_guards()
+	$AnimatedSprite.stop()
+	$Caught.play()
+
+	SceneChanger.fade()
 	get_node("/root/StealthScreen/CanvasModulate").hide()
+	get_node("/root/StealthScreen/CoinCounter").hide()
+	yield($Caught, "finished")
 	get_node("/root/StealthScreen/StealthLoseDialogue").show()
 
 func _on_coin_grabbed(value):

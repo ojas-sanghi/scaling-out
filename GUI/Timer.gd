@@ -13,6 +13,9 @@ func _ready():
 	timer.set_wait_time(timer_duration)
 	timer.start()
 
+func reset_time():
+	timer.set_wait_time(timer_duration)
+
 func _process(_delta):
 	# Get time left in seconds and round it to an int
 	var time_left = timer.get_time_left()
