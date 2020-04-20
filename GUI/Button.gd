@@ -44,7 +44,7 @@ func _on_Button_pressed() -> void:
 		"quit":
 			get_tree().quit()
 		"play":
-			SceneChanger.go_to_scene("res://stealth/StealthScreen.tscn")
+			SceneChanger.go_to_scene("res://GUI/Screens/HomeScreen.tscn")
 		"retry level":
 			var timers = get_tree().get_nodes_in_group("level_timer")
 			if timers:

@@ -17,7 +17,7 @@ var upgrades = {
 var finding_ice = false
 var finding_fire = false
 
-var max_monsters = 7
+var max_monsters = 10
 var monsters_remaining = max_monsters
 var monsters_died = 0
 var can_deploy = true

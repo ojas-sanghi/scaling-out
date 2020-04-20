@@ -6,5 +6,3 @@ default_env.tres
 project.godot
 default_env.tres
 export_presets.cfg
-
-GUI/MainMenuScreen.tscn
