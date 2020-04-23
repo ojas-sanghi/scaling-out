@@ -8,9 +8,7 @@
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 494.0
-margin_bottom = 283.0
-rect_scale = Vector2( 0.8, 0.8 )
+margin_right = 0.00012207
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -18,18 +16,16 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 189.0
-margin_bottom = 105.0
 color = Color( 0.0196078, 0.0156863, 0.0156863, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 1045.74
-margin_top = 506.722
-margin_right = 1466.74
-margin_bottom = 591.722
+margin_left = 789.78
+margin_top = 348.099
+margin_right = 1210.78
+margin_bottom = 433.099
 custom_fonts/font = ExtResource( 2 )
 text = "You failed!"
 __meta__ = {
@@ -37,10 +33,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 1030.1
-margin_top = 626.114
-margin_right = 1494.09
-margin_bottom = 672.114
+margin_left = 774.14
+margin_top = 467.491
+margin_right = 1238.13
+margin_bottom = 513.491
 custom_fonts/font = ExtResource( 1 )
 text = "Maybe next time, eh?"
 __meta__ = {
@@ -48,8 +44,8 @@ __meta__ = {
 }
 
 [node name="Button" parent="." instance=ExtResource( 3 )]
-margin_left = 22.0
+margin_left = -75.3368
 margin_top = 56.5
-margin_right = 253.0
+margin_right = 155.663
 margin_bottom = 168.5
 button_mode = "retry level"

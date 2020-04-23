@@ -102,7 +102,7 @@ func _on_level_passed():
 	yield($Win, "finished")
 	get_node(node_path + "Vault").hide()
 	set_cam_limits_fhd()
-	get_node(node_path + "/CanvasLayer/StealthWinDialogue").show()
+	SceneChanger.go_to_scene("res://GUI/StealthWinDialogue.tscn")
 	Globals.coins += coins_in_level
 
 func _on_level_failed():
@@ -117,7 +117,7 @@ func _on_level_failed():
 	yield($Caught, "finished")
 	get_node(node_path + "Vault").hide()
 	set_cam_limits_fhd()
-	get_node(node_path + "/CanvasLayer/StealthLoseDialogue").show()
+	SceneChanger.go_to_scene("res://GUI/StealthLoseDialogue.tscn")
 
 func _on_coin_grabbed(value):
 	coins_in_level += value
