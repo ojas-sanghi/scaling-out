@@ -1,7 +1,7 @@
 tool
 extends Button
 
-export(String, "EXCEPTION", "quit", "play", "retry combat", "return home screen", "return upgrades") var button_mode = "EXCEPTION"
+export(String, "EXCEPTION", "quit", "play", "retry combat", "retry stealth", "return home screen", "return upgrades") var button_mode = "EXCEPTION"
 
 func _ready() -> void:
 	if button_mode == "EXCEPTION":
@@ -15,8 +15,9 @@ func _ready() -> void:
 		for _i in range(0, get_position_in_parent()):
 			path += "../"
 		var root_node = get_node(path)
-		print(root_node.name)
-		print(root_node.filename)
+		if root_node:
+			print(root_node.name)
+			print(root_node.filename)
 
 		assert(button_mode != "EXCEPTION") # error out if no button mode has been set
 
@@ -31,6 +32,9 @@ func set_button_text() -> void:
 			text = "Play"
 			self.grab_focus()
 		"retry combat":
+			text = "Retry"
+			self.grab_focus()
+		"retry stealth":
 			text = "Retry"
 			self.grab_focus()
 		"return home screen":
@@ -48,7 +52,17 @@ func _on_Button_pressed() -> void:
 			SceneChanger.go_to_scene("res://GUI/Screens/HomeScreen.tscn")
 		"retry combat":
 			SceneChanger.go_to_scene("res://Combat/CombatScreen.tscn")
+		"retry stealth":
+			if Globals.finding_ice:
+				SceneChanger.go_to_scene("res://stealth/StealthIce.tscn")
+			else:
+				SceneChanger.go_to_scene("res://stealth/StealthFire.tscn")
 		"return home screen":
 			SceneChanger.go_to_scene("res://GUI/Screens/HomeScreen.tscn")
 		"return upgrades":
 			SceneChanger.go_to_scene("res://GUI/Screens/UpgradeScreen.tscn")
+
+func _process(delta: float) -> void:
+	if Engine.editor_hint:
+		if text == "example text":
+			set_button_text()

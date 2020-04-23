@@ -1,3 +1,4 @@
+tool
 extends TextureButton
 
 export(String, "EXCEPTION", "map", "upgrades") var button_mode = "EXCEPTION"
@@ -34,3 +35,8 @@ func _on_Button_pressed() -> void:
 			SceneChanger.go_to_scene("res://combat/CombatScreen.tscn")
 		"upgrades":
 			SceneChanger.go_to_scene("res://GUI/Screens/UpgradeScreen.tscn")
+
+func _process(delta: float) -> void:
+	if Engine.editor_hint:
+		if $Label.text == "example text":
+			set_button_text()
