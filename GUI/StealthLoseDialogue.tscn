@@ -22,9 +22,9 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 789.78
+margin_left = 752.107
 margin_top = 348.099
-margin_right = 1210.78
+margin_right = 1173.11
 margin_bottom = 433.099
 custom_fonts/font = ExtResource( 2 )
 text = "You failed!"
@@ -33,10 +33,10 @@ __meta__ = {
 }
 
 [node name="Label2" type="Label" parent="."]
-margin_left = 774.14
-margin_top = 467.491
-margin_right = 1238.13
-margin_bottom = 513.491
+margin_left = 745.729
+margin_top = 458.0
+margin_right = 1187.73
+margin_bottom = 504.0
 custom_fonts/font = ExtResource( 1 )
 text = "Maybe next time, eh?"
 __meta__ = {
@@ -44,8 +44,9 @@ __meta__ = {
 }
 
 [node name="Button" parent="." instance=ExtResource( 3 )]
-margin_left = -75.3368
-margin_top = 56.5
-margin_right = 155.663
-margin_bottom = 168.5
-button_mode = "retry level"
+margin_left = -101.887
+margin_top = 11.119
+margin_right = 166.113
+margin_bottom = 122.119
+text = "Retry"
+button_mode = "retry stealth"

@@ -44,4 +44,5 @@ margin_left = -152.0
 margin_top = 112.663
 margin_right = 171.0
 margin_bottom = 210.663
+text = "Return Home"
 button_mode = "return home screen"

@@ -1,3 +1,4 @@
+tool
 extends Button
 
 export(String, "EXCEPTION", "health", "speed", "fire", "ice", "mega", "tank", "warrior") var button_mode = "EXCEPTION"
@@ -110,6 +111,41 @@ func set_button_text() -> void:
 			if p_node != null:
 				if Globals.upgrades["fire"]:
 					p_node.get_child(1).disabled = true
+	set_disabled_status()
+
+func set_disabled_status():
+	if Engine.editor_hint:
+		return
+	match button_mode:
+		"health":
+			if Globals.upgrades["health"]:
+				self.disabled = true
+		"speed":
+			if Globals.upgrades["speed"]:
+				self.disabled = true
+		"fire":
+			if Globals.upgrades["ice"]:
+				self.disabled = true
+		"ice":
+			if Globals.upgrades["ice"]:
+				self.disabled = true
+		"mega":
+			$Label.hide()
+			self.grab_focus()
+			self.grab_click_focus()
+		"tank":
+			$Label.hide()
+			var p_node = get_node("../../HBoxContainer/VBoxContainer")
+			if p_node != null:
+				if Globals.upgrades["ice"]:
+					p_node.get_child(1).disabled = true
+		"warrior":
+			text = "Warrior"
+			$Label.hide()
+			var p_node = get_node("../../HBoxContainer/VBoxContainer2")
+			if p_node != null:
+				if Globals.upgrades["fire"]:
+					p_node.get_child(1).disabled = true
 
 func _on_Button_pressed() -> void:
 	var bought_purchase = false
@@ -140,3 +176,8 @@ func _on_Button_pressed() -> void:
 		"warrior":
 			Globals.shop_monster = "warrior"
 			check_monster_specials()
+
+func _process(delta: float) -> void:
+	if Engine.editor_hint:
+		if text == "example text":
+			set_button_text()

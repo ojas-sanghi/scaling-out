@@ -28,7 +28,7 @@ margin_top = 377.991
 margin_right = 343.333
 margin_bottom = 412.991
 custom_fonts/font = ExtResource( 3 )
-text = "asdasdsad"
+text = "example text"
 __meta__ = {
 "_edit_use_anchors_": false
 }

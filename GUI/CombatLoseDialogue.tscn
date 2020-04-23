@@ -44,4 +44,5 @@ margin_left = -103.82
 margin_top = 78.2838
 margin_right = 127.18
 margin_bottom = 173.283
+text = "Retry"
 button_mode = "retry combat"
