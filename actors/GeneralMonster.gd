@@ -79,8 +79,7 @@ func update_health():
 			monster_dead = true
 
 func win_game():
-	get_tree().paused = true
-	get_node("/root/CombatScreen/WinDialogue").show()
+	SceneChanger.go_to_scene("res://GUI/CombatWinDialogue.tscn")
 
 func _on_GeneralMonster_area_entered(area: Area2D) -> void:
 	if "Bullet" in area.name:
