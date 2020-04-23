@@ -15,7 +15,7 @@ __meta__ = {
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.482353 )
+color = Color( 0, 0, 0, 1 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 709.865
@@ -30,9 +30,9 @@ __meta__ = {
 
 [node name="Label2" type="Label" parent="."]
 margin_left = 718.74
-margin_top = 544.344
+margin_top = 512.044
 margin_right = 1197.74
-margin_bottom = 590.344
+margin_bottom = 558.044
 custom_fonts/font = ExtResource( 1 )
 text = "We'll get 'em next time.."
 __meta__ = {

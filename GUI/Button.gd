@@ -1,3 +1,4 @@
+tool
 extends Button
 
 export(String, "EXCEPTION", "quit", "play", "retry combat", "return home screen", "return upgrades") var button_mode = "EXCEPTION"
