@@ -1,6 +1,6 @@
 extends Button
 
-export(String, "EXCEPTION", "quit", "play", "retry level", "return home screen", "return upgrades") var button_mode = "EXCEPTION"
+export(String, "EXCEPTION", "quit", "play", "retry combat", "return home screen", "return upgrades") var button_mode = "EXCEPTION"
 
 func _ready() -> void:
 	if button_mode == "EXCEPTION":
@@ -29,7 +29,7 @@ func set_button_text() -> void:
 		"play":
 			text = "Play"
 			self.grab_focus()
-		"retry level":
+		"retry combat":
 			text = "Retry"
 			self.grab_focus()
 		"return home screen":
@@ -45,13 +45,9 @@ func _on_Button_pressed() -> void:
 			get_tree().quit()
 		"play":
 			SceneChanger.go_to_scene("res://GUI/Screens/HomeScreen.tscn")
-		"retry level":
-			var timers = get_tree().get_nodes_in_group("level_timer")
-			if timers:
-				timers[0].reset_time()
-			Globals.monsters_remaining = Globals.max_monsters
-			get_tree().reload_current_scene()
+		"retry combat":
+			SceneChanger.go_to_scene("res://Combat/CombatScreen.tscn")
 		"return home screen":
-			get_tree().change_scene("res://GUI/Screens/HomeScreen.tscn")
+			SceneChanger.go_to_scene("res://GUI/Screens/HomeScreen.tscn")
 		"return upgrades":
 			SceneChanger.go_to_scene("res://GUI/Screens/UpgradeScreen.tscn")

@@ -40,8 +40,7 @@ func _on_Timer_timeout() -> void:
 	$AudioStreamPlayer.play()
 
 func game_over():
-	get_tree().paused = true
-	get_node("/root/CombatScreen/LoseDialogue").show()
+	SceneChanger.go_to_scene("res://GUI/CombatLoseDialogue.tscn")
 
 func _on_IceTimer_timeout() -> void:
 	$Timer.wait_time = 2
