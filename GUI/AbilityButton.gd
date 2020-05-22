@@ -78,39 +78,18 @@ func set_button_text() -> void:
 	match button_mode:
 		"health":
 			text = "Health"
-			if Globals.upgrades["health"]:
-				self.disabled = true
 		"speed":
 			text = "Speed"
-			if Globals.upgrades["speed"]:
-				self.disabled = true
 		"fire":
 			text = "Fire Projectiles"
-			if Globals.upgrades["ice"]:
-				self.disabled = true
 		"ice":
 			text = "Ice Projectiles"
-			if Globals.upgrades["ice"]:
-				self.disabled = true
 		"mega":
 			text = "Mega"
-			$Label.hide()
-			self.grab_focus()
-			self.grab_click_focus()
 		"tank":
 			text = "Tank"
-			$Label.hide()
-			var p_node = get_node("../../HBoxContainer/VBoxContainer")
-			if p_node != null:
-				if Globals.upgrades["ice"]:
-					p_node.get_child(1).disabled = true
 		"warrior":
 			text = "Warrior"
-			$Label.hide()
-			var p_node = get_node("../../HBoxContainer/VBoxContainer2")
-			if p_node != null:
-				if Globals.upgrades["fire"]:
-					p_node.get_child(1).disabled = true
 	set_disabled_status()
 
 func set_disabled_status():

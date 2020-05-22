@@ -12,10 +12,10 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "GeneralMonster",
 "language": "GDScript",
-"path": "res://actors/GeneralMonster.gd"
+"path": "res://actors/dinos/GeneralMonster.gd"
 } ]
 _global_script_class_icons={
-"GeneralMonster": ""
+"GeneralMonster": "res://assets/dinos/mega_lizard/mega_lizard.png"
 }
 
 [application]
@@ -32,6 +32,8 @@ config/windows_native_icon="res://assets/dinos/mega_lizard.ico"
 
 Globals="*res://Globals.gd"
 SceneChanger="*res://SceneChanger.tscn"
+DinoInfo="*res://DinoInfo.gd"
+CombatInfo="*res://CombatInfo.gd"
 
 [display]
 

@@ -1,0 +1,274 @@
+[gd_scene load_steps=47 format=2]
+
+[ext_resource path="res://assets/music/thump.wav" type="AudioStream" id=1]
+[ext_resource path="res://assets/dinos/mega_lizard/orange_dino_walk.png" type="Texture" id=2]
+[ext_resource path="res://assets/music/Robot Lizard Died.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/dinos/mega_lizard/orange_dino_death.png" type="Texture" id=4]
+[ext_resource path="res://assets/lifebar_fill.png" type="Texture" id=5]
+[ext_resource path="res://assets/lifebar_bg.png" type="Texture" id=6]
+[ext_resource path="res://assets/dinos/mega_lizard/blue_dino_walk.png" type="Texture" id=7]
+[ext_resource path="res://assets/dinos/mega_lizard/green_dino_death.png" type="Texture" id=8]
+[ext_resource path="res://assets/dinos/mega_lizard/green_dino_walk.png" type="Texture" id=9]
+[ext_resource path="res://assets/dinos/mega_lizard/blue_dino_death.png" type="Texture" id=10]
+[ext_resource path="res://actors/dinos/MegaLizard.gd" type="Script" id=11]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 279, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 157, 279, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 314, 279, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 0, 98, 279 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 98, 0, 98, 279 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 196, 0, 98, 279 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 294, 0, 98, 279 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 7 )
+region = Rect2( 0, 279, 98, 279 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 103, 279 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 103, 0, 103, 279 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 206, 0, 103, 279 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 309, 0, 103, 279 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 2 )
+region = Rect2( 0, 279, 103, 279 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 0, 0, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 157, 0, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 10 )
+region = Rect2( 314, 0, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 279, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 157, 279, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 314, 279, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=20]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=21]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 157, 0, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 314, 0, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 279, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 157, 279, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 314, 279, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 157, 0, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 314, 0, 157, 279 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 88, 279 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 88, 0, 88, 279 )
+
+[sub_resource type="AtlasTexture" id=31]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 176, 0, 88, 279 )
+
+[sub_resource type="AtlasTexture" id=32]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 264, 0, 88, 279 )
+
+[sub_resource type="AtlasTexture" id=33]
+flags = 4
+atlas = ExtResource( 9 )
+region = Rect2( 0, 279, 88, 279 )
+
+[sub_resource type="SpriteFrames" id=34]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
+"loop": false,
+"name": "blue_death1",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ) ],
+"loop": true,
+"name": "blue_walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ) ],
+"loop": true,
+"name": "orange_walk",
+"speed": 5.0
+}, {
+"frames": [ SubResource( 14 ), SubResource( 15 ), SubResource( 16 ) ],
+"loop": false,
+"name": "blue_death0",
+"speed": 3.0
+}, {
+"frames": [ SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": false,
+"name": "orange_death1",
+"speed": 6.0
+}, {
+"frames": [ SubResource( 20 ), SubResource( 21 ), SubResource( 22 ) ],
+"loop": false,
+"name": "orange_death0",
+"speed": 6.0
+}, {
+"frames": [ SubResource( 23 ), SubResource( 24 ), SubResource( 25 ) ],
+"loop": false,
+"name": "green_death1",
+"speed": 6.0
+}, {
+"frames": [ SubResource( 26 ), SubResource( 27 ), SubResource( 28 ) ],
+"loop": false,
+"name": "green_death0",
+"speed": 6.0
+}, {
+"frames": [ SubResource( 29 ), SubResource( 30 ), SubResource( 31 ), SubResource( 32 ), SubResource( 33 ) ],
+"loop": true,
+"name": "green_walk",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=35]
+extents = Vector2( 27.2666, 99.442 )
+
+[node name="MegaLizard" type="Area2D" groups=[
+"dinos",
+]]
+script = ExtResource( 11 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+rotation = -1.5708
+scale = Vector2( 1.15, 1.15 )
+frames = SubResource( 34 )
+animation = "blue_walk"
+frame = 2
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -3.85385 )
+rotation = -1.5708
+shape = SubResource( 35 )
+
+[node name="HealthBar" type="TextureProgress" parent="."]
+margin_left = -41.4013
+margin_top = -57.5924
+margin_right = 354.599
+margin_bottom = -4.59242
+rect_scale = Vector2( 0.205609, 0.205609 )
+value = 46.0
+texture_under = ExtResource( 6 )
+texture_progress = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="TransparencyTween" type="Tween" parent="."]
+
+[node name="DeathSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = 3.0
+
+[node name="ThumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = 10.0
+[connection signal="area_entered" from="." to="." method="_on_GeneralMonster_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_GeneralMonster_body_entered"]

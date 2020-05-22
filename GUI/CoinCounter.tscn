@@ -33,9 +33,10 @@ __meta__ = {
 [node name="Num" type="Label" parent="HBoxContainer"]
 margin_left = 91.0
 margin_top = 5.0
-margin_right = 91.0
+margin_right = 129.0
 margin_bottom = 34.0
 custom_fonts/font = ExtResource( 2 )
+text = "100"
 __meta__ = {
 "_edit_use_anchors_": false
 }

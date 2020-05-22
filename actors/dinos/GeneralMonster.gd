@@ -1,34 +1,52 @@
+class_name GeneralMonster, "res://assets/dinos/mega_lizard/mega_lizard.png"
 extends Area2D
-class_name GeneralMonster
 
-# Speed
-var speed: Vector2
-var monster_health: int
-var animated_health: int
-var monster_dead = false
+signal game_over
 
 onready var bar = $HealthBar
 
-var monster_color = "blue"
-signal game_over
+var monster_dead := false
 
-func _init(_speed = Globals.monster_speed, _health = Globals.monster_health) -> void:
-	speed = _speed
+var monster_variations: Array
+var monster_color: String
+
+var monster_health: int
+var animated_health: int
+var monster_speed: Vector2
+var monster_dodge_chance: int
+var monster_dmg: int
+
+var deploy_delay: int
+
+func _init(
+		_speed = Vector2(50, 0),
+		_health = 100,
+		_variations = ["blue", "green", "orange"],
+		_dmg = 5,
+		_delay = 2,
+		_dodge = 0
+	) -> void:
+	monster_speed = _speed
+
 	monster_health = _health
 	animated_health = _health
+
+	monster_variations = _variations
+	monster_color = monster_variations[0]
+
+	monster_dmg = _dmg
+	monster_dodge_chance = _dodge
+
+	deploy_delay = _delay
 
 func _ready() -> void:
 	$ThumpSound.play()
 	bar.max_value = monster_health
+
 	randomize()
 	var color_num = randi() % 3
-	match color_num:
-		0:
-			monster_color = "blue"
-		1:
-			monster_color = "green"
-		2:
-			monster_color = "orange"
+	monster_color = monster_variations[color_num]
+
 	$AnimatedSprite.play(monster_color + "_walk")
 
 	$AnimatedSprite.rotation_degrees = -90
@@ -40,7 +58,7 @@ func _ready() -> void:
 			self.connect("game_over", a, "game_over")
 
 func _physics_process(delta: float) -> void:
-	 self.position += speed * delta
+	 self.position += monster_speed * delta
 
 func _process(delta: float) -> void:
 	var round_value = round(animated_health)
@@ -62,8 +80,8 @@ func monster_died():
 
 	queue_free()
 
-	Globals.monsters_died += 1
-	if Globals.monsters_died == Globals.max_monsters:
+	CombatInfo.dinos_died += 1
+	if CombatInfo.dinos_died == CombatInfo.max_dinos:
 		emit_signal("game_over")
 
 func update_health():
