@@ -8,21 +8,21 @@ func _ready() -> void:
 	var lanes = get_tree().get_nodes_in_group("lanes")
 	if lanes:
 		for lane in lanes:
-			lane.connect("monster_deployed", self, "_on_monster_deployed")
+			lane.connect("dino_deployed", self, "_on_dino_deployed")
 
 	$TextureProgress.hide()
 
-	for i in range(0, DinoInfo.monster_list.size()):
+	for i in range(0, DinoInfo.dino_list.size()):
 		if i in DinoInfo.timer_list:
 			continue
 		DinoInfo.timer_list.append(i)
 		id = i
 		break
 
-func _on_monster_deployed():
+func _on_dino_deployed():
 	if counting_down:
 		return
-	if DinoInfo.monster_id != id:
+	if DinoInfo.dino_id != id:
 		return
 
 	var delay = DinoInfo.get_dino_timer_delay()

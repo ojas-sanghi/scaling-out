@@ -32,63 +32,63 @@ func _ready() -> void:
 	var lanes = get_tree().get_nodes_in_group("lanes")
 	if lanes:
 		for lane in lanes:
-			lane.connect("monster_deployed", self, "_on_monster_deployed")
+			lane.connect("dino_deployed", self, "_on_dino_deployed")
 
 func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("monster_1"):
+	if event.is_action_pressed("dino_1"):
 		active_id = 0
 		$Particles.position.x = 0
-	elif event.is_action_pressed("monster_2"):
+	elif event.is_action_pressed("dino_2"):
 		active_id = 1
 		$Particles.position.x = 140
-	elif event.is_action_pressed("monster_3"):
+	elif event.is_action_pressed("dino_3"):
 		active_id = 2
 		$Particles.position.x = 270
 	# on ready remove X if need be
 	# on button pressed:
 	# just do the thing
 	# then deactivate it
-	elif event.is_action_pressed("monster_4"):
+	elif event.is_action_pressed("dino_4"):
 		if shot_ice or ice_disabled:
 			return
-		for m in get_all_monsters():
-			if m.monster_name == "tanky":
+		for m in get_all_dinos():
+			if m.dino_name == "tanky":
 				m.shoot_projectile()
 				disable_ice()
 				return
-	elif event.is_action_pressed("monster_5"):
+	elif event.is_action_pressed("dino_5"):
 		if shot_fire or fire_disabled:
 			return
-		for m in get_all_monsters():
-			if m.monster_name == "warrior":
+		for m in get_all_dinos():
+			if m.dino_name == "warrior":
 				m.shoot_projectile()
 				disable_fire()
 				return
 	else:
 		pass
-	DinoInfo.monster_id = active_id
+	DinoInfo.dino_id = active_id
 
-func _on_monster_deployed():
-	for m in get_all_monsters():
-		if m.monster_name == "tanky":
+func _on_dino_deployed():
+	for m in get_all_dinos():
+		if m.dino_name == "tanky":
 			if not shot_ice and DinoInfo.has_upgrade("tanky", "ice"):
 				enable_ice()
-		if m.monster_name == "warrior":
+		if m.dino_name == "warrior":
 			if not shot_fire and DinoInfo.has_upgrade("warrior", "fire"):
 				enable_fire()
 
-func get_all_monsters():
-	var monsters = []
+func get_all_dinos():
+	var dinos = []
 	var lanes = get_node("/root/CombatScreen/Lanes")
 	for lane in lanes.get_children():
 		var m = lane.get_children()
 		if m:
-			for monster in m:
-				if "TankyLizard" in monster.name or "WarriorLizard" in monster.name:
-					monsters.append(monster)
-	return monsters
+			for dino in m:
+				if "TankyDino" in dino.name or "WarriorDino" in dino.name:
+					dinos.append(dino)
+	return dinos
 
 
 # get each deploy timer to be independent of the thing
-# fix issues with non-mega lizards when deploying
+# fix issues with non-mega dinos when dinos_deploying
 #maybe look at shop and upgrades

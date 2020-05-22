@@ -1,6 +1,6 @@
-extends GeneralMonster
+extends GeneralDino
 
-var monster_name = "warrior"
+var dino_name = "warrior"
 var speed = Vector2(100, 0)
 var health = 45
 var dmg = 10
@@ -8,11 +8,11 @@ var dmg = 10
 var variations = ["green", "purple", "red"]
 
 func _init():
-	if DinoInfo.has_upgrade(monster_name, "speed"):
+	if DinoInfo.has_upgrade(dino_name, "speed"):
 		speed.x += 45
-	if DinoInfo.has_upgrade(monster_name, "health"):
+	if DinoInfo.has_upgrade(dino_name, "health"):
 		health += 15
-	if DinoInfo.has_upgrade(monster_name, "dmg"):
+	if DinoInfo.has_upgrade(dino_name, "dmg"):
 		dmg += 5
 
 	._init(speed, health, variations, dmg)

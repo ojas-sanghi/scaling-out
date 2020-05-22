@@ -1,12 +1,12 @@
 extends Node
 
-var monster_id := 0
-var monster_list := [
-	preload("res://actors/dinos/MegaLizard.tscn"),
-	preload("res://actors/dinos/TankyLizard.tscn"),
-	preload("res://actors/dinos/WarriorLizard.tscn"),
+var dino_id := 0
+var dino_list := [
+	preload("res://actors/dinos/MegaDino.tscn"),
+	preload("res://actors/dinos/TankyDino.tscn"),
+	preload("res://actors/dinos/WarriorDino.tscn"),
 ]
-var deploying := []
+var dinos_deploying := []
 var timer_list := []
 
 # {tanky: [health, dmg], mega: [health]}
@@ -21,29 +21,29 @@ func add_upgrade(dino: String, upgrade: String) -> void:
 	else:
 		upgrades_list[dino] = [upgrade]
 
-func _on_monster_deployed():
-	deploying.append(monster_id)
+func _on_dino_deployed():
+	dinos_deploying.append(dino_id)
 
 	var delay = get_dino_timer_delay()
-	var deploying_timer = Timer.new()
-	deploying_timer.one_shot = true
-	add_child(deploying_timer)
+	var dinos_deploying_timer = Timer.new()
+	dinos_deploying_timer.one_shot = true
+	add_child(dinos_deploying_timer)
 
-	deploying_timer.connect("timeout", self, "_on_deploying_timer_timeout", [monster_id])
+	dinos_deploying_timer.connect("timeout", self, "_on_dinos_deploying_timer_timeout", [dino_id])
 
-	deploying_timer.start(delay)
+	dinos_deploying_timer.start(delay)
 
-func _on_deploying_timer_timeout(id):
-	deploying.remove(deploying.find(id))
+func _on_dinos_deploying_timer_timeout(id):
+	dinos_deploying.remove(dinos_deploying.find(id))
 
 # find the delay based on the dino
 func get_dino_timer_delay():
-	var dino_scene = monster_list[monster_id]
+	var dino_scene = dino_list[dino_id]
 	var dino_instance = dino_scene.instance()
 	var delay = dino_instance.deploy_delay
 	dino_instance.queue_free()
 	return delay
 
 func reset_deploys():
-	deploying = []
+	dinos_deploying = []
 	timer_list = []

@@ -1,32 +1,32 @@
 [gd_scene load_steps=51 format=2]
 
 [ext_resource path="res://combat/FireProjectile.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/dinos/warrior_lizard/RED_TRibal_Death_Sprite_Sheet.png" type="Texture" id=2]
-[ext_resource path="res://assets/dinos/warrior_lizard/Green_TRibal_Death_Sprite_Sheet.png" type="Texture" id=3]
-[ext_resource path="res://assets/dinos/warrior_lizard/Green_Tribal_Walk_Sprite_Sheet.png" type="Texture" id=4]
-[ext_resource path="res://assets/dinos/warrior_lizard/Purple_Tribal_Walk_Sprite_Sheet.png" type="Texture" id=5]
+[ext_resource path="res://assets/dinos/warrior_dino/RED_TRibal_Death_Sprite_Sheet.png" type="Texture" id=2]
+[ext_resource path="res://assets/dinos/warrior_dino/Green_TRibal_Death_Sprite_Sheet.png" type="Texture" id=3]
+[ext_resource path="res://assets/dinos/warrior_dino/Green_Tribal_Walk_Sprite_Sheet.png" type="Texture" id=4]
+[ext_resource path="res://assets/dinos/warrior_dino/Purple_Tribal_Walk_Sprite_Sheet.png" type="Texture" id=5]
 [ext_resource path="res://assets/music/thump.wav" type="AudioStream" id=6]
-[ext_resource path="res://assets/dinos/warrior_lizard/Tribal_Walk_Sprite_Sheet.png" type="Texture" id=7]
-[ext_resource path="res://assets/dinos/warrior_lizard/Purple_TRibal_Death_Sprite_Sheet.png" type="Texture" id=8]
-[ext_resource path="res://assets/music/Robot Lizard Died.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/dinos/warrior_dino/Tribal_Walk_Sprite_Sheet.png" type="Texture" id=7]
+[ext_resource path="res://assets/dinos/warrior_dino/Purple_TRibal_Death_Sprite_Sheet.png" type="Texture" id=8]
+[ext_resource path="res://assets/music/Robot Dino Died.wav" type="AudioStream" id=9]
 [ext_resource path="res://assets/lifebar_fill.png" type="Texture" id=10]
 [ext_resource path="res://assets/lifebar_bg.png" type="Texture" id=11]
-[ext_resource path="res://actors/dinos/WarriorLizard.gd" type="Script" id=12]
+[ext_resource path="res://actors/dinos/WarriorDino.gd" type="Script" id=12]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 0, 307, 199, 307 )
+region = Rect2( 0, 0, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=2]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 199, 307, 199, 307 )
+region = Rect2( 199, 0, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=3]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 398, 307, 199, 307 )
+region = Rect2( 398, 0, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=4]
 flags = 4
@@ -61,17 +61,17 @@ region = Rect2( 146, 307, 146, 307 )
 [sub_resource type="AtlasTexture" id=10]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 199, 307 )
+region = Rect2( 0, 307, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=11]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 199, 0, 199, 307 )
+region = Rect2( 199, 307, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=12]
 flags = 4
 atlas = ExtResource( 3 )
-region = Rect2( 398, 0, 199, 307 )
+region = Rect2( 398, 307, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=13]
 flags = 4
@@ -90,63 +90,63 @@ region = Rect2( 398, 0, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=16]
 flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 0, 307, 199, 307 )
-
-[sub_resource type="AtlasTexture" id=17]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 199, 307, 199, 307 )
-
-[sub_resource type="AtlasTexture" id=18]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 398, 307, 199, 307 )
-
-[sub_resource type="AtlasTexture" id=19]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 199, 307 )
-
-[sub_resource type="AtlasTexture" id=20]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 199, 0, 199, 307 )
-
-[sub_resource type="AtlasTexture" id=21]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 398, 0, 199, 307 )
-
-[sub_resource type="AtlasTexture" id=22]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 0, 0, 146, 307 )
 
-[sub_resource type="AtlasTexture" id=23]
+[sub_resource type="AtlasTexture" id=17]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 146, 0, 146, 307 )
 
-[sub_resource type="AtlasTexture" id=24]
+[sub_resource type="AtlasTexture" id=18]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 292, 0, 146, 307 )
 
-[sub_resource type="AtlasTexture" id=25]
+[sub_resource type="AtlasTexture" id=19]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 438, 0, 146, 307 )
 
-[sub_resource type="AtlasTexture" id=26]
+[sub_resource type="AtlasTexture" id=20]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 0, 307, 146, 307 )
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=21]
 flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 146, 307, 146, 307 )
+
+[sub_resource type="AtlasTexture" id=22]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 307, 199, 307 )
+
+[sub_resource type="AtlasTexture" id=23]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 199, 307, 199, 307 )
+
+[sub_resource type="AtlasTexture" id=24]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 398, 307, 199, 307 )
+
+[sub_resource type="AtlasTexture" id=25]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 199, 307 )
+
+[sub_resource type="AtlasTexture" id=26]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 199, 0, 199, 307 )
+
+[sub_resource type="AtlasTexture" id=27]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 398, 0, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=28]
 flags = 4
@@ -197,7 +197,7 @@ region = Rect2( 146, 307, 146, 307 )
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ) ],
 "loop": false,
-"name": "green_death1",
+"name": "green_death0",
 "speed": 6.0
 }, {
 "frames": [ SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
@@ -207,7 +207,7 @@ animations = [ {
 }, {
 "frames": [ SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
 "loop": false,
-"name": "green_death0",
+"name": "green_death1",
 "speed": 6.0
 }, {
 "frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
@@ -215,20 +215,20 @@ animations = [ {
 "name": "red_death0",
 "speed": 6.0
 }, {
-"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ) ],
+"frames": [ SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"loop": true,
+"name": "purple_walk",
+"speed": 6.0
+}, {
+"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": false,
 "name": "purple_death1",
 "speed": 3.0
 }, {
-"frames": [ SubResource( 19 ), SubResource( 20 ), SubResource( 21 ) ],
+"frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
 "loop": false,
 "name": "purple_death0",
 "speed": 3.0
-}, {
-"frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ), SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
-"loop": true,
-"name": "purple_walk",
-"speed": 6.0
 }, {
 "frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
 "loop": false,
@@ -244,7 +244,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=38]
 extents = Vector2( 34.2897, 114.87 )
 
-[node name="WarriorLizard" type="Area2D" groups=[
+[node name="WarriorDino" type="Area2D" groups=[
 "dinos",
 ]]
 script = ExtResource( 12 )
@@ -254,6 +254,7 @@ rotation = -1.5708
 scale = Vector2( 1.15, 1.15 )
 frames = SubResource( 37 )
 animation = "purple_walk"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -288,5 +289,5 @@ volume_db = 10.0
 
 [node name="FireProjectile" parent="." instance=ExtResource( 1 )]
 visible = false
-[connection signal="area_entered" from="." to="." method="_on_GeneralMonster_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_GeneralMonster_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_GeneralDino_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_GeneralDino_body_entered"]
