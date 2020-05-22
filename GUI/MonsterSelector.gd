@@ -1,7 +1,6 @@
 extends Node2D
 
-export var id = 1
-var active_id := 1
+var active_id := 0
 
 var shot_ice = false
 var shot_fire = false
@@ -37,13 +36,13 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("monster_1"):
-		active_id = 1
+		active_id = 0
 		$Particles.position.x = 0
 	elif event.is_action_pressed("monster_2"):
-		active_id = 2
+		active_id = 1
 		$Particles.position.x = 140
 	elif event.is_action_pressed("monster_3"):
-		active_id = 3
+		active_id = 2
 		$Particles.position.x = 270
 	# on ready remove X if need be
 	# on button pressed:
@@ -53,7 +52,7 @@ func _input(event: InputEvent) -> void:
 		if shot_ice or ice_disabled:
 			return
 		for m in get_all_monsters():
-			if "TankyLizard" in m.name:
+			if m.monster_name == "tanky":
 				m.shoot_projectile()
 				disable_ice()
 				return
@@ -61,21 +60,21 @@ func _input(event: InputEvent) -> void:
 		if shot_fire or fire_disabled:
 			return
 		for m in get_all_monsters():
-			if "WarriorLizard" in m.name:
+			if m.monster_name == "warrior":
 				m.shoot_projectile()
 				disable_fire()
 				return
 	else:
 		pass
-	Globals.monster_id = active_id
+	DinoInfo.monster_id = active_id
 
 func _on_monster_deployed():
 	for m in get_all_monsters():
-		if "TankyLizard" in m.name:
-			if not shot_ice and Globals.upgrades["ice"]:
+		if m.monster_name == "tanky":
+			if not shot_ice and DinoInfo.has_upgrade("tanky", "ice"):
 				enable_ice()
-		if "WarriorLizard" in m.name:
-			if not shot_fire and Globals.upgrades["fire"]:
+		if m.monster_name == "warrior":
+			if not shot_fire and DinoInfo.has_upgrade("warrior", "fire"):
 				enable_fire()
 
 func get_all_monsters():
@@ -88,3 +87,8 @@ func get_all_monsters():
 				if "TankyLizard" in monster.name or "WarriorLizard" in monster.name:
 					monsters.append(monster)
 	return monsters
+
+
+# get each deploy timer to be independent of the thing
+# fix issues with non-mega lizards when deploying
+#maybe look at shop and upgrades

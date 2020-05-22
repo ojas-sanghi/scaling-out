@@ -8,9 +8,10 @@ func _ready() -> void:
 	update_text()
 
 func _on_monster_deployed():
-	Globals.monsters_remaining -= 1
+#	Globals.monsters_remaining -= 1
 	update_text()
 
 func update_text():
-	var label_text = "Remaining monsters: " + str(Globals.monsters_remaining)
-	$Label.text = label_text
+	pass
+#	var label_text = "Remaining monsters: " + str(Globals.monsters_remaining)
+#	$Label.text = label_text

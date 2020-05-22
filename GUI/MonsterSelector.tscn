@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/MonsterSelector.gd" type="Script" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/abilities/ice.png" type="Texture" id=6]
 [ext_resource path="res://assets/abilities/fire.png" type="Texture" id=7]
 [ext_resource path="res://assets/x.png" type="Texture" id=8]
+[ext_resource path="res://GUI/DeployTimer.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.0196078, 0.145098, 0.478431, 1, 1, 0.309804, 0.0392157, 1 )
@@ -155,3 +156,13 @@ rotation = 1.5708
 scale = Vector2( 1.5, 1.5 )
 amount = 50
 process_material = SubResource( 3 )
+
+[node name="DeployTimer" parent="." instance=ExtResource( 9 )]
+
+[node name="DeployTimer2" parent="." instance=ExtResource( 9 )]
+margin_left = 140.828
+margin_right = 140.828
+
+[node name="DeployTimer3" parent="." instance=ExtResource( 9 )]
+margin_left = 271.597
+margin_right = 271.597

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/circle.png" type="Texture" id=1]
+[ext_resource path="res://GUI/DeployTimer.gd" type="Script" id=2]
+
+[node name="DeployTimer" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 1.10045
+margin_top = -0.463928
+margin_right = 634.1
+margin_bottom = 572.536
+rect_scale = Vector2( 0.1, 0.1 )
+value = 1.0
+texture_progress = ExtResource( 1 )
+fill_mode = 5
+tint_under = Color( 1, 1, 1, 0.392157 )
+tint_progress = Color( 0.858824, 0.870588, 0.87451, 1 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
