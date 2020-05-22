@@ -17,11 +17,10 @@ margin_top = -0.463928
 margin_right = 634.1
 margin_bottom = 572.536
 rect_scale = Vector2( 0.1, 0.1 )
-value = 1.0
+value = 45.0
 texture_progress = ExtResource( 1 )
 fill_mode = 5
 tint_under = Color( 1, 1, 1, 0.392157 )
-tint_progress = Color( 0.858824, 0.870588, 0.87451, 1 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
