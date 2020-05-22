@@ -1,10 +1,10 @@
 [gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=1]
-[ext_resource path="res://GUI/MonsterSelector.gd" type="Script" id=2]
-[ext_resource path="res://assets/dinos/mega_lizard/mega_lizard.png" type="Texture" id=3]
-[ext_resource path="res://assets/dinos/tanky_lizard/Armored_Dino_ICON.png" type="Texture" id=4]
-[ext_resource path="res://assets/dinos/warrior_lizard/Tribal_Dino_icon.png" type="Texture" id=5]
+[ext_resource path="res://GUI/DinoSelector.gd" type="Script" id=2]
+[ext_resource path="res://assets/dinos/mega_dino/mega_dino.png" type="Texture" id=3]
+[ext_resource path="res://assets/dinos/tanky_dino/Armored_Dino_ICON.png" type="Texture" id=4]
+[ext_resource path="res://assets/dinos/warrior_dino/Tribal_Dino_icon.png" type="Texture" id=5]
 [ext_resource path="res://assets/abilities/ice.png" type="Texture" id=6]
 [ext_resource path="res://assets/abilities/fire.png" type="Texture" id=7]
 [ext_resource path="res://assets/x.png" type="Texture" id=8]
@@ -27,7 +27,7 @@ angle = 45.0
 angle_random = 1.0
 color_ramp = SubResource( 2 )
 
-[node name="MonsterSelector" type="Node2D"]
+[node name="DinoSelector" type="Node2D"]
 script = ExtResource( 2 )
 
 [node name="Label1" type="Label" parent="."]

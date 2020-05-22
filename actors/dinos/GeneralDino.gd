@@ -1,20 +1,20 @@
-class_name GeneralMonster, "res://assets/dinos/mega_lizard/mega_lizard.png"
+class_name GeneralDino, "res://assets/dinos/mega_dino/mega_dino.png"
 extends Area2D
 
 signal game_over
 
 onready var bar = $HealthBar
 
-var monster_dead := false
+var dino_dead := false
 
-var monster_variations: Array
-var monster_color: String
+var dino_variations: Array
+var dino_color: String
 
-var monster_health: int
+var dino_health: int
 var animated_health: int
-var monster_speed: Vector2
-var monster_dodge_chance: int
-var monster_dmg: int
+var dino_speed: Vector2
+var dino_dodge_chance: int
+var dino_dmg: int
 
 var deploy_delay: int
 
@@ -26,28 +26,28 @@ func _init(
 		_delay = 2,
 		_dodge = 0
 	) -> void:
-	monster_speed = _speed
+	dino_speed = _speed
 
-	monster_health = _health
+	dino_health = _health
 	animated_health = _health
 
-	monster_variations = _variations
-	monster_color = monster_variations[0]
+	dino_variations = _variations
+	dino_color = dino_variations[0]
 
-	monster_dmg = _dmg
-	monster_dodge_chance = _dodge
+	dino_dmg = _dmg
+	dino_dodge_chance = _dodge
 
 	deploy_delay = _delay
 
 func _ready() -> void:
 	$ThumpSound.play()
-	bar.max_value = monster_health
+	bar.max_value = dino_health
 
 	randomize()
 	var color_num = randi() % 3
-	monster_color = monster_variations[color_num]
+	dino_color = dino_variations[color_num]
 
-	$AnimatedSprite.play(monster_color + "_walk")
+	$AnimatedSprite.play(dino_color + "_walk")
 
 	$AnimatedSprite.rotation_degrees = -90
 	$CollisionShape2D.rotation_degrees = -90
@@ -58,20 +58,20 @@ func _ready() -> void:
 			self.connect("game_over", a, "game_over")
 
 func _physics_process(delta: float) -> void:
-	 self.position += monster_speed * delta
+	 self.position += dino_speed * delta
 
 func _process(delta: float) -> void:
 	var round_value = round(animated_health)
 	bar.value = round_value
 
-func monster_died():
+func dino_died():
 	$CollisionShape2D.set_deferred("disabled", true)
 	set_physics_process(false)
 
 	randomize()
 	var num = randi() % 2
 	$DeathSound.play()
-	$AnimatedSprite.play(monster_color + "_death" + str(num))
+	$AnimatedSprite.play(dino_color + "_death" + str(num))
 	var tween = $TransparencyTween
 	tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), 5)
 	tween.start()
@@ -85,21 +85,21 @@ func monster_died():
 		emit_signal("game_over")
 
 func update_health():
-	monster_health -= 17
-	bar.value = monster_health
-	$Tween.interpolate_property(self, "animated_health", animated_health, monster_health, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	dino_health -= 17
+	bar.value = dino_health
+	$Tween.interpolate_property(self, "animated_health", animated_health, dino_health, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	if not $Tween.is_active():
 		$Tween.start()
 
-	if monster_health <= 0:
-		if not monster_dead:
-			monster_died()
-			monster_dead = true
+	if dino_health <= 0:
+		if not dino_dead:
+			dino_died()
+			dino_dead = true
 
 func win_game():
 	SceneChanger.go_to_scene("res://GUI/CombatWinDialogue.tscn")
 
-func _on_GeneralMonster_area_entered(area: Area2D) -> void:
+func _on_GeneralDino_area_entered(area: Area2D) -> void:
 	if "Bullet" in area.name:
 		area.queue_free()
 		update_health()

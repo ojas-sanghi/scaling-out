@@ -31,16 +31,16 @@ func _ready() -> void:
 
 func check_bought_status():
 	if dino_option:
-		check_monster_specials()
+		check_dino_specials()
 		return
 	if Globals.upgrades[button_mode]:
 		set_button_text()
 		self.disabled = true
 		return
-	check_monster_specials()
+	check_dino_specials()
 
-func check_monster_specials():
-	match Globals.shop_monster:
+func check_dino_specials():
+	match Globals.shop_dino:
 		"mega":
 			var p_node = get_node("../../HBoxContainer/VBoxContainer")
 			if p_node != null:
@@ -147,14 +147,14 @@ func _on_Button_pressed() -> void:
 			Globals.finding_ice = true
 			SceneChanger.go_to_scene("res://stealth/StealthIce.tscn")
 		"mega":
-			Globals.shop_monster = "mega"
-			check_monster_specials()
+			Globals.shop_dino = "mega"
+			check_dino_specials()
 		"tank":
-			Globals.shop_monster = "tank"
-			check_monster_specials()
+			Globals.shop_dino = "tank"
+			check_dino_specials()
 		"warrior":
-			Globals.shop_monster = "warrior"
-			check_monster_specials()
+			Globals.shop_dino = "warrior"
+			check_dino_specials()
 
 func _process(delta: float) -> void:
 	if Engine.editor_hint:

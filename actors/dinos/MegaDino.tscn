@@ -1,16 +1,16 @@
 [gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://assets/music/thump.wav" type="AudioStream" id=1]
-[ext_resource path="res://assets/dinos/mega_lizard/orange_dino_walk.png" type="Texture" id=2]
-[ext_resource path="res://assets/music/Robot Lizard Died.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/dinos/mega_lizard/orange_dino_death.png" type="Texture" id=4]
+[ext_resource path="res://assets/dinos/mega_dino/orange_dino_walk.png" type="Texture" id=2]
+[ext_resource path="res://assets/music/Robot Dino Died.wav" type="AudioStream" id=3]
+[ext_resource path="res://assets/dinos/mega_dino/orange_dino_death.png" type="Texture" id=4]
 [ext_resource path="res://assets/lifebar_fill.png" type="Texture" id=5]
 [ext_resource path="res://assets/lifebar_bg.png" type="Texture" id=6]
-[ext_resource path="res://assets/dinos/mega_lizard/blue_dino_walk.png" type="Texture" id=7]
-[ext_resource path="res://assets/dinos/mega_lizard/green_dino_death.png" type="Texture" id=8]
-[ext_resource path="res://assets/dinos/mega_lizard/green_dino_walk.png" type="Texture" id=9]
-[ext_resource path="res://assets/dinos/mega_lizard/blue_dino_death.png" type="Texture" id=10]
-[ext_resource path="res://actors/dinos/MegaLizard.gd" type="Script" id=11]
+[ext_resource path="res://assets/dinos/mega_dino/blue_dino_walk.png" type="Texture" id=7]
+[ext_resource path="res://assets/dinos/mega_dino/green_dino_death.png" type="Texture" id=8]
+[ext_resource path="res://assets/dinos/mega_dino/green_dino_walk.png" type="Texture" id=9]
+[ext_resource path="res://assets/dinos/mega_dino/blue_dino_death.png" type="Texture" id=10]
+[ext_resource path="res://actors/dinos/MegaDino.gd" type="Script" id=11]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4
@@ -228,7 +228,7 @@ animations = [ {
 [sub_resource type="RectangleShape2D" id=35]
 extents = Vector2( 27.2666, 99.442 )
 
-[node name="MegaLizard" type="Area2D" groups=[
+[node name="MegaDino" type="Area2D" groups=[
 "dinos",
 ]]
 script = ExtResource( 11 )
@@ -270,5 +270,5 @@ volume_db = 3.0
 [node name="ThumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
 volume_db = 10.0
-[connection signal="area_entered" from="." to="." method="_on_GeneralMonster_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_GeneralMonster_body_entered"]
+[connection signal="area_entered" from="." to="." method="_on_GeneralDino_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_GeneralDino_body_entered"]
