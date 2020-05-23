@@ -51,6 +51,7 @@ func _on_Button_pressed() -> void:
 		"play":
 			SceneChanger.go_to_scene("res://GUI/Screens/HomeScreen.tscn")
 		"retry combat":
+			CombatInfo.reset()
 			SceneChanger.go_to_scene("res://Combat/CombatScreen.tscn")
 		"retry stealth":
 			if Globals.finding_ice:

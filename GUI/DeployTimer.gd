@@ -4,10 +4,7 @@ onready var dino_timer = $Timer
 var id := 0
 
 func _ready() -> void:
-	var lanes = get_tree().get_nodes_in_group("lanes")
-	if lanes:
-		for lane in lanes:
-			lane.connect("dino_deployed", self, "_on_dino_deployed")
+	DinoInfo.connect("dino_deployed", self, "_on_dino_deployed")
 
 	# give the circle an id relating to each dino in the list
 	for i in range(0, DinoInfo.dino_list.size()):

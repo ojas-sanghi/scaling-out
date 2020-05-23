@@ -8,9 +8,10 @@ func _ready() -> void:
 	connect("dino_deployed", DinoInfo, "_on_dino_deployed")
 
 func _on_Lane_pressed() -> void:
-#	if Globals.dinos_remaining <= 0:
-#		return
+	if CombatInfo.dinos_remaining <= 0:
+		return
 
+	# don't deploy if the delay isn't over yet
 	if DinoInfo.dino_id in DinoInfo.dinos_deploying:
 		return
 

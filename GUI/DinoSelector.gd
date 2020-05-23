@@ -2,93 +2,63 @@ extends Node2D
 
 var active_id := 0
 
-var shot_ice = false
-var shot_fire = false
-
-var ice_disabled = true
-var fire_disabled = true
-
-func enable_ice():
-	$Sprite4X.hide()
-	ice_disabled = false
-
-func enable_fire():
-	$Sprite5X.hide()
-	fire_disabled = false
-
-func disable_ice():
-	$Sprite4X.show()
-	ice_disabled = true
-
-func disable_fire():
-	$Sprite5X.show()
-	fire_disabled = true
-
 func _ready() -> void:
-	$Label1.text = "1"
-	$Label2.text = "2"
-	$Label3.text = "3"
+	DinoInfo.connect("dino_deployed", self, "_on_dino_deployed")
 
-	var lanes = get_tree().get_nodes_in_group("lanes")
-	if lanes:
-		for lane in lanes:
-			lane.connect("dino_deployed", self, "_on_dino_deployed")
+	$'1'.show_particles()
+
+func disable_all_other_particles(except: int):
+	for n in get_children():
+		if n.name != str(except):
+			n.hide_particles()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dino_1"):
 		active_id = 0
-		$Particles.position.x = 0
+		$'1'.show_particles()
+		disable_all_other_particles(1)
+
 	elif event.is_action_pressed("dino_2"):
 		active_id = 1
-		$Particles.position.x = 140
+		$'2'.show_particles()
+		disable_all_other_particles(2)
+
 	elif event.is_action_pressed("dino_3"):
 		active_id = 2
-		$Particles.position.x = 270
-	# on ready remove X if need be
-	# on button pressed:
-	# just do the thing
-	# then deactivate it
+		$'3'.show_particles()
+		disable_all_other_particles(3)
+
 	elif event.is_action_pressed("dino_4"):
-		if shot_ice or ice_disabled:
+		if not DinoInfo.has_upgrade("tanky", "ice") or CombatInfo.shot_ice:
 			return
-		for m in get_all_dinos():
-			if m.dino_name == "tanky":
-				m.shoot_projectile()
-				disable_ice()
+
+		for d in get_tree().get_nodes_in_group("dinos"):
+			if d.dino_name == "tanky":
+				d.shoot_projectile()
+				$'4'.disable_ability()
+				CombatInfo.shot_ice = true
 				return
+
 	elif event.is_action_pressed("dino_5"):
-		if shot_fire or fire_disabled:
+		if not DinoInfo.has_upgrade("warrior", "fire") or CombatInfo.shot_fire:
 			return
-		for m in get_all_dinos():
-			if m.dino_name == "warrior":
-				m.shoot_projectile()
-				disable_fire()
+
+		for d in get_tree().get_nodes_in_group("dinos"):
+			if d.dino_name == "warrior":
+				d.shoot_projectile()
+				$'5'.disable_ability()
+				CombatInfo.shot_fire = true
 				return
-	else:
-		pass
+
 	DinoInfo.dino_id = active_id
 
 func _on_dino_deployed():
-	for m in get_all_dinos():
-		if m.dino_name == "tanky":
-			if not shot_ice and DinoInfo.has_upgrade("tanky", "ice"):
-				enable_ice()
-		if m.dino_name == "warrior":
-			if not shot_fire and DinoInfo.has_upgrade("warrior", "fire"):
-				enable_fire()
+	var dino_name = DinoInfo.get_dino_property("dino_name")
 
-func get_all_dinos():
-	var dinos = []
-	var lanes = get_node("/root/CombatScreen/Lanes")
-	for lane in lanes.get_children():
-		var m = lane.get_children()
-		if m:
-			for dino in m:
-				if "TankyDino" in dino.name or "WarriorDino" in dino.name:
-					dinos.append(dino)
-	return dinos
+	if dino_name == "tanky":
+		if DinoInfo.has_upgrade(dino_name, "ice") and not CombatInfo.shot_ice:
+			$'4'.enable_ability()
 
-
-# get each deploy timer to be independent of the thing
-# fix issues with non-mega dinos when dinos_deploying
-#maybe look at shop and upgrades
+	if dino_name == "warrior":
+		if DinoInfo.has_upgrade(dino_name, "fire") and not CombatInfo.shot_fire:
+			$'5'.enable_ability()

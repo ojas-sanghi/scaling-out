@@ -1,168 +1,41 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/dinos/warrior_dino/Tribal_Dino_icon.png" type="Texture" id=1]
 [ext_resource path="res://GUI/DinoSelector.gd" type="Script" id=2]
 [ext_resource path="res://assets/dinos/mega_dino/mega_dino.png" type="Texture" id=3]
 [ext_resource path="res://assets/dinos/tanky_dino/Armored_Dino_ICON.png" type="Texture" id=4]
-[ext_resource path="res://assets/dinos/warrior_dino/Tribal_Dino_icon.png" type="Texture" id=5]
-[ext_resource path="res://assets/abilities/ice.png" type="Texture" id=6]
-[ext_resource path="res://assets/abilities/fire.png" type="Texture" id=7]
-[ext_resource path="res://assets/x.png" type="Texture" id=8]
-[ext_resource path="res://GUI/DeployTimer.tscn" type="PackedScene" id=9]
-
-[sub_resource type="Gradient" id=1]
-colors = PoolColorArray( 0.0196078, 0.145098, 0.478431, 1, 1, 0.309804, 0.0392157, 1 )
-
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
-
-[sub_resource type="ParticlesMaterial" id=3]
-emission_shape = 2
-emission_box_extents = Vector3( 25, 5, 1 )
-flag_disable_z = true
-gravity = Vector3( 0, -30, 0 )
-orbit_velocity = 0.0
-orbit_velocity_random = 0.0
-angle = 45.0
-angle_random = 1.0
-color_ramp = SubResource( 2 )
+[ext_resource path="res://assets/abilities/ice.png" type="Texture" id=5]
+[ext_resource path="res://assets/abilities/fire.png" type="Texture" id=6]
+[ext_resource path="res://GUI/SelectorSprite.tscn" type="PackedScene" id=11]
 
 [node name="DinoSelector" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Label1" type="Label" parent="."]
-margin_left = 67.0
-margin_top = -23.0
-margin_right = 77.0
-margin_bottom = 6.0
-custom_fonts/font = ExtResource( 1 )
+[node name="1" parent="." instance=ExtResource( 11 )]
+position = Vector2( 30, 30 )
+sprite = ExtResource( 3 )
 text = "1"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="Sprite1" type="Sprite" parent="."]
-position = Vector2( 30.8782, 30.1496 )
-scale = Vector2( 0.5115, 0.519267 )
-texture = ExtResource( 3 )
+[node name="2" parent="." instance=ExtResource( 11 )]
+position = Vector2( 170, 30 )
+sprite = ExtResource( 4 )
+text = "2"
 
-[node name="Sprite2" type="Sprite" parent="."]
-position = Vector2( 170, 26.981 )
-scale = Vector2( 0.511, 0.519 )
-texture = ExtResource( 4 )
+[node name="3" parent="." instance=ExtResource( 11 )]
+position = Vector2( 300, 30 )
+sprite = ExtResource( 1 )
+text = "3"
 
-[node name="Label2" type="Label" parent="."]
-margin_left = 198.307
-margin_top = -23.0
-margin_right = 208.307
-margin_bottom = 6.0
-custom_fonts/font = ExtResource( 1 )
-text = "2
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite3" type="Sprite" parent="."]
-position = Vector2( 297.737, 28.5607 )
-scale = Vector2( 0.511, 0.519 )
-texture = ExtResource( 5 )
-
-[node name="Label3" type="Label" parent="."]
-margin_left = 343.664
-margin_top = -23.0
-margin_right = 353.664
-margin_bottom = 6.0
-custom_fonts/font = ExtResource( 1 )
-text = "3
-"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Sprite4" type="Sprite" parent="."]
-position = Vector2( 591.888, 33.9254 )
-scale = Vector2( 0.0471485, 0.0401828 )
-texture = ExtResource( 6 )
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="Sprite4X" type="Sprite" parent="."]
-position = Vector2( 578.038, 51.0933 )
-scale = Vector2( 0.389157, 0.376889 )
-texture = ExtResource( 8 )
-__meta__ = {
-"_editor_description_": ""
-}
-
-[node name="Label4" type="Label" parent="."]
-margin_left = 623.168
-margin_top = -23.0
-margin_right = 639.168
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 1 )
+[node name="4" parent="." instance=ExtResource( 11 )]
+position = Vector2( 600, 30 )
+sprite = ExtResource( 5 )
 text = "4"
-__meta__ = {
-"_edit_use_anchors_": false
-}
+ability_mode = "ice"
+custom_scale = Vector2( 0.04, 0.04 )
 
-[node name="Sprite5" type="Sprite" parent="."]
-position = Vector2( 760.135, 33.9254 )
-scale = Vector2( 0.0471485, 0.0401828 )
-texture = ExtResource( 7 )
-
-[node name="Sprite5X" type="Sprite" parent="."]
-position = Vector2( 736.173, 55.6982 )
-scale = Vector2( 0.389, 0.387 )
-texture = ExtResource( 8 )
-
-[node name="Label5" type="Label" parent="."]
-margin_left = 786.069
-margin_top = -23.0
-margin_right = 802.069
-margin_bottom = 38.0
-custom_fonts/font = ExtResource( 1 )
+[node name="5" parent="." instance=ExtResource( 11 )]
+position = Vector2( 760, 30 )
+sprite = ExtResource( 6 )
 text = "5"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Particles" type="Node2D" parent="."]
-
-[node name="Particles2D" type="Particles2D" parent="Particles"]
-position = Vector2( 30.4203, -7.83146 )
-scale = Vector2( 1.5, 1.5 )
-amount = 50
-process_material = SubResource( 3 )
-
-[node name="Particles2D2" type="Particles2D" parent="Particles"]
-position = Vector2( -7.99925, 29.6661 )
-rotation = -1.57079
-scale = Vector2( 1.5, 1.5 )
-amount = 50
-process_material = SubResource( 3 )
-
-[node name="Particles2D3" type="Particles2D" parent="Particles"]
-position = Vector2( 32.5096, 65.5146 )
-rotation = -3.14159
-scale = Vector2( 1.5, 1.5 )
-amount = 50
-process_material = SubResource( 3 )
-
-[node name="Particles2D4" type="Particles2D" parent="Particles"]
-position = Vector2( 69.0752, 32.5339 )
-rotation = 1.5708
-scale = Vector2( 1.5, 1.5 )
-amount = 50
-process_material = SubResource( 3 )
-
-[node name="DeployTimer" parent="." instance=ExtResource( 9 )]
-
-[node name="DeployTimer2" parent="." instance=ExtResource( 9 )]
-margin_left = 140.828
-margin_right = 140.828
-
-[node name="DeployTimer3" parent="." instance=ExtResource( 9 )]
-margin_left = 271.597
-margin_right = 271.597
+ability_mode = "fire"
+custom_scale = Vector2( 0.04, 0.04 )
