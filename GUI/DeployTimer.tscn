@@ -17,10 +17,11 @@ margin_top = -0.463928
 margin_right = 634.1
 margin_bottom = 572.536
 rect_scale = Vector2( 0.1, 0.1 )
-value = 45.0
+value = 20.0
+texture_under = ExtResource( 1 )
 texture_progress = ExtResource( 1 )
-fill_mode = 5
-tint_under = Color( 1, 1, 1, 0.392157 )
+fill_mode = 4
+tint_under = Color( 1, 1, 1, 0.431373 )
 __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
@@ -28,3 +29,6 @@ __meta__ = {
 
 [node name="Timer" type="Timer" parent="."]
 one_shot = true
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

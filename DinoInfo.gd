@@ -12,8 +12,10 @@ var timer_list := []
 # {tanky: [health, dmg], mega: [health]}
 var upgrades_list := {}
 
+
 func has_upgrade(dino: String, upgrade: String) -> bool:
 	return dino in upgrades_list and upgrade in upgrades_list[dino]
+
 
 func add_upgrade(dino: String, upgrade: String) -> void:
 	if dino in upgrades_list:
@@ -21,9 +23,13 @@ func add_upgrade(dino: String, upgrade: String) -> void:
 	else:
 		upgrades_list[dino] = [upgrade]
 
+
 func _on_dino_deployed():
+	# add to list of dinos just deployed
+	# prevents this type of dino from being deployed
 	dinos_deploying.append(dino_id)
 
+	# wait for the dino-specific delay
 	var delay = get_dino_timer_delay()
 	var dinos_deploying_timer = Timer.new()
 	dinos_deploying_timer.one_shot = true
@@ -33,11 +39,14 @@ func _on_dino_deployed():
 
 	dinos_deploying_timer.start(delay)
 
+
 func _on_dinos_deploying_timer_timeout(id):
+	# once the delay is over, let the dino be deployed again
 	dinos_deploying.remove(dinos_deploying.find(id))
 
 # find the delay based on the dino
 func get_dino_timer_delay():
+	# instance it, get the variable we want, then remove it
 	var dino_scene = dino_list[dino_id]
 	var dino_instance = dino_scene.instance()
 	var delay = dino_instance.deploy_delay
