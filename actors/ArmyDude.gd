@@ -16,10 +16,6 @@ func _ready() -> void:
 	var anim_string = "shoot_" + weapon
 	$AnimationPlayer.play(anim_string)
 
-	var timers = get_tree().get_nodes_in_group("level_timer")
-	if timers:
-		timers[0].connect("timer_timeout", self, "game_over")
-
 	var blockades = get_tree().get_nodes_in_group("blockade")
 	if blockades:
 		blockades[0].connect("proj_hit", self, "_on_proj_hit")
@@ -38,9 +34,6 @@ func _on_Timer_timeout() -> void:
 	var b = bullet.instance()
 	add_child(b)
 	$AudioStreamPlayer.play()
-
-func game_over():
-	SceneChanger.go_to_scene("res://GUI/CombatLoseDialogue.tscn")
 
 func _on_IceTimer_timeout() -> void:
 	$Timer.wait_time = 2
