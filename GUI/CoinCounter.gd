@@ -1,6 +1,6 @@
 extends Control
 
-onready var coin_amt = Globals.coins
+onready var coin_amt = ShopInfo.coins
 
 func _ready() -> void:
 	var coins = get_tree().get_nodes_in_group("coins")
@@ -17,4 +17,4 @@ func update_coin_amt():
 	$HBoxContainer/Num.text = str(coin_amt)
 
 func update_coin_from_global():
-	$HBoxContainer/Num.text = str(Globals.coins)
+	$HBoxContainer/Num.text = str(ShopInfo.coins)

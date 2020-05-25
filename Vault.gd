@@ -13,9 +13,9 @@ func _on_Vault_body_entered(body: Node) -> void:
 	if body.name == "Player":
 		var anim_name = $AnimatedSprite.animation
 		if anim_name == "ice":
-			Globals.finding_ice = false
+			ShopInfo.finding_ice = false
+			DinoInfo.add_upgrade("tanky", "ice")
 		else:
-			Globals.finding_fire = false
-		Globals.upgrades[anim_name] = true
+			ShopInfo.finding_fire = false
+			DinoInfo.add_upgrade("warrior", "fire")
 		emit_signal("level_passed")
-

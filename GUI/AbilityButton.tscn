@@ -29,7 +29,7 @@ margin_top = 164.065
 margin_right = 214.721
 margin_bottom = 193.065
 custom_fonts/font = ExtResource( 3 )
-text = "Cost: "
+text = "Cost: 1"
 __meta__ = {
 "_edit_use_anchors_": false
 }

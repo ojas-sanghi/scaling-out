@@ -29,7 +29,7 @@ func _ready() -> void:
 		for v in vaults:
 			v.connect("level_passed", self, "_on_level_passed")
 
-	if Globals.finding_ice:
+	if ShopInfo.finding_ice:
 		node_path = "/root/StealthIce/"
 	else:
 		node_path = "/root/StealthFire/"
@@ -71,7 +71,7 @@ func animate_player():
 
 func _physics_process(delta):
 	# Disable any movement if the player died
-	if Globals.player_caught:
+	if ShopInfo.player_caught:
 		return
 
 	velocity = get_input()
@@ -103,7 +103,7 @@ func _on_level_passed():
 	get_node(node_path + "Vault").hide()
 	set_cam_limits_fhd()
 	SceneChanger.go_to_scene("res://GUI/StealthWinDialogue.tscn")
-	Globals.coins += coins_in_level
+	ShopInfo.coins += coins_in_level
 
 func _on_level_failed():
 	set_physics_process(false)

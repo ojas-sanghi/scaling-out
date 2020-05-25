@@ -23,24 +23,20 @@ func _ready() -> void:
 
 		assert(button_mode != "EXCEPTION") # error out if no button mode has been set
 
-#	$Lock.visible = false
-#	if locked:
-#		$Lock.visible = true
-#		self.disabled = true
 	check_bought_status()
 
 func check_bought_status():
 	if dino_option:
 		check_dino_specials()
 		return
-	if Globals.upgrades[button_mode]:
+	if DinoInfo.has_upgrade_dino_independent(button_mode):
 		set_button_text()
 		self.disabled = true
 		return
 	check_dino_specials()
 
 func check_dino_specials():
-	match Globals.shop_dino:
+	match ShopInfo.shop_dino:
 		"mega":
 			var p_node = get_node("../../HBoxContainer/VBoxContainer")
 			if p_node != null:
@@ -51,7 +47,7 @@ func check_dino_specials():
 		"tank":
 			var p_node = get_node("../../HBoxContainer/VBoxContainer")
 			if p_node != null:
-				if Globals.upgrades["ice"]:
+				if DinoInfo.has_upgrade_dino_independent("ice"):
 					p_node.get_child(1).disabled = true
 					set_button_text()
 				p_node.get_child(1).disabled = false
@@ -66,7 +62,7 @@ func check_dino_specials():
 				set_button_text()
 			var p_node2 = get_node("../../HBoxContainer/VBoxContainer2")
 			if p_node2 != null:
-				if Globals.upgrades["fire"]:
+				if DinoInfo.has_upgrade_dino_independent("fire"):
 					p_node2.get_child(1).disabled = true
 					set_button_text()
 				p_node2.get_child(1).disabled = false
@@ -97,16 +93,16 @@ func set_disabled_status():
 		return
 	match button_mode:
 		"health":
-			if Globals.upgrades["health"]:
+			if DinoInfo.has_upgrade_dino_independent("health"):
 				self.disabled = true
 		"speed":
-			if Globals.upgrades["speed"]:
+			if DinoInfo.has_upgrade_dino_independent("speed"):
 				self.disabled = true
 		"fire":
-			if Globals.upgrades["ice"]:
+			if DinoInfo.has_upgrade_dino_independent("ice"):
 				self.disabled = true
 		"ice":
-			if Globals.upgrades["ice"]:
+			if DinoInfo.has_upgrade_dino_independent("ice"):
 				self.disabled = true
 		"mega":
 			$Label.hide()
@@ -116,44 +112,48 @@ func set_disabled_status():
 			$Label.hide()
 			var p_node = get_node("../../HBoxContainer/VBoxContainer")
 			if p_node != null:
-				if Globals.upgrades["ice"]:
+				if DinoInfo.has_upgrade("tanky", "ice"):
 					p_node.get_child(1).disabled = true
 		"warrior":
 			text = "Warrior"
 			$Label.hide()
 			var p_node = get_node("../../HBoxContainer/VBoxContainer2")
 			if p_node != null:
-				if Globals.upgrades["fire"]:
+				if DinoInfo.has_upgrade("warrior", "fire"):
 					p_node.get_child(1).disabled = true
 
 func _on_Button_pressed() -> void:
 	var bought_purchase = false
-	if Globals.coins >= cost and not dino_option:
-		Globals.coins -= cost
+	if ShopInfo.coins >= cost and not dino_option:
+		ShopInfo.coins -= cost
 		self.disabled = true
 		get_node("/root/UpgradeScreen/CanvasLayer/CoinCounter").update_coin_from_global()
 		bought_purchase = true
 	match button_mode:
 		"health":
 			if bought_purchase:
-				Globals.upgrades["health"] = true
+				DinoInfo.add_upgrade("mega", "health")
+				DinoInfo.add_upgrade("tanky", "health")
+				DinoInfo.add_upgrade("warrior", "health")
 		"speed":
 			if bought_purchase:
-				Globals.upgrades["speed"] = true
+				DinoInfo.add_upgrade("mega", "speed")
+				DinoInfo.add_upgrade("tanky", "speed")
+				DinoInfo.add_upgrade("warrior", "speed")
 		"fire":
-			Globals.finding_fire = true
+			ShopInfo.finding_fire = true
 			SceneChanger.go_to_scene("res://stealth/StealthFire.tscn")
 		"ice":
-			Globals.finding_ice = true
+			ShopInfo.finding_ice = true
 			SceneChanger.go_to_scene("res://stealth/StealthIce.tscn")
 		"mega":
-			Globals.shop_dino = "mega"
+			ShopInfo.shop_dino = "mega"
 			check_dino_specials()
 		"tank":
-			Globals.shop_dino = "tank"
+			ShopInfo.shop_dino = "tank"
 			check_dino_specials()
 		"warrior":
-			Globals.shop_dino = "warrior"
+			ShopInfo.shop_dino = "warrior"
 			check_dino_specials()
 
 func _process(delta: float) -> void:
