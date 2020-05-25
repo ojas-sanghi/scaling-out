@@ -65,6 +65,7 @@ tracks/0/keys = {
 [node name="ArmyDude" type="Area2D" groups=[
 "army",
 ]]
+collision_layer = 8
 script = ExtResource( 10 )
 
 [node name="Sprite" type="Sprite" parent="."]

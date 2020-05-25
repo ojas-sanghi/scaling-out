@@ -14,6 +14,7 @@ extents = Vector2( 546.031, 132.664 )
 ]]
 position = Vector2( 231.814, 163.634 )
 rotation = -1.57079
+collision_layer = 4
 script = ExtResource( 5 )
 
 [node name="Sprite" type="Sprite" parent="."]
