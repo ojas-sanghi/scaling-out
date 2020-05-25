@@ -31,6 +31,7 @@ func _ready() -> void:
 			hide_particles()
 
 	Signals.connect("dino_deployed", self, "_on_dino_deployed")
+	Signals.connect("all_dinos_expended", self, "_on_all_dinos_expended")
 
 
 func fade_sprite():
@@ -38,7 +39,9 @@ func fade_sprite():
 
 
 func unfade_sprite():
-	$Sprite.modulate = Color(1, 1, 1, 1)
+	# only unfade if we have more dinos left
+	if CombatInfo.dinos_remaining != 0:
+		$Sprite.modulate = Color(1, 1, 1, 1)
 
 
 func disable_ability():
@@ -73,3 +76,9 @@ func _on_dino_deployed():
 	fade_sprite()
 	yield(get_tree().create_timer(DinoInfo.get_dino_timer_delay(), false), "timeout")
 	unfade_sprite()
+
+func _on_all_dinos_expended():
+	fade_sprite()
+	hide_particles()
+	$DeployTimer.hide()
+	$Label.modulate = Color(1, 1, 1, 0.5)
