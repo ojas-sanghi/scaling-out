@@ -5,7 +5,6 @@ export var sprite: Texture
 export var text: String
 
 export(String, "none", "fire", "ice") var ability_mode := "none"
-
 export var custom_scale := Vector2(0.511, 0.519)
 
 var id: int
@@ -59,11 +58,12 @@ func enable_ability():
 
 
 func hide_particles():
-	$Particles.hide()
-
+	for particle in $Particles.get_children():
+		particle.emitting = false
 
 func show_particles():
-	$Particles.show()
+	for particle in $Particles.get_children():
+		particle.emitting = true
 
 
 func _on_dino_deployed():
