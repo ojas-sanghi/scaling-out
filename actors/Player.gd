@@ -2,8 +2,6 @@ extends KinematicBody2D
 
 export var speed = 300
 
-signal level_passed
-
 var velocity
 var player_is_immune = false
 var player_powerups = []
@@ -16,18 +14,10 @@ var guards
 var node_path
 
 func _ready() -> void:
-	guards = get_tree().get_nodes_in_group("guards")
-	if guards:
-		for g in guards:
-			g.connect("level_failed", self, "_on_level_failed", [], CONNECT_ONESHOT)
+	Signals.connect("level_failed", self, "_on_level_failed", [], CONNECT_ONESHOT)
 	var coins = get_tree().get_nodes_in_group("coins")
-	if coins:
-		for coin in coins:
-			coin.connect("coin_grabbed", self, "_on_coin_grabbed")
-	var vaults = get_tree().get_nodes_in_group("vaults")
-	if vaults:
-		for v in vaults:
-			v.connect("level_passed", self, "_on_level_passed")
+	Signals.connect("coin_grabbed", self, "_on_coin_grabbed")
+	Signals.connect("level_passed", self, "_on_level_passed")
 
 	if ShopInfo.finding_ice:
 		node_path = "/root/StealthIce/"

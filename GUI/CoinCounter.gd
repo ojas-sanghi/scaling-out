@@ -4,9 +4,7 @@ onready var coin_amt = ShopInfo.coins
 
 func _ready() -> void:
 	var coins = get_tree().get_nodes_in_group("coins")
-	if coins:
-		for coin in coins:
-			coin.connect("coin_grabbed", self, "_on_coin_grabbed")
+	Signals.connect("coin_grabbed", self, "_on_coin_grabbed")
 	update_coin_amt()
 
 func _on_coin_grabbed(value):

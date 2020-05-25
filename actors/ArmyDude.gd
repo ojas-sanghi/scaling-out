@@ -16,9 +16,7 @@ func _ready() -> void:
 	var anim_string = "shoot_" + weapon
 	$AnimationPlayer.play(anim_string)
 
-	var blockades = get_tree().get_nodes_in_group("blockade")
-	if blockades:
-		blockades[0].connect("proj_hit", self, "_on_proj_hit")
+	Signals.connect("proj_hit", self, "_on_proj_hit")
 
 func _on_proj_hit(type):
 	if type == "ice":

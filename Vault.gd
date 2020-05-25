@@ -1,6 +1,5 @@
 extends Area2D
 
-signal level_passed
 export var ice := true
 
 func _ready() -> void:
@@ -18,4 +17,4 @@ func _on_Vault_body_entered(body: Node) -> void:
 		else:
 			ShopInfo.finding_fire = false
 			DinoInfo.add_upgrade("warrior", "fire")
-		emit_signal("level_passed")
+		Signals.emit_signal("level_passed")
