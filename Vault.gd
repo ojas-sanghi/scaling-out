@@ -9,12 +9,11 @@ func _ready() -> void:
 		$AnimatedSprite.animation = "fire"
 
 func _on_Vault_body_entered(body: Node) -> void:
-	if body.name == "Player":
-		var anim_name = $AnimatedSprite.animation
-		if anim_name == "ice":
-			ShopInfo.finding_ice = false
-			DinoInfo.add_upgrade("tanky", "ice")
-		else:
-			ShopInfo.finding_fire = false
-			DinoInfo.add_upgrade("warrior", "fire")
-		Signals.emit_signal("level_passed")
+	var anim_name = $AnimatedSprite.animation
+	if anim_name == "ice":
+		ShopInfo.finding_ice = false
+		DinoInfo.add_upgrade("tanky", "ice")
+	else:
+		ShopInfo.finding_fire = false
+		DinoInfo.add_upgrade("warrior", "fire")
+	Signals.emit_signal("level_passed")

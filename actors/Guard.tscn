@@ -70,14 +70,14 @@ _data = {
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
-"frames": [ ExtResource( 32 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 23 ), ExtResource( 42 ), ExtResource( 44 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 7 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 56 ) ],
-"loop": true,
-"name": "move_shotgun",
-"speed": 19.0
-}, {
 "frames": [ ExtResource( 34 ), ExtResource( 29 ), ExtResource( 49 ), ExtResource( 52 ), ExtResource( 25 ), ExtResource( 22 ), ExtResource( 43 ), ExtResource( 27 ), ExtResource( 38 ), ExtResource( 28 ), ExtResource( 35 ), ExtResource( 30 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 31 ), ExtResource( 26 ), ExtResource( 41 ), ExtResource( 24 ), ExtResource( 33 ), ExtResource( 45 ) ],
 "loop": true,
 "name": "move_rifle",
+"speed": 19.0
+}, {
+"frames": [ ExtResource( 32 ), ExtResource( 40 ), ExtResource( 39 ), ExtResource( 23 ), ExtResource( 42 ), ExtResource( 44 ), ExtResource( 46 ), ExtResource( 47 ), ExtResource( 7 ), ExtResource( 48 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 53 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 58 ), ExtResource( 59 ), ExtResource( 60 ), ExtResource( 56 ) ],
+"loop": true,
+"name": "move_shotgun",
 "speed": 19.0
 }, {
 "frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 2 ), ExtResource( 1 ), ExtResource( 15 ), ExtResource( 17 ), ExtResource( 9 ), ExtResource( 16 ), ExtResource( 10 ), ExtResource( 12 ), ExtResource( 5 ), ExtResource( 11 ), ExtResource( 13 ), ExtResource( 19 ), ExtResource( 14 ), ExtResource( 18 ), ExtResource( 20 ), ExtResource( 21 ) ],
@@ -102,11 +102,13 @@ loop = false
 
 [node name="Area2D" type="Area2D" parent="Follow"]
 scale = Vector2( 0.2, 0.2 )
+collision_layer = 32
+collision_mask = 2
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Follow/Area2D"]
 frames = SubResource( 2 )
 animation = "move_shotgun"
-frame = 8
+frame = 3
 playing = true
 
 [node name="Forward" type="Tween" parent="Follow/Area2D"]
@@ -124,4 +126,3 @@ fov_color = Color( 0, 1, 0, 1 )
 [connection signal="body_entered" from="Follow/Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="tween_completed" from="Follow/Area2D/Forward" to="." method="_on_Forward_tween_completed"]
 [connection signal="tween_completed" from="Follow/Area2D/Backward" to="." method="_on_Backward_tween_completed"]
-[connection signal="enemy_spotted" from="Follow/Area2D/FieldOfView" to="." method="_on_FieldOfView_enemy_spotted"]

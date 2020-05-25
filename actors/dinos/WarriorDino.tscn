@@ -121,46 +121,46 @@ region = Rect2( 146, 307, 146, 307 )
 [sub_resource type="AtlasTexture" id=22]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 0, 307, 199, 307 )
+region = Rect2( 0, 0, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=23]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 199, 307, 199, 307 )
+region = Rect2( 199, 0, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=24]
 flags = 4
 atlas = ExtResource( 8 )
-region = Rect2( 398, 307, 199, 307 )
-
-[sub_resource type="AtlasTexture" id=25]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 0, 0, 199, 307 )
-
-[sub_resource type="AtlasTexture" id=26]
-flags = 4
-atlas = ExtResource( 8 )
-region = Rect2( 199, 0, 199, 307 )
-
-[sub_resource type="AtlasTexture" id=27]
-flags = 4
-atlas = ExtResource( 8 )
 region = Rect2( 398, 0, 199, 307 )
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=25]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 0, 307, 199, 307 )
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=26]
 flags = 4
 atlas = ExtResource( 2 )
 region = Rect2( 199, 307, 199, 307 )
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=27]
 flags = 4
 atlas = ExtResource( 2 )
+region = Rect2( 398, 307, 199, 307 )
+
+[sub_resource type="AtlasTexture" id=28]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 0, 307, 199, 307 )
+
+[sub_resource type="AtlasTexture" id=29]
+flags = 4
+atlas = ExtResource( 8 )
+region = Rect2( 199, 307, 199, 307 )
+
+[sub_resource type="AtlasTexture" id=30]
+flags = 4
+atlas = ExtResource( 8 )
 region = Rect2( 398, 307, 199, 307 )
 
 [sub_resource type="AtlasTexture" id=31]
@@ -222,18 +222,18 @@ animations = [ {
 }, {
 "frames": [ SubResource( 22 ), SubResource( 23 ), SubResource( 24 ) ],
 "loop": false,
-"name": "purple_death1",
+"name": "purple_death0",
 "speed": 3.0
 }, {
 "frames": [ SubResource( 25 ), SubResource( 26 ), SubResource( 27 ) ],
 "loop": false,
-"name": "purple_death0",
-"speed": 3.0
+"name": "red_death1",
+"speed": 6.0
 }, {
 "frames": [ SubResource( 28 ), SubResource( 29 ), SubResource( 30 ) ],
 "loop": false,
-"name": "red_death1",
-"speed": 6.0
+"name": "purple_death1",
+"speed": 3.0
 }, {
 "frames": [ SubResource( 31 ), SubResource( 32 ), SubResource( 33 ), SubResource( 34 ), SubResource( 35 ), SubResource( 36 ) ],
 "loop": true,
@@ -247,6 +247,7 @@ extents = Vector2( 34.2897, 114.87 )
 [node name="WarriorDino" type="Area2D" groups=[
 "dinos",
 ]]
+collision_mask = 76
 script = ExtResource( 12 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -254,7 +255,7 @@ rotation = -1.5708
 scale = Vector2( 1.15, 1.15 )
 frames = SubResource( 37 )
 animation = "purple_walk"
-frame = 2
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

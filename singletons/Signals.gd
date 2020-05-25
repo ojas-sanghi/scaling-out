@@ -12,3 +12,7 @@ signal level_failed
 signal proj_hit
 
 signal all_dinos_expended
+
+
+func _ready() -> void:
+	OS.window_maximized = true
