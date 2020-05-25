@@ -1,6 +1,5 @@
 extends Area2D
 
-signal coin_grabbed
 export var value = 1
 
 func _ready():
@@ -22,4 +21,4 @@ func _on_Coin_body_entered(body):
 		yield($Effect, "tween_completed")
 		# Emit signal and get rid of coin
 		queue_free()
-		emit_signal("coin_grabbed", value)
+		Signals.emit_signal("coin_grabbed", value)

@@ -4,8 +4,6 @@ onready var forward = $Follow/Area2D/Forward
 onready var backward = $Follow/Area2D/Backward
 var walk_time = 4
 
-signal level_failed
-
 func forward_tween():
 	forward.interpolate_property($Follow, "unit_offset",
 								0, 1, walk_time,
@@ -43,25 +41,11 @@ func _on_Forward_tween_completed(object: Object, key: NodePath) -> void:
 func _on_Backward_tween_completed(object: Object, key: NodePath) -> void:
 	forward_tween()
 
-func stop_all_anim():
-	var guards = get_tree().get_nodes_in_group("guards")
-	if guards:
-		for g in guards:
-			g.stop_anim()
-
-func stop_anim():
-	$Follow/Area2D/AnimatedSprite.playing = false
-
-func _on_FieldOfView_enemy_spotted() -> void:
-	stop_all_anim()
-	emit_signal("level_failed")
-
 func _on_Area2D_body_entered(body: Node) -> void:
-	stop_all_anim()
 	var rotate_deg = rad2deg(position.angle_to(body.position))
 	rotation_degrees += rotate_deg
 	if body.name == "Player":
-		emit_signal("level_failed")
+		Signals.emit_signal("level_failed")
 
 func stop_moving():
 	$Follow/Area2D/AnimatedSprite.stop()

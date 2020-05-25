@@ -7,8 +7,6 @@ onready var label = $Label
 
 export var timer_duration = 120
 
-signal timer_timeout
-
 func _ready():
 	timer.set_wait_time(timer_duration)
 	timer.start()
@@ -39,4 +37,4 @@ func _process(_delta):
 	label.text = label_text
 
 func _on_Timer_timeout():
-	emit_signal("timer_timeout")
+	Signals.emit_signal("game_over")

@@ -1,8 +1,6 @@
 class_name GeneralDino, "res://assets/dinos/mega_dino/mega_dino.png"
 extends Area2D
 
-signal game_over
-
 onready var bar = $HealthBar
 
 var dino_dead := false
@@ -52,12 +50,6 @@ func _ready() -> void:
 	$AnimatedSprite.rotation_degrees = -90
 	$CollisionShape2D.rotation_degrees = -90
 
-	var army = get_tree().get_nodes_in_group("army")
-	if army:
-		for a in army:
-			self.connect("game_over", a, "game_over")
-
-	print(dino_speed)
 
 func _physics_process(delta: float) -> void:
 	 self.position += dino_speed * delta
@@ -84,7 +76,7 @@ func kill_dino():
 
 	CombatInfo.dinos_died += 1
 	if CombatInfo.dinos_died == CombatInfo.max_dinos:
-		emit_signal("game_over")
+		Signals.emit_signal("game_over")
 
 func update_health():
 	dino_health -= 17

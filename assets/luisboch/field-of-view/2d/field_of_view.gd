@@ -21,8 +21,6 @@ export var enemy_groups = ["player"]
 var in_danger_area = []
 var in_warn_area = []
 
-signal enemy_spotted
-
 # Buffer to target points
 var points_arc = []
 var is_update = false
@@ -87,7 +85,7 @@ func check_view():
 						is_enemy = true
 
 				if is_enemy:
-					emit_signal("enemy_spotted")
+					Signals.emit_signal("level_failed")
 					level = 1
 					if dist < radius_danger :
 						level = 2
