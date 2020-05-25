@@ -3,7 +3,7 @@ extends Node2D
 var active_id := 0
 
 func _ready() -> void:
-	DinoInfo.connect("dino_deployed", self, "_on_dino_deployed")
+	Signals.connect("dino_deployed", self, "_on_dino_deployed")
 
 	$'1'.show_particles()
 

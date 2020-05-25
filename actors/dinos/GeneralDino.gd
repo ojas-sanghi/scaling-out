@@ -57,6 +57,8 @@ func _ready() -> void:
 		for a in army:
 			self.connect("game_over", a, "game_over")
 
+	print(dino_speed)
+
 func _physics_process(delta: float) -> void:
 	 self.position += dino_speed * delta
 
@@ -64,7 +66,7 @@ func _process(delta: float) -> void:
 	var round_value = round(animated_health)
 	bar.value = round_value
 
-func dino_died():
+func kill_dino():
 	$CollisionShape2D.set_deferred("disabled", true)
 	set_physics_process(false)
 
@@ -93,7 +95,7 @@ func update_health():
 
 	if dino_health <= 0:
 		if not dino_dead:
-			dino_died()
+			kill_dino()
 			dino_dead = true
 
 func win_game():

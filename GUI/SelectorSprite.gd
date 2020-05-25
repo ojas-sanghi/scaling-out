@@ -30,7 +30,7 @@ func _ready() -> void:
 			$disabled.hide()
 			hide_particles()
 
-	DinoInfo.connect("dino_deployed", self, "_on_dino_deployed")
+	Signals.connect("dino_deployed", self, "_on_dino_deployed")
 
 
 func fade_sprite():

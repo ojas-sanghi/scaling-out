@@ -54,7 +54,7 @@ func _on_Button_pressed() -> void:
 			CombatInfo.reset()
 			SceneChanger.go_to_scene("res://Combat/CombatScreen.tscn")
 		"retry stealth":
-			if Globals.finding_ice:
+			if ShopInfo.finding_ice:
 				SceneChanger.go_to_scene("res://stealth/StealthIce.tscn")
 			else:
 				SceneChanger.go_to_scene("res://stealth/StealthFire.tscn")

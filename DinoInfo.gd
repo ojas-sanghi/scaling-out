@@ -1,7 +1,5 @@
 extends Node
 
-signal dino_deployed
-
 var dino_id := 0
 var dino_list := [
 	preload("res://actors/dinos/MegaDino.tscn"),
@@ -12,14 +10,22 @@ var dinos_deploying := []
 var timer_list := []
 
 # {tanky: [health, dmg], mega: [health]}
-var upgrades_list := {"warrior": ["fire"], "tanky": ["ice"]}
+var upgrades_list := {}
 
+
+func _ready() -> void:
+	Signals.connect("dino_deployed", self, "_on_dino_deployed")
 
 func has_upgrade(dino: String, upgrade: String) -> bool:
 	return dino in upgrades_list and upgrade in upgrades_list[dino]
 
-	print(upgrades_list)
-
+# note: likely temporary
+# fix to get shop working
+# implementation of upgrades will change so this might not be used
+# plus new ui from raj
+func has_upgrade_dino_independent(upgrade: String) -> bool:
+	for dino in upgrades_list:
+		return upgrade in upgrades_list[dino]
 
 func add_upgrade(dino: String, upgrade: String) -> void:
 	if dino in upgrades_list:
@@ -41,11 +47,6 @@ func _on_dino_deployed():
 
 	dinos_deploying_timer.connect("timeout", self, "_on_dinos_deploying_timer_timeout", [dino_id])
 	dinos_deploying_timer.start(delay)
-
-	# re-emit signal
-	# allows for easier connection since it's a singleton
-	emit_signal("dino_deployed")
-
 
 func _on_dinos_deploying_timer_timeout(id):
 	# once the delay is over, let the dino be deployed again
