@@ -7,10 +7,10 @@ func _on_Lane_pressed() -> void:
 		return
 
 	# don't deploy if the delay isn't over yet
-	if DinoInfo.dino_id in DinoInfo.dinos_deploying:
+	if CombatInfo.dino_id in CombatInfo.dinos_deploying:
 		return
 
-	var dino_node = DinoInfo.dino_list[DinoInfo.dino_id]
+	var dino_node = DinoInfo.dino_list[CombatInfo.dino_id]
 	dino_node = dino_node.instance()
 
 	add_child(dino_node)

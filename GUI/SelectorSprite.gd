@@ -67,7 +67,7 @@ func show_particles():
 
 
 func _on_dino_deployed():
-	if DinoInfo.dino_id != id:
+	if CombatInfo.dino_id != id:
 		return
 
 	fade_sprite()

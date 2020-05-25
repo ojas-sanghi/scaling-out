@@ -50,7 +50,7 @@ func _input(event: InputEvent) -> void:
 				CombatInfo.shot_fire = true
 				return
 
-	DinoInfo.dino_id = active_id
+	CombatInfo.dino_id = active_id
 
 func _on_dino_deployed():
 	var dino_name = DinoInfo.get_dino_property("dino_name")
