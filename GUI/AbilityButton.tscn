@@ -22,6 +22,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+button_mode = "EXCEPTION"
+cost = 1
+dino_option = false
+locked = false
 
 [node name="Label" type="Label" parent="."]
 margin_left = 142.721

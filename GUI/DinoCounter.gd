@@ -5,10 +5,11 @@ func _ready() -> void:
 	update_text()
 
 func _on_dino_deployed():
-#	ShopInfo.dinos_remaining -= 1
+	CombatInfo.dinos_remaining -= 1
+	if CombatInfo.dinos_remaining == 0:
+		Signals.emit_signal("all_dinos_expended")
 	update_text()
 
 func update_text():
-	pass
-#	var label_text = "Remaining dinos: " + str(ShopInfo.dinos_remaining)
-#	$Label.text = label_text
+	var label_text = "Remaining dinos: " + str(CombatInfo.dinos_remaining)
+	$Label.text = label_text

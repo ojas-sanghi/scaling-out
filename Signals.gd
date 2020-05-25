@@ -10,3 +10,5 @@ signal level_passed
 signal level_failed
 
 signal proj_hit
+
+signal all_dinos_expended
