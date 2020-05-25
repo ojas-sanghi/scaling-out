@@ -8,9 +8,9 @@ func _ready() -> void:
 
 	# give the circle an id relating to each dino in the list
 	for i in range(0, DinoInfo.dino_list.size()):
-		if i in DinoInfo.timer_list:
+		if i in CombatInfo.selector_timer_list:
 			continue
-		DinoInfo.timer_list.append(i)
+		CombatInfo.selector_timer_list.append(i)
 		id = i
 		break
 
@@ -18,7 +18,7 @@ func _ready() -> void:
 
 func _on_dino_deployed():
 	# only bother if the dino being deployed is our associated id
-	if DinoInfo.dino_id != id:
+	if CombatInfo.dino_id != id:
 		return
 
 	# start timer delay
