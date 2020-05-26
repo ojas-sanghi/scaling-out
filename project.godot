@@ -118,6 +118,7 @@ dino={
 2d_physics/layer_8="ice-proj"
 2d_physics/layer_9="fire-proj"
 2d_physics/layer_10="coin"
+2d_physics/layer_11="tiles"
 
 [rendering]
 

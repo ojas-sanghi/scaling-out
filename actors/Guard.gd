@@ -44,8 +44,7 @@ func _on_Backward_tween_completed(object: Object, key: NodePath) -> void:
 func _on_Area2D_body_entered(body: Node) -> void:
 	var rotate_deg = rad2deg(position.angle_to(body.position))
 	rotation_degrees += rotate_deg
-	if body.name == "Player":
-		Signals.emit_signal("level_failed")
+	Signals.emit_signal("level_failed")
 
 func stop_moving():
 	$Follow/Area2D/AnimatedSprite.stop()
