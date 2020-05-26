@@ -13,12 +13,11 @@ func _ready():
 		Tween.TRANS_LINEAR, Tween.EASE_OUT)
 
 func _on_Coin_body_entered(body):
-	if body.get_name() == "Player":
-		# Remove the collision shapes to prevent extra collisions during the time the effect is taking place.
-		shape_owner_clear_shapes(get_shape_owners()[0])
-		$Effect.start()
-		# Wait for effect to finish
-		yield($Effect, "tween_completed")
-		# Emit signal and get rid of coin
-		queue_free()
-		Signals.emit_signal("coin_grabbed", value)
+	# Remove the collision shapes to prevent extra collisions during the time the effect is taking place.
+	shape_owner_clear_shapes(get_shape_owners()[0])
+	$Effect.start()
+	# Wait for effect to finish
+	yield($Effect, "tween_completed")
+	# Emit signal and get rid of coin
+	queue_free()
+	Signals.emit_signal("coin_grabbed", value)
