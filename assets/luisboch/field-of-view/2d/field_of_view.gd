@@ -16,7 +16,8 @@ export var fov_danger_color = Color("#9dfb320b")
 
 export var view_detail = 60
 
-export var enemy_groups = ["player"]
+# see line 84 for why this is commented out
+#export var enemy_groups = ["player"]
 
 var in_danger_area = []
 var in_warn_area = []
@@ -80,9 +81,12 @@ func check_view():
 				points_arc.append({"pos": local_pos, "level": level})
 				pass
 			else:
-				for g in enemy_groups :
-					if result.collider.get_groups().has(g):
-						is_enemy = true
+				#for g in enemy_groups :
+				#	if result.collider.get_groups().has(g):
+				# normally we would check if collision was the player by seeing if it was in the player group
+				# but the physics layers have been appropriately setup
+				# so that is not needed
+				is_enemy = true
 
 				if is_enemy:
 					Signals.emit_signal("level_failed")
