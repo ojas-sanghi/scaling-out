@@ -69,20 +69,8 @@ func _physics_process(delta):
 	animate_player()
 	move_and_slide(velocity)
 
-func stop_guards():
-	if guards:
-		for g in guards:
-			g.stop_moving()
-
-func set_cam_limits_fhd():
-#	$Camera2D.limit_right = 1920
-#	$Camera2D.limit_right = 1080
-#	$Camera2D.zoom = Vector2(1, 1)
-	pass
-
 func _on_level_passed():
 	set_physics_process(false)
-	stop_guards()
 	$AnimatedSprite.stop()
 	$Win.play()
 
@@ -91,13 +79,11 @@ func _on_level_passed():
 	get_node(node_path + "CanvasLayer/CoinCounter").hide()
 	yield($Win, "finished")
 	get_node(node_path + "Vault").hide()
-	set_cam_limits_fhd()
 	SceneChanger.go_to_scene("res://GUI/StealthWinDialogue.tscn")
 	ShopInfo.coins += coins_in_level
 
 func _on_level_failed():
 	set_physics_process(false)
-	stop_guards()
 	$AnimatedSprite.stop()
 	$Caught.play()
 
@@ -106,7 +92,6 @@ func _on_level_failed():
 	get_node(node_path + "CanvasLayer/CoinCounter").hide()
 	yield($Caught, "finished")
 	get_node(node_path + "Vault").hide()
-	set_cam_limits_fhd()
 	SceneChanger.go_to_scene("res://GUI/StealthLoseDialogue.tscn")
 
 func _on_coin_grabbed(value):

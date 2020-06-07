@@ -7,7 +7,7 @@
 [ext_resource path="res://Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Vault.tscn" type="PackedScene" id=7]
-[ext_resource path="res://actors/Guard.tscn" type="PackedScene" id=8]
+[ext_resource path="res://actors/PathFollowGuard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://GUI/CoinCounter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://GUI/StealthWinDialogue.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/music/stealth music.wav" type="AudioStream" id=11]
