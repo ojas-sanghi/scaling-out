@@ -98,9 +98,7 @@ margin_bottom = 150.0
 text = "Mega"
 icon = ExtResource( 11 )
 button_mode = "mega"
-cost = 1
 dino_option = true
-locked = false
 
 [node name="AbilityButton2" parent="VBoxContainer" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -114,9 +112,7 @@ margin_bottom = 380.0
 text = "Tanky"
 icon = ExtResource( 12 )
 button_mode = "tank"
-cost = 1
 dino_option = true
-locked = false
 
 [node name="AbilityButton3" parent="VBoxContainer" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -130,9 +126,7 @@ margin_bottom = 610.0
 text = "Warrior"
 icon = ExtResource( 10 )
 button_mode = "warrior"
-cost = 1
 dino_option = true
-locked = false
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 margin_left = 678.721
@@ -163,8 +157,6 @@ text = "Health"
 icon = ExtResource( 9 )
 button_mode = "health"
 cost = 15
-dino_option = false
-locked = false
 
 [node name="Ice" parent="HBoxContainer/VBoxContainer" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -179,8 +171,6 @@ text = "Ice Projectiles"
 icon = ExtResource( 6 )
 button_mode = "ice"
 cost = 25
-dino_option = false
-locked = false
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer"]
 margin_left = 650.0
@@ -201,8 +191,6 @@ text = "Speed"
 icon = ExtResource( 5 )
 button_mode = "speed"
 cost = 15
-dino_option = false
-locked = false
 
 [node name="Fire" parent="HBoxContainer/VBoxContainer2" instance=ExtResource( 3 )]
 anchor_left = 0.0
@@ -217,8 +205,6 @@ text = "Fire Projectiles"
 icon = ExtResource( 4 )
 button_mode = "fire"
 cost = 25
-dino_option = false
-locked = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

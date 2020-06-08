@@ -85,7 +85,6 @@ func check_view():
 						is_enemy = true
 
 				if is_enemy:
-					print("ruh roh")
 					Signals.emit_signal("level_failed")
 					level = 1
 					if dist < radius_danger :
