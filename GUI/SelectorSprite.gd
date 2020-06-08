@@ -36,12 +36,14 @@ func _ready() -> void:
 
 func fade_sprite():
 	$Sprite.modulate = Color(1, 1, 1, 0.5)
+	$Label.modulate = Color(1, 1, 1, 0.5)
 
 
 func unfade_sprite():
 	# only unfade if we have more dinos left
 	if CombatInfo.dinos_remaining != 0:
 		$Sprite.modulate = Color(1, 1, 1, 1)
+		$Label.modulate = Color(1, 1, 1, 1)
 
 
 func disable_ability():
@@ -78,7 +80,9 @@ func _on_dino_deployed():
 	unfade_sprite()
 
 func _on_all_dinos_expended():
-	fade_sprite()
-	hide_particles()
-	$DeployTimer.hide()
-	$Label.modulate = Color(1, 1, 1, 0.5)
+	# don't fade the sprite if it's an ability
+	# even if there aren't any dinos left you can still use abilities
+	if ability_mode == "none":
+		fade_sprite()
+		hide_particles()
+		$DeployTimer.hide()

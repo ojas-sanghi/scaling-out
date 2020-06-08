@@ -1,5 +1,9 @@
 extends Node
 
+# holds conquest/round-specific info
+# placed in a singleton for ease of access
+# reset between conquests
+
 var max_dinos: int
 var dinos_remaining: int
 var dinos_died: int
