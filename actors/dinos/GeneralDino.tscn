@@ -3,9 +3,10 @@
 [ext_resource path="res://assets/music/thump.wav" type="AudioStream" id=1]
 [ext_resource path="res://actors/dinos/spriteframes/MegaDino.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://assets/music/Robot Dino Died.wav" type="AudioStream" id=3]
-[ext_resource path="res://assets/lifebar_fill.png" type="Texture" id=5]
-[ext_resource path="res://assets/lifebar_bg.png" type="Texture" id=6]
+[ext_resource path="res://assets/dinos/lifebar_fill.png" type="Texture" id=5]
+[ext_resource path="res://assets/dinos/lifebar_bg.png" type="Texture" id=6]
 [ext_resource path="res://actors/dinos/GeneralDino.gd" type="Script" id=11]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 27.2666, 99.442 )

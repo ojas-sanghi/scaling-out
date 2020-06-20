@@ -2,9 +2,11 @@
 
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=2]
-[ext_resource path="res://assets/ice.png" type="Texture" id=3]
+[ext_resource path="res://assets/dinos/misc/ice.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/Font30.tres" type="DynamicFont" id=4]
 [ext_resource path="res://GUI/themes/BlueButton.tres" type="Theme" id=5]
+
+
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0, 0, 0, 0.470588 )

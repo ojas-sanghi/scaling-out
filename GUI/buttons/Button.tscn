@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://GUI/Button.gd" type="Script" id=1]
+[ext_resource path="res://GUI/buttons/Button.gd" type="Script" id=1]
 [ext_resource path="res://GUI/themes/BlueButton.tres" type="Theme" id=2]
+
 
 [node name="Button" type="Button"]
 anchor_left = 0.5

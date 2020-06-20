@@ -2,12 +2,13 @@
 
 [ext_resource path="res://combat/Lane.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/Timer.tscn" type="PackedScene" id=2]
-[ext_resource path="res://GUI/DinoSelector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://GUI/combat_selector/DinoSelector.tscn" type="PackedScene" id=3]
 [ext_resource path="res://combat/Blockade.tscn" type="PackedScene" id=4]
 [ext_resource path="res://actors/ArmyDude.tscn" type="PackedScene" id=5]
 [ext_resource path="res://GUI/DinoCounter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://combat/Combat.gd" type="Script" id=7]
 [ext_resource path="res://assets/music/Battle Music.wav" type="AudioStream" id=9]
+
 
 [node name="CombatScreen" type="Control"]
 anchor_right = 1.0
