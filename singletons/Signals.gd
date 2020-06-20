@@ -1,6 +1,8 @@
 extends Node
 
 signal dino_deployed
+signal dino_fully_spawned
+signal dino_died
 
 signal game_over
 

@@ -10,6 +10,12 @@
 [node name="SelectorSprite" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="DeployTimer" parent="." instance=ExtResource( 1 )]
+margin_left = -29.6216
+margin_top = -28.3611
+margin_right = -29.6216
+margin_bottom = -28.3611
+
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.511, 0.519 )
 texture = ExtResource( 3 )
@@ -31,12 +37,6 @@ __meta__ = {
 "_edit_use_anchors_": false,
 "_editor_description_": ""
 }
-
-[node name="DeployTimer" parent="." instance=ExtResource( 1 )]
-margin_left = -29.6216
-margin_top = -28.3611
-margin_right = -29.6216
-margin_bottom = -28.3611
 
 [node name="Particles" type="Node2D" parent="."]
 

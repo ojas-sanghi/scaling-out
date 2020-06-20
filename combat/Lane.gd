@@ -13,7 +13,8 @@ func _on_Lane_pressed() -> void:
 	var dino_node = DinoInfo.dino_list[CombatInfo.dino_id]
 	dino_node = dino_node.instance()
 
+	get_tree().create_timer(dino_node.spawn_delay)
+
 	add_child(dino_node)
 	dino_node.position = spawn_point
-
 	Signals.emit_signal("dino_deployed")

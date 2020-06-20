@@ -4,6 +4,8 @@ var dino_name = "tanky"
 var speed := Vector2(35, 0)
 var health = 200
 var dmg = 2
+var cost = 250
+var gene = "ice"
 
 var variations = ["blue", "orange", "pink"]
 
@@ -16,7 +18,7 @@ func _init():
 	if DinoInfo.has_upgrade(dino_name, "dmg"):
 		dmg += 3
 
-	._init(speed, health, variations, dmg)
+	._init(dino_name, speed, health, variations, dmg, cost, gene)
 
 func _ready() -> void:
 	$IceProjectile.hide()

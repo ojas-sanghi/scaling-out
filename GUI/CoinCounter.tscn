@@ -1,13 +1,14 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://GUI/CoinCounter.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=2]
 
 [node name="CoinCounter" type="Control"]
-anchor_right = 0.049
+anchor_right = 0.107
 anchor_bottom = 0.042
-margin_right = 0.919998
-margin_bottom = -0.360004
+margin_top = -2.0
+margin_right = 0.559982
+margin_bottom = -0.360001
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -21,9 +22,8 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="HBoxContainer"]
-margin_top = 5.0
-margin_right = 87.0
-margin_bottom = 34.0
+margin_right = 139.0
+margin_bottom = 46.0
 custom_fonts/font = ExtResource( 2 )
 text = "Coins: "
 __meta__ = {
@@ -31,10 +31,9 @@ __meta__ = {
 }
 
 [node name="Num" type="Label" parent="HBoxContainer"]
-margin_left = 91.0
-margin_top = 5.0
-margin_right = 129.0
-margin_bottom = 34.0
+margin_left = 143.0
+margin_right = 205.0
+margin_bottom = 46.0
 custom_fonts/font = ExtResource( 2 )
 text = "100"
 __meta__ = {

@@ -16,6 +16,8 @@ var selector_timer_list: Array
 var shot_ice: bool
 var shot_fire: bool
 
+var creds: int
+
 func _ready() -> void:
 	reset()
 
@@ -33,6 +35,8 @@ func reset(_max_dinos := 10) -> void:
 
 	shot_ice = false
 	shot_fire = false
+
+	creds = 100
 
 func _on_dino_deployed():
 	# add to list of dinos just deployed
