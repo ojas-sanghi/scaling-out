@@ -1,25 +1,23 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/circle.png" type="Texture" id=1]
-[ext_resource path="res://GUI/DeployTimer.gd" type="Script" id=2]
+[ext_resource path="res://GUI/combat_selector/DeployTimer.gd" type="Script" id=1]
+[ext_resource path="res://assets/dinos/misc/hex.png" type="Texture" id=2]
 
 [node name="DeployTimer" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
-margin_left = 1.10045
-margin_top = -0.463928
-margin_right = 634.1
-margin_bottom = 572.536
-rect_scale = Vector2( 0.1, 0.1 )
+margin_right = 278.0
+margin_bottom = 278.0
+rect_scale = Vector2( 0.22, 0.22 )
 value = 20.0
-texture_under = ExtResource( 1 )
-texture_progress = ExtResource( 1 )
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 2 )
 fill_mode = 4
 tint_under = Color( 1, 1, 1, 0.431373 )
 __meta__ = {

@@ -1,9 +1,10 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://GUI/TextureButton.gd" type="Script" id=1]
+[ext_resource path="res://GUI/buttons/TextureButton.gd" type="Script" id=1]
 [ext_resource path="res://GUI/themes/BlueButton.tres" type="Theme" id=2]
 [ext_resource path="res://assets/fonts/Font30Outline.tres" type="DynamicFont" id=3]
 [ext_resource path="res://assets/homeButtons/map-normal.png" type="Texture" id=4]
+
 
 [node name="TextureButton" type="TextureButton"]
 anchor_left = 0.5

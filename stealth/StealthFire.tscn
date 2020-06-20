@@ -3,14 +3,17 @@
 [ext_resource path="res://assets/tilesets/gray.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/tilesets/gray_bg.tres" type="TileSet" id=2]
 [ext_resource path="res://assets/tilesets/gray_rock.tres" type="TileSet" id=3]
-[ext_resource path="res://GUI/StealthLoseDialogue.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://GUI/dialogues/StealthLoseDialogue.tscn" type="PackedScene" id=4]
+[ext_resource path="res://props/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Vault.tscn" type="PackedScene" id=7]
+[ext_resource path="res://props/Vault.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/PathFollowGuard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://GUI/CoinCounter.tscn" type="PackedScene" id=9]
-[ext_resource path="res://GUI/StealthWinDialogue.tscn" type="PackedScene" id=10]
+[ext_resource path="res://GUI/dialogues/StealthWinDialogue.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/music/stealth music.wav" type="AudioStream" id=11]
+
+
+
 
 [sub_resource type="Curve2D" id=1]
 _data = {

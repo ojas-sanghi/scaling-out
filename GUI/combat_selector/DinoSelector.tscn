@@ -1,12 +1,13 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/dinos/warrior_dino/Tribal_Dino_icon.png" type="Texture" id=1]
-[ext_resource path="res://GUI/DinoSelector.gd" type="Script" id=2]
+[ext_resource path="res://GUI/combat_selector/DinoSelector.gd" type="Script" id=2]
 [ext_resource path="res://assets/dinos/mega_dino/mega_dino.png" type="Texture" id=3]
 [ext_resource path="res://assets/dinos/tanky_dino/Armored_Dino_ICON.png" type="Texture" id=4]
 [ext_resource path="res://assets/abilities/ice.png" type="Texture" id=5]
 [ext_resource path="res://assets/abilities/fire.png" type="Texture" id=6]
-[ext_resource path="res://GUI/SelectorSprite.tscn" type="PackedScene" id=11]
+[ext_resource path="res://GUI/combat_selector/SelectorSprite.tscn" type="PackedScene" id=11]
+
 
 [node name="DinoSelector" type="Node2D"]
 script = ExtResource( 2 )
