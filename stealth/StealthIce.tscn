@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://assets/tilesets/gray.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/tilesets/gray_bg.tres" type="TileSet" id=2]
@@ -11,9 +11,9 @@
 [ext_resource path="res://GUI/CoinCounter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://GUI/dialogues/StealthWinDialogue.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/music/stealth music.wav" type="AudioStream" id=11]
-
-
-
+[ext_resource path="res://props/HallwayLight.tscn" type="PackedScene" id=12]
+[ext_resource path="res://stealth/Label.gd" type="Script" id=13]
+[ext_resource path="res://assets/fonts/Font35.tres" type="DynamicFont" id=14]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -86,6 +86,52 @@ limit_smoothed = true
 smoothing_enabled = true
 editor_draw_limits = true
 
+[node name="lights" type="Node2D" parent="."]
+
+[node name="Node2D" parent="lights" instance=ExtResource( 12 )]
+
+[node name="Node2D2" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( 128.693, -113.844 )
+
+[node name="Node2D3" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( -264.78, 118.572 )
+
+[node name="Node2D5" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( -527.332, 116.642 )
+
+[node name="Node2D6" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( -396.371, -55.5912 )
+
+[node name="Node2D7" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( -603.371, -149.591 )
+
+[node name="Node2D8" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( -632.371, 169.409 )
+
+[node name="Node2D9" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( -297.296, 215.659 )
+
+[node name="Node2D10" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( -148.08, 291.06 )
+
+[node name="Node2D14" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( 96.1958, -144.098 )
+
+[node name="Node2D15" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( -261.541, -224.188 )
+
+[node name="Node2D11" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( 80.8812, 159.207 )
+
+[node name="Node2D12" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( 49.8812, 307.207 )
+
+[node name="Node2D13" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( -613.534, 295.194 )
+
+[node name="Node2D4" parent="lights" instance=ExtResource( 12 )]
+position = Vector2( -267.932, -120.61 )
+
 [node name="Guarsd" type="Node2D" parent="."]
 
 [node name="Guard" parent="Guarsd" instance=ExtResource( 8 )]
@@ -143,7 +189,7 @@ position = Vector2( 414.672, 181.596 )
 value = 10
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0.196078, 0.196078, 0.196078, 1 )
+color = Color( 0.0784314, 0.0784314, 0.0784314, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -160,6 +206,17 @@ margin_bottom = 277.0
 
 [node name="StealthWinDialogue" parent="CanvasLayer" instance=ExtResource( 10 )]
 visible = false
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+margin_left = 92.085
+margin_top = 87.3588
+margin_right = 132.085
+margin_bottom = 133.359
+custom_fonts/font = ExtResource( 14 )
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Ambience" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )

@@ -36,6 +36,7 @@ func get_input():
 	if Input.is_action_pressed('ui_up'):
 		velocity.y -= 1
 
+	print(velocity)
 	return velocity
 
 func animate_player():

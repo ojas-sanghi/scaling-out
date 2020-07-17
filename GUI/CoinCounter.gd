@@ -12,7 +12,7 @@ func _on_coin_grabbed(value):
 	update_coin_amt()
 
 func update_coin_amt():
-	$HBoxContainer/Num.text = str(coin_amt)
+	$Num.text = str(coin_amt)
 
 func update_coin_from_global():
-	$HBoxContainer/Num.text = str(ShopInfo.coins)
+	$Num.text = str(ShopInfo.coins)

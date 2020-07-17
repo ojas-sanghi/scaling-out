@@ -1,23 +1,18 @@
 extends GeneralDino
 
-var dino_name = "warrior"
-var speed = Vector2(100, 0)
-var health = 45
-var dmg = 10
-var cost = 350
-var gene = "fire"
+func _init() -> void:
+	dino_name = "warrior"
+	dino_variations = ["green", "purple", "red"]
 
-var variations = ["green", "purple", "red"]
+	dino_speed = Vector2(100, 0)
+	dino_health = 45
+	dino_dmg = 10
+	dino_defense = 1
+	spawn_delay = 2
+	deploy_delay = 2
 
-func _init():
-	if DinoInfo.has_upgrade(dino_name, "speed"):
-		speed.x += 45
-	if DinoInfo.has_upgrade(dino_name, "health"):
-		health += 15
-	if DinoInfo.has_upgrade(dino_name, "dmg"):
-		dmg += 5
-
-	._init(dino_name, speed, health, variations, dmg, cost, gene)
+	dino_gene_cost = 350
+	special_gene_type = "fire"
 
 func _ready() -> void:
 	$FireProjectile.hide()

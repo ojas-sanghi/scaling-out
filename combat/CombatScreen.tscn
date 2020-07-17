@@ -9,7 +9,6 @@
 [ext_resource path="res://combat/Combat.gd" type="Script" id=7]
 [ext_resource path="res://assets/music/Battle Music.wav" type="AudioStream" id=9]
 
-
 [node name="CombatScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0

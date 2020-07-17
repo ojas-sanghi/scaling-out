@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/stealth/tinylightcircle.png" type="Texture" id=1]
+[ext_resource path="res://props/HallwayLight.gd" type="Script" id=2]
+
+[node name="HallwayLight" type="Node2D"]
+script = ExtResource( 2 )
+light_colour = Color( 0.752941, 0.545098, 0.545098, 1 )
+light_size = 2.0
+flame_visible = true
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 744.84, 274.977 )
+texture = ExtResource( 1 )
+texture_scale = 2.0
+shadow_enabled = true
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="RayCast2D" type="RayCast2D" parent="."]

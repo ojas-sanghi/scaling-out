@@ -1,7 +1,7 @@
 extends Control
 
-onready var dino_timer = $Timer
 var id := 0
+onready var dino_timer = $Timer
 
 func _ready() -> void:
 	Signals.connect("dino_deployed", self, "_on_dino_deployed")
@@ -21,7 +21,6 @@ func _on_dino_deployed():
 	if CombatInfo.dino_id != id:
 		return
 
-	# start timer delay
 	var delay = DinoInfo.get_dino_timer_delay()
 	dino_timer.start(delay)
 

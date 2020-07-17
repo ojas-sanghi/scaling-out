@@ -8,7 +8,6 @@
 [ext_resource path="res://assets/abilities/fire.png" type="Texture" id=6]
 [ext_resource path="res://GUI/combat_selector/SelectorSprite.tscn" type="PackedScene" id=11]
 
-
 [node name="DinoSelector" type="Node2D"]
 script = ExtResource( 2 )
 
@@ -16,16 +15,22 @@ script = ExtResource( 2 )
 position = Vector2( 30, 30 )
 sprite = ExtResource( 3 )
 text = "1"
+ability_mode = "none"
+custom_scale = Vector2( 0.511, 0.519 )
 
 [node name="2" parent="." instance=ExtResource( 11 )]
 position = Vector2( 170, 30 )
 sprite = ExtResource( 4 )
 text = "2"
+ability_mode = "none"
+custom_scale = Vector2( 0.511, 0.519 )
 
 [node name="3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 300, 30 )
 sprite = ExtResource( 1 )
 text = "3"
+ability_mode = "none"
+custom_scale = Vector2( 0.511, 0.519 )
 
 [node name="4" parent="." instance=ExtResource( 11 )]
 position = Vector2( 600, 30 )
