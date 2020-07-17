@@ -4,22 +4,7 @@ extends Button
 export(String, "EXCEPTION", "quit", "play", "retry combat", "retry stealth", "return home screen", "return upgrades") var button_mode = "EXCEPTION"
 
 func _ready() -> void:
-	if button_mode == "EXCEPTION":
-		# print out name and location for debugging convenience
-		print(name)
-
-		# find number of "../" needed to reach the root node and get node using thjat
-		# then print out its name and location
-		# we have to do this because we don't know the name of the root node
-		var path = ""
-		for _i in range(0, get_position_in_parent()):
-			path += "../"
-		var root_node = get_node(path)
-		if root_node:
-			print(root_node.name)
-			print(root_node.filename)
-
-		assert(button_mode != "EXCEPTION") # error out if no button mode has been set
+	assert(button_mode != "EXCEPTION") # error out if no button mode has been set
 
 	set_button_text()
 
@@ -49,7 +34,7 @@ func _on_Button_pressed() -> void:
 		"quit":
 			get_tree().quit()
 		"play":
-			SceneChanger.go_to_scene("res://GUI/Screens/HomeScreen.tscn")
+			SceneChanger.go_to_scene("res://GUI/screens/HomeScreen.tscn")
 		"retry combat":
 			CombatInfo.reset()
 			SceneChanger.go_to_scene("res://Combat/CombatScreen.tscn")
@@ -59,9 +44,9 @@ func _on_Button_pressed() -> void:
 			else:
 				SceneChanger.go_to_scene("res://stealth/StealthFire.tscn")
 		"return home screen":
-			SceneChanger.go_to_scene("res://GUI/Screens/HomeScreen.tscn")
+			SceneChanger.go_to_scene("res://GUI/screens/HomeScreen.tscn")
 		"return upgrades":
-			SceneChanger.go_to_scene("res://GUI/Screens/UpgradeScreen.tscn")
+			SceneChanger.go_to_scene("res://GUI/screens/UpgradeScreen.tscn")
 
 func _process(delta: float) -> void:
 	if Engine.editor_hint:

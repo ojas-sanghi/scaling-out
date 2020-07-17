@@ -15,7 +15,7 @@ __meta__ = {
 margin_right = 278.0
 margin_bottom = 278.0
 rect_scale = Vector2( 0.22, 0.22 )
-value = 20.0
+value = 13.0
 texture_under = ExtResource( 2 )
 texture_progress = ExtResource( 2 )
 fill_mode = 4
@@ -26,7 +26,6 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-one_shot = true
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -7,7 +7,6 @@
 [ext_resource path="res://assets/dinos/lifebar_bg.png" type="Texture" id=6]
 [ext_resource path="res://actors/dinos/GeneralDino.gd" type="Script" id=11]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 27.2666, 99.442 )
 
@@ -36,7 +35,8 @@ margin_top = -57.5924
 margin_right = 354.599
 margin_bottom = -4.59242
 rect_scale = Vector2( 0.205609, 0.205609 )
-value = 46.0
+value = 27.0
+rounded = true
 texture_under = ExtResource( 6 )
 texture_progress = ExtResource( 5 )
 __meta__ = {

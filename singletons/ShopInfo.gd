@@ -9,4 +9,4 @@ var coins = 100
 var genes = 10
 var special_genes = []
 
-var shop_dino = "mega"
+var shop_dino = "tanky"

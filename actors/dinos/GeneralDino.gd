@@ -5,7 +5,7 @@ onready var bar = $HealthBar
 
 var dino_dead := false
 
-var dinosaur_name: String
+var dino_name: String
 
 var dino_variations: Array
 var dino_color: String
@@ -15,6 +15,7 @@ var animated_health: int
 var dino_speed: Vector2
 var dino_dmg: int
 var dino_dodge_chance: int
+var dino_defense: float
 
 var dino_gene_cost: int
 var special_gene_type: String
@@ -23,36 +24,6 @@ var deploy_delay: int
 var spawn_delay: int
 
 var spawning_in := true
-
-func _init(
-		_name = "",
-		_speed = Vector2(50, 0),
-		_health = 100,
-		_variations = ["blue", "green", "orange"],
-		_dmg = 5,
-		_cost = 100,
-		_gene = "",
-		_ddelay = 2,
-		_sdelay = 1.5,
-		_dodge = 0
-	) -> void:
-	dinosaur_name = _name
-	dino_speed = _speed
-
-	dino_health = _health
-	animated_health = _health
-
-	dino_variations = _variations
-	dino_color = dino_variations[0]
-
-	dino_dmg = _dmg
-	dino_dodge_chance = _dodge
-
-	dino_gene_cost = _cost
-	special_gene_type = _gene
-
-	deploy_delay = _ddelay
-	spawn_delay = _sdelay
 
 func spawn_delay():
 	set_physics_process(false)
@@ -69,7 +40,7 @@ func spawn_delay():
 	$AnimatedSprite.stop()
 
 	var tween = $TransparencyTween
-	tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1), 2)
+	tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1), spawn_delay)
 	tween.start()
 	yield(tween, "tween_completed")
 
@@ -81,29 +52,42 @@ func spawn_delay():
 	set_process(true)
 
 func _ready() -> void:
+	# set the stats
+	calculate_upgrades()
+
 	# animate the spawn delay
 	yield(spawn_delay(), "completed")
 
-
-	$ThumpSound.play()
 	bar.max_value = dino_health
-
-	$AnimatedSprite.play(dino_color + "_walk")
+	bar.value = dino_health
 
 	$AnimatedSprite.rotation_degrees = -90
 	$CollisionShape2D.rotation_degrees = -90
 
+	$ThumpSound.play()
+	$AnimatedSprite.play(dino_color + "_walk")
+
+	Signals.connect("dino_hit", self, "update_health")
+
+func calculate_upgrades():
+	dino_health = DinoInfo.get_upgrade_stat(dino_name, "hp")
+	animated_health = dino_health
+	spawn_delay = DinoInfo.get_upgrade_stat(dino_name, "delay")
+
+	dino_defense = DinoInfo.get_upgrade_stat(dino_name, "def")
+	dino_dodge_chance = DinoInfo.get_upgrade_stat(dino_name, "dodge")
+	dino_dmg = DinoInfo.get_upgrade_stat(dino_name, "dmg")
+	dino_speed = Vector2(DinoInfo.get_upgrade_stat(dino_name, "speed"), 0)
 
 func _physics_process(delta: float) -> void:
 	 self.position += dino_speed * delta
 
 func _process(delta: float) -> void:
-	var round_value = round(animated_health)
-	bar.value = round_value
+	bar.value = animated_health
 
 func kill_dino():
 	remove_from_group("dinos")
-	Signals.emit_signal("dino_died", dinosaur_name)
+	Signals.emit_signal("dino_died", dino_name)
 
 	$CollisionShape2D.set_deferred("disabled", true)
 	set_physics_process(false)
@@ -125,9 +109,10 @@ func kill_dino():
 	if CombatInfo.dinos_died == CombatInfo.max_dinos:
 		Signals.emit_signal("game_over")
 
-func update_health():
-	dino_health -= 17
-	bar.value = dino_health
+func update_health(dmg_taken):
+	dmg_taken *= dino_defense
+
+	dino_health -= dmg_taken
 	$Tween.interpolate_property(self, "animated_health", animated_health, dino_health, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	if not $Tween.is_active():
 		$Tween.start()
@@ -141,8 +126,5 @@ func win_game():
 	SceneChanger.go_to_scene("res://GUI/CombatWinDialogue.tscn")
 
 func _on_GeneralDino_area_entered(area: Area2D) -> void:
-	if "Bullet" in area.name:
-		area.queue_free()
-		update_health()
 	if "Blockade" in area.name:
 		win_game()

@@ -3,7 +3,6 @@
 [ext_resource path="res://combat/Bullet.gd" type="Script" id=1]
 [ext_resource path="res://assets/army/bullet.png" type="Texture" id=2]
 
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17.2572, 6.31783 )
 
@@ -24,4 +23,6 @@ shape = SubResource( 1 )
 wait_time = 2.5
 one_shot = true
 autostart = true
+[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_Bullet_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

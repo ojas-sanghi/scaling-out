@@ -4,6 +4,8 @@ signal dino_deployed
 signal dino_fully_spawned
 signal dino_died
 
+signal dino_hit
+
 signal game_over
 
 signal coin_grabbed

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://GUI/CoinCounter.gd" type="Script" id=1]
-[ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/Font35.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/icons/coins.png" type="Texture" id=3]
 
 [node name="CoinCounter" type="Control"]
 anchor_right = 0.107
@@ -14,27 +15,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_right = 1960.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 75.1719, 34.0086 )
+scale = Vector2( 0.189705, 0.189705 )
+texture = ExtResource( 3 )
 
-[node name="Label" type="Label" parent="HBoxContainer"]
-margin_right = 139.0
-margin_bottom = 46.0
+[node name="Num" type="Label" parent="."]
+margin_left = 121.275
+margin_top = 17.1376
+margin_right = 175.275
+margin_bottom = 57.1376
 custom_fonts/font = ExtResource( 2 )
-text = "Coins: "
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Num" type="Label" parent="HBoxContainer"]
-margin_left = 143.0
-margin_right = 205.0
-margin_bottom = 46.0
-custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.85098, 0.694118, 0.0705882, 1 )
 text = "100"
 __meta__ = {
 "_edit_use_anchors_": false
