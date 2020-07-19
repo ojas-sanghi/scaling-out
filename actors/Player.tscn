@@ -71,9 +71,10 @@ position = Vector2( -2.4075, -3.77616 )
 shape = SubResource( 8 )
 
 [node name="Light2D" type="Light2D" parent="."]
-visible = false
 scale = Vector2( 1.4043, 1.4043 )
 texture = ExtResource( 3 )
+texture_scale = 2.0
+shadow_enabled = true
 
 [node name="Caught" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

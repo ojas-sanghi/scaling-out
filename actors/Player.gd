@@ -36,7 +36,6 @@ func get_input():
 	if Input.is_action_pressed('ui_up'):
 		velocity.y -= 1
 
-	print(velocity)
 	return velocity
 
 func animate_player():
@@ -84,16 +83,18 @@ func _on_level_passed():
 	ShopInfo.coins += coins_in_level
 
 func _on_level_failed():
-	set_physics_process(false)
-	$AnimatedSprite.stop()
-	$Caught.play()
+#	set_physics_process(false)
+#	$AnimatedSprite.stop()
+#	$Caught.play()
+#
+#	SceneChanger.fade()
+#	get_node(node_path + "CanvasModulate").hide()
+#	get_node(node_path + "CanvasLayer/CoinCounter").hide()
+#	yield($Caught, "finished")
+#	get_node(node_path + "Vault").hide()
+#	SceneChanger.go_to_scene("res://GUI/StealthLoseDialogue.tscn")
 
-	SceneChanger.fade()
-	get_node(node_path + "CanvasModulate").hide()
-	get_node(node_path + "CanvasLayer/CoinCounter").hide()
-	yield($Caught, "finished")
-	get_node(node_path + "Vault").hide()
-	SceneChanger.go_to_scene("res://GUI/StealthLoseDialogue.tscn")
+	pass
 
 func _on_coin_grabbed(value):
 	coins_in_level += value
