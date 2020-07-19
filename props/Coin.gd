@@ -2,15 +2,23 @@ extends Area2D
 
 export var value = 1
 
+
 func _ready():
 	# Increase size
-	$Effect.interpolate_property($Sprite, 'scale',
-		$Sprite.get_scale(), Vector2(2, 2), 0.6,
-		Tween.TRANS_CUBIC, Tween.EASE_OUT)
+	$Effect.interpolate_property(
+		$Sprite, 'scale', $Sprite.get_scale(), Vector2(2, 2), 0.6, Tween.TRANS_CUBIC, Tween.EASE_OUT
+	)
 	# Fade out
-	$Effect.interpolate_property($Sprite, 'modulate',
-		Color(1, 1, 1, 1), Color(0, 0, 0, 0), 0.6,
-		Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	$Effect.interpolate_property(
+		$Sprite,
+		'modulate',
+		Color(1, 1, 1, 1),
+		Color(0, 0, 0, 0),
+		0.6,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_OUT
+	)
+
 
 func _on_Coin_body_entered(body):
 	# Remove the collision shapes to prevent extra collisions during the time the effect is taking place.

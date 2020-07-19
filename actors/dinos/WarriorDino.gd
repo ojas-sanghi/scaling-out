@@ -1,5 +1,6 @@
 extends GeneralDino
 
+
 func _init() -> void:
 	dino_name = "warrior"
 	dino_variations = ["green", "purple", "red"]
@@ -14,8 +15,10 @@ func _init() -> void:
 	dino_gene_cost = 350
 	special_gene_type = "fire"
 
+
 func _ready() -> void:
 	$FireProjectile.hide()
+
 
 func shoot_projectile():
 	$FireProjectile.show()

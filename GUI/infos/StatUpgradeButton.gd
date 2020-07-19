@@ -1,5 +1,6 @@
 extends UpgradeButton
 
+
 func set_button_info():
 	text = ""
 	$Container/StatNum.text = str(DinoInfo.get_upgrade_stat(ShopInfo.shop_dino, button_mode))

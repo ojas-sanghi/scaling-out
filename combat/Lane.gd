@@ -2,6 +2,7 @@ extends Button
 
 var spawn_point = Vector2(50, 150)
 
+
 func _on_Lane_pressed() -> void:
 	if CombatInfo.dinos_remaining <= 0:
 		return

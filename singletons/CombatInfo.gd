@@ -18,10 +18,12 @@ var shot_fire: bool
 
 var creds: int
 
+
 func _ready() -> void:
 	reset()
 
 	Signals.connect("dino_deployed", self, "_on_dino_deployed")
+
 
 func reset(_max_dinos := 10) -> void:
 	max_dinos = _max_dinos
@@ -38,6 +40,7 @@ func reset(_max_dinos := 10) -> void:
 
 	creds = 100
 
+
 func _on_dino_deployed():
 	# add to list of dinos just deployed
 	# prevents this type of dino from being deployed
@@ -51,6 +54,7 @@ func _on_dino_deployed():
 
 	dinos_deploying_timer.connect("timeout", self, "_on_dinos_deploying_timer_timeout", [dino_id])
 	dinos_deploying_timer.start(delay)
+
 
 func _on_dinos_deploying_timer_timeout(id):
 	# once the delay is over, let the dino be deployed again

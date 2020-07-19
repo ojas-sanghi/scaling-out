@@ -1,9 +1,11 @@
 extends Control
 
-export(String, "ice", "fire") var mode = "ice"
+export (String, "ice", "fire") var mode = "ice"
+
 
 func _ready() -> void:
 	set_text()
+
 
 func set_text():
 	match ShopInfo.shop_dino:
@@ -18,6 +20,7 @@ func set_text():
 #			$VideoPlayer.stream = preload("res://assets/abilities/previews/ice-preview.ogv")
 			$Description.text = "Unlock a fire projectile. When activated, will launch from a random warrior dino on the map. On impact, stops the army from firing from a few seconds. Can be used once per round."
 	$VideoPlayer.play()
+
 
 func _on_VideoPlayer_finished() -> void:
 	$VideoPlayer.play()

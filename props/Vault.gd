@@ -2,11 +2,13 @@ extends Area2D
 
 export var ice := true
 
+
 func _ready() -> void:
 	if ice:
 		$AnimatedSprite.animation = "ice"
 	else:
 		$AnimatedSprite.animation = "fire"
+
 
 func _on_Vault_body_entered(body: Node) -> void:
 	var anim_name = $AnimatedSprite.animation

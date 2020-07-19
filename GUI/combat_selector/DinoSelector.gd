@@ -2,16 +2,19 @@ extends Node2D
 
 var active_id := 0
 
+
 func _ready() -> void:
 	Signals.connect("dino_fully_spawned", self, "_on_dino_fully_spawned")
 	Signals.connect("dino_died", self, "_on_dino_died")
 
 	$'1'.show_particles()
 
+
 func disable_all_other_particles(except: int):
 	for n in get_children():
 		if n.name != str(except):
 			n.hide_particles()
+
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dino_1"):
@@ -53,6 +56,7 @@ func _input(event: InputEvent) -> void:
 
 	CombatInfo.dino_id = active_id
 
+
 func _on_dino_fully_spawned():
 	var dino_name = DinoInfo.get_dino_property("dino_name")
 
@@ -63,6 +67,7 @@ func _on_dino_fully_spawned():
 	if dino_name == "warrior":
 		if DinoInfo.has_special(dino_name, "fire") and not CombatInfo.shot_fire:
 			$'5'.enable_ability()
+
 
 func _on_dino_died(type):
 	var dinos_left = get_tree().get_nodes_in_group("dinos")

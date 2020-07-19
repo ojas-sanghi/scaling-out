@@ -8,19 +8,17 @@ var walk_time = 4
 
 
 func forward_tween():
-	forward.interpolate_property($Follow, "unit_offset",
-								0, 1, walk_time,
-								forward.TRANS_LINEAR,
-								forward.EASE_IN_OUT)
+	forward.interpolate_property(
+		$Follow, "unit_offset", 0, 1, walk_time, forward.TRANS_LINEAR, forward.EASE_IN_OUT
+	)
 	base_guard.rotation_degrees = 0
 	forward.start()
 
 
 func backward_tween():
-	backward.interpolate_property($Follow, "unit_offset",
-								1, 0, walk_time,
-								backward.TRANS_LINEAR,
-								backward.EASE_IN_OUT)
+	backward.interpolate_property(
+		$Follow, "unit_offset", 1, 0, walk_time, backward.TRANS_LINEAR, backward.EASE_IN_OUT
+	)
 	base_guard.rotation_degrees = 180
 	backward.start()
 

@@ -13,6 +13,7 @@ var guards
 
 var node_path
 
+
 func _ready() -> void:
 	Signals.connect("level_failed", self, "_on_level_failed", [], CONNECT_ONESHOT)
 	var coins = get_tree().get_nodes_in_group("coins")
@@ -24,9 +25,10 @@ func _ready() -> void:
 	else:
 		node_path = "/root/StealthFire/"
 
+
 func get_input():
 	# Detect up/down/left/right keystate and only move when pressed
-	velocity = Vector2(0,0)
+	velocity = Vector2(0, 0)
 	if Input.is_action_pressed('ui_right'):
 		velocity.x += 1
 	if Input.is_action_pressed('ui_left'):
@@ -37,6 +39,7 @@ func get_input():
 		velocity.y -= 1
 
 	return velocity
+
 
 func animate_player():
 	var velocity_length = velocity.length()
@@ -59,6 +62,7 @@ func animate_player():
 		# Not moving, idle anim
 		$AnimatedSprite.play("idle")
 
+
 func _physics_process(delta):
 	# Disable any movement if the player died
 	if ShopInfo.player_caught:
@@ -68,6 +72,7 @@ func _physics_process(delta):
 	velocity = velocity.normalized() * speed
 	animate_player()
 	move_and_slide(velocity)
+
 
 func _on_level_passed():
 	set_physics_process(false)
@@ -82,6 +87,7 @@ func _on_level_passed():
 	SceneChanger.go_to_scene("res://GUI/StealthWinDialogue.tscn")
 	ShopInfo.coins += coins_in_level
 
+
 func _on_level_failed():
 #	set_physics_process(false)
 #	$AnimatedSprite.stop()
@@ -95,6 +101,7 @@ func _on_level_failed():
 #	SceneChanger.go_to_scene("res://GUI/StealthLoseDialogue.tscn")
 
 	pass
+
 
 func _on_coin_grabbed(value):
 	coins_in_level += value

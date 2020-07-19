@@ -25,6 +25,7 @@ var spawn_delay: int
 
 var spawning_in := true
 
+
 func spawn_delay():
 	set_physics_process(false)
 	set_process(false)
@@ -40,7 +41,7 @@ func spawn_delay():
 	$AnimatedSprite.stop()
 
 	var tween = $TransparencyTween
-	tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1), spawn_delay)
+	tween.interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), spawn_delay)
 	tween.start()
 	yield(tween, "tween_completed")
 
@@ -50,6 +51,7 @@ func spawn_delay():
 	Signals.emit_signal("dino_fully_spawned")
 	set_physics_process(true)
 	set_process(true)
+
 
 func _ready() -> void:
 	# set the stats
@@ -69,6 +71,7 @@ func _ready() -> void:
 
 	Signals.connect("dino_hit", self, "update_health")
 
+
 func calculate_upgrades():
 	dino_health = DinoInfo.get_upgrade_stat(dino_name, "hp")
 	animated_health = dino_health
@@ -79,11 +82,14 @@ func calculate_upgrades():
 	dino_dmg = DinoInfo.get_upgrade_stat(dino_name, "dmg")
 	dino_speed = Vector2(DinoInfo.get_upgrade_stat(dino_name, "speed"), 0)
 
+
 func _physics_process(delta: float) -> void:
-	 self.position += dino_speed * delta
+	self.position += dino_speed * delta
+
 
 func _process(delta: float) -> void:
 	bar.value = animated_health
+
 
 func kill_dino():
 	remove_from_group("dinos")
@@ -97,7 +103,7 @@ func kill_dino():
 	$DeathSound.play()
 	$AnimatedSprite.play(dino_color + "_death" + str(num))
 	var tween = $TransparencyTween
-	tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), 5)
+	tween.interpolate_property(self, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 5)
 	tween.start()
 	yield(tween, "tween_completed")
 	yield($DeathSound, "finished")
@@ -109,11 +115,20 @@ func kill_dino():
 	if CombatInfo.dinos_died == CombatInfo.max_dinos:
 		Signals.emit_signal("game_over")
 
+
 func update_health(dmg_taken):
 	dmg_taken *= dino_defense
 
 	dino_health -= dmg_taken
-	$Tween.interpolate_property(self, "animated_health", animated_health, dino_health, 0.6, Tween.TRANS_LINEAR, Tween.EASE_IN)
+	$Tween.interpolate_property(
+		self,
+		"animated_health",
+		animated_health,
+		dino_health,
+		0.6,
+		Tween.TRANS_LINEAR,
+		Tween.EASE_IN
+	)
 	if not $Tween.is_active():
 		$Tween.start()
 
@@ -122,8 +137,10 @@ func update_health(dmg_taken):
 			kill_dino()
 			dino_dead = true
 
+
 func win_game():
 	SceneChanger.go_to_scene("res://GUI/CombatWinDialogue.tscn")
+
 
 func _on_GeneralDino_area_entered(area: Area2D) -> void:
 	if "Blockade" in area.name:

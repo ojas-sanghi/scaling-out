@@ -2,6 +2,7 @@ extends Area2D
 
 var bullet = preload("res://combat/Bullet.tscn")
 
+
 func _ready() -> void:
 	randomize()
 	var random = randi() % 3
@@ -18,6 +19,7 @@ func _ready() -> void:
 
 	Signals.connect("proj_hit", self, "_on_proj_hit")
 
+
 func _on_proj_hit(type):
 	if type == "ice":
 		$Timer.wait_time = 4
@@ -28,10 +30,12 @@ func _on_proj_hit(type):
 		yield(get_tree().create_timer(3), "timeout")
 		$Timer.start()
 
+
 func _on_Timer_timeout() -> void:
 	var b = bullet.instance()
 	add_child(b)
 	$AudioStreamPlayer.play()
+
 
 func _on_IceTimer_timeout() -> void:
 	$Timer.wait_time = 2

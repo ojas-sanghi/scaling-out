@@ -1,5 +1,6 @@
 extends GeneralDino
 
+
 func _init() -> void:
 	dino_name = "tanky"
 	dino_variations = ["blue", "orange", "pink"]
@@ -14,8 +15,10 @@ func _init() -> void:
 	dino_gene_cost = 250
 	special_gene_type = "ice"
 
+
 func _ready() -> void:
 	$IceProjectile.hide()
+
 
 func shoot_projectile():
 	$IceProjectile.show()

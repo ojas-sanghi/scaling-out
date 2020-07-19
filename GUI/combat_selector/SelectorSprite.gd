@@ -4,10 +4,11 @@ extends Node2D
 export var sprite: Texture
 export var text: String
 
-export(String, "none", "fire", "ice") var ability_mode := "none"
+export (String, "none", "fire", "ice") var ability_mode := "none"
 export var custom_scale := Vector2(0.511, 0.519)
 
 var id: int
+
 
 func _ready() -> void:
 	$Sprite.texture = sprite
@@ -66,6 +67,7 @@ func hide_particles():
 	for particle in $Particles.get_children():
 		particle.emitting = false
 
+
 func show_particles():
 	for particle in $Particles.get_children():
 		particle.emitting = true
@@ -78,6 +80,7 @@ func _on_dino_deployed():
 	fade_sprite()
 	yield(get_tree().create_timer(DinoInfo.get_dino_timer_delay(), false), "timeout")
 	unfade_sprite()
+
 
 func _on_all_dinos_expended():
 	# don't fade the sprite if it's an ability

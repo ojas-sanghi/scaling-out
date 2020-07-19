@@ -14,18 +14,19 @@ onready var warn_txt = get_node(warn_text_path)
 # var a = 2
 # var b = "textvar"
 
+
 func check_fov():
 	if danger_txt:
-		danger_txt.text="Danger: "+str($field_of_view.in_danger_area)
+		danger_txt.text = "Danger: " + str($field_of_view.in_danger_area)
 	if warn_txt:
-		warn_txt.text="Warn: "+str($field_of_view.in_warn_area)
+		warn_txt.text = "Warn: " + str($field_of_view.in_warn_area)
+
 
 func _process(delta):
 	check_fov()
 	var pos = get_position()
 	var dir = (get_global_mouse_position() - pos).normalized()
 	set_rotation(deg2rad(rad2deg(dir.angle()) - 90))
-
 
 	# vel = Vector2()
 	move_control = Vector2()
@@ -41,7 +42,7 @@ func _process(delta):
 	if Input.is_key_pressed(KEY_W):
 		move_control.y = 1
 		moving = true
-	elif  Input.is_key_pressed(KEY_S):
+	elif Input.is_key_pressed(KEY_S):
 		move_control.y = -1
 		moving = true
 

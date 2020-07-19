@@ -1,7 +1,9 @@
 extends Control
 
+
 func _ready() -> void:
 	set_info()
+
 
 func set_info():
 	match ShopInfo.shop_dino:

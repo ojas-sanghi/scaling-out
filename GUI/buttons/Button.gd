@@ -1,12 +1,23 @@
 tool
 extends Button
 
-export(String, "EXCEPTION", "quit", "play", "retry combat", "retry stealth", "return home screen", "return upgrades") var button_mode = "EXCEPTION"
+export (
+	String,
+	"EXCEPTION",
+	"quit",
+	"play",
+	"retry combat",
+	"retry stealth",
+	"return home screen",
+	"return upgrades"
+) var button_mode = "EXCEPTION"
+
 
 func _ready() -> void:
-	assert(button_mode != "EXCEPTION") # error out if no button mode has been set
+	assert(button_mode != "EXCEPTION")  # error out if no button mode has been set
 
 	set_button_text()
+
 
 # Sets the text of the button according to what mode it is set to
 func set_button_text() -> void:
@@ -29,6 +40,7 @@ func set_button_text() -> void:
 			text = "Return to Upgrades"
 			self.grab_focus()
 
+
 func _on_Button_pressed() -> void:
 	match button_mode:
 		"quit":
@@ -47,6 +59,7 @@ func _on_Button_pressed() -> void:
 			SceneChanger.go_to_scene("res://GUI/screens/HomeScreen.tscn")
 		"return upgrades":
 			SceneChanger.go_to_scene("res://GUI/screens/UpgradeScreen.tscn")
+
 
 func _process(delta: float) -> void:
 	if Engine.editor_hint:

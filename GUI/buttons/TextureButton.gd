@@ -1,11 +1,13 @@
 tool
 extends TextureButton
 
-export(String, "EXCEPTION", "map", "upgrades") var button_mode = "EXCEPTION"
+export (String, "EXCEPTION", "map", "upgrades") var button_mode = "EXCEPTION"
+
 
 func _ready() -> void:
-	assert(button_mode != "EXCEPTION") # error out if no button mode has been set
+	assert(button_mode != "EXCEPTION")  # error out if no button mode has been set
 	set_button_text()
+
 
 # Sets the text of the button according to what mode it is set to
 func set_button_text() -> void:
@@ -15,12 +17,14 @@ func set_button_text() -> void:
 		"upgrades":
 			$Label.text = "View upgrades menu"
 
+
 func _on_Button_pressed() -> void:
 	match button_mode:
 		"map":
 			SceneChanger.go_to_scene("res://combat/CombatScreen.tscn")
 		"upgrades":
 			SceneChanger.go_to_scene("res://GUI/screens/UpgradeScreen.tscn")
+
 
 func _process(delta: float) -> void:
 	if Engine.editor_hint:
