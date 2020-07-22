@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/tilesets/gray.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/tilesets/gray_bg.tres" type="TileSet" id=2]
@@ -11,7 +11,6 @@
 [ext_resource path="res://GUI/CoinCounter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://GUI/dialogues/StealthWinDialogue.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/music/stealth music.wav" type="AudioStream" id=11]
-[ext_resource path="res://props/HallwayLight.tscn" type="PackedScene" id=12]
 [ext_resource path="res://stealth/Label.gd" type="Script" id=13]
 [ext_resource path="res://assets/fonts/Font35.tres" type="DynamicFont" id=14]
 
@@ -85,88 +84,6 @@ limit_bottom = 650
 limit_smoothed = true
 smoothing_enabled = true
 editor_draw_limits = true
-
-[node name="lights" type="Node2D" parent="."]
-
-[node name="Node2D" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 1005.36, 188.966 )
-rotation = -3.92699
-
-[node name="Node2D2" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 768.537, 335.058 )
-rotation = -2.09439
-
-[node name="Node2D3" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 546.037, 338.552 )
-rotation = -0.785397
-
-[node name="Node2D4" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 495.738, 53.2834 )
-rotation = -0.069985
-
-[node name="Node2D5" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 281.49, 192.619 )
-rotation = -0.069985
-
-[node name="Node2D6" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 105.144, 413.619 )
-rotation = 1.0472
-
-[node name="Node2D15" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 570.719, 483.783 )
-rotation = 1.0472
-
-[node name="Node2D16" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 408.987, 604.487 )
-rotation = -3.14159
-
-[node name="Node2D7" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 685.243, 417.616 )
-rotation = 0.523598
-
-[node name="Node2D19" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 686.187, 601.671 )
-rotation = 2.35619
-
-[node name="Node2D8" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 479.474, 318.734 )
-rotation = 3.14159
-
-[node name="Node2D20" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 136.676, 354.653 )
-rotation = 5.23598
-
-[node name="Node2D13" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 481.889, 145.69 )
-rotation = 6.28318
-
-[node name="Node2D9" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 946.995, 353.094 )
-rotation = 5.75958
-
-[node name="Node2D10" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 824.16, 565.075 )
-rotation = 6.80677
-
-[node name="Node2D17" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 819.708, 540.127 )
-rotation = 4.18878
-
-[node name="Node2D18" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 72.6328, 562.087 )
-rotation = 6.28318
-
-[node name="Node2D11" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 845.66, 127.075 )
-rotation = 8.63937
-
-[node name="Node2D12" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 23.0067, 20.8018 )
-rotation = 5.75958
-
-[node name="Node2D14" parent="lights" instance=ExtResource( 12 )]
-position = Vector2( 235.253, 54.306 )
-rotation = 7.59217
 
 [node name="Guarsd" type="Node2D" parent="."]
 
