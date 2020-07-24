@@ -84,7 +84,7 @@ func _on_level_passed():
 	get_node(node_path + "CanvasLayer/CoinCounter").hide()
 	yield($Win, "finished")
 	get_node(node_path + "Vault").hide()
-	SceneChanger.go_to_scene("res://GUI/StealthWinDialogue.tscn")
+	SceneChanger.go_to_scene("res://GUI/dialogues/StealthWinDialogue.tscn")
 	ShopInfo.coins += coins_in_level
 
 
@@ -98,7 +98,7 @@ func _on_level_failed():
 #	get_node(node_path + "CanvasLayer/CoinCounter").hide()
 #	yield($Caught, "finished")
 #	get_node(node_path + "Vault").hide()
-#	SceneChanger.go_to_scene("res://GUI/StealthLoseDialogue.tscn")
+#	SceneChanger.go_to_scene("res://GUI/dialogues/StealthLoseDialogue.tscn")
 
 	pass
 

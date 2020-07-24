@@ -25,6 +25,9 @@ var spawn_delay: int
 
 var spawning_in := true
 
+# this is set by the "Lane" node when the dino is instanced
+var path_follow_time := 1
+onready var path = $PathFollowTween
 
 func spawn_delay():
 	set_physics_process(false)
@@ -69,8 +72,12 @@ func _ready() -> void:
 	$ThumpSound.play()
 	$AnimatedSprite.play(dino_color + "_walk")
 
-	Signals.connect("dino_hit", self, "update_health")
+	path.interpolate_property(
+		get_parent(), "unit_offset", 0, 1, path_follow_time, path.TRANS_LINEAR, path.EASE_IN_OUT
+	)
+	path.start()
 
+	Signals.connect("dino_hit", self, "update_health")
 
 func calculate_upgrades():
 	dino_health = DinoInfo.get_upgrade_stat(dino_name, "hp")
@@ -82,11 +89,6 @@ func calculate_upgrades():
 	dino_dmg = DinoInfo.get_upgrade_stat(dino_name, "dmg")
 	dino_speed = Vector2(DinoInfo.get_upgrade_stat(dino_name, "speed"), 0)
 
-
-func _physics_process(delta: float) -> void:
-	self.position += dino_speed * delta
-
-
 func _process(delta: float) -> void:
 	bar.value = animated_health
 
@@ -96,7 +98,7 @@ func kill_dino():
 	Signals.emit_signal("dino_died", dino_name)
 
 	$CollisionShape2D.set_deferred("disabled", true)
-	set_physics_process(false)
+	path.set_active(false)
 
 	randomize()
 	var num = randi() % 2
@@ -113,7 +115,7 @@ func kill_dino():
 	CombatInfo.dinos_died += 1
 
 	if CombatInfo.dinos_died == CombatInfo.max_dinos:
-		Signals.emit_signal("game_over")
+		Signals.emit_signal("conquest_lost")
 
 
 func update_health(dmg_taken):
@@ -137,11 +139,17 @@ func update_health(dmg_taken):
 			kill_dino()
 			dino_dead = true
 
+func attack_blockade():
+	path.set_active(false)
+	# play attacking animations
+	$AnimatedSprite.stop()
 
-func win_game():
-	SceneChanger.go_to_scene("res://GUI/CombatWinDialogue.tscn")
+	$AttackingTimer.start()
 
+func _on_AttackingTimer_timeout() -> void:
+	Signals.emit_signal("blockade_hit", dino_dmg)
+	attack_blockade()
 
 func _on_GeneralDino_area_entered(area: Area2D) -> void:
 	if "Blockade" in area.name:
-		win_game()
+		attack_blockade()

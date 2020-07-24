@@ -14,6 +14,6 @@ func _on_Timer_timeout() -> void:
 	queue_free()
 
 
-func _on_Bullet_area_entered(area: Area2D) -> void:
-	Signals.emit_signal("dino_hit", 17)
+func _on_Bullet_area_entered(dino: Area2D) -> void:
+	dino.update_health(17)
 	queue_free()

@@ -41,4 +41,4 @@ func _process(_delta):
 
 
 func _on_Timer_timeout():
-	Signals.emit_signal("game_over")
+	Signals.emit_signal("conquest_lost")

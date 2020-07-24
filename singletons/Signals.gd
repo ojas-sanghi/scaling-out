@@ -5,8 +5,10 @@ signal dino_fully_spawned
 signal dino_died
 
 signal dino_hit
+signal blockade_hit
 
-signal game_over
+signal conquest_won
+signal conquest_lost
 
 signal coin_grabbed
 

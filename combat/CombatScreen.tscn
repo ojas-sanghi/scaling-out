@@ -18,34 +18,45 @@ __meta__ = {
 }
 
 [node name="Lanes" type="Node2D" parent="."]
-position = Vector2( 0, 45.4414 )
+position = Vector2( 0, 123 )
 
 [node name="Lane" parent="Lanes" instance=ExtResource( 1 )]
-margin_top = 350.0
-margin_bottom = 625.0
-
-[node name="Lane3" parent="Lanes" instance=ExtResource( 1 )]
-margin_top = 75.0
-margin_bottom = 350.0
+position = Vector2( 0, -5 )
 
 [node name="Lane2" parent="Lanes" instance=ExtResource( 1 )]
-margin_top = 625.0
-margin_bottom = 900.0
+position = Vector2( 0, 269 )
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="Lane3" parent="Lanes" instance=ExtResource( 1 )]
+position = Vector2( 0, 543 )
+
+[node name="Army" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Army"]
 margin_left = 1400.48
 margin_top = 99.2383
 margin_right = 1922.48
 margin_bottom = 964.238
-color = Color( 0.85098, 0.792157, 0.662745, 1 )
+color = Color( 0.0235294, 0.466667, 0.168627, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Blockade" parent="." instance=ExtResource( 4 )]
+[node name="ArmyDude" parent="Army" instance=ExtResource( 5 )]
+position = Vector2( 1563.29, 572.872 )
+
+[node name="ArmyDude2" parent="Army" instance=ExtResource( 5 )]
+position = Vector2( 1546.59, 840.102 )
+
+[node name="ArmyDude3" parent="Army" instance=ExtResource( 5 )]
+position = Vector2( 1626.31, 298.962 )
+
+[node name="ArmyDude4" parent="Army" instance=ExtResource( 5 )]
+position = Vector2( 1726.97, 521.097 )
+
+[node name="Blockade" parent="Army" instance=ExtResource( 4 )]
 position = Vector2( 1390.82, 253.777 )
 
-[node name="Blockade2" parent="." instance=ExtResource( 4 )]
+[node name="Blockade2" parent="Army" instance=ExtResource( 4 )]
 position = Vector2( 1904.53, 903.32 )
 rotation = 1.57079
 
@@ -53,10 +64,10 @@ rotation = 1.57079
 position = Vector2( 300, -4.29114 )
 
 [node name="ColorRect" type="ColorRect" parent="Selectors"]
-margin_left = -299.746
-margin_top = 948.291
-margin_right = 1620.25
-margin_bottom = 1079.29
+margin_left = -300.0
+margin_top = 948.0
+margin_right = 1620.0
+margin_bottom = 1085.0
 color = Color( 0.054902, 0.635294, 0.886275, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -75,33 +86,17 @@ __meta__ = {
 [node name="DinoSelector" parent="Selectors" instance=ExtResource( 3 )]
 position = Vector2( 203.274, 980 )
 
-[node name="Army" type="Node2D" parent="."]
+[node name="Timer" parent="Selectors" instance=ExtResource( 2 )]
+margin_left = 1159.78
+margin_top = 31.2911
+margin_right = 1159.78
+margin_bottom = 31.2911
 
-[node name="GUI" type="Node2D" parent="Army"]
-
-[node name="Timer" parent="Army/GUI" instance=ExtResource( 2 )]
-margin_left = 1459.78
-margin_top = 27.0
-margin_right = 1459.78
-margin_bottom = 27.0
-
-[node name="DinoCounter" parent="Army/GUI" instance=ExtResource( 6 )]
-margin_left = 98.4262
-margin_top = 27.0
-margin_right = 98.4262
-margin_bottom = 27.0
-
-[node name="ArmyDude" parent="Army" instance=ExtResource( 5 )]
-position = Vector2( 1563.29, 572.872 )
-
-[node name="ArmyDude2" parent="Army" instance=ExtResource( 5 )]
-position = Vector2( 1546.59, 840.102 )
-
-[node name="ArmyDude3" parent="Army" instance=ExtResource( 5 )]
-position = Vector2( 1543.25, 298.962 )
-
-[node name="ArmyDude4" parent="Army" instance=ExtResource( 5 )]
-position = Vector2( 1726.97, 521.097 )
+[node name="DinoCounter" parent="Selectors" instance=ExtResource( 6 )]
+margin_left = -201.574
+margin_top = 31.2911
+margin_right = -201.574
+margin_bottom = 31.2911
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )

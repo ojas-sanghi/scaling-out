@@ -1,8 +1,5 @@
 extends GeneralDino
 
-var speed_stages = [50, 75, 80]
-
-
 func _init() -> void:
 	dino_name = "mega"
 	dino_variations = ["blue", "green", "orange"]

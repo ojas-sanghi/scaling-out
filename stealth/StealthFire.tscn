@@ -8,9 +8,10 @@
 [ext_resource path="res://actors/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://props/Vault.tscn" type="PackedScene" id=7]
 [ext_resource path="res://actors/PathFollowGuard.tscn" type="PackedScene" id=8]
-[ext_resource path="res://GUI/CoinCounter.tscn" type="PackedScene" id=9]
+[ext_resource path="res://GUI/MoneyCounter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://GUI/dialogues/StealthWinDialogue.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/music/stealth music.wav" type="AudioStream" id=11]
+
 
 
 

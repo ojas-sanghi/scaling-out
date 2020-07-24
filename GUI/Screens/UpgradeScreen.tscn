@@ -3,7 +3,7 @@
 [ext_resource path="res://GUI/buttons/Button.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/music/Upgrade screen and menu.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/dinos/tanky_dino/Armored_Dino_ICON.png" type="Texture" id=12]
-[ext_resource path="res://GUI/CoinCounter.tscn" type="PackedScene" id=13]
+[ext_resource path="res://GUI/MoneyCounter.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/upgrade_background_rough_draft.png" type="Texture" id=14]
 [ext_resource path="res://GUI/SpecialUpgrade.tscn" type="PackedScene" id=15]
 [ext_resource path="res://GUI/buttons/UpgradeButton.tscn" type="PackedScene" id=16]
@@ -137,7 +137,7 @@ margin_top = 911.67
 margin_right = 861.214
 margin_bottom = 912.2
 
-[node name="CoinCounter" parent="CanvasLayer" instance=ExtResource( 13 )]
+[node name="MoneyCounter" parent="CanvasLayer" instance=ExtResource( 13 )]
 margin_left = 862.293
 margin_top = 970.198
 margin_right = 862.293

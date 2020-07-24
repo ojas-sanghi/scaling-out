@@ -42,6 +42,11 @@ CombatInfo="*res://singletons/CombatInfo.gd"
 Signals="*res://singletons/Signals.gd"
 ShopInfo="*res://singletons/ShopInfo.gd"
 
+[debug]
+
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=1920

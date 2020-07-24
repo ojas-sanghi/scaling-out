@@ -1,9 +1,8 @@
-extends Button
+extends Path2D
 
-var spawn_point = Vector2(50, 150)
+var spawn_point = Vector2(70, 10)
 
-
-func _on_Lane_pressed() -> void:
+func _on_Button_pressed() -> void:
 	if CombatInfo.dinos_remaining <= 0:
 		return
 
@@ -11,11 +10,21 @@ func _on_Lane_pressed() -> void:
 	if CombatInfo.dino_id in CombatInfo.dinos_deploying:
 		return
 
+	# make a new pathfollow2d node
+	var path_follow = PathFollow2D.new()
+	path_follow.loop = false
+	path_follow.lookahead = 250
+	add_child(path_follow)
+
+	# make a new dinosaur
 	var dino_node = DinoInfo.dino_list[CombatInfo.dino_id]
 	dino_node = dino_node.instance()
 
-	get_tree().create_timer(dino_node.spawn_delay)
+	# set the dino speed
+	dino_node.path_follow_time = curve.get_baked_length() / dino_node.dino_speed.x
 
-	add_child(dino_node)
+	# add dino to pathfollow2d,
+	path_follow.add_child(dino_node)
+	# set dino's position
 	dino_node.position = spawn_point
 	Signals.emit_signal("dino_deployed")
