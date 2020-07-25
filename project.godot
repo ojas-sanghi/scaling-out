@@ -30,7 +30,7 @@ config/name="Scaling Out"
 config/description="Project for DevFest 2020 Game Jam.
 
 Go on undercover missions, upgrade your dinos, and destroy some cities!"
-run/main_scene="res://combat/CombatScreen.tscn"
+run/main_scene="res://GUI/Screens/UpgradeScreen.tscn"
 config/icon="res://assets/dinos/mega_dino/mega_dino.png"
 config/windows_native_icon="res://assets/dinos/mega_dino.ico"
 

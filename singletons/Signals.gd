@@ -19,6 +19,8 @@ signal proj_hit
 
 signal all_dinos_expended
 
+signal dino_upgraded
+
 
 func _ready() -> void:
 	OS.window_maximized = true

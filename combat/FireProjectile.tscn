@@ -3,8 +3,6 @@
 [ext_resource path="res://combat/FireProjectile.gd" type="Script" id=1]
 [ext_resource path="res://assets/dinos/misc/fire.png" type="Texture" id=2]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 173.361, 49.2514 )
 
@@ -22,3 +20,4 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 13.2684 )
 shape = SubResource( 1 )
+[connection signal="area_entered" from="." to="." method="_on_FireProjectile_area_entered"]

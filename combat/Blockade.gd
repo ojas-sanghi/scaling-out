@@ -32,11 +32,3 @@ func _on_blockade_hit(dmg: int):
 		else:
 			Signals.emit_signal("conquest_won")
 			return
-
-
-func _on_Blockade_area_entered(area: Area2D) -> void:
-	if "Fire" in area.name:
-		Signals.emit_signal("proj_hit", "fire")
-	elif "Ice" in area.name:
-		Signals.emit_signal("proj_hit", "ice")
-

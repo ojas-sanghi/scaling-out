@@ -100,7 +100,7 @@ func _on_level_failed():
 #	get_node(node_path + "Vault").hide()
 #	SceneChanger.go_to_scene("res://GUI/dialogues/StealthLoseDialogue.tscn")
 
-	pass
+	print("YOU FAILED")
 
 
 func _on_coin_grabbed(value):

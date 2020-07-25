@@ -13,3 +13,8 @@ func _physics_process(delta: float) -> void:
 	if not disabled:
 		self.show()
 		position += speed * delta
+
+
+func _on_FireProjectile_area_entered(area: Area2D) -> void:
+	if not disabled:
+		Signals.emit_signal("proj_hit", "fire")

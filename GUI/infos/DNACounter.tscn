@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/fonts/Font35.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/dinos/misc/hex.png" type="Texture" id=2]
 [ext_resource path="res://assets/icons/dna.png" type="Texture" id=3]
+[ext_resource path="res://GUI/infos/DNACounter.gd" type="Script" id=4]
 
 [node name="DNACounter" type="Control"]
 anchor_left = -0.000152079
@@ -12,6 +12,7 @@ anchor_bottom = 0.06
 margin_top = -0.329769
 margin_right = 0.47998
 margin_bottom = 0.199997
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -27,12 +28,6 @@ text = "450"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Sprite2" type="Sprite" parent="."]
-visible = false
-position = Vector2( 154.824, 42.4899 )
-scale = Vector2( 0.213374, 0.213374 )
-texture = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 38.4388, 37.7912 )

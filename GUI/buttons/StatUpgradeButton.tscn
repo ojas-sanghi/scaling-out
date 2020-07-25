@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/icons/heart.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Font30.tres" type="DynamicFont" id=2]
-[ext_resource path="res://GUI/infos/StatUpgradeButton.gd" type="Script" id=3]
+[ext_resource path="res://GUI/buttons/StatUpgradeButton.gd" type="Script" id=3]
 [ext_resource path="res://assets/dinos/misc/hex-progress.png" type="Texture" id=4]
 [ext_resource path="res://assets/dinos/misc/hex.png" type="Texture" id=5]
+[ext_resource path="res://GUI/infos/CostIndicator.tscn" type="PackedScene" id=6]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
@@ -87,6 +88,13 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="."]
 repeat = true
 playback/repeat = true
+
+[node name="CostIndicator" parent="." instance=ExtResource( 6 )]
+margin_left = 61.9443
+margin_top = -32.0845
+margin_right = 261.944
+margin_bottom = 17.9155
+parent_node = NodePath("..")
 [connection signal="button_down" from="." to="." method="_on_UpgradeButton_button_down"]
 [connection signal="button_up" from="." to="." method="_on_UpgradeButton_button_up"]
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

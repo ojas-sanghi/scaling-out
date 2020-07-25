@@ -33,7 +33,7 @@ func _input(event: InputEvent) -> void:
 		disable_all_other_particles(3)
 
 	elif event.is_action_pressed("dino_4"):
-		if not DinoInfo.has_special("tanky", "ice") or CombatInfo.shot_ice:
+		if not DinoInfo.has_special("tanky") or CombatInfo.shot_ice:
 			return
 
 		for d in get_tree().get_nodes_in_group("dinos"):
@@ -44,7 +44,7 @@ func _input(event: InputEvent) -> void:
 				return
 
 	elif event.is_action_pressed("dino_5"):
-		if not DinoInfo.has_special("warrior", "fire") or CombatInfo.shot_fire:
+		if not DinoInfo.has_special("warrior") or CombatInfo.shot_fire:
 			return
 
 		for d in get_tree().get_nodes_in_group("dinos"):
@@ -61,11 +61,11 @@ func _on_dino_fully_spawned():
 	var dino_name = DinoInfo.get_dino_property("dino_name")
 
 	if dino_name == "tanky":
-		if DinoInfo.has_special(dino_name, "ice") and not CombatInfo.shot_ice:
+		if DinoInfo.has_special(dino_name) and not CombatInfo.shot_ice:
 			$'4'.enable_ability()
 
 	if dino_name == "warrior":
-		if DinoInfo.has_special(dino_name, "fire") and not CombatInfo.shot_fire:
+		if DinoInfo.has_special(dino_name) and not CombatInfo.shot_fire:
 			$'5'.enable_ability()
 
 
