@@ -7,8 +7,11 @@ signal dino_died
 signal dino_hit
 signal blockade_hit
 
+signal round_won
 signal conquest_won
 signal conquest_lost
+
+signal dino_purchased
 
 signal coin_grabbed
 

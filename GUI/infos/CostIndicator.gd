@@ -24,7 +24,7 @@ func set_upgrade_cost():
 
 
 	var money_pic = "[img=<40>]res://assets/icons/coins.png[/img]"
-	var gene_pic = "[img=<40>]res://assets/icons/dna.png[/img]"
+	var gene_pic = "[img=<25>]res://assets/icons/dna.png[/img]"
 
 	var money_text = str(money_cost)
 	var gene_text = str(gene_cost)

@@ -1,11 +1,11 @@
 tool
-extends Node2D
+extends Control
 
-export var sprite: Texture
-export var text: String
+var sprite: Texture
+var text: String
 
-export (String, "none", "fire", "ice") var ability_mode := "none"
-export var custom_scale := Vector2(0.511, 0.519)
+var ability_mode := ""
+var custom_scale := Vector2(0.511, 0.519)
 
 var id: int
 
@@ -17,19 +17,11 @@ func _ready() -> void:
 	$Sprite.scale = custom_scale
 	hide_particles()
 
-	if ability_mode == "none":
+	if ability_mode == "":
 		$disabled.hide()
 	else:
 		disable_ability()
 		$DeployTimer.hide()
-
-	if Engine.editor_hint:
-		if not $Sprite.texture:
-			$Sprite.texture = preload("res://assets/dinos/mega_dino/mega_dino.png")
-			$Label.text = "1"
-			id = 0
-			$disabled.hide()
-			hide_particles()
 
 	Signals.connect("dino_deployed", self, "_on_dino_deployed")
 	Signals.connect("all_dinos_expended", self, "_on_all_dinos_expended")
@@ -84,7 +76,7 @@ func _on_dino_deployed():
 
 func _on_all_dinos_expended():
 	# don't fade the sprite if it's an ability
-	# even if there aren't any dinos left you can still use abilities
+	# even if there aren't any dinos left to deploy you can still use abilities
 	if ability_mode == "none":
 		fade_sprite()
 		hide_particles()

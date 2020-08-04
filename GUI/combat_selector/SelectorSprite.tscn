@@ -7,13 +7,11 @@
 [ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/dinos/misc/x.png" type="Texture" id=6]
 
-
-
-
-
-
-[node name="SelectorSprite" type="Node2D"]
+[node name="SelectorSprite" type="Control"]
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.511, 0.519 )

@@ -1,42 +1,60 @@
 extends Area2D
 
-var bullet = preload("res://combat/Bullet.tscn")
+var mode
 
+var rps
+var mag_size
+var reload_time
+
+var bullets_left
 
 func _ready() -> void:
 	randomize()
 	var random = randi() % 3
-	var weapon = "rifle"
 	match random:
 		0:
-			weapon = "rifle"
+			mode = "pistol"
+			rps = 1
+			mag_size = 15
+			reload_time = 2
 		1:
-			weapon = "handgun"
+			mode = "rifle"
+			rps = 2
+			mag_size = 20
+			reload_time = 3
 		2:
-			weapon = "shotgun"
-	var anim_string = "shoot_" + weapon
-	$AnimationPlayer.play(anim_string)
+			mode = "shotgun"
+			rps = 1.2
+			mag_size = 5
+			reload_time = 2.5
+	$BulletSpawner.mode = mode
+
+	bullets_left = mag_size
+
+	$AnimationPlayer.play("shoot_" + mode)
 
 	Signals.connect("proj_hit", self, "_on_proj_hit")
 
 
+
 func _on_proj_hit(type):
 	if type == "ice":
-		$Timer.wait_time = 4
-		$Timer.start()
-		$IceTimer.start()
+		$AnimationPlayer.current_animation_length = 2
+		yield(get_tree().create_timer(10), "timeout")
+		$AnimationPlayer.current_animation_length = 1
 	elif type == "fire":
-		$Timer.stop()
+		$AnimationPlayer.stop()
 		yield(get_tree().create_timer(3), "timeout")
-		$Timer.start()
+		$AnimationPlayer.play("shoot_" + mode)
 
 
-func _on_Timer_timeout() -> void:
-	var b = bullet.instance()
-	add_child(b)
-	$AudioStreamPlayer.play()
+func check_reload() -> void:
+	bullets_left -= rps
 
+	if bullets_left <= 0:
+		$AnimationPlayer.stop()
+		# play reload anim
 
-func _on_IceTimer_timeout() -> void:
-	$Timer.wait_time = 2
-	$Timer.start()
+		yield(get_tree().create_timer(reload_time), "timeout")
+		bullets_left = mag_size
+		$AnimationPlayer.play("shoot_" + mode)

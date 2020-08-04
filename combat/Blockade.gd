@@ -30,5 +30,5 @@ func _on_blockade_hit(dmg: int):
 			current_sprite_health = health_per_sprite
 		# once all barriers destroyed, they won
 		else:
-			Signals.emit_signal("conquest_won")
+			Signals.emit_signal("round_won")
 			return

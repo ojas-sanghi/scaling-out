@@ -7,8 +7,7 @@ var dino_dead := false
 
 var dino_name: String
 
-var dino_variations: Array
-var dino_color: String
+var dino_variation: int
 
 var dino_health: int
 var animated_health: int
@@ -17,7 +16,8 @@ var dino_dmg: int
 var dino_dodge_chance: int
 var dino_defense: float
 
-var dino_gene_cost: int
+var dino_cred_cost: int
+var dino_unlock_cost: Array
 var special_gene_type: String
 
 var deploy_delay: int
@@ -29,48 +29,39 @@ var spawning_in := true
 var path_follow_time := 1
 onready var path = $PathFollowTween
 
-func spawn_delay():
-	set_physics_process(false)
-	set_process(false)
+#note:
+# for animation, we use AnimationPlayer for walk
+# and AnimatedSprite for death
 
+func spawn_delay():
 	$HealthBar.hide()
+	$AnimatedSprite.rotation_degrees = -90
 
 	randomize()
-	var color_num = randi() % 3
-	dino_color = dino_variations[color_num]
+	dino_variation = randi() % 3 + 1
 
-	$AnimatedSprite.animation = (dino_color + "_walk")
-	$AnimatedSprite.frame = 0
-	$AnimatedSprite.stop()
+	$AnimatedSprite.animation = str(dino_variation) + "walk"
 
 	var tween = $TransparencyTween
 	tween.interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), spawn_delay)
 	tween.start()
 	yield(tween, "tween_completed")
 
-	$AnimatedSprite.play()
-	$HealthBar.show()
 	spawning_in = false
-	Signals.emit_signal("dino_fully_spawned")
-	set_physics_process(true)
-	set_process(true)
 
+	Signals.emit_signal("dino_fully_spawned")
 
 func _ready() -> void:
-	# set the stats
-	calculate_upgrades()
 
 	# animate the spawn delay
 	yield(spawn_delay(), "completed")
 
 	bar.max_value = dino_health
 	bar.value = dino_health
-
-	$AnimatedSprite.rotation_degrees = -90
-	$CollisionShape2D.rotation_degrees = -90
+	$HealthBar.show()
 
 	$ThumpSound.play()
-	$AnimatedSprite.play(dino_color + "_walk")
+	$AnimationPlayer.play(str(dino_variation) + "walk")
 
 	path.interpolate_property(
 		get_parent(), "unit_offset", 0, 1, path_follow_time, path.TRANS_LINEAR, path.EASE_IN_OUT
@@ -97,13 +88,19 @@ func kill_dino():
 	remove_from_group("dinos")
 	Signals.emit_signal("dino_died", dino_name)
 
-	$CollisionShape2D.set_deferred("disabled", true)
+	$CollisionPolygon2D.set_deferred("disabled", true)
 	path.set_active(false)
 
 	randomize()
 	var num = randi() % 2
+	if num == 0:
+		$AnimatedSprite.flip_h = true
+	else:
+		$AnimatedSprite.flip_h = false
+
 	$DeathSound.play()
-	$AnimatedSprite.play(dino_color + "_death" + str(num))
+	$AnimatedSprite.play(str(dino_variation) + "death")
+
 	var tween = $TransparencyTween
 	tween.interpolate_property(self, "modulate", Color(1, 1, 1, 1), Color(1, 1, 1, 0), 5)
 	tween.start()
@@ -113,7 +110,6 @@ func kill_dino():
 	queue_free()
 
 	CombatInfo.dinos_died += 1
-
 	if CombatInfo.dinos_died == CombatInfo.max_dinos:
 		Signals.emit_signal("conquest_lost")
 
@@ -142,7 +138,7 @@ func update_health(dmg_taken):
 func attack_blockade():
 	path.set_active(false)
 	# play attacking animations
-	$AnimatedSprite.stop()
+	$AnimationPlayer.stop()
 
 	$AttackingTimer.start()
 

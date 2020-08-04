@@ -2,13 +2,45 @@ extends Node2D
 
 var active_id := 0
 
+var current_num = 1
+var selector_sprite = preload("res://GUI/combat_selector/SelectorSprite.tscn")
 
 func _ready() -> void:
 	Signals.connect("dino_fully_spawned", self, "_on_dino_fully_spawned")
 	Signals.connect("dino_died", self, "_on_dino_died")
 
-	$'1'.show_particles()
+	setup_selectors()
 
+func setup_selectors():
+	for icon in DinoInfo.dino_icons:
+		var new_selector = selector_sprite.instance()
+		new_selector.sprite = icon
+		new_selector.text = str(current_num)
+
+		$HBoxContainer.add_child(new_selector)
+		current_num += 1
+
+	for ability in DinoInfo.dino_ability_icons:
+		if typeof(ability) == TYPE_STRING:
+			continue
+
+		# find the filename of the image, which is also the name of the ability itself
+		var file_name = ability.resource_path
+		var ability_start = file_name.find_last("/")
+		var ability_end = file_name.find(".png")
+		var ability_string = file_name.substr(ability_start, ability_end)
+
+		var new_selector = selector_sprite.instance()
+		new_selector.sprite = ability
+		new_selector.text = str(current_num)
+		new_selector.ability_mode = ability_string
+
+		new_selector.custom_scale = Vector2(0.07, 0.07)
+
+		$HBoxContainer.add_child(new_selector)
+		current_num += 1
+
+	$HBoxContainer.get_children()[0].show_particles()
 
 func disable_all_other_particles(except: int):
 	for n in get_children():
@@ -33,6 +65,11 @@ func _input(event: InputEvent) -> void:
 		disable_all_other_particles(3)
 
 	elif event.is_action_pressed("dino_4"):
+		active_id = 3
+		$'4'.show_particles()
+		disable_all_other_particles(4)
+
+	elif event.is_action_pressed("dino_5"):
 		if not DinoInfo.has_special("tanky") or CombatInfo.shot_ice:
 			return
 
@@ -43,7 +80,7 @@ func _input(event: InputEvent) -> void:
 				CombatInfo.shot_ice = true
 				return
 
-	elif event.is_action_pressed("dino_5"):
+	elif event.is_action_pressed("dino_6"):
 		if not DinoInfo.has_special("warrior") or CombatInfo.shot_fire:
 			return
 

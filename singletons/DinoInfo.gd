@@ -4,6 +4,21 @@ var dino_list := [
 	preload("res://actors/dinos/MegaDino.tscn"),
 	preload("res://actors/dinos/TankyDino.tscn"),
 	preload("res://actors/dinos/WarriorDino.tscn"),
+	preload("res://actors/dinos/GatorGecko.tscn"),
+]
+
+var dino_icons := [
+	preload("res://assets/dinos/mega_dino/mega_dino.png"),
+	preload("res://assets/dinos/tanky_dino/Armored_Dino_ICON.png"),
+	preload("res://assets/dinos/warrior_dino/Tribal_Dino_icon.png"),
+	preload("res://assets/dinos/gator_gecko/gater_gecko_icon.png"),
+]
+
+var dino_ability_icons = [
+	"",
+	preload("res://assets/dinos/misc/ice.png"),
+	preload("res://assets/dinos/misc/fire.png"),
+	""
 ]
 
 var upgrades_info := {
@@ -36,7 +51,17 @@ var upgrades_info := {
 		"dmg": [[5, 5.5, 6, 7, 8, 8.5, 9.2, 9.9, 10.6, 11.5], 1],
 		"speed": [[60, 65, 70, 79, 86, 95, 105, 110], 1],
 		"special": [[""], 0]
-	}
+	},
+	"gator":
+	{
+		"hp": [[45, 50, 60], 1],
+		"delay": [[2, 1.75, 1.5], 1],
+		"def": [[1, 0.99, 0.98, 0.95, 0.93], 1],
+		"dodge": [[0], 0],
+		"dmg": [[5, 5.5, 6, 7, 8, 8.5, 9.2, 9.9, 10.6, 11.5], 1],
+		"speed": [[60, 65, 70, 79, 86, 95, 105, 110], 1],
+		"special": [[""], 0]
+	},
 }
 
 var upgrades_cost = {
@@ -59,6 +84,15 @@ var upgrades_cost = {
 		"special": [[50, 100, 150], [30, 50, 80]],
 	},
 	"warrior": {
+		"hp": [[50, 100, 150], [30, 50, 80]],
+		"delay": [[50, 100, 150], [30, 50, 80]],
+		"def": [[50, 100, 150], [30, 50, 80]],
+		"dodge": [[50, 100, 150], [30, 50, 80]],
+		"dmg": [[50, 100, 150], [30, 50, 80]],
+		"speed": [[50, 100, 150], [30, 50, 80]],
+		"special": [[50, 100, 150], [30, 50, 80]],
+	},
+	"gator": {
 		"hp": [[50, 100, 150], [30, 50, 80]],
 		"delay": [[50, 100, 150], [30, 50, 80]],
 		"def": [[50, 100, 150], [30, 50, 80]],
