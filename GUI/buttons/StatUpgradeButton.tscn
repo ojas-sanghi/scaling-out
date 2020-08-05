@@ -91,9 +91,9 @@ playback/repeat = true
 
 [node name="CostIndicator" parent="." instance=ExtResource( 6 )]
 margin_left = 61.9443
-margin_top = -23.1755
+margin_top = -29.3107
 margin_right = 261.944
-margin_bottom = 26.8245
+margin_bottom = 20.6893
 parent_node = NodePath("..")
 [connection signal="button_down" from="." to="." method="_on_UpgradeButton_button_down"]
 [connection signal="button_up" from="." to="." method="_on_UpgradeButton_button_up"]

@@ -8,6 +8,8 @@ export (
 	"play",
 	"retry combat",
 	"retry stealth",
+	"ice",
+	"fire",
 	"return home screen",
 	"return upgrades"
 ) var button_mode = "EXCEPTION"
@@ -39,6 +41,10 @@ func set_button_text() -> void:
 		"return upgrades":
 			text = "Return to Upgrades"
 			self.grab_focus()
+		"ice":
+			text = "Ice Stealth"
+		"fire":
+			text = "Fire Stealth"
 
 
 func _on_Button_pressed() -> void:
@@ -59,6 +65,10 @@ func _on_Button_pressed() -> void:
 			SceneChanger.go_to_scene("res://GUI/screens/HomeScreen.tscn")
 		"return upgrades":
 			SceneChanger.go_to_scene("res://GUI/screens/UpgradeScreen.tscn")
+		"ice":
+			SceneChanger.go_to_scene("res://stealth/StealthIce.tscn")
+		"fire":
+			SceneChanger.go_to_scene("res://stealth/StealthFire.tscn")
 
 
 func _process(delta: float) -> void:

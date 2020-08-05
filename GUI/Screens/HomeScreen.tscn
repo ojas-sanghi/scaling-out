@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/homeButtons/Lab_Table.png" type="Texture" id=1]
 [ext_resource path="res://assets/music/Upgrade screen and menu.wav" type="AudioStream" id=2]
@@ -7,8 +7,7 @@
 [ext_resource path="res://assets/homeButtons/map-normal.png" type="Texture" id=5]
 [ext_resource path="res://assets/homeButtons/map-out.png" type="Texture" id=6]
 [ext_resource path="res://assets/homeButtons/flask-normal.png" type="Texture" id=7]
-
-
+[ext_resource path="res://GUI/buttons/Button.tscn" type="PackedScene" id=8]
 
 [node name="HomeScreen" type="Control"]
 anchor_right = 1.0
@@ -64,5 +63,21 @@ text = "View upgrades menu"
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 autoplay = true
+
+[node name="Button" parent="." instance=ExtResource( 8 )]
+margin_left = -142.498
+margin_top = -168.825
+margin_right = 163.502
+margin_bottom = 3.1748
+text = "Ice Stealth"
+button_mode = "ice"
+
+[node name="Button2" parent="." instance=ExtResource( 8 )]
+margin_left = -142.498
+margin_top = 89.9212
+margin_right = 163.502
+margin_bottom = 261.921
+text = "Fire Stealth"
+button_mode = "fire"
 
 [editable path="Flask"]

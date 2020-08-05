@@ -6,6 +6,11 @@ export (String, "EXCEPTION", "dmg", "def", "speed", "ice", "fire", "hp", "delay"
 var max_squares
 var first_run = true
 
+# this is checked by the CostIndicator
+# used to wait for the info to be set and for the button_mode to be "special" if needed
+# once this is true, the cost indicator retrieves the info needed
+var info_set := false
+
 var money_cost: int
 var gene_cost: int
 
@@ -56,6 +61,7 @@ func set_button_info():
 			$Img.texture = preload("res://assets/abilities/fire.png")
 
 			button_mode = "special"
+	info_set = true
 
 	$Container/StatNum.text = str(DinoInfo.get_upgrade_stat(ShopInfo.shop_dino, button_mode))
 
@@ -139,12 +145,3 @@ func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
 
 	stop_upgrading()
 	do_everything()
-
-
-#########
-
-#func _on_UpgradeButton_mouse_entered() -> void:
-#	$CostDialog.show()
-#
-#func _on_UpgradeButton_mouse_exited() -> void:
-#	$CostDialog.hide()

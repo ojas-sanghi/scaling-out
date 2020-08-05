@@ -10,9 +10,11 @@ var gene_cost
 func _ready() -> void:
 	Signals.connect("dino_upgraded", self, "set_upgrade_cost")
 
-	button_mode = get_node(parent_node).button_mode
-
-	set_upgrade_cost()
+func _process(delta: float) -> void:
+	if get_node(parent_node).info_set:
+		button_mode = get_node(parent_node).button_mode
+		set_upgrade_cost()
+	set_process(false)
 
 func set_upgrade_cost():
 	if DinoInfo.get_num_upgrade(ShopInfo.shop_dino, button_mode) == DinoInfo.get_max_upgrade(ShopInfo.shop_dino, button_mode):
