@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_Bullet_area_entered(dino: Area2D) -> void:
 	dino.update_health(bullet_dmg)
+	get_parent().remove_bullet(self)
 	queue_free()
 
 
