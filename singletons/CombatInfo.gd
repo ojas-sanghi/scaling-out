@@ -16,7 +16,13 @@ var selector_timer_list: Array
 var shot_ice: bool
 var shot_fire: bool
 
-var creds: int
+# num of army people eliminated; you get a cred bonus for each
+var num_army_elim := 0
+
+var current_round = 3
+var max_rounds = 3
+
+var creds := 100
 
 
 func _ready() -> void:
@@ -24,8 +30,7 @@ func _ready() -> void:
 
 	Signals.connect("dino_deployed", self, "_on_dino_deployed")
 
-
-func reset(_max_dinos := 10) -> void:
+func reset(_max_dinos := 10, _max_rounds := 3) -> void:
 	max_dinos = _max_dinos
 	dinos_remaining = _max_dinos
 	dinos_died = 0
@@ -38,8 +43,9 @@ func reset(_max_dinos := 10) -> void:
 	shot_ice = false
 	shot_fire = false
 
-	creds = 100
+	num_army_elim = 0
 
+	max_rounds = _max_rounds
 
 func _on_dino_deployed():
 	# add to list of dinos just deployed
@@ -54,7 +60,6 @@ func _on_dino_deployed():
 
 	dinos_deploying_timer.connect("timeout", self, "_on_dinos_deploying_timer_timeout", [dino_id])
 	dinos_deploying_timer.start(delay)
-
 
 func _on_dinos_deploying_timer_timeout(id):
 	# once the delay is over, let the dino be deployed again

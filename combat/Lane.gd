@@ -1,6 +1,14 @@
 extends Path2D
 
+export var lane_img: Texture
+
 var spawn_point = Vector2(70, 10)
+
+var new_children = []
+
+func _ready() -> void:
+	$Sprite.texture = lane_img
+	Signals.connect("new_round", self, "_on_new_round")
 
 func _on_Button_pressed() -> void:
 	if CombatInfo.dinos_remaining <= 0:
@@ -15,6 +23,7 @@ func _on_Button_pressed() -> void:
 	path_follow.loop = false
 	path_follow.lookahead = 250
 	add_child(path_follow)
+	new_children.append(path_follow)
 
 	# make a new dinosaur
 	var dino_node = DinoInfo.dino_list[CombatInfo.dino_id]
@@ -28,3 +37,9 @@ func _on_Button_pressed() -> void:
 	# set dino's position
 	dino_node.position = spawn_point
 	Signals.emit_signal("dino_deployed")
+
+func _on_new_round():
+	for child in new_children:
+		child.queue_free()
+	new_children.clear()
+

@@ -3,6 +3,7 @@ extends Control
 
 func _ready() -> void:
 	Signals.connect("dino_deployed", self, "_on_dino_deployed")
+	Signals.connect("new_round", self, "update_text")
 	update_text()
 
 

@@ -11,7 +11,11 @@ export (
 	"ice",
 	"fire",
 	"return home screen",
-	"return upgrades"
+	"return upgrades",
+	"plus dino",
+	"minus dino",
+	"buy dinos",
+	"continue conquest"
 ) var button_mode = "EXCEPTION"
 
 
@@ -45,6 +49,14 @@ func set_button_text() -> void:
 			text = "Ice Stealth"
 		"fire":
 			text = "Fire Stealth"
+		"plus dino":
+			text = "+"
+		"minus dino":
+			text = "-"
+		"buy dinos":
+			text = "Purchase"
+		"continue conquest":
+			text = "Continue Conquest"
 
 
 func _on_Button_pressed() -> void:
@@ -69,6 +81,10 @@ func _on_Button_pressed() -> void:
 			SceneChanger.go_to_scene("res://stealth/StealthIce.tscn")
 		"fire":
 			SceneChanger.go_to_scene("res://stealth/StealthFire.tscn")
+		# nothing for plus/minus: that is handled in that scene
+		# same for buy dinos
+		"continue conquest":
+			Signals.emit_signal("new_round")
 
 
 func _process(delta: float) -> void:

@@ -1,5 +1,7 @@
 extends Node
 
+var dino_cred_cost = 30
+
 var dino_list := [
 	preload("res://actors/dinos/MegaDino.tscn"),
 	preload("res://actors/dinos/TankyDino.tscn"),
@@ -44,12 +46,12 @@ var upgrades_info := {
 	},
 	"warrior":
 	{
-		"hp": [[45, 50, 60], 1],
-		"delay": [[2, 1.75, 1.5], 1],
+		"hp": [[450, 50, 60], 1],
+		"delay": [[0.1, 1.75, 1.5], 1],
 		"def": [[1, 0.99, 0.98, 0.95, 0.93], 1],
 		"dodge": [[0], 0],
-		"dmg": [[5, 5.5, 6, 7, 8, 8.5, 9.2, 9.9, 10.6, 11.5], 1],
-		"speed": [[60, 65, 70, 79, 86, 95, 105, 110], 1],
+		"dmg": [[500, 5.5, 6, 7, 8, 8.5, 9.2, 9.9, 10.6, 11.5], 1],
+		"speed": [[600, 65, 70, 79, 86, 95, 105, 110], 1],
 		"special": [[""], 0]
 	},
 	"gator":

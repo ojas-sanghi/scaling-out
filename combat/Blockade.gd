@@ -2,15 +2,27 @@ extends Area2D
 
 var health := 150.0
 
-onready var num_sprites = $Sprites.get_child_count()
-onready var health_per_sprite = health / num_sprites
+var num_sprites
+var health_per_sprite
 
-var current_sprite_num = 0
-onready var current_sprite = $Sprites.get_children()[current_sprite_num]
-onready var current_sprite_health = health_per_sprite
+var current_sprite_num
+var current_sprite
+var current_sprite_health
 
 func _ready() -> void:
 	Signals.connect("blockade_hit", self, "_on_blockade_hit")
+	Signals.connect("new_round", self, "_on_new_round")
+
+	reset()
+
+func reset():
+	health = 150
+	num_sprites = $Sprites.get_child_count()
+	health_per_sprite = health / num_sprites
+
+	current_sprite_num = 0
+	current_sprite = $Sprites.get_children()[current_sprite_num]
+	current_sprite_health = health_per_sprite
 
 func _on_blockade_hit(dmg: int):
 	health -= dmg
@@ -28,7 +40,12 @@ func _on_blockade_hit(dmg: int):
 		if current_sprite_num < num_sprites:
 			current_sprite = $Sprites.get_children()[current_sprite_num]
 			current_sprite_health = health_per_sprite
-		# once all barriers destroyed, they won
 		else:
 			Signals.emit_signal("round_won")
 			return
+
+func _on_new_round():
+	for sprite in $Sprites.get_children():
+		sprite.modulate = Color(1, 1, 1, 1)
+		sprite.visible = true
+	reset()

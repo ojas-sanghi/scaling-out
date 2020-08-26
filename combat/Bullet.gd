@@ -28,5 +28,6 @@ func _on_Bullet_area_entered(dino: Area2D) -> void:
 
 
 func _on_ExistenceTimer_timeout() -> void:
+	get_parent().remove_bullet(self)
 	queue_free()
 

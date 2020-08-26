@@ -6,7 +6,6 @@ func _init() -> void:
 
 	deploy_delay = 2
 
-	dino_cred_cost = 15
 	dino_unlock_cost = [25, 50]
 	special_gene_type = "ice"
 

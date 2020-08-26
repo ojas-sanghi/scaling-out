@@ -16,7 +16,6 @@ var dino_dmg: int
 var dino_dodge_chance: int
 var dino_defense: float
 
-var dino_cred_cost: int
 var dino_unlock_cost: Array
 var special_gene_type: String
 
