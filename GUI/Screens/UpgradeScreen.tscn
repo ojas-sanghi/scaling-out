@@ -88,32 +88,32 @@ __meta__ = {
 }
 
 [node name="UpgradeButton" parent="." instance=ExtResource( 16 )]
-margin_left = 102.702
-margin_top = 322.169
-margin_right = 702.702
-margin_bottom = 507.169
+margin_left = 103.0
+margin_top = 322.0
+margin_right = 103.96
+margin_bottom = 322.32
 button_mode = "def"
 
 [node name="UpgradeButton2" parent="." instance=ExtResource( 16 )]
-margin_left = 26.8859
-margin_top = 437.169
-margin_right = 626.886
-margin_bottom = 622.169
+margin_left = 27.0
+margin_top = 437.0
+margin_right = 27.96
+margin_bottom = 437.32
 button_mode = "dmg"
 
 [node name="UpgradeButton3" parent="." instance=ExtResource( 16 )]
-margin_left = 105.567
-margin_top = 552.169
-margin_right = 705.567
-margin_bottom = 737.169
+margin_left = 106.0
+margin_top = 552.0
+margin_right = 106.96
+margin_bottom = 552.32
 button_mode = "speed"
 
 [node name="UpgradeButton4" parent="." instance=ExtResource( 16 )]
-margin_left = 26.0406
-margin_top = 667.169
-margin_right = 626.041
-margin_bottom = 852.169
-button_mode = "special"
+margin_left = 26.0
+margin_top = 667.0
+margin_right = 26.96
+margin_bottom = 667.32
+button_mode = "def"
 
 [node name="SpecialUpgrade" parent="." instance=ExtResource( 15 )]
 margin_left = 1328.72

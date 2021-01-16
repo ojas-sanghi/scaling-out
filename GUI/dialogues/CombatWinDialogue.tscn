@@ -4,7 +4,6 @@
 [ext_resource path="res://assets/fonts/Font100.tres" type="DynamicFont" id=2]
 [ext_resource path="res://GUI/buttons/Button.tscn" type="PackedScene" id=3]
 
-
 [node name="CombatWinDialogue" type="Control"]
 pause_mode = 2
 anchor_right = 1.0

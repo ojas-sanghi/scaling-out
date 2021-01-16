@@ -20,9 +20,11 @@ func set_button_info():
 			$Container/Stat.text = "s"
 
 			$Img.texture = preload("res://assets/icons/timer.png")
+	info_set = true
 
 	$Container/StatNum.text = str(DinoInfo.get_upgrade_stat(ShopInfo.shop_dino, button_mode))
 
 	var cost = DinoInfo.get_next_upgrade_cost(ShopInfo.shop_dino, button_mode)
 	money_cost = cost[0]
 	gene_cost = cost[1]
+
