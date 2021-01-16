@@ -4,7 +4,7 @@ extends GeneralDino
 func _init() -> void:
 	dino_name = "warrior"
 
-	deploy_delay = 2
+	deploy_delay_value = 2
 
 	dino_unlock_cost = [50, 60]
 	special_gene_type = "fire"

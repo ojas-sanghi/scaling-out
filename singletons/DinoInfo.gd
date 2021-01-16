@@ -149,7 +149,7 @@ func check_max_upgrade(dino: String, upgrade: String) -> bool:
 
 func get_dino_timer_delay():
 	# find the delay based on the dino
-	return get_dino_property("deploy_delay")
+	return get_dino_property("deploy_delay_value")
 
 
 func get_dino_property(prop: String):

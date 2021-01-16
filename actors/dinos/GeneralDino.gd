@@ -19,8 +19,8 @@ var dino_defense: float
 var dino_unlock_cost: Array
 var special_gene_type: String
 
-var deploy_delay: int
-var spawn_delay: int
+var deploy_delay_value: int
+var spawn_delay_value: int
 
 var spawning_in := true
 
@@ -42,7 +42,7 @@ func spawn_delay():
 	$AnimatedSprite.animation = str(dino_variation) + "walk"
 
 	var tween = $TransparencyTween
-	tween.interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), spawn_delay)
+	tween.interpolate_property(self, "modulate", Color(1, 1, 1, 0), Color(1, 1, 1, 1), spawn_delay_value)
 	tween.start()
 	yield(tween, "tween_completed")
 
@@ -72,14 +72,14 @@ func _ready() -> void:
 func calculate_upgrades():
 	dino_health = DinoInfo.get_upgrade_stat(dino_name, "hp")
 	animated_health = dino_health
-	spawn_delay = DinoInfo.get_upgrade_stat(dino_name, "delay")
+	spawn_delay_value = DinoInfo.get_upgrade_stat(dino_name, "delay")
 
 	dino_defense = DinoInfo.get_upgrade_stat(dino_name, "def")
 	dino_dodge_chance = DinoInfo.get_upgrade_stat(dino_name, "dodge")
 	dino_dmg = DinoInfo.get_upgrade_stat(dino_name, "dmg")
 	dino_speed = Vector2(DinoInfo.get_upgrade_stat(dino_name, "speed"), 0)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	bar.value = animated_health
 
 
@@ -117,7 +117,7 @@ func update_health(dmg_taken):
 	dmg_taken *= dino_defense
 
 	dino_health -= dmg_taken
-	$Tween.interpolate_property(
+	$HealthTween.interpolate_property(
 		self,
 		"animated_health",
 		animated_health,
@@ -126,8 +126,8 @@ func update_health(dmg_taken):
 		Tween.TRANS_LINEAR,
 		Tween.EASE_IN
 	)
-	if not $Tween.is_active():
-		$Tween.start()
+	if not $HealthTween.is_active():
+		$HealthTween.start()
 
 	if dino_health <= 0:
 		if not dino_dead:

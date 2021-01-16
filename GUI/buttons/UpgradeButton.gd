@@ -20,8 +20,6 @@ onready var container_height = $Container/Squares.rect_size.y
 func _ready() -> void:
 	assert(button_mode != "EXCEPTION")
 
-	Signals.connect("dino_upgraded", self, "set_upgrade_cost")
-
 	do_everything()
 
 
@@ -136,7 +134,7 @@ func _on_UpgradeButton_button_up() -> void:
 	stop_upgrading()
 
 
-func _on_Tween_tween_completed(object: Object, key: NodePath) -> void:
+func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	ShopInfo.money -= money_cost
 	ShopInfo.genes -= gene_cost
 
