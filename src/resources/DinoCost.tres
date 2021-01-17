@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+
+const cost = preload(\"res://Cost.gd\")
+
+export(Resource) var hp_cost
+export(Resource) var delay_cost
+export(Resource) var def_cost
+export(Resource) var dodge_cost
+export(Resource) var dmg_cost
+export(Resource) var speed_cost
+export(Resource) var special_cost
+
+"
+
+[resource]
+script = SubResource( 1 )

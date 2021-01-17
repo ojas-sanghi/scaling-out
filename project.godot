@@ -9,18 +9,42 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Resource",
+"class": "Cost",
+"language": "GDScript",
+"path": "res://src/resources/Cost.gd"
+}, {
+"base": "Resource",
+"class": "DinoCost",
+"language": "GDScript",
+"path": "res://src/resources/DinoCost.gd"
+}, {
 "base": "Area2D",
 "class": "GeneralDino",
 "language": "GDScript",
-"path": "res://actors/dinos/GeneralDino.gd"
+"path": "res://src/actors/dinos/GeneralDino.gd"
+}, {
+"base": "Resource",
+"class": "SpecialStat",
+"language": "GDScript",
+"path": "res://src/resources/SpecialStat.gd"
+}, {
+"base": "Resource",
+"class": "Stats",
+"language": "GDScript",
+"path": "res://src/resources/Stats.gd"
 }, {
 "base": "Button",
 "class": "UpgradeButton",
 "language": "GDScript",
-"path": "res://GUI/buttons/UpgradeButton.gd"
+"path": "res://src/GUI/buttons/UpgradeButton.gd"
 } ]
 _global_script_class_icons={
+"Cost": "",
+"DinoCost": "",
 "GeneralDino": "res://assets/dinos/mega_dino/mega_dino.png",
+"SpecialStat": "",
+"Stats": "",
 "UpgradeButton": ""
 }
 
@@ -30,17 +54,21 @@ config/name="Scaling Out"
 config/description="Project for DevFest 2020 Game Jam.
 
 Go on undercover missions, upgrade your dinos, and destroy some cities!"
-run/main_scene="res://GUI/screens/HomeScreen.tscn"
+run/main_scene="res://src/GUI/screens/HomeScreen.tscn"
 config/icon="res://assets/dinos/mega_dino/mega_dino.png"
 config/windows_native_icon="res://assets/dinos/mega_dino.ico"
 
+[audio]
+
+default_bus_layout="res://src/default_bus_layout.tres"
+
 [autoload]
 
-SceneChanger="*res://singletons/SceneChanger.tscn"
-DinoInfo="*res://singletons/DinoInfo.gd"
-CombatInfo="*res://singletons/CombatInfo.gd"
-Signals="*res://singletons/Signals.gd"
-ShopInfo="*res://singletons/ShopInfo.gd"
+SceneChanger="*res://src/singletons/SceneChanger.tscn"
+DinoInfo="*res://src/singletons/DinoInfo.gd"
+CombatInfo="*res://src/singletons/CombatInfo.gd"
+Signals="*res://src/singletons/Signals.gd"
+ShopInfo="*res://src/singletons/ShopInfo.gd"
 
 [debug]
 
@@ -133,7 +161,3 @@ dino_6={
 2d_physics/layer_9="fire-proj"
 2d_physics/layer_10="coin"
 2d_physics/layer_11="tiles"
-
-[rendering]
-
-environment/default_environment="res://default_env.tres"

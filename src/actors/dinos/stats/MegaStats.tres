@@ -1,0 +1,107 @@
+[gd_resource type="Resource" load_steps=21 format=2]
+
+[ext_resource path="res://src/resources/SpecialStat.gd" type="Script" id=1]
+[ext_resource path="res://src/resources/DinoCost.gd" type="Script" id=2]
+[ext_resource path="res://src/resources/Stats.gd" type="Script" id=3]
+[ext_resource path="res://src/resources/Cost.gd" type="Script" id=4]
+
+[sub_resource type="Resource" id=1]
+script = ExtResource( 4 )
+gold = [ 50, 100, 150 ]
+genes = [ 30, 50, 80 ]
+
+[sub_resource type="Resource" id=2]
+script = ExtResource( 4 )
+gold = [ 50, 100, 150 ]
+genes = [ 30, 50, 80 ]
+
+[sub_resource type="Resource" id=3]
+script = ExtResource( 4 )
+gold = [ 50, 100, 150 ]
+genes = [ 30, 50, 80 ]
+
+[sub_resource type="Resource" id=4]
+script = ExtResource( 4 )
+gold = [ 50, 100, 150 ]
+genes = [ 30, 50, 80 ]
+
+[sub_resource type="Resource" id=5]
+script = ExtResource( 4 )
+gold = [ 50, 100, 150 ]
+genes = [ 30, 50, 80 ]
+
+[sub_resource type="Resource" id=6]
+script = ExtResource( 4 )
+gold = [ 50, 100, 150 ]
+genes = [ 30, 50, 80 ]
+
+[sub_resource type="Resource" id=7]
+script = ExtResource( 4 )
+gold = [ 50, 100, 150 ]
+genes = [ 30, 50, 80 ]
+
+[sub_resource type="Resource" id=8]
+script = ExtResource( 2 )
+hp_cost = SubResource( 5 )
+delay_cost = SubResource( 2 )
+def_cost = SubResource( 1 )
+dodge_cost = SubResource( 4 )
+dmg_cost = SubResource( 3 )
+speed_cost = SubResource( 7 )
+special_cost = SubResource( 6 )
+
+[sub_resource type="Resource" id=9]
+script = ExtResource( 3 )
+stats = [ 1.0, 0.98, 0.95, 0.92, 0.87 ]
+
+[sub_resource type="Resource" id=10]
+script = ExtResource( 3 )
+stats = [ 2.0, 1.75, 1.5 ]
+
+[sub_resource type="Resource" id=11]
+script = ExtResource( 3 )
+stats = [ 2.0, 3.5, 5.0, 6.0, 7.5, 8.0, 9.0, 10.0, 10.5, 11.0 ]
+
+[sub_resource type="Resource" id=12]
+script = ExtResource( 3 )
+stats = [  ]
+
+[sub_resource type="Resource" id=13]
+script = ExtResource( 3 )
+stats = [ 100.0, 135.0, 150.0 ]
+
+[sub_resource type="GDScript" id=14]
+script/source = "extends Resource
+
+export var name: String
+
+export(Resource) var health
+export(Resource) var delay
+export(Resource) var def
+export(Resource) var dodge
+export(Resource) var dmg
+export(Resource) var speed
+export(Resource) var special
+
+export(Resource) var costs
+"
+
+[sub_resource type="Resource" id=15]
+script = ExtResource( 1 )
+special = ""
+
+[sub_resource type="Resource" id=16]
+script = ExtResource( 3 )
+stats = [ 50.0, 55.0, 60.0, 66.0, 70.0, 77.0, 84.0, 88.0 ]
+
+[resource]
+script = SubResource( 14 )
+name = "Mega"
+health = SubResource( 13 )
+delay = SubResource( 10 )
+def = SubResource( 9 )
+dodge = SubResource( 12 )
+dmg = SubResource( 11 )
+speed = SubResource( 16 )
+special = SubResource( 15 )
+costs = SubResource( 8 )

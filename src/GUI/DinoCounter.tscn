@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/GUI/DinoCounter.gd" type="Script" id=2]
+
+
+[node name="DinoCounter" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -1459.0
+margin_bottom = -1014.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 426.0
+margin_bottom = 46.0
+custom_fonts/font = ExtResource( 1 )
+text = "Remaining dinos: "
+__meta__ = {
+"_edit_use_anchors_": false
+}

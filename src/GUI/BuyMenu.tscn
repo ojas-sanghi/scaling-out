@@ -1,0 +1,198 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/GUI/infos/CredCounter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/Font100.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/Font50.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/GUI/BuyMenu.gd" type="Script" id=4]
+[ext_resource path="res://src/GUI/buttons/Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/Font35.tres" type="DynamicFont" id=6]
+[ext_resource path="res://src/GUI/themes/PlusMinusButtonTheme.tres" type="Theme" id=7]
+[ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=8]
+[ext_resource path="res://assets/empty.png" type="Texture" id=9]
+
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color( 0.980392, 0.980392, 0.980392, 1 )
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="Theme" id=2]
+default_font = ExtResource( 8 )
+LineEdit/colors/clear_button_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
+LineEdit/colors/cursor_color = Color( 0.94, 0.94, 0.94, 1 )
+LineEdit/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+LineEdit/colors/font_color_selected = Color( 0, 0, 0, 1 )
+LineEdit/colors/font_color_uneditable = Color( 0.88, 0.88, 0.88, 0.5 )
+LineEdit/colors/selection_color = Color( 0.49, 0.49, 0.49, 1 )
+LineEdit/constants/minimum_spaces = 12
+LineEdit/fonts/font = null
+LineEdit/icons/clear = null
+LineEdit/styles/focus = null
+LineEdit/styles/normal = SubResource( 1 )
+LineEdit/styles/read_only = null
+SpinBox/icons/updown = null
+
+[node name="BuyMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="MenuBG" type="ColorRect" parent="."]
+margin_left = 291.602
+margin_top = 133.358
+margin_right = 1593.6
+margin_bottom = 962.358
+color = Color( 0.0392157, 0.356863, 0.32549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CredCounter" parent="." instance=ExtResource( 1 )]
+margin_left = 1393.14
+margin_top = 133.358
+margin_right = 1305.3
+margin_bottom = 105.038
+
+[node name="Labels" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Labels"]
+margin_left = 631.786
+margin_top = 193.663
+margin_right = 1268.79
+margin_bottom = 306.663
+custom_fonts/font = ExtResource( 2 )
+text = "ROUND WIN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinBonus" type="Label" parent="Labels"]
+margin_left = 442.579
+margin_top = 345.542
+margin_right = 1032.58
+margin_bottom = 458.542
+custom_fonts/font = ExtResource( 3 )
+text = "Round win bonus: +150"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArmyElimBonus" type="Label" parent="Labels"]
+margin_left = 442.579
+margin_top = 450.194
+margin_right = 1264.58
+margin_bottom = 563.194
+custom_fonts/font = ExtResource( 3 )
+text = "Army elimination bonus: +50 x 5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Buy" type="Control" parent="."]
+margin_left = 825.0
+margin_top = 622.0
+margin_right = 1071.0
+margin_bottom = 736.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BuyDino" type="Label" parent="Buy"]
+margin_left = -37.5857
+margin_top = -57.4689
+margin_right = 289.414
+margin_bottom = -11.4689
+custom_fonts/font = ExtResource( 8 )
+text = "Buy DinoSpace:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Minus" parent="Buy" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 5.88629
+margin_top = -11.4689
+margin_right = 34.8863
+margin_bottom = 101.531
+theme = ExtResource( 7 )
+text = "-"
+button_mode = "minus dino"
+
+[node name="SpinBox" type="SpinBox" parent="Buy"]
+margin_left = 40.0
+margin_top = -11.4689
+margin_right = 195.0
+margin_bottom = 102.531
+theme = SubResource( 2 )
+custom_icons/updown = ExtResource( 9 )
+rounded = true
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Plus" parent="Buy" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 199.569
+margin_top = -11.4689
+margin_right = 240.569
+margin_bottom = 101.531
+theme = ExtResource( 7 )
+text = "+"
+button_mode = "plus dino"
+
+[node name="Purchase" parent="Buy" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 22.2728
+margin_top = 114.0
+margin_right = 223.273
+margin_bottom = 193.0
+custom_fonts/font = ExtResource( 6 )
+text = "Purchase"
+button_mode = "buy dinos"
+
+[node name="Conquest" parent="." instance=ExtResource( 5 )]
+margin_left = 232.0
+margin_top = 262.0
+margin_right = 609.0
+margin_bottom = 391.0
+custom_fonts/font = ExtResource( 6 )
+text = "Continue Conquest"
+button_mode = "continue conquest"
+[connection signal="visibility_changed" from="." to="." method="_on_BuyMenu_visibility_changed"]
+[connection signal="pressed" from="Buy/Minus" to="." method="_on_Minus_pressed"]
+[connection signal="pressed" from="Buy/Plus" to="." method="_on_Plus_pressed"]
+[connection signal="pressed" from="Buy/Purchase" to="." method="_on_Purchase_pressed"]
+[connection signal="pressed" from="Conquest" to="." method="_on_Conquest_pressed"]

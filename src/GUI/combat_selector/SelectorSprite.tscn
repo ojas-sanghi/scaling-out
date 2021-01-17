@@ -1,0 +1,84 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/GUI/themes/SelectorParticles.tres" type="Material" id=1]
+[ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/GUI/combat_selector/SelectorSprite.gd" type="Script" id=3]
+[ext_resource path="res://assets/dinos/misc/x.png" type="Texture" id=4]
+[ext_resource path="res://src/GUI/combat_selector/DeployTimer.tscn" type="PackedScene" id=5]
+
+[node name="SelectorSprite" type="Control"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.511, 0.519 )
+
+[node name="disabled" type="Sprite" parent="."]
+visible = false
+position = Vector2( 17.1335, 19.5811 )
+scale = Vector2( 0.351647, 0.351647 )
+texture = ExtResource( 4 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 40.2963
+margin_top = -55.4195
+margin_right = 50.2963
+margin_bottom = -26.4195
+custom_fonts/font = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="DeployTimer" parent="." instance=ExtResource( 5 )]
+margin_left = -29.0668
+margin_top = -28.6385
+margin_right = -29.0668
+margin_bottom = -28.6385
+
+[node name="Particles" type="Node2D" parent="."]
+
+[node name="Particles2D" type="Particles2D" parent="Particles"]
+position = Vector2( 2.1, -36.8687 )
+scale = Vector2( 1.5, 1.5 )
+emitting = false
+amount = 50
+process_material = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Particles2D2" type="Particles2D" parent="Particles"]
+position = Vector2( -36.7957, 1.82639 )
+rotation = -1.57079
+scale = Vector2( 1.5, 1.5 )
+emitting = false
+amount = 50
+process_material = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Particles2D3" type="Particles2D" parent="Particles"]
+position = Vector2( 4.80064, 39.6412 )
+rotation = -3.14159
+scale = Vector2( 1.5, 1.5 )
+emitting = false
+amount = 50
+process_material = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Particles2D4" type="Particles2D" parent="Particles"]
+position = Vector2( 38.2038, -0.0643501 )
+rotation = -4.71238
+scale = Vector2( 1.5, 1.5 )
+emitting = false
+amount = 50
+process_material = ExtResource( 1 )
+__meta__ = {
+"_editor_description_": ""
+}

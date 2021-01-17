@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/homescreen.PNG" type="Texture" id=1]
+[ext_resource path="res://src/GUI/buttons/Button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/music/Title Screen.wav" type="AudioStream" id=4]
+
+
+[node name="MainMenuScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" parent="." instance=ExtResource( 3 )]
+margin_left = 587.302
+margin_top = -230.5
+margin_right = 857.302
+margin_bottom = -105.5
+text = "Play"
+button_mode = "play"
+
+[node name="Button2" parent="." instance=ExtResource( 3 )]
+margin_left = 587.302
+margin_top = -66.0009
+margin_right = 852.302
+margin_bottom = 55.9991
+text = "Quit"
+button_mode = "quit"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true

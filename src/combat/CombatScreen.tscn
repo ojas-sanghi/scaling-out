@@ -1,0 +1,120 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://src/combat/Lane.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/GUI/Timer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/GUI/combat_selector/DinoSelector.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/combat/Blockade.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/actors/ArmyDude.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/GUI/DinoCounter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/combat/Combat.gd" type="Script" id=7]
+[ext_resource path="res://assets/combat/lanes/road.png" type="Texture" id=8]
+[ext_resource path="res://assets/music/Battle Music.wav" type="AudioStream" id=9]
+[ext_resource path="res://assets/combat/lanes/opaque-center.png" type="Texture" id=10]
+[ext_resource path="res://src/GUI/BuyMenu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/GUI/RoundCounter.tscn" type="PackedScene" id=12]
+
+[node name="CombatScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lanes" type="Node2D" parent="."]
+position = Vector2( 0, 123 )
+
+[node name="Lane" parent="Lanes" instance=ExtResource( 1 )]
+position = Vector2( 0, -5 )
+lane_img = ExtResource( 8 )
+
+[node name="Lane2" parent="Lanes" instance=ExtResource( 1 )]
+position = Vector2( 0, 269 )
+lane_img = ExtResource( 10 )
+
+[node name="Lane3" parent="Lanes" instance=ExtResource( 1 )]
+position = Vector2( 0, 543 )
+lane_img = ExtResource( 8 )
+
+[node name="Army" type="Node2D" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Army"]
+margin_left = 1400.48
+margin_top = 99.2383
+margin_right = 1922.48
+margin_bottom = 964.238
+color = Color( 0.729412, 0.678431, 0.192157, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Blockade" parent="Army" instance=ExtResource( 4 )]
+position = Vector2( 1390.82, 253.777 )
+
+[node name="Blockade2" parent="Army" instance=ExtResource( 4 )]
+position = Vector2( 1904.53, 903.32 )
+rotation = 1.57079
+
+[node name="ArmyDude" parent="Army" instance=ExtResource( 5 )]
+position = Vector2( 1609.91, 572.872 )
+
+[node name="ArmyDude2" parent="Army" instance=ExtResource( 5 )]
+position = Vector2( 1546.59, 840.102 )
+
+[node name="ArmyDude3" parent="Army" instance=ExtResource( 5 )]
+position = Vector2( 1626.31, 298.962 )
+
+[node name="ArmyDude4" parent="Army" instance=ExtResource( 5 )]
+visible = false
+position = Vector2( 1726.97, 521.097 )
+
+[node name="Selectors" type="Node2D" parent="."]
+position = Vector2( 300, -4.29114 )
+
+[node name="ColorRect" type="ColorRect" parent="Selectors"]
+margin_left = -300.0
+margin_top = 948.0
+margin_right = 1620.0
+margin_bottom = 1085.0
+color = Color( 0.054902, 0.635294, 0.886275, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Selectors"]
+margin_left = -300.0
+margin_top = 5.0
+margin_right = 1620.0
+margin_bottom = 125.0
+color = Color( 0.054902, 0.635294, 0.886275, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DinoSelector" parent="Selectors" instance=ExtResource( 3 )]
+position = Vector2( 203.274, 980 )
+
+[node name="Timer" parent="Selectors" instance=ExtResource( 2 )]
+margin_left = 1159.78
+margin_top = 31.2911
+margin_right = 1159.78
+margin_bottom = 31.2911
+
+[node name="DinoCounter" parent="Selectors" instance=ExtResource( 6 )]
+margin_left = -201.574
+margin_top = 31.2911
+margin_right = -201.574
+margin_bottom = 31.2911
+
+[node name="RoundCounter" parent="Selectors" instance=ExtResource( 12 )]
+margin_left = 326.683
+margin_top = 31.1127
+margin_right = 326.683
+margin_bottom = 31.1127
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+autoplay = true
+
+[node name="BuyMenu" parent="." instance=ExtResource( 11 )]
+visible = false
