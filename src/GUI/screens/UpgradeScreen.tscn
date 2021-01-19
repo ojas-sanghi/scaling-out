@@ -113,7 +113,7 @@ margin_left = 26.0
 margin_top = 667.0
 margin_right = 26.96
 margin_bottom = 667.32
-button_mode = "def"
+button_mode = "ice"
 
 [node name="SpecialUpgrade" parent="." instance=ExtResource( 15 )]
 margin_left = 1328.72
