@@ -5,8 +5,7 @@ onready var bar = $HealthBar
 
 var dino_dead := false
 
-var dino_name: String
-
+var dino_type: int
 var dino_variation: int
 
 var dino_health: int
@@ -70,14 +69,16 @@ func _ready() -> void:
 	Signals.connect("dino_hit", self, "update_health")
 
 func calculate_upgrades():
-	dino_health = DinoInfo.get_upgrade_stat(dino_name, "hp")
-	animated_health = dino_health
-	spawn_delay_value = DinoInfo.get_upgrade_stat(dino_name, "delay")
+	var dino_info = DinoInfo.get_dino(dino_type)
 
-	dino_defense = DinoInfo.get_upgrade_stat(dino_name, "def")
-	dino_dodge_chance = DinoInfo.get_upgrade_stat(dino_name, "dodge")
-	dino_dmg = DinoInfo.get_upgrade_stat(dino_name, "dmg")
-	dino_speed = Vector2(DinoInfo.get_upgrade_stat(dino_name, "speed"), 0)
+	dino_health = dino_info.get_stat(Enums.stats.hp)
+	animated_health = dino_health
+	spawn_delay_value = dino_info.get_stat(Enums.stats.delay)
+
+	dino_defense = dino_info.get_stat(Enums.stats.def)
+	dino_dodge_chance = dino_info.get_stat(Enums.stats.dodge)
+	dino_dmg = dino_info.get_stat(Enums.stats.dmg)
+	dino_speed = Vector2(dino_info.get_stat(Enums.stats.speed), 0)
 
 func _process(_delta: float) -> void:
 	bar.value = animated_health
@@ -85,7 +86,7 @@ func _process(_delta: float) -> void:
 
 func kill_dino():
 	remove_from_group("dinos")
-	Signals.emit_signal("dino_died", dino_name)
+	Signals.emit_signal("dino_died", dino_type)
 
 	$CollisionPolygon2D.set_deferred("disabled", true)
 	path.set_active(false)

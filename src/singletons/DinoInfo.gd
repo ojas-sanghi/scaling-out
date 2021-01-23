@@ -23,136 +23,75 @@ var dino_ability_icons = [
 	""
 ]
 
-var upgrades_info := [
-	UpgradeInfo.new(
-		"mega",
-		[100, 135, 150], # health
-		[2, 1.75, 1.5], # delay
-		[1, 0.98, 0.95, 0.92, 0.87], # def
-		[0], # dodge
-		[2, 3.5, 5, 6, 7.5, 8, 9, 10, 10.5, 11], # dmg
-		[50, 55, 60, 66, 70, 77, 84, 88], # speed
-		[""] # special
-	),
-	UpgradeInfo.new(
-		"tanky",
-		[200, 230, 250],
-		[2, 1.75, 1.5],
-		[1, 0.9, 0.86, 0.82, 0.75],
-		[0],
-		[0.5, 0.75, 0.8, 0.9, 1, 1.5, 2, 2.2, 2.5, 2.8],
-		[30, 35, 40, 42, 45, 50, 56, 60],
-		[""]
-	),
-	UpgradeInfo.new(
-		"warrior",
-		[45, 50, 60],
-		[2, 1.75, 1.5],
-		[1, 0.99, 0.98, 0.95, 0.93],
-		[0],
-		[5, 5.5, 6, 7, 8, 8.5, 9.2, 9.9, 10.6, 11.5],
-		[60, 65, 70, 79, 86, 95, 105, 110],
-		[""]
-	),
-	UpgradeInfo.new(
-		"gator",
-		[45, 50, 60],
-		[2, 1.75, 1.5],
-		[1, 0.99, 0.98, 0.95, 0.93],
-		[0],
-		[5, 5.5, 6, 7, 8, 8.5, 9.2, 9.9, 10.6, 11.5],
-		[60, 65, 70, 79, 86, 95, 105, 110],
-		[""]
-	)
-]
+class UpgradeInfo:
+	var stats: Dictionary
 
-var upgrades_cost = {
-	"mega": {
-		"hp": [[50, 100, 150], [30, 50, 80]],
-		"delay": [[50, 100, 150], [30, 50, 80]],
-		"def": [[50, 100, 150], [30, 50, 80]],
-		"dodge": [[50, 100, 150], [30, 50, 80]],
-		"dmg": [[50, 100, 150], [30, 50, 80]],
-		"speed": [[50, 100, 150], [30, 50, 80]],
-		"special": [[50, 100, 150], [30, 50, 80]],
-	},
-	"tanky": {
-		"hp": [[50, 100, 150], [30, 50, 80]],
-		"delay": [[50, 100, 150], [30, 50, 80]],
-		"def": [[50, 100, 150, 175, 200], [30, 50, 80, 110, 140]],
-		"dodge": [[50, 100, 150], [30, 50, 80]],
-		"dmg": [[50, 100, 150], [30, 50, 80]],
-		"speed": [[50, 100, 150], [30, 50, 80]],
-		"special": [[50, 100, 150], [30, 50, 80]],
-	},
-	"warrior": {
-		"hp": [[50, 100, 150], [30, 50, 80]],
-		"delay": [[50, 100, 150], [30, 50, 80]],
-		"def": [[50, 100, 150], [30, 50, 80]],
-		"dodge": [[50, 100, 150], [30, 50, 80]],
-		"dmg": [[50, 100, 150], [30, 50, 80]],
-		"speed": [[50, 100, 150], [30, 50, 80]],
-		"special": [[50, 100, 150], [30, 50, 80]],
-	},
-	"gator": {
-		"hp": [[50, 100, 150], [30, 50, 80]],
-		"delay": [[50, 100, 150], [30, 50, 80]],
-		"def": [[50, 100, 150], [30, 50, 80]],
-		"dodge": [[50, 100, 150], [30, 50, 80]],
-		"dmg": [[50, 100, 150], [30, 50, 80]],
-		"speed": [[50, 100, 150], [30, 50, 80]],
-		"special": [[50, 100, 150], [30, 50, 80]],
-	},
+	func _init(path) -> void:
+		var data = load(path)
+
+		stats = {
+			Enums.stats.hp: data.hp_stat,
+			Enums.stats.delay: data.delay_stat,
+			Enums.stats.def: data.def_stat,
+			Enums.stats.dodge: data.dodge_stat,
+			Enums.stats.dmg: data.dmg_stat,
+			Enums.stats.speed:data.speed_stat,
+			Enums.stats.special: data.special_stat
+		}
+
+	func upgrade(stat: int) -> void:
+		stats[stat].level += 1
+
+	func get_stat(stat: int) -> float:
+		return stats[stat].get_stat()
+	func get_level(stat: int) -> float:
+		return stats[stat].level
+
+	func get_gold_cost(stat: int) -> int:
+		return stats[stat].get_gold()
+	func get_gene_cost(stat: int) -> int:
+		return stats[stat].get_genes()
+
+	## misc utlity functions
+	func has_special() -> bool:
+		return get_stat(Enums.stats.special) == 1
+
+	# our level is 0-indexed but size() is not, so decrement one
+	func get_max_level(stat: int) -> int:
+		return stats[stat].stats.size() - 1
+
+	# [gold, genes]
+	func get_next_upgrade_cost(stat: int) -> Array:
+		var current_level = get_level(stat)
+
+		# no cost if already at max
+		if current_level == get_max_level(stat):
+			return [0, 0]
+
+		var gold_cost = stats[stat].get_gold(current_level + 1)
+		var gene_cost = stats[stat].get_genes(current_level + 1)
+		return [gold_cost, gene_cost]
+
+	func is_maxed_out(stat: int) -> bool:
+		return get_level(stat) == get_max_level(stat)
+
+func get_dino(dino: int) -> UpgradeInfo:
+	return upgrades_info[dino]
+
+var upgrades_info := {
+	Enums.dinos.mega: UpgradeInfo.new("res://src/actors/dinos/stats/MegaDino.tres")
 }
 
-
-
-func has_special(dino: String):
-	return upgrades_info[dino]["special"][1] - 1 == 0
-
-
-func add_upgrade(dino: String, upgrade: String) -> void:
-	upgrades_info[dino][upgrade][1] += 1
-
-
-func get_max_upgrade(dino: String, upgrade: String) -> int:
-	return upgrades_info[dino][upgrade][0].size()
-
-
-func get_num_upgrade(dino: String, upgrade: String) -> int:
-	return upgrades_info[dino][upgrade][1]
-
-
-func get_upgrade_stat(dino: String, upgrade: String):
-	var num_upgrade = get_num_upgrade(dino, upgrade) - 1
-	if num_upgrade < 0:
-		num_upgrade += 1
-	return upgrades_info[dino][upgrade][0][num_upgrade]
-
-# returns [money, genes]
-func get_next_upgrade_cost(dino: String, upgrade: String):
-	var current_level = get_num_upgrade(dino, upgrade)
-
-	if current_level == get_max_upgrade(dino, upgrade):
-		return [0, 0]
-
-	# we don't need to increment the current_level since it's 0 indexed
-	# a level of 1 means that we're at pos. 0 in the list
-	# and if we use that number, we'll be returning the cost of pos. 1 in the list; the 2nd position
-	# ez
-	var next_money = upgrades_cost[dino][upgrade][0][current_level]
-	var next_gene = upgrades_cost[dino][upgrade][1][current_level]
-
-	return [next_money, next_gene]
-
-func check_max_upgrade(dino: String, upgrade: String) -> bool:
-	return get_num_upgrade(dino, upgrade) == get_max_upgrade(dino, upgrade)
+var upgrades_cost = {
+	"tanky": {
+		"def": [[50, 100, 150, 175, 200], [30, 50, 80, 110, 140]],
+	},
+}
 
 
 func get_dino_timer_delay():
 	# find the delay based on the dino
 	return get_dino_property("deploy_delay_value")
-
 
 func get_dino_property(prop: String):
 	# instance it, get the variable we want, then remove it

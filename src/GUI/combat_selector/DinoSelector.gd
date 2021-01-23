@@ -25,6 +25,7 @@ func setup_selectors():
 		current_num += 1
 
 	for ability in DinoInfo.dino_ability_icons:
+		# skip if it has no icon
 		if typeof(ability) == TYPE_STRING:
 			continue
 
@@ -109,14 +110,14 @@ func _on_dino_fully_spawned():
 
 func _on_dino_died(type):
 	var dinos_left = get_tree().get_nodes_in_group("dinos")
-	if type == "tanky":
+	if type == Enums.dinos.tanky:
 		for dino in dinos_left:
-			if dino.dino_name == "tanky":
+			if dino.dino_type == Enums.dinos.tanky:
 				return
 		selector_list[4].disable_ability()
 
-	if type == "warrior":
+	if type == Enums.dinos.warrior:
 		for dino in dinos_left:
-			if dino.dino_name == "warrior":
+			if dino.dino_type == Enums.dinos.warrior:
 				return
 		selector_list[5].disable_ability()

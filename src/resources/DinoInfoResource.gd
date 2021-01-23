@@ -1,13 +1,9 @@
 extends Resource
 
-export var name: String
-
-export(Resource) var health
-export(Resource) var delay
-export(Resource) var def
-export(Resource) var dodge
-export(Resource) var dmg
-export(Resource) var speed
-export(Resource) var special
-
-export(Resource) var costs
+export(Resource) var hp_stat
+export(Resource) var delay_stat
+export(Resource) var def_stat
+export(Resource) var dodge_stat
+export(Resource) var dmg_stat
+export(Resource) var speed_stat
+export(Resource) var special_stat

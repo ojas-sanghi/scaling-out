@@ -14,11 +14,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://src/resources/Cost.gd"
 }, {
-"base": "Resource",
-"class": "DinoCost",
-"language": "GDScript",
-"path": "res://src/resources/DinoCost.gd"
-}, {
 "base": "Area2D",
 "class": "GeneralDino",
 "language": "GDScript",
@@ -41,7 +36,6 @@ _global_script_classes=[ {
 } ]
 _global_script_class_icons={
 "Cost": "",
-"DinoCost": "",
 "GeneralDino": "res://assets/dinos/mega_dino/mega_dino.png",
 "SpecialStat": "",
 "Stats": "",
@@ -64,6 +58,7 @@ default_bus_layout="res://src/default_bus_layout.tres"
 
 [autoload]
 
+Enums="*res://src/singletons/Enums.gd"
 SceneChanger="*res://src/singletons/SceneChanger.tscn"
 DinoInfo="*res://src/singletons/DinoInfo.gd"
 CombatInfo="*res://src/singletons/CombatInfo.gd"

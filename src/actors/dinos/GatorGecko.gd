@@ -1,7 +1,7 @@
 extends GeneralDino
 
 func _init() -> void:
-	dino_name = "gator"
+	dino_type = Enums.dinos.gator
 
 	deploy_delay_value = 2
 
