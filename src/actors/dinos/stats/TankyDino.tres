@@ -8,8 +8,8 @@
 [sub_resource type="Resource" id=1]
 script = ExtResource( 4 )
 stat_name = "Cost Def"
-gold = [ 50, 100, 150, 200, 250 ]
-genes = [ 30, 50, 80, 100, 150 ]
+gold = [ 50, 100, 150, 175, 200 ]
+genes = [ 30, 50, 80, 110, 140 ]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 3 )
@@ -73,13 +73,13 @@ level = 0
 [sub_resource type="Resource" id=11]
 script = ExtResource( 4 )
 stat_name = "Cost Special"
-gold = [ 0 ]
-genes = [ 0 ]
+gold = [ 150 ]
+genes = [ 100 ]
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 1 )
 stat_name = "Special"
-special = ""
+special = "ice"
 cost = SubResource( 11 )
 level = 0
 

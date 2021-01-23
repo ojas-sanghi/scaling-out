@@ -75,19 +75,15 @@ class UpgradeInfo:
 	func is_maxed_out(stat: int) -> bool:
 		return get_level(stat) == get_max_level(stat)
 
+var upgrades_info := {
+	Enums.dinos.mega: UpgradeInfo.new("res://src/actors/dinos/stats/MegaDino.tres"),
+	Enums.dinos.tanky: UpgradeInfo.new("res://src/actors/dinos/stats/TankyDino.tres"),
+	Enums.dinos.warrior: UpgradeInfo.new("res://src/actors/dinos/stats/WarriorDino.tres"),
+	Enums.dinos.gator: UpgradeInfo.new("res://src/actors/dinos/stats/GatorDino.tres"),
+}
+
 func get_dino(dino: int) -> UpgradeInfo:
 	return upgrades_info[dino]
-
-var upgrades_info := {
-	Enums.dinos.mega: UpgradeInfo.new("res://src/actors/dinos/stats/MegaDino.tres")
-}
-
-var upgrades_cost = {
-	"tanky": {
-		"def": [[50, 100, 150, 175, 200], [30, 50, 80, 110, 140]],
-	},
-}
-
 
 func get_dino_timer_delay():
 	# find the delay based on the dino
