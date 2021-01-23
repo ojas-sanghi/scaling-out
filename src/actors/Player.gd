@@ -20,7 +20,7 @@ func _ready() -> void:
 	Signals.connect("coin_grabbed", self, "_on_coin_grabbed")
 	Signals.connect("level_passed", self, "_on_level_passed")
 
-	if ShopInfo.finding_ice:
+	if StealthInfo.finding_ice:
 		node_path = "/root/StealthIce/"
 	else:
 		node_path = "/root/StealthFire/"

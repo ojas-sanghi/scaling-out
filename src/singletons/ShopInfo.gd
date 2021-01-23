@@ -1,8 +1,5 @@
 extends Node
 
-var finding_ice = false
-var finding_fire = false
-
 var player_caught = false
 
 var money = 300
