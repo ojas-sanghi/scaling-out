@@ -95,7 +95,7 @@ func get_dino(dino: int) -> UpgradeInfo:
 
 func get_dino_timer_delay():
 	# find the delay based on the dino
-	return get_dino_property("deploy_delay_value")
+	return get_dino_property("spawn_delay_value")
 
 func get_dino_property(prop: String):
 	# instance it, get the variable we want, then remove it

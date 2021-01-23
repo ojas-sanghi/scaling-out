@@ -18,7 +18,6 @@ var dino_defense: float
 var dino_unlock_cost: Array
 var special_gene_type: String
 
-var deploy_delay_value: int
 var spawn_delay_value: int
 
 var spawning_in := true
