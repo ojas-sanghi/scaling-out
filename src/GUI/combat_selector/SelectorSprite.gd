@@ -1,19 +1,20 @@
 tool
 extends Control
 
+# these are set by DinoSelector parent
 var sprite: Texture
 var text: String
+var id: int
 
 var ability_mode := ""
 var custom_scale := Vector2(0.511, 0.519)
 
-var id: int
+
 
 
 func _ready() -> void:
 	$Sprite.texture = sprite
 	$Label.text = text
-	id = int(text) - 1
 	$Sprite.scale = custom_scale
 	hide_particles()
 

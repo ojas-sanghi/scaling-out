@@ -35,7 +35,7 @@ func reset(_max_dinos := 10, _max_rounds := 3) -> void:
 	dinos_remaining = _max_dinos
 	dinos_died = 0
 
-	dino_id = 0
+	dino_id = Enums.dinos.tanky
 
 	dinos_deploying = []
 	selector_timer_list = []

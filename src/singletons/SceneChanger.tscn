@@ -2,8 +2,6 @@
 
 [ext_resource path="res://src/singletons/SceneChanger.gd" type="Script" id=1]
 
-
-
 [sub_resource type="Animation" id=1]
 resource_name = "fade"
 length = 0.5

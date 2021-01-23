@@ -8,7 +8,7 @@ func _ready() -> void:
 	Signals.connect("dino_deployed", self, "_on_dino_deployed")
 
 	# give the circle an id relating to each dino in the list
-	for i in range(0, DinoInfo.dino_list.size()):
+	for i in Enums.dinos.values():
 		if i in CombatInfo.selector_timer_list:
 			continue
 		CombatInfo.selector_timer_list.append(i)

@@ -2,26 +2,26 @@ extends Node
 
 var dino_cred_cost = 30
 
-var dino_list := [
-	preload("res://src/actors/dinos/MegaDino.tscn"),
-	preload("res://src/actors/dinos/TankyDino.tscn"),
-	preload("res://src/actors/dinos/WarriorDino.tscn"),
-	preload("res://src/actors/dinos/GatorGecko.tscn"),
-]
+var dino_list := {
+	Enums.dinos.mega: preload("res://src/actors/dinos/MegaDino.tscn"),
+	Enums.dinos.tanky: preload("res://src/actors/dinos/TankyDino.tscn"),
+	Enums.dinos.warrior: preload("res://src/actors/dinos/WarriorDino.tscn"),
+	Enums.dinos.gator: preload("res://src/actors/dinos/GatorGecko.tscn"),
+}
 
-var dino_icons := [
-	preload("res://assets/dinos/mega_dino/mega_dino.png"),
-	preload("res://assets/dinos/tanky_dino/Armored_Dino_ICON.png"),
-	preload("res://assets/dinos/warrior_dino/Tribal_Dino_icon.png"),
-	preload("res://assets/dinos/gator_gecko/gater_gecko_icon.png"),
-]
+var dino_icons := {
+	Enums.dinos.mega: preload("res://assets/dinos/mega_dino/mega_dino.png"),
+	Enums.dinos.tanky: preload("res://assets/dinos/tanky_dino/Armored_Dino_ICON.png"),
+	Enums.dinos.warrior: preload("res://assets/dinos/warrior_dino/Tribal_Dino_icon.png"),
+	Enums.dinos.gator: preload("res://assets/dinos/gator_gecko/gater_gecko_icon.png"),
+}
 
-var dino_ability_icons = [
-	"",
-	preload("res://assets/dinos/misc/ice.png"),
-	preload("res://assets/dinos/misc/fire.png"),
-	""
-]
+var dino_ability_icons = {
+	Enums.dinos.mega: "",
+	Enums.dinos.tanky: preload("res://assets/dinos/misc/ice.png"),
+	Enums.dinos.warrior: preload("res://assets/dinos/misc/fire.png"),
+	Enums.dinos.gator: ""
+}
 
 class UpgradeInfo:
 	var stats: Dictionary
@@ -61,13 +61,11 @@ class UpgradeInfo:
 
 
 	## misc utlity functions
-
-
-	# our level is 0-indexed but size() is not, so decrement one
 	func get_max_level(stat: int) -> int:
 		if stat == Enums.stats.special:
 			return 1 if has_special() else 0
 		else:
+			# our level is 0-indexed but size() is not, so decrement one
 			return stats[stat].stats.size() - 1
 
 	# [gold, genes]

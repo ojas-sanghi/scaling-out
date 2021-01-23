@@ -1,8 +1,7 @@
 extends Node2D
 
-var active_id := 0
+var active_id: int = Enums.dinos.mega
 
-var current_num = 1
 var selector_sprite = preload("res://src/GUI/combat_selector/SelectorSprite.tscn")
 
 var selector_list
@@ -16,15 +15,16 @@ func _ready() -> void:
 	selector_list = $HBoxContainer.get_children()
 
 func setup_selectors():
-	for icon in DinoInfo.dino_icons:
+	for icon_id in DinoInfo.dino_icons:
 		var new_selector = selector_sprite.instance()
-		new_selector.sprite = icon
-		new_selector.text = str(current_num)
+		new_selector.sprite = DinoInfo.dino_icons[icon_id]
+		new_selector.text = str(icon_id + 1)
+		new_selector.id = icon_id
 
 		$HBoxContainer.add_child(new_selector)
-		current_num += 1
 
-	for ability in DinoInfo.dino_ability_icons:
+	for ability_id in DinoInfo.dino_ability_icons:
+		var ability = DinoInfo.dino_ability_icons[ability_id]
 		# skip if it has no icon
 		if typeof(ability) == TYPE_STRING:
 			continue
@@ -37,13 +37,13 @@ func setup_selectors():
 
 		var new_selector = selector_sprite.instance()
 		new_selector.sprite = ability
-		new_selector.text = str(current_num)
-		new_selector.ability_mode = ability_string
+		new_selector.text = str(ability_id + DinoInfo.dino_icons.size()) # position in list + number of dinos
+		new_selector.id = ability_id
 
+		new_selector.ability_mode = ability_string
 		new_selector.custom_scale = Vector2(0.07, 0.07)
 
 		$HBoxContainer.add_child(new_selector)
-		current_num += 1
 
 	$HBoxContainer.get_children()[0].show_particles()
 
@@ -56,19 +56,19 @@ func enable_exclusive_particles(number: int):
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("dino_1"):
-		active_id = 0
+		active_id = Enums.dinos.mega
 		enable_exclusive_particles(0)
 
 	elif event.is_action_pressed("dino_2"):
-		active_id = 1
+		active_id = Enums.dinos.tanky
 		enable_exclusive_particles(1)
 
 	elif event.is_action_pressed("dino_3"):
-		active_id = 2
+		active_id = Enums.dinos.warrior
 		enable_exclusive_particles(2)
 
 	elif event.is_action_pressed("dino_4"):
-		active_id = 3
+		active_id = Enums.dinos.gator
 		enable_exclusive_particles(3)
 
 	# change thiss
