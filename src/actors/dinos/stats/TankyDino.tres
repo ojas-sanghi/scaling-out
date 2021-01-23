@@ -73,15 +73,15 @@ level = 0
 [sub_resource type="Resource" id=11]
 script = ExtResource( 4 )
 stat_name = "Cost Special"
-gold = [ 150 ]
-genes = [ 100 ]
+gold = [ 0, 150 ]
+genes = [ 0, 100 ]
 
 [sub_resource type="Resource" id=12]
 script = ExtResource( 1 )
 stat_name = "Special"
 special = "ice"
 cost = SubResource( 11 )
-level = 0
+level = 1
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 4 )
