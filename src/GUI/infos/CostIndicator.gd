@@ -17,10 +17,12 @@ func _process(delta: float) -> void:
 	set_process(false)
 
 func set_upgrade_cost():
-	if DinoInfo.get_num_upgrade(ShopInfo.shop_dino, button_mode) == DinoInfo.get_max_upgrade(ShopInfo.shop_dino, button_mode):
+	var dino_info = DinoInfo.get_dino(ShopInfo.shop_dino)
+
+	if dino_info.is_maxed_out(button_mode):
 		hide()
 
-	var cost = DinoInfo.get_next_upgrade_cost(ShopInfo.shop_dino, button_mode)
+	var cost = dino_info.get_next_upgrade_cost(button_mode)
 	money_cost = cost[0]
 	gene_cost = cost[1]
 

@@ -13,6 +13,8 @@ func set_button_info():
 
 			$Img.texture = preload("res://assets/icons/heart.png")
 
+			button_mode = Enums.stats.hp
+
 		"delay":
 			$Container/StatNum.add_color_override("font_color", Color("1a82e6"))
 			$Container/Stat.add_color_override("font_color", Color("1a82e6"))
@@ -20,11 +22,16 @@ func set_button_info():
 			$Container/Stat.text = "s"
 
 			$Img.texture = preload("res://assets/icons/timer.png")
+
+			button_mode = Enums.stats.delay
+
 	info_set = true
+	var dino_info = DinoInfo.get_dino(ShopInfo.shop_dino)
 
-	$Container/StatNum.text = str(DinoInfo.get_upgrade_stat(ShopInfo.shop_dino, button_mode))
 
-	var cost = DinoInfo.get_next_upgrade_cost(ShopInfo.shop_dino, button_mode)
+	$Container/StatNum.text = str(dino_info.get_stat(button_mode))
+
+	var cost = dino_info.get_next_upgrade_cost(button_mode)
 	money_cost = cost[0]
 	gene_cost = cost[1]
 

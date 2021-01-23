@@ -9,4 +9,4 @@ var money = 300
 var genes = 300
 var special_genes = ["ice", "fire"]
 
-var shop_dino = "tanky"
+var shop_dino = Enums.dinos.tanky

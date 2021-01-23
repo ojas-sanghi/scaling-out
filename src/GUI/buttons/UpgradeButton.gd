@@ -3,6 +3,11 @@ class_name UpgradeButton extends Button
 
 export (String, "EXCEPTION", "dmg", "def", "speed", "ice", "fire", "hp", "delay") var button_mode = "EXCEPTION"
 
+#export (int, "EXCEPTION", Enums.stats.dmg, "def", "speed", "ice", "fire", "hp", "delay") var button_mode = "EXCEPTION"
+
+#enum NamedEnum {THING_1, THING_2, ANOTHER_THING = -1}
+#export(NamedEnum) var x
+
 var max_squares
 var first_run = true
 
@@ -16,6 +21,8 @@ var gene_cost: int
 
 onready var container_length = $Container/Squares.rect_size.x
 onready var container_height = $Container/Squares.rect_size.y
+
+onready var dino_info = DinoInfo.get_dino(ShopInfo.shop_dino)
 
 func _ready() -> void:
 	assert(button_mode != "EXCEPTION")
@@ -31,16 +38,19 @@ func set_button_info():
 			$NameCostContainer/Name.text = "Damage"
 			$Container/Stat.text = "DPS"
 			$Img.texture = preload("res://assets/abilities/fire.png")
+			button_mode = Enums.stats.dmg
 
 		"def":
 			$NameCostContainer/Name.text = "Defense"
-			$Container/Stat.text = "%"
+			$Container/Stat.text = "x"
 			$Img.texture = preload("res://assets/abilities/health.png")
+			button_mode = Enums.stats.def
 
 		"speed":
 			$NameCostContainer/Name.text = "Leg Speed"
 			$Container/Stat.text = "KM/h"
 			$Img.texture = preload("res://assets/abilities/speed.png")
+			button_mode = Enums.stats.speed
 
 		"ice":
 			$NameCostContainer/Name.text = "Special"
@@ -48,9 +58,7 @@ func set_button_info():
 			$Container/Stat.text = ""
 			$Img.texture = preload("res://assets/abilities/ice.png")
 
-			# specific type of special doesn't matter anymore
-			# and this makes it easier to reference stuff in DinoInfo.gd
-			button_mode = "special"
+			button_mode = Enums.stats.special
 
 		"fire":
 			$NameCostContainer/Name.text = "Special"
@@ -58,19 +66,20 @@ func set_button_info():
 			$Container/Stat.text = ""
 			$Img.texture = preload("res://assets/abilities/fire.png")
 
-			button_mode = "special"
+			button_mode = Enums.stats.special
+
 	info_set = true
 
-	$Container/StatNum.text = str(DinoInfo.get_upgrade_stat(ShopInfo.shop_dino, button_mode))
+	$Container/StatNum.text = str(dino_info.get_stat(button_mode))
 
-	var cost = DinoInfo.get_next_upgrade_cost(ShopInfo.shop_dino, button_mode)
+	var cost = dino_info.get_next_upgrade_cost(button_mode)
 	money_cost = cost[0]
 	gene_cost = cost[1]
 
 func color_squares(color = Color(1, 1, 1, 1)):
 	# fill in the squares
 	var squares_list = $Container/Squares.get_children()
-	var filled_squares = DinoInfo.get_num_upgrade(ShopInfo.shop_dino, button_mode)
+	var filled_squares = dino_info.get_level(button_mode)
 
 	match button_mode:
 		"hp":
@@ -86,7 +95,7 @@ func color_squares(color = Color(1, 1, 1, 1)):
 
 
 func set_upgrade_squares():
-	max_squares = DinoInfo.get_max_upgrade(ShopInfo.shop_dino, button_mode)
+	max_squares = dino_info.get_max_level(button_mode)
 
 	# make the background squares
 	for i in max_squares:
@@ -119,7 +128,7 @@ func stop_upgrading():
 
 func _on_UpgradeButton_button_down() -> void:
 	# don't do anything if max upgrades reached
-	if DinoInfo.check_max_upgrade(ShopInfo.shop_dino, button_mode):
+	if dino_info.is_maxed_out(button_mode):
 		return
 	# don't do anything if not enough money
 	if ShopInfo.money < money_cost:
@@ -138,7 +147,7 @@ func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
 	ShopInfo.money -= money_cost
 	ShopInfo.genes -= gene_cost
 
-	DinoInfo.add_upgrade(ShopInfo.shop_dino, button_mode)
+	dino_info.upgrade(button_mode)
 	Signals.emit_signal("dino_upgraded")
 
 	stop_upgrading()

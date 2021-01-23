@@ -7,7 +7,6 @@
 [ext_resource path="res://src/GUI/buttons/UpgradeButton.gd" type="Script" id=5]
 [ext_resource path="res://src/GUI/infos/CostIndicator.tscn" type="PackedScene" id=6]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 

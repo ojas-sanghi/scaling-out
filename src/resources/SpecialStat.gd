@@ -10,8 +10,8 @@ export var level = 0
 func get_stat():
 	return special
 
-func get_gold_cost():
-	return cost.gold[level]
+func get_gold(lvl = level):
+	return cost.gold[lvl]
 
-func get_genes_cost():
-	return cost.genes[level]
+func get_genes(lvl = level):
+	return cost.genes[lvl]

@@ -42,7 +42,7 @@ class UpgradeInfo:
 	func upgrade(stat: int) -> void:
 		stats[stat].level += 1
 
-	func get_stat(stat: int) -> float:
+	func get_stat(stat: int):
 		return stats[stat].get_stat()
 	func get_level(stat: int) -> float:
 		return stats[stat].level
@@ -52,13 +52,23 @@ class UpgradeInfo:
 	func get_gene_cost(stat: int) -> int:
 		return stats[stat].get_genes()
 
-	## misc utlity functions
+	# if the user has paid and unlocked the special
+	func unlocked_special() -> bool:
+		return get_level(Enums.stats.special) == 1
+	# if the dino has a special u can unlock
 	func has_special() -> bool:
-		return get_stat(Enums.stats.special) == 1
+		return get_stat(Enums.stats.special) != ""
+
+
+	## misc utlity functions
+
 
 	# our level is 0-indexed but size() is not, so decrement one
 	func get_max_level(stat: int) -> int:
-		return stats[stat].stats.size() - 1
+		if stat == Enums.stats.special:
+			return 1 if has_special() else 0
+		else:
+			return stats[stat].stats.size() - 1
 
 	# [gold, genes]
 	func get_next_upgrade_cost(stat: int) -> Array:
