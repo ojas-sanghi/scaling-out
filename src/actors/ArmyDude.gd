@@ -39,9 +39,9 @@ func _ready() -> void:
 
 func _on_proj_hit(type):
 	if type == "ice":
-		$AnimationPlayer.current_animation_length = 2
+		$AnimationPlayer.playback_speed = 0.5
 		yield(get_tree().create_timer(10), "timeout")
-		$AnimationPlayer.current_animation_length = 1
+		$AnimationPlayer.playback_speed = 1.0
 	elif type == "fire":
 		$AnimationPlayer.stop()
 		yield(get_tree().create_timer(3), "timeout")
