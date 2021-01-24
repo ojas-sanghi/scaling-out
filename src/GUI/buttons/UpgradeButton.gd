@@ -131,7 +131,7 @@ func _on_UpgradeButton_button_down() -> void:
 	if dino_info.is_maxed_out(button_mode):
 		return
 	# don't do anything if not enough money
-	if ShopInfo.money < money_cost:
+	if ShopInfo.gold < money_cost:
 		return
 	if ShopInfo.genes < gene_cost:
 		return
@@ -144,7 +144,7 @@ func _on_UpgradeButton_button_up() -> void:
 
 
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
-	ShopInfo.money -= money_cost
+	ShopInfo.gold -= money_cost
 	ShopInfo.genes -= gene_cost
 
 	dino_info.upgrade(button_mode)

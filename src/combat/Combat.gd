@@ -44,7 +44,7 @@ func _on_conquest_lost():
 
 func _on_conquest_won():
 	SceneChanger.go_to_scene("res://src/GUI/dialogues/CombatWinDialogue.tscn")
-	ShopInfo.money += reward_money
+	ShopInfo.gold += reward_money
 
 func _on_dinos_purchased(num):
 	max_dinos += num

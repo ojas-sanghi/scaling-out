@@ -78,8 +78,12 @@ func _on_Button_pressed() -> void:
 		"return upgrades":
 			SceneChanger.go_to_scene("res://src/GUI/screens/UpgradeScreen.tscn")
 		"ice":
+			StealthInfo.finding_ice = true
+			StealthInfo.finding_fire = false
 			SceneChanger.go_to_scene("res://src/stealth/StealthIce.tscn")
 		"fire":
+			StealthInfo.finding_fire = true
+			StealthInfo.finding_ice = false
 			SceneChanger.go_to_scene("res://src/stealth/StealthFire.tscn")
 		# nothing for plus/minus: that is handled in that scene
 		# same for buy dinos

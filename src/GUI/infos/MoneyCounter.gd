@@ -1,6 +1,6 @@
 extends Control
 
-onready var money_amt = ShopInfo.money
+onready var money_amt = ShopInfo.gold
 
 
 func _ready() -> void:
@@ -20,4 +20,4 @@ func update_money_amt():
 
 
 func update_coin_from_global():
-	$Num.text = str(ShopInfo.money)
+	$Num.text = str(ShopInfo.gold)

@@ -4,7 +4,7 @@ export(NodePath) var parent_node
 
 var button_mode
 
-var money_cost
+var gold_cost
 var gene_cost
 
 func _ready() -> void:
@@ -23,19 +23,19 @@ func set_upgrade_cost():
 		hide()
 
 	var cost = dino_info.get_next_upgrade_cost(button_mode)
-	money_cost = cost[0]
+	gold_cost = cost[0]
 	gene_cost = cost[1]
 
 
-	var money_pic = "[img=<40>]res://assets/icons/coins.png[/img]"
+	var gold_pic = "[img=<40>]res://assets/icons/coins.png[/img]"
 	var gene_pic = "[img=<25>]res://assets/icons/dna.png[/img]"
 
-	var money_text = str(money_cost)
+	var gold_text = str(gold_cost)
 	var gene_text = str(gene_cost)
 
-	if money_cost > ShopInfo.money:
-		money_text = "[color=#ff0000]%s[/color]" % money_text
+	if gold_cost > ShopInfo.gold:
+		gold_text = "[color=#ff0000]%s[/color]" % gold_text
 	if gene_cost > ShopInfo.genes:
 		gene_text = "[color=#ff0000]%s[/color]" % gene_text
 
-	bbcode_text = "%s%s  %s%s" % [money_pic, money_text, gene_pic, gene_text]
+	bbcode_text = "%s%s  %s%s" % [gold_pic, gold_text, gene_pic, gene_text]

@@ -85,7 +85,7 @@ func _on_level_passed():
 	yield($Win, "finished")
 	get_node(node_path + "Vault").hide()
 	SceneChanger.go_to_scene("res://src/GUI/dialogues/StealthWinDialogue.tscn")
-	ShopInfo.coins += coins_in_level
+	ShopInfo.gold += coins_in_level
 
 
 func _on_level_failed():

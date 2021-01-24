@@ -40,7 +40,8 @@ class UpgradeInfo:
 		}
 
 	func upgrade(stat: int) -> void:
-		stats[stat].level += 1
+		if not is_maxed_out(stat):
+			stats[stat].level += 1
 
 	func get_stat(stat: int):
 		return stats[stat].get_stat()
@@ -73,7 +74,7 @@ class UpgradeInfo:
 		var current_level = get_level(stat)
 
 		# no cost if already at max
-		if current_level == get_max_level(stat):
+		if is_maxed_out(stat):
 			return [0, 0]
 
 		var gold_cost = stats[stat].get_gold(current_level + 1)
@@ -81,7 +82,7 @@ class UpgradeInfo:
 		return [gold_cost, gene_cost]
 
 	func is_maxed_out(stat: int) -> bool:
-		return get_level(stat) == get_max_level(stat)
+		return get_level(stat) >= get_max_level(stat)
 
 var upgrades_info := {
 	Enums.dinos.mega: UpgradeInfo.new("res://src/actors/dinos/stats/MegaDino.tres"),

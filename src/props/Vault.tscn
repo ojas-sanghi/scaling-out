@@ -4,9 +4,6 @@
 [ext_resource path="res://assets/stealth/Vault_Metal.png" type="Texture" id=3]
 [ext_resource path="res://src/props/Vault.gd" type="Script" id=4]
 
-
-
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 3 ) ],
