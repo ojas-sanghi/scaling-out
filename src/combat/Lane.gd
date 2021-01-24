@@ -1,6 +1,7 @@
 extends Path2D
 
 export var lane_img: Texture
+export var curve_smooth_factor = 50 # The lower, the tighter the turns
 
 var spawn_point = Vector2(70, 10)
 
@@ -21,7 +22,7 @@ func _on_Button_pressed() -> void:
 	# make a new pathfollow2d node
 	var path_follow = PathFollow2D.new()
 	path_follow.loop = false
-	path_follow.lookahead = 250
+	path_follow.lookahead = curve_smooth_factor
 	add_child(path_follow)
 	new_children.append(path_follow)
 

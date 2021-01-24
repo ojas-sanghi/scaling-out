@@ -5,12 +5,14 @@
 [ext_resource path="res://assets/buttons/arrowRight.png" type="Texture" id=3]
 [ext_resource path="res://src/combat/curves/Road.tres" type="Curve2D" id=4]
 
-
 [node name="Lane" type="Path2D" groups=[
 "lanes",
 ]]
 curve = ExtResource( 4 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 706.976, 148.126 )
