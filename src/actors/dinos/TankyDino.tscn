@@ -168,8 +168,6 @@ script = ExtResource( 3 )
 
 [node name="AnimatedSprite" parent="." index="0"]
 frames = ExtResource( 4 )
-animation = "1walk"
-frame = 0
 
 [node name="AnimationPlayer" parent="." index="1"]
 anims/1walk = SubResource( 1 )

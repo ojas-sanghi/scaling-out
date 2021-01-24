@@ -49,7 +49,6 @@ func spawn_delay():
 	Signals.emit_signal("dino_fully_spawned")
 
 func _ready() -> void:
-
 	# animate the spawn delay
 	yield(spawn_delay(), "completed")
 
@@ -98,6 +97,7 @@ func kill_dino():
 		$AnimatedSprite.flip_h = false
 
 	$DeathSound.play()
+	$AnimationPlayer.stop()
 	$AnimatedSprite.play(str(dino_variation) + "death")
 
 	var tween = $TransparencyTween
