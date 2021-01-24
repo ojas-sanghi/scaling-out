@@ -32,6 +32,6 @@ func set_button_info():
 	$Container/StatNum.text = str(dino_info.get_stat(button_mode))
 
 	var cost = dino_info.get_next_upgrade_cost(button_mode)
-	money_cost = cost[0]
+	gold_cost = cost[0]
 	gene_cost = cost[1]
 

@@ -1,7 +1,7 @@
 extends Node
 
 export var max_dinos = 10
-export var reward_money = 100
+export var reward_gold = 100
 
 export var max_rounds = 3
 
@@ -44,7 +44,7 @@ func _on_conquest_lost():
 
 func _on_conquest_won():
 	SceneChanger.go_to_scene("res://src/GUI/dialogues/CombatWinDialogue.tscn")
-	ShopInfo.gold += reward_money
+	ShopInfo.gold += reward_gold
 
 func _on_dinos_purchased(num):
 	max_dinos += num

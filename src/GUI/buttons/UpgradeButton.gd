@@ -16,7 +16,7 @@ var first_run = true
 # once this is true, the cost indicator retrieves the info needed
 var info_set := false
 
-var money_cost: int
+var gold_cost: int
 var gene_cost: int
 
 onready var container_length = $Container/Squares.rect_size.x
@@ -73,7 +73,7 @@ func set_button_info():
 	$Container/StatNum.text = str(dino_info.get_stat(button_mode))
 
 	var cost = dino_info.get_next_upgrade_cost(button_mode)
-	money_cost = cost[0]
+	gold_cost = cost[0]
 	gene_cost = cost[1]
 
 func color_squares(color = Color(1, 1, 1, 1)):
@@ -130,8 +130,8 @@ func _on_UpgradeButton_button_down() -> void:
 	# don't do anything if max upgrades reached
 	if dino_info.is_maxed_out(button_mode):
 		return
-	# don't do anything if not enough money
-	if ShopInfo.gold < money_cost:
+	# don't do anything if not enough gold
+	if ShopInfo.gold < gold_cost:
 		return
 	if ShopInfo.genes < gene_cost:
 		return
@@ -144,7 +144,7 @@ func _on_UpgradeButton_button_up() -> void:
 
 
 func _on_Tween_tween_completed(_object: Object, _key: NodePath) -> void:
-	ShopInfo.gold -= money_cost
+	ShopInfo.gold -= gold_cost
 	ShopInfo.genes -= gene_cost
 
 	dino_info.upgrade(button_mode)

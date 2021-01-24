@@ -1,6 +1,6 @@
 extends Control
 
-onready var money_amt = ShopInfo.gold
+onready var gold_amt = ShopInfo.gold
 
 
 func _ready() -> void:
@@ -10,13 +10,13 @@ func _ready() -> void:
 	update_coin_from_global()
 
 
-func _on_money_grabbed(value):
-	money_amt += value
-	update_money_amt()
+func _on_coin_grabbed(value):
+	gold_amt += value
+	update_gold_amt()
 
 
-func update_money_amt():
-	$Num.text = str(money_amt)
+func update_gold_amt():
+	$Num.text = str(gold_amt)
 
 
 func update_coin_from_global():
