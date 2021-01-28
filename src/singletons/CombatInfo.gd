@@ -19,7 +19,7 @@ var shot_fire: bool
 # num of army people eliminated; you get a cred bonus for each
 var num_army_elim := 0
 
-var current_round = 3
+var current_round = 1
 var max_rounds = 3
 
 var creds := 100

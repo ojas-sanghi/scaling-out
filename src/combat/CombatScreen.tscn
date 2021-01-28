@@ -117,4 +117,3 @@ stream = ExtResource( 9 )
 autoplay = true
 
 [node name="BuyMenu" parent="." instance=ExtResource( 11 )]
-visible = false

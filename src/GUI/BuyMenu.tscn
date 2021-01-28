@@ -10,7 +10,6 @@
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=8]
 [ext_resource path="res://assets/empty.png" type="Texture" id=9]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.6, 0.6, 0.6, 0 )
 border_width_left = 5

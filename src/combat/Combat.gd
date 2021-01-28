@@ -9,9 +9,10 @@ func _ready() -> void:
 	CombatInfo.reset(max_dinos, max_rounds)
 	# can't put that in reset() since otherwise it would do that between rounds
 	# note: this executes AFTER RoundCounter grabs the data, so...
-	CombatInfo.current_round = 3
 
-	#4: one-shot round won connection
+#	CombatInfo.current_round = 3
+
+	#4 is a one-shot round won connection
 	Signals.connect("round_won", self, "_on_round_won", [], 4)
 	Signals.connect("new_round", self, "_on_new_round")
 
