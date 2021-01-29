@@ -24,6 +24,7 @@ var max_rounds = 3
 
 var creds := 100
 
+var bullet_speed := 400
 
 func _ready() -> void:
 	reset()

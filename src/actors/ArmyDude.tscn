@@ -159,7 +159,7 @@ script = ExtResource( 1 )
 [node name="Sprite" type="Sprite" parent="."]
 rotation = 3.14159
 scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "shoot_pistol"
@@ -168,4 +168,4 @@ anims/shoot_rifle = SubResource( 2 )
 anims/shoot_shotgun = SubResource( 3 )
 
 [node name="BulletSpawner" parent="." instance=ExtResource( 11 )]
-position = Vector2( -52.7811, -22.6205 )
+position = Vector2( -57.5487, -23.68 )

@@ -1,44 +1,41 @@
 extends Node2D
 
 var bullet = preload("res://src/combat/Bullet.tscn")
-var bullets = []
+var bullet_group = preload("res://src/combat/BulletsGroup.tscn")
 
-var bullet_spawn_pos = [Vector2(0, 0)]
-var bullet_sprays = [Vector2(0, -25), Vector2(0, -20), Vector2(0, 0), Vector2(0, 20), Vector2(0, 25)]
+var bullets = []
 
 var mode
 
-func check_mode() -> void:
-	match mode:
-		"shotgun":
-			bullet_spawn_pos = [Vector2(-5, -20), Vector2(0, 0), Vector2(-5, 20)]
-			bullet_sprays = [Vector2(0, 0)]
+func new_bullet():
+	var new = bullet.instance()
+	new.mode = mode
+	bullets.append(new)
 
 func spawn_bullets():
-	check_mode()
+	# reset list
+	bullets = []
 
-	for b in bullet_spawn_pos:
-		var new_bullet = bullet.instance()
-		new_bullet.mode = mode
+	# bullet and bullets_group speed are
+	# both half of that in the singleton
+	# thus roughly same as the value itself in the singleton, and
+	# the positions of the bullet and the bulletsgroup are the same
+	var bullets_group = bullet_group.instance()
+	bullets_group.rotation_degrees = rand_range(-5, 5)
 
-		new_bullet.position = b
-		randomize()
-		var spray_num = randi() % bullet_sprays.size()
-		new_bullet.position += bullet_sprays[spray_num]
-
-		bullets.append(new_bullet)
-
-	match mode:
-		"shotgun":
-			bullets[0].rotation_degrees = 20
-			bullets[2].rotation_degrees = -20
+	# the position of the bullet and the BulletsGroup are the same
+	if mode == "shotgun":
+		# make new three bullets
+		for i in range(0, 3):
+			new_bullet()
+		bullets[0].rotation_degrees = 5
+		bullets[2].rotation_degrees = -5
+	else:
+		# one new bullet
+		new_bullet()
 
 	for bullet in bullets:
-		add_child(bullet)
+		bullets_group.add_child(bullet)
+	add_child(bullets_group)
 
 	$AudioStreamPlayer.play()
-
-# called by child bullet when it is despawning
-# removes bullet from list so that we can still set the appropriate rotation degrees
-func remove_bullet(b):
-	bullets.remove(bullets.find(b))
