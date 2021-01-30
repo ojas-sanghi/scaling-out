@@ -26,7 +26,7 @@ func spawn_bullets():
 	# the position of the bullet and the BulletsGroup are the same
 	if mode == "shotgun":
 		# make new three bullets
-		for i in range(0, 3):
+		for _i in range(0, 3):
 			new_bullet()
 		bullets[0].rotation_degrees = 5
 		bullets[2].rotation_degrees = -5
@@ -34,8 +34,8 @@ func spawn_bullets():
 		# one new bullet
 		new_bullet()
 
-	for bullet in bullets:
-		bullets_group.add_child(bullet)
+	for b in bullets:
+		bullets_group.add_child(b)
 	add_child(bullets_group)
 
 	$AudioStreamPlayer.play()

@@ -56,13 +56,13 @@ position = Vector2( 1904.53, 903.32 )
 rotation = 1.57079
 
 [node name="ArmyDude" parent="Army" instance=ExtResource( 5 )]
-position = Vector2( 1609.91, 572.872 )
+position = Vector2( 1609.91, 540.8 )
 
 [node name="ArmyDude2" parent="Army" instance=ExtResource( 5 )]
-position = Vector2( 1546.59, 840.102 )
+position = Vector2( 1546.59, 811.593 )
 
 [node name="ArmyDude3" parent="Army" instance=ExtResource( 5 )]
-position = Vector2( 1626.31, 298.962 )
+position = Vector2( 1626.31, 263.326 )
 
 [node name="ArmyDude4" parent="Army" instance=ExtResource( 5 )]
 visible = false
@@ -117,3 +117,4 @@ stream = ExtResource( 9 )
 autoplay = true
 
 [node name="BuyMenu" parent="." instance=ExtResource( 11 )]
+visible = false

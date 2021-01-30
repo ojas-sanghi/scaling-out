@@ -28,14 +28,18 @@ func _ready() -> void:
 			mag_size = 5
 			reload_time = 2.5
 	$BulletSpawner.mode = mode
-
 	bullets_left = mag_size
 
 	$AnimationPlayer.play("shoot_" + mode)
+	$RayCast2D.cast_to = Vector2(-get_viewport().size.x, 0)
 
 	Signals.connect("proj_hit", self, "_on_proj_hit")
 
-
+func _physics_process(delta: float) -> void:
+	if $RayCast2D.is_colliding():
+		$AnimationPlayer.play()
+	else:
+		$AnimationPlayer.stop()
 
 func _on_proj_hit(type):
 	if type == "ice":
@@ -46,7 +50,6 @@ func _on_proj_hit(type):
 		$AnimationPlayer.stop()
 		yield(get_tree().create_timer(3), "timeout")
 		$AnimationPlayer.play("shoot_" + mode)
-
 
 func check_reload() -> void:
 	bullets_left -= rps
