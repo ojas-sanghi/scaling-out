@@ -4,8 +4,6 @@
 [ext_resource path="res://assets/fonts/Font75.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/GUI/buttons/Button.tscn" type="PackedScene" id=3]
 
-
-
 [node name="StealthLoseDialogue" type="Control"]
 pause_mode = 2
 anchor_right = 1.0

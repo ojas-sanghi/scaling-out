@@ -13,7 +13,6 @@
 [ext_resource path="res://assets/music/stealth music.wav" type="AudioStream" id=11]
 [ext_resource path="res://src/stealth/Label.gd" type="Script" id=12]
 
-
 [sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 298.452, -39.0768, 0, 0, 0, 0, 129.35, -38.1268, 0, 0, 0, 0, 86.5999, 6.52362, 0, 0, 0, 0, 125.55, 41.6739 )
@@ -155,4 +154,3 @@ autoplay = true
 [node name="Vault" parent="." instance=ExtResource( 7 )]
 position = Vector2( 53.805, 336.565 )
 scale = Vector2( 0.53, 0.53 )
-ice = false

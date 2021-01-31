@@ -4,8 +4,6 @@
 [ext_resource path="res://assets/fonts/Font75.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/GUI/buttons/Button.tscn" type="PackedScene" id=3]
 
-
-
 [node name="StealthWinDialogue" type="Control"]
 pause_mode = 2
 anchor_right = 1.0
@@ -53,4 +51,5 @@ margin_left = -177.876
 margin_top = 80.0
 margin_right = 279.124
 margin_bottom = 204.0
-button_mode = "return upgrades"
+text = "Return to Home Screen"
+button_mode = "return home screen"
