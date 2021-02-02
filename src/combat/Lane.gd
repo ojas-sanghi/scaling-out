@@ -11,6 +11,20 @@ func _ready() -> void:
 	$Sprite.texture = lane_img
 	Signals.connect("new_round", self, "_on_new_round")
 
+# returns list of dinos sorted by
+# ascending order of their pathfollow unit_offset
+class DinoSorter:
+	static func sort_ascending(a: PathFollow2D, b):
+		if a.unit_offset > b.unit_offset:
+			return true
+		return false
+
+func get_sorted_position_dinos():
+	var sorted_children = new_children.duplicate()
+	sorted_children.sort_custom(DinoSorter, "sort_ascending")
+	return sorted_children
+
+########
 func _on_Button_pressed() -> void:
 	if CombatInfo.dinos_remaining <= 0:
 		return
@@ -44,3 +58,5 @@ func _on_new_round():
 		child.queue_free()
 	new_children.clear()
 
+func _on_Timer_timeout() -> void:
+	get_sorted_position_dinos()
