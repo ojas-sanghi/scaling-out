@@ -31,6 +31,8 @@ func _ready() -> void:
 	bullets_left = mag_size
 
 	$AnimationPlayer.play("shoot_" + mode)
+	$AnimationPlayer.seek(0.1, true) # seek to update gun animation
+
 	$RayCast2D.cast_to = Vector2(-get_viewport().size.x, 0)
 
 	Signals.connect("proj_hit", self, "_on_proj_hit")
