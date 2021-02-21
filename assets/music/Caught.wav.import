@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Caught.wav-b570cbbd41c7cc3821119b5be9f07b16.sample"
+
+[deps]
+
+source_file="res://assets/music/Caught.wav"
+dest_files=[ "res://.import/Caught.wav-b570cbbd41c7cc3821119b5be9f07b16.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

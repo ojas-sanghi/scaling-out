@@ -26,7 +26,7 @@ func _process(delta):
 	check_fov()
 	var pos = get_position()
 	var dir = (get_global_mouse_position() - pos).normalized()
-	set_rotation(deg2rad(rad2deg(dir.angle()) - 90))
+	set_rotation(dir.angle() - deg2rad((90)))
 
 	# vel = Vector2()
 	move_control = Vector2()

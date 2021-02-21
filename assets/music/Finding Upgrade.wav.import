@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Finding Upgrade.wav-1cbc27817c30e661d4f275c7c418472a.sample"
+
+[deps]
+
+source_file="res://assets/music/Finding Upgrade.wav"
+dest_files=[ "res://.import/Finding Upgrade.wav-1cbc27817c30e661d4f275c7c418472a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
