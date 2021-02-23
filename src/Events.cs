@@ -10,7 +10,7 @@ public class Events
     public static event Action<double> blockadeHit;
 
     public static event Action newRound;
-    public static event Action roundWon; //* Connect oneshot in _ready, re-connect when newRound
+    public static event Action roundWon; //! Connect oneshot in _ready, re-connect when newRound
     public static event Action conquestWon;
     public static event Action conquestLost;
 
@@ -19,7 +19,7 @@ public class Events
     public static event Action<int> coinGrabbed;
 
     public static event Action levelPassed;
-    public static event Action levelFailed; //* Connect oneshot in _ready, re-connect when newRound
+    public static event Action levelFailed; //! Connect oneshot in _ready, re-connect when newRound
 
     public static event Action<Enums.Genes> projectileHit;
 
