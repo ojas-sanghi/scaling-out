@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public class DNACounter : Control
 {
@@ -14,8 +13,9 @@ public class DNACounter : Control
         Events.dinoUpgraded -= UpdateGeneAmt;
     }
 
-    void UpdateGeneAmt() {
-        Label label = (Label) FindNode("Label");
+    void UpdateGeneAmt()
+    {
+        Label label = (Label)FindNode("Label");
         label.Text = ShopInfo.genes.ToString();
     }
 

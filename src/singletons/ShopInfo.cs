@@ -1,8 +1,6 @@
-using Godot;
 using System.Collections.Generic;
-
 using Enums;
-using g = Enums.SpecialGenes;
+using Godot;
 
 public class ShopInfo : Node
 {
@@ -11,7 +9,7 @@ public class ShopInfo : Node
 
     public static int gold = 30000;
     public static int genes = 30000;
-    public static List<g> specialGenes = new List<g>() { g.Ice, g.Fire };
+    public static List<Genes> specialGenes = new List<Genes>() { Genes.Ice, Genes.Fire };
 
     public static Dinos shopDino = Enums.Dinos.Tanky;
 
