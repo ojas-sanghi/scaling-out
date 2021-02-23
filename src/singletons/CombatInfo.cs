@@ -3,9 +3,8 @@ using Godot;
 using Godot.Collections;
 
 /*
-* Holds conquest/round-specific info
-Placed in a singleton for ease of access
-Reset between conquests
+  Holds conquest/round-specific info
+  Reset between conquests
 */
 public class CombatInfo : Node
 {
@@ -26,13 +25,13 @@ public class CombatInfo : Node
     // Number of army people killed; you get a cred bonus for each
     public int numArmyKilled;
 
-    public int currentRound;
-    public int maxRounds;
+    public int currentRound = 1;
+    public int maxRounds = 3;
 
-    public int creds;
+    public int creds = 100;
 
     // TODO: Remove this from here and place it somewhere it makes sense
-    public int bulletSpeed;
+    public int bulletSpeed = 400;
 
     public override void _Ready()
     {

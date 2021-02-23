@@ -13,13 +13,13 @@ public class UpgradeInfo : Node
         Resource data = GD.Load<Resource>(path);
         stats = new Dictionary<Enums.Stats, Resource>()
         {
-            {Enums.Stats.Hp, data},
-            {Enums.Stats.Delay, data},
-            {Enums.Stats.Def, data},
-            {Enums.Stats.Dodge, data},
-            {Enums.Stats.Dmg, data},
-            {Enums.Stats.Speed, data},
-            {Enums.Stats.Special, data},
+            {Enums.Stats.Hp, data.hpStat},
+            {Enums.Stats.Delay, data.delayStat},
+            {Enums.Stats.Def, data.defStat},
+            {Enums.Stats.Dodge, data.dodgeStat},
+            {Enums.Stats.Dmg, data.dmgStat},
+            {Enums.Stats.Speed, data.speedStat},
+            {Enums.Stats.Special, data.specialStat},
         };
     }
 
@@ -43,7 +43,7 @@ public class UpgradeInfo : Node
         return stats[stat].GetGenes(); // TODO: fix
     }
 
-    // If the suer has paid and unlocked the special
+    // If the user has paid and unlocked the special
     bool UnlockedSpecial() {
         return GetLevel(Enums.Stats.Special) == 1;
     }
@@ -53,9 +53,9 @@ public class UpgradeInfo : Node
         // GetStat(Enums.Stats.Special) != null;
     }
 
-    /////////////////////////
-    // Misc utlity functions
-    /////////////////////////
+    ///////////////////////////
+    // Misc utlity functions //
+    ///////////////////////////
 
     int GetMaxLevel(Enums.Stats stat) {
         if (stat == Enums.Stats.Special) {
