@@ -36,7 +36,7 @@ public class CombatInfo : Node
     public override void _Ready()
     {
         Reset();
-        
+
         Instance = this;
         Events.dinoDeployed += OnDinoDeployed;
     }
@@ -46,7 +46,8 @@ public class CombatInfo : Node
         Events.dinoDeployed -= OnDinoDeployed;
     }
 
-    public void Reset(int _MaxDinos = 10, int _MaxRounds = 3) {
+    public void Reset(int _MaxDinos = 10, int _MaxRounds = 3)
+    {
         maxDinos = _MaxDinos;
         dinosRemaining = _MaxDinos;
         dinosDied = 0;
@@ -64,7 +65,8 @@ public class CombatInfo : Node
         maxRounds = _MaxRounds;
     }
 
-    void OnDinoDeployed() {
+    void OnDinoDeployed()
+    {
         // Add to list of dinos just deployed
         // Prevents this type from being deployed until cooldown finished
         dinosDeploying.Add(dinoId);
@@ -76,10 +78,11 @@ public class CombatInfo : Node
         AddChild(dinosDeployingTimer);
 
         dinosDeployingTimer.Connect("timeout", this, "OnDinosDeployingTimerTimeout", new Array(dinoId));
-        dinosDeployingTimer.Start((float) delay);
+        dinosDeployingTimer.Start((float)delay);
     }
 
-    void OnDinosDeployingTimerTimeout(Enums.Dinos id) {
+    void OnDinosDeployingTimerTimeout(Enums.Dinos id)
+    {
         dinosDeploying.Remove(id);
     }
 

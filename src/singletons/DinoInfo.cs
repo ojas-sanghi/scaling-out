@@ -5,7 +5,7 @@ public class DinoInfo : Node
 {
     public static DinoInfo Instance;
 
-    public Dictionary<Enums.Dinos, PackedScene> dinoList = new Dictionary<Enums.Dinos, PackedScene>() 
+    public Dictionary<Enums.Dinos, PackedScene> dinoList = new Dictionary<Enums.Dinos, PackedScene>()
     {
         {Enums.Dinos.Mega, GD.Load<PackedScene>("res://src/actors/dinos/MegaDino.tscn")},
         {Enums.Dinos.Tanky, GD.Load<PackedScene>("res://src/actors/dinos/TankyDino.tscn")},
@@ -13,7 +13,7 @@ public class DinoInfo : Node
         {Enums.Dinos.Gator, GD.Load<PackedScene>("res://src/actors/dinos/GatorGecko.tscn")},
     };
 
-    public Dictionary<Enums.Dinos, StreamTexture> dinoIcons = new Dictionary<Enums.Dinos, StreamTexture>() 
+    public Dictionary<Enums.Dinos, StreamTexture> dinoIcons = new Dictionary<Enums.Dinos, StreamTexture>()
     {
         {Enums.Dinos.Mega, GD.Load<StreamTexture>("res://assets/dinos/mega_dino/mega_dino.png")},
         {Enums.Dinos.Tanky, GD.Load<StreamTexture>("res://assets/dinos/tanky_dino/Armored_Dino_ICON.png")},
@@ -21,7 +21,7 @@ public class DinoInfo : Node
         {Enums.Dinos.Gator, GD.Load<StreamTexture>("res://assets/dinos/gator_gecko/gater_gecko_icon.png")},
     };
 
-    public Dictionary<Enums.Dinos, StreamTexture> dinoAbilityIcons = new Dictionary<Enums.Dinos, StreamTexture>() 
+    public Dictionary<Enums.Dinos, StreamTexture> dinoAbilityIcons = new Dictionary<Enums.Dinos, StreamTexture>()
     {
         {Enums.Dinos.Mega, null},
         {Enums.Dinos.Tanky, GD.Load<StreamTexture>("res://assets/dinos/tanky_dino/Armored_Dino_ICON.png")},
@@ -39,19 +39,22 @@ public class DinoInfo : Node
 
     public override void _Ready()
     {
-        Instance = this;        
+        Instance = this;
     }
-    
-    public UpgradeInfo GetDinoInfo(Enums.Dinos dino) {
+
+    public UpgradeInfo GetDinoInfo(Enums.Dinos dino)
+    {
         return upgradesInfo[dino];
     }
 
-    public double GetDinoTimerDelay() {
-        return (double) GetDinoProperty("spawnDelayValue");
+    public double GetDinoTimerDelay()
+    {
+        return (double)GetDinoProperty("spawnDelayValue");
     }
 
     // Instance dino, get variable we want, then remove it
-    public object GetDinoProperty(string property) {
+    public object GetDinoProperty(string property)
+    {
         PackedScene DinoScene = dinoList[CombatInfo.Instance.dinoId];
         Node DinoInstance = DinoScene.Instance();
 

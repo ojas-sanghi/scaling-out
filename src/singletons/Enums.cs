@@ -15,5 +15,5 @@ namespace Enums
         Ice, Fire
     }
 
-    
+
 }
