@@ -3,15 +3,13 @@ using Godot;
 
 public class UpgradeInfo : Node
 {
-    public Dictionary<Enums.Stats, Resource> stats;
+    public Dictionary<Enums.Stats, Stats> stats;
 
     public UpgradeInfo(string path) {
 
-        // TODO: Fix this
-        // TODO: This depends on the scripts in src/resources
-        // TODO: Particularly DinoInfoResource.gd, which relies on the others in that folder
-        Resource data = GD.Load<Resource>(path);
-        stats = new Dictionary<Enums.Stats, Resource>()
+        DinoInfoResource data = GD.Load<DinoInfoResource>(path);
+
+        stats = new Dictionary<Enums.Stats, Stats>()
         {
             {Enums.Stats.Hp, data.hpStat},
             {Enums.Stats.Delay, data.delayStat},
@@ -25,22 +23,31 @@ public class UpgradeInfo : Node
 
     void Upgrade(Enums.Stats stat) {
         if (!IsMaxedOut(stat)) {
-            stats[stat].level += 1; // todo: fix
+            stats[stat].level++;
         }
     }
 
-    string GetStat(Enums.Stats stat) {
-        return stats[stat].get_stat(); // TODO: fix this and figure out the type
+    double GetStat(Enums.Stats stat) {
+        if (stat == Enums.Stats.Special) {
+            GD.PushError("Use GetSpecial() to get the info on a dino special!");
+            GD.PrintStack();
+            GetTree().Quit(1);
+        }
+        return stats[stat].GetStat();
     }
+    string GetSpecial() {
+        return ((SpecialStat) stats[Enums.Stats.Special]).GetSpecial();
+    }
+
     int GetLevel(Enums.Stats stat) {
-        return stats[stat].level; // TODO: fix
+        return stats[stat].level;
     }
 
     int GetGoldCost(Enums.Stats stat) {
-        return stats[stat].GetGold(); // TODO: fix
+        return stats[stat].GetGold();
     }
     int GetGeneCost(Enums.Stats stat) {
-        return stats[stat].GetGenes(); // TODO: fix
+        return stats[stat].GetGenes();
     }
 
     // If the user has paid and unlocked the special
@@ -49,8 +56,7 @@ public class UpgradeInfo : Node
     }
     // If the dino has a special you can unlock
     bool HasSpecial() {
-        return true; // TODO: fix
-        // GetStat(Enums.Stats.Special) != null;
+        return GetSpecial() != "";
     }
 
     ///////////////////////////
@@ -61,8 +67,8 @@ public class UpgradeInfo : Node
         if (stat == Enums.Stats.Special) {
             if (HasSpecial()) return 1; else return 0;
         } else {
-            // our level is 0-indexed but size() is not, so decrement one
-            return stats[stat].stats.size() - 1; // TODO: fix
+            // our level is 0-indexed but count is not, so decrement one
+            return stats[stat].stats.Count - 1;
         }
     }
 
@@ -75,7 +81,6 @@ public class UpgradeInfo : Node
             return new List<int>() {0, 0};
         }
 
-        // TODO: fix these
         int GoldCost = stats[stat].GetGold(CurrentLevel + 1);
         int GeneCost = stats[stat].GetGenes(CurrentLevel + 1);
 

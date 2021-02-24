@@ -23,10 +23,10 @@ public class DinoInfo : Node
 
     public Dictionary<Enums.Dinos, StreamTexture> dinoAbilityIcons = new Dictionary<Enums.Dinos, StreamTexture>() 
     {
-        {Enums.Dinos.Mega, new StreamTexture()},
+        {Enums.Dinos.Mega, null},
         {Enums.Dinos.Tanky, GD.Load<StreamTexture>("res://assets/dinos/tanky_dino/Armored_Dino_ICON.png")},
         {Enums.Dinos.Warrior, GD.Load<StreamTexture>("res://assets/dinos/warrior_dino/Tribal_Dino_icon.png")},
-        {Enums.Dinos.Gator, new StreamTexture()},
+        {Enums.Dinos.Gator, null},
     };
 
     public Dictionary<Enums.Dinos, UpgradeInfo> upgradesInfo = new Dictionary<Enums.Dinos, UpgradeInfo>()
@@ -42,7 +42,7 @@ public class DinoInfo : Node
         Instance = this;        
     }
     
-    public UpgradeInfo GetDino(Enums.Dinos dino) {
+    public UpgradeInfo GetDinoInfo(Enums.Dinos dino) {
         return upgradesInfo[dino];
     }
 
