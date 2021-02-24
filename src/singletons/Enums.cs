@@ -12,7 +12,7 @@ namespace Enums
 
     public enum Genes
     {
-        Ice, Fire
+        None, Ice, Fire, Florida
     }
 
 

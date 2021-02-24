@@ -22,7 +22,7 @@ public class UpgradeInfo : Node
         };
     }
 
-    void Upgrade(Enums.Stats stat)
+    public void Upgrade(Enums.Stats stat)
     {
         if (!IsMaxedOut(stat))
         {
@@ -30,7 +30,7 @@ public class UpgradeInfo : Node
         }
     }
 
-    double GetStat(Enums.Stats stat)
+    public double GetStat(Enums.Stats stat)
     {
         if (stat == Enums.Stats.Special)
         {
@@ -40,32 +40,32 @@ public class UpgradeInfo : Node
         }
         return stats[stat].GetStat();
     }
-    string GetSpecial()
+    public string GetSpecial()
     {
         return ((SpecialStat)stats[Enums.Stats.Special]).GetSpecial();
     }
 
-    int GetLevel(Enums.Stats stat)
+    public int GetLevel(Enums.Stats stat)
     {
         return stats[stat].level;
     }
 
-    int GetGoldCost(Enums.Stats stat)
+    public int GetGoldCost(Enums.Stats stat)
     {
         return stats[stat].GetGold();
     }
-    int GetGeneCost(Enums.Stats stat)
+    public int GetGeneCost(Enums.Stats stat)
     {
         return stats[stat].GetGenes();
     }
 
     // If the user has paid and unlocked the special
-    bool UnlockedSpecial()
+    public bool UnlockedSpecial()
     {
         return GetLevel(Enums.Stats.Special) == 1;
     }
     // If the dino has a special you can unlock
-    bool HasSpecial()
+    public bool HasSpecial()
     {
         return GetSpecial() != "";
     }
@@ -74,7 +74,7 @@ public class UpgradeInfo : Node
     // Misc utlity functions //
     ///////////////////////////
 
-    int GetMaxLevel(Enums.Stats stat)
+    public int GetMaxLevel(Enums.Stats stat)
     {
         if (stat == Enums.Stats.Special)
         {
@@ -88,7 +88,7 @@ public class UpgradeInfo : Node
     }
 
     // [gold, genes]
-    List<int> GetNextUpgradeCost(Enums.Stats stat)
+    public List<int> GetNextUpgradeCost(Enums.Stats stat)
     {
         int CurrentLevel = GetLevel(stat);
 
@@ -104,7 +104,7 @@ public class UpgradeInfo : Node
         return new List<int> { GoldCost, GeneCost };
     }
 
-    bool IsMaxedOut(Enums.Stats stat)
+    public bool IsMaxedOut(Enums.Stats stat)
     {
         return GetLevel(stat) >= GetMaxLevel(stat);
     }
