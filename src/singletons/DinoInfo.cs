@@ -5,6 +5,8 @@ public class DinoInfo : Node
 {
     public static DinoInfo Instance;
 
+    public int dinoCredCost = 30;
+
     public Dictionary<Enums.Dinos, PackedScene> dinoList = new Dictionary<Enums.Dinos, PackedScene>()
     {
         {Enums.Dinos.Mega, GD.Load<PackedScene>("res://src/actors/dinos/MegaDino.tscn")},

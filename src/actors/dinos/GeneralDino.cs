@@ -10,7 +10,7 @@ public class BaseDino : Area2D
     AnimatedSprite animSprite;
     Tween transparencyTween;
     Tween pathTween;
-    int pathFollowTime = 1; // set by the "Lane" node when the dino is instanced
+    public float pathFollowTime = 1; // set by the "Lane" node when the dino is instanced
 
     bool dinoDead = false;
 
@@ -22,7 +22,7 @@ public class BaseDino : Area2D
 
     double dinoHealth;
     double animatedHealth;
-    Vector2 dinoSpeed;
+    public Vector2 dinoSpeed;
     double dinoDmg;
     double dinoDodgeChance;
     double dinoDefense;
@@ -141,7 +141,7 @@ public class BaseDino : Area2D
         }
     }
 
-    void UpdateHealth(double dmgTaken)
+    public void UpdateHealth(double dmgTaken)
     {
         var healthTween = (Tween)FindNode("HealthTween");
 

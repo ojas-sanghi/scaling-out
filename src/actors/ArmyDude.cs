@@ -16,7 +16,6 @@ public class ArmyDude : Area2D
 
     public override void _Ready()
     {
-        // TODO: Make bulletspawner and fix it
         BulletSpawner spawner = (BulletSpawner)FindNode("BulletSpawner");
         rayCast = (RayCast2D)FindNode("RayCast2D");
 
