@@ -10,12 +10,15 @@ public class Bullet : Area2D
 
     public override void _Ready()
     {
-        Timer timer = (Timer) FindNode("ExistenceTimer");
+        Timer timer = (Timer)FindNode("ExistenceTimer");
 
-        if (mode == "shotgun") {
+        if (mode == "shotgun")
+        {
             bulletDmg = 6;
             timer.WaitTime = (float)0.75;
-        } else {
+        }
+        else
+        {
             bulletDmg = 4;
         }
         timer.Start();
@@ -29,14 +32,16 @@ public class Bullet : Area2D
     }
 
     //? Does this connection work
-    void _on_Bullet_area_entered(BaseDino dino) {
+    void _on_Bullet_area_entered(BaseDino dino)
+    {
         dino.UpdateHealth(bulletDmg);
         QueueFree();
     }
 
     //? Does this connection work
     // Damage dropoff after certain time
-    void _on_ExistenceTimer_timeout() {
+    void _on_ExistenceTimer_timeout()
+    {
         bulletDmg = 1;
     }
 

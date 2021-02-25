@@ -13,16 +13,19 @@ public class Player : KinematicBody2D
 
     public override void _Ready()
     {
-        animSprite = (AnimatedSprite) FindNode("AnimatedSprite");
+        animSprite = (AnimatedSprite)FindNode("AnimatedSprite");
 
         Events.levelFailed += OnLevelFailed;
         Events.levelPassed += OnLevelPassed;
         Events.coinGrabbed += OnCoinGrabbed;
 
         // TODO: find a better way of doing this
-        if (StealthInfo.findingIce) {
+        if (StealthInfo.findingIce)
+        {
             nodePath = "/root/StealthIce/";
-        } else {
+        }
+        else
+        {
             nodePath = "/root/StealthFire/";
         }
     }
@@ -35,27 +38,33 @@ public class Player : KinematicBody2D
     }
 
 
-    Vector2 GetInput() {
+    Vector2 GetInput()
+    {
         // Detect up/down/left/right keystrokes and move only when pressed
 
         var newVelocity = Vector2.Zero;
-        if (Input.IsActionPressed("ui_right")) {
+        if (Input.IsActionPressed("ui_right"))
+        {
             velocity.x++;
         }
-        if (Input.IsActionPressed("ui_left")) {
+        if (Input.IsActionPressed("ui_left"))
+        {
             velocity.x--;
         }
-        if (Input.IsActionPressed("ui_down")) {
+        if (Input.IsActionPressed("ui_down"))
+        {
             velocity.y++;
         }
-        if (Input.IsActionPressed("ui_up")) {
+        if (Input.IsActionPressed("ui_up"))
+        {
             velocity.y--;
         }
 
         return newVelocity;
     }
 
-    void AnimatePlayer() {
+    void AnimatePlayer()
+    {
         float velocityLength = velocity.Length();
         float velocityAngle = Mathf.Rad2Deg(velocity.Angle());
 
@@ -63,14 +72,17 @@ public class Player : KinematicBody2D
         velocityAngle += 90;
 
         // If we're moving, change rotation
-        if (velocityLength >= 1) {
+        if (velocityLength >= 1)
+        {
             //$AnimatedSprite.rotation_degrees = velocity_angle
             //$Collision.rotation_degrees = velocity_angle
             RotationDegrees = velocityAngle - 180;
 
             // Play walk animation if going anywhere, else idle
             animSprite.Play("walk");
-        } else {
+        }
+        else
+        {
             animSprite.Play("idle");
         }
 
@@ -78,7 +90,8 @@ public class Player : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
-        if (ShopInfo.playerCaught) {
+        if (ShopInfo.playerCaught)
+        {
             return;
         }
 
@@ -88,9 +101,10 @@ public class Player : KinematicBody2D
         MoveAndSlide(velocity);
     }
 
-    async void OnLevelPassed() {
-        var win = (AudioStreamPlayer) FindNode("Win");
-        
+    async void OnLevelPassed()
+    {
+        var win = (AudioStreamPlayer)FindNode("Win");
+
         SetPhysicsProcess(false);
         animSprite.Stop();
         win.Play();
@@ -105,7 +119,8 @@ public class Player : KinematicBody2D
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/StealthWinDialogue.tscn");
     }
 
-    async void OnLevelFailed() {
+    async void OnLevelFailed()
+    {
         Events.levelFailed -= OnLevelFailed;
 
         /*
@@ -126,7 +141,8 @@ public class Player : KinematicBody2D
         GD.Print("YOU FAILED!");
     }
 
-    void OnCoinGrabbed(int value) {
+    void OnCoinGrabbed(int value)
+    {
         coinsCollected += value;
     }
 

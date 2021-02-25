@@ -10,7 +10,8 @@ public class BulletsGroup : Area2D
         Position += velocity * delta;
     }
 
-    void _on_VisibilityNotifier2D_screen_exited() {
+    void _on_VisibilityNotifier2D_screen_exited()
+    {
         QueueFree();
     }
 

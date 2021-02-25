@@ -1,5 +1,5 @@
-using Godot;
 using System.Collections.Generic;
+using Godot;
 
 public class Lane : Path2D
 {
@@ -15,20 +15,27 @@ public class Lane : Path2D
         Events.newRound += OnNewRound;
     }
 
-    public class sortDinos : IComparer<PathFollow2D> {
-        public int Compare(PathFollow2D a, PathFollow2D b) {
-            if (a.UnitOffset > b.UnitOffset) {
+    public class sortDinos : IComparer<PathFollow2D>
+    {
+        public int Compare(PathFollow2D a, PathFollow2D b)
+        {
+            if (a.UnitOffset > b.UnitOffset)
+            {
                 return 1;
             }
-            if (a.UnitOffset < b.UnitOffset) {
+            if (a.UnitOffset < b.UnitOffset)
+            {
                 return -1;
-            } else {
+            }
+            else
+            {
                 return 0;
             }
         }
     }
 
-    List<PathFollow2D> GetSortedPositionDinos() {
+    List<PathFollow2D> GetSortedPositionDinos()
+    {
         List<PathFollow2D> sortedChildren = new List<PathFollow2D>(newChildren);
         //? Test if this works
         sortedChildren.Sort(new sortDinos());
@@ -36,13 +43,16 @@ public class Lane : Path2D
     }
 
     //? does this engine signal connection work
-    void _on_Button_pressed() {
-        if (CombatInfo.Instance.dinosRemaining <= 0) {
+    void _on_Button_pressed()
+    {
+        if (CombatInfo.Instance.dinosRemaining <= 0)
+        {
             return;
         }
 
         // dont deploy fi the delay isn't over yet
-        if (CombatInfo.Instance.dinosDeploying.Contains(CombatInfo.Instance.dinoId)) {
+        if (CombatInfo.Instance.dinosDeploying.Contains(CombatInfo.Instance.dinoId))
+        {
             return;
         }
 
@@ -67,15 +77,18 @@ public class Lane : Path2D
         Events.publishDinoDeployed();
     }
 
-    void OnNewRound() {
-        foreach (PathFollow2D child in newChildren) {
+    void OnNewRound()
+    {
+        foreach (PathFollow2D child in newChildren)
+        {
             child.QueueFree();
         }
         newChildren.Clear();
     }
 
     //? does this engine signal connection work
-    void _on_Timer_timeout() {
+    void _on_Timer_timeout()
+    {
         OnNewRound();
     }
 

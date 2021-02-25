@@ -14,7 +14,7 @@ public class Combat : Node
 
         //! Note I have no idea what the next comments are, they just are
         // can't put that in reset() since otherwise it would do that between rounds
-	    // note: this executes AFTER RoundCounter grabs the data, so...
+        // note: this executes AFTER RoundCounter grabs the data, so...
         //	CombatInfo.current_round = 3
 
         Events.roundWon += OnRoundWon;
@@ -35,7 +35,8 @@ public class Combat : Node
         Events.dinosPurchased -= OnDinosPurchased;
     }
 
-    void OnRoundWon() {
+    void OnRoundWon()
+    {
         Events.roundWon -= OnRoundWon;
 
         c.currentRound += 1;
@@ -46,7 +47,8 @@ public class Combat : Node
         // ? is this correct?
         c.maxDinos = c.dinosRemaining;
 
-        if (c.currentRound > c.maxRounds) {
+        if (c.currentRound > c.maxRounds)
+        {
             Events.publishConquestWon();
             return;
         }
@@ -57,20 +59,24 @@ public class Combat : Node
     }
 
     // When a new round starts, re-connect the won round signal
-    void OnNewRound() {
+    void OnNewRound()
+    {
         Events.roundWon += OnRoundWon;
     }
 
-    void OnConquestLost() {
+    void OnConquestLost()
+    {
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/CombatLoseDialogue.tscn");
     }
 
-    void OnConquestWon() {
+    void OnConquestWon()
+    {
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/CombatWinDialogue.tscn");
         ShopInfo.gold += rewardGold;
     }
 
-    void OnDinosPurchased(int num) {
+    void OnDinosPurchased(int num)
+    {
         maxDinos += num;
         c.creds -= num * DinoInfo.Instance.dinoCredCost;
         c.Reset(maxDinos);

@@ -52,15 +52,18 @@ public class Blockade : Area2D
             currentSprite.Modulate = new Color(1, 1, 1, (float)(currentSpriteHealth / healthPerSprite));
         }
         else // if destroyed, hide it and move to next sprite
-        { 
+        {
             currentSprite.Visible = false;
             currentSpriteNum++;
 
             // only try to get sprite if it exists
-            if (currentSpriteNum < numSprites) {
+            if (currentSpriteNum < numSprites)
+            {
                 currentSprite = (Sprite)sprites.GetChildren()[currentSpriteNum];
                 currentSpriteHealth = healthPerSprite;
-            } else {
+            }
+            else
+            {
                 Events.publishroundWon();
                 return;
             }
@@ -70,7 +73,8 @@ public class Blockade : Area2D
 
     void OnNewRound()
     {
-        foreach (Sprite sprite in sprites.GetChildren()) {
+        foreach (Sprite sprite in sprites.GetChildren())
+        {
             sprite.Modulate = new Color(1, 1, 1, 1);
             sprite.Visible = true;
         }
