@@ -18,6 +18,11 @@ public class CostIndicator : RichTextLabel
         Events.dinoUpgraded += SetUpgradeCost;
     }
 
+    public override void _ExitTree()
+    {
+        Events.dinoUpgraded -= SetUpgradeCost;
+    }
+
 
     public override void _Process(float delta)
     {
@@ -62,6 +67,6 @@ public class CostIndicator : RichTextLabel
             geneText = String.Format("[color=#ff0000] {0} [/color]", geneText);
         }
 
-        BbcodeText = String.Format("{0}{1}  {2}{3}", new string[] {goldPic, goldText, genePic, geneText});
+        BbcodeText = String.Format("{0}{1}  {2}{3}", new string[] { goldPic, goldText, genePic, geneText });
     }
 }

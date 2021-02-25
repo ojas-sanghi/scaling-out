@@ -3,13 +3,21 @@ using Godot;
 
 public class SceneChanger : Control
 {
+    public static SceneChanger Instance;
+
+    public override void _Ready()
+    {
+        Instance = this;
+    }
+
     async public Task Fade()
     {
         var player = GetNode<AnimationPlayer>("CanvasLayer/AnimationPlayer");
+        var colorRect = GetNode<ColorRect>("CanvasLayer/ColorRect");
 
         player.Play("fade");
         await ToSignal(player, "animation_finished");
-        GetNode<ColorRect>("CanvasLayer/ColorRect").Hide();
+        colorRect.Hide();
     }
 
     async public void GoToScene(string scenePath)

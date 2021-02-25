@@ -21,11 +21,14 @@ public class Vault : Area2D
     //? Does this signal connection work?
     void _on_Vault_body_eneted(Node body)
     {
-        if (StealthInfo.findingIce) {
+        if (StealthInfo.findingIce)
+        {
             StealthInfo.findingIce = false;
             UpgradeInfo tankyInfo = DinoInfo.Instance.GetDinoInfo(Enums.Dinos.Tanky);
             tankyInfo.Upgrade(Enums.Stats.Special);
-        } else {
+        }
+        else
+        {
             StealthInfo.findingFire = false;
             UpgradeInfo warriorInfo = DinoInfo.Instance.GetDinoInfo(Enums.Dinos.Warrior);
             warriorInfo.Upgrade(Enums.Stats.Special);

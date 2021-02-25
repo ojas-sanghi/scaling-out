@@ -7,13 +7,14 @@ public class UpgradeScreen : Control
 
     public override void _Ready()
     {
-        name = (Label) FindNode("Name");
-        image = (TextureRect) FindNode("Image");
+        name = (Label)FindNode("Name");
+        image = (TextureRect)FindNode("Image");
 
         SetInfo();
     }
 
-    void SetInfo() {
+    void SetInfo()
+    {
         // TODO: figure out a better way of doing this
         switch (ShopInfo.shopDino)
         {
@@ -26,13 +27,13 @@ public class UpgradeScreen : Control
                 name.Text = "WARRIOR DINO";
                 image.Texture = GD.Load<Texture>("res://assets/dinos/warrior_dino/Tribal_Dino_icon.png");
                 break;
-                
+
             case Enums.Dinos.Mega:
                 name.Text = "MEGA DINO";
                 image.Texture = GD.Load<Texture>("res://assets/dinos/mega_dino/mega_dino.png");
                 break;
 
-            // TODO: add gator dino
+                // TODO: add gator dino
         }
 
     }

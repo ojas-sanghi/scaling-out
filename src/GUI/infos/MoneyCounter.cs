@@ -7,23 +7,32 @@ public class MoneyCounter : Control
 
     public override void _Ready()
     {
-        num = (Label) FindNode("Num");
+        num = (Label)FindNode("Num");
 
         Events.coinGrabbed += _on_Coin_grabbed;
         Events.dinoUpgraded += UpdateGoldAmountFromGlobal;
     }
 
+    public override void _ExitTree()
+    {
+        Events.coinGrabbed -= _on_Coin_grabbed;
+        Events.dinoUpgraded -= UpdateGoldAmountFromGlobal;
+    }
+
     //? I don't think this connection works
-    void _on_Coin_grabbed(int value) {
+    void _on_Coin_grabbed(int value)
+    {
         goldAmt += value;
         UpdateGoldAmount();
     }
 
-    void UpdateGoldAmount() {
+    void UpdateGoldAmount()
+    {
         num.Text = goldAmt.ToString();
     }
 
-    void UpdateGoldAmountFromGlobal() {
+    void UpdateGoldAmountFromGlobal()
+    {
         num.Text = ShopInfo.gold.ToString();
     }
 

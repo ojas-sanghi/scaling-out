@@ -1,8 +1,9 @@
-using Godot;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Godot;
 
-public class BaseDino : Area2D {
+public class BaseDino : Area2D
+{
 
     TextureProgress bar;
     AnimationPlayer animPlayer;
@@ -18,7 +19,7 @@ public class BaseDino : Area2D {
 
     double spawnDelay;
     bool spawningIn;
-    
+
     double dinoHealth;
     double animatedHealth;
     Vector2 dinoSpeed;
@@ -31,12 +32,12 @@ public class BaseDino : Area2D {
 
     async public override void _Ready()
     {
-        bar = (TextureProgress) FindNode("HealthBar");
-        pathTween = (Tween) FindNode("PathFollowTween");
-        animPlayer = (AnimationPlayer) FindNode("AnimationPlayer");
-        animSprite = (AnimatedSprite) FindNode("AnimatedSprite");
-        transparencyTween = (Tween) FindNode("TransparencyTween");
-        var thumpSound = (AudioStreamPlayer) FindNode("ThumpSound");
+        bar = (TextureProgress)FindNode("HealthBar");
+        pathTween = (Tween)FindNode("PathFollowTween");
+        animPlayer = (AnimationPlayer)FindNode("AnimationPlayer");
+        animSprite = (AnimatedSprite)FindNode("AnimatedSprite");
+        transparencyTween = (Tween)FindNode("TransparencyTween");
+        var thumpSound = (AudioStreamPlayer)FindNode("ThumpSound");
 
         await SpawnDelay();
 
@@ -47,12 +48,17 @@ public class BaseDino : Area2D {
         thumpSound.Play();
         animPlayer.Play(dinoVariation.ToString() + "walk");
 
-        pathTween.InterpolateProperty( 
+        pathTween.InterpolateProperty(
             GetParent(), "unit_offset", 0, 1, pathFollowTime, Tween.TransitionType.Linear, Tween.EaseType.InOut
         );
         pathTween.Start();
 
         Events.dinoHit += UpdateHealth;
+    }
+
+    public override void _ExitTree()
+    {
+        Events.dinoHit -= UpdateHealth;
     }
 
 
@@ -61,7 +67,8 @@ public class BaseDino : Area2D {
         bar.Value = animatedHealth;
     }
 
-    async Task SpawnDelay() {
+    async Task SpawnDelay()
+    {
         bar.Hide();
         animSprite.RotationDegrees = -90;
 
@@ -70,7 +77,7 @@ public class BaseDino : Area2D {
 
         animSprite.Animation = dinoVariation.ToString() + "walk";
 
-        transparencyTween.InterpolateProperty(this, "modulate", new Color(1, 1, 1, 0), new Color(1, 1, 1, 1), (float) spawnDelay);
+        transparencyTween.InterpolateProperty(this, "modulate", new Color(1, 1, 1, 0), new Color(1, 1, 1, 1), (float)spawnDelay);
         transparencyTween.Start();
         await ToSignal(transparencyTween, "tween_completed");
 
@@ -79,7 +86,8 @@ public class BaseDino : Area2D {
         Events.publishDinoFullySpawned();
     }
 
-    protected void CalculateUpgrades() {
+    protected void CalculateUpgrades()
+    {
         UpgradeInfo dinoInfo = DinoInfo.Instance.GetDinoInfo(dinoType);
 
         dinoHealth = dinoInfo.GetStat(Enums.Stats.Hp);
@@ -89,12 +97,13 @@ public class BaseDino : Area2D {
         dinoDefense = dinoInfo.GetStat(Enums.Stats.Def);
         dinoDodgeChance = dinoInfo.GetStat(Enums.Stats.Dodge);
         dinoDmg = dinoInfo.GetStat(Enums.Stats.Dmg);
-        dinoSpeed = new Vector2((float) dinoInfo.GetStat(Enums.Stats.Speed), 0);
+        dinoSpeed = new Vector2((float)dinoInfo.GetStat(Enums.Stats.Speed), 0);
     }
-    
-    async Task KillDino() {
-        var collision = (CollisionPolygon2D) FindNode("CollisionPolygon2D");
-        var deathSound = (AudioStreamPlayer) FindNode("DeathSound");
+
+    async Task KillDino()
+    {
+        var collision = (CollisionPolygon2D)FindNode("CollisionPolygon2D");
+        var deathSound = (AudioStreamPlayer)FindNode("DeathSound");
 
         RemoveFromGroup("dinos");
         Events.publishDinoDied(dinoType);
@@ -103,9 +112,12 @@ public class BaseDino : Area2D {
 
         GD.Randomize();
         var num = GD.Randi() % 2;
-        if (num == 0) {
+        if (num == 0)
+        {
             animSprite.FlipH = true;
-        } else {
+        }
+        else
+        {
             animSprite.FlipH = false;
         }
 
@@ -123,35 +135,41 @@ public class BaseDino : Area2D {
         QueueFree();
 
         CombatInfo.Instance.dinosDied += 1;
-        if (CombatInfo.Instance.dinosDied == CombatInfo.Instance.maxDinos) {
+        if (CombatInfo.Instance.dinosDied == CombatInfo.Instance.maxDinos)
+        {
             Events.publishConquestLost();
         }
     }
 
-    void UpdateHealth(double dmgTaken) {
-        var healthTween = (Tween) FindNode("HealthTween");
+    void UpdateHealth(double dmgTaken)
+    {
+        var healthTween = (Tween)FindNode("HealthTween");
 
         dmgTaken += dinoDefense;
         dinoHealth -= dmgTaken;
         healthTween.InterpolateProperty(
-            this, "animatedHealth", animatedHealth, dinoHealth, (float) 0.6, Tween.TransitionType.Linear, Tween.EaseType.In
+            this, "animatedHealth", animatedHealth, dinoHealth, (float)0.6, Tween.TransitionType.Linear, Tween.EaseType.In
         );
-        
-        if (!healthTween.IsActive()) {
+
+        if (!healthTween.IsActive())
+        {
             healthTween.Start();
         }
 
-        if (dinoHealth <= 0) {
-            if (!dinoDead) {
+        if (dinoHealth <= 0)
+        {
+            if (!dinoDead)
+            {
                 KillDino();
                 dinoDead = true;
             }
         }
     }
-            
-        
-    void AttackBlockade() {
-        var attackTimer = (Timer) FindNode("AttackingTimer");
+
+
+    void AttackBlockade()
+    {
+        var attackTimer = (Timer)FindNode("AttackingTimer");
 
         pathTween.SetActive(false);
 
@@ -162,14 +180,17 @@ public class BaseDino : Area2D {
     }
 
     // TODO: connect this in the editor
-    void _on_AttackingTimer_timeout() {
+    void _on_AttackingTimer_timeout()
+    {
         Events.publishBlockadeHit(dinoDmg);
         AttackBlockade();
     }
 
     // TODO: connect this in the editor
-    void _on_GeneralDino_area_entered(Area2D area) {
-        if (area.Name.Contains("Blockade")) {
+    void _on_GeneralDino_area_entered(Area2D area)
+    {
+        if (area.Name.Contains("Blockade"))
+        {
             AttackBlockade();
         }
     }

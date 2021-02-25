@@ -1,9 +1,10 @@
 using Godot;
 
-public class DinoProjectile : Area2D {
+public class DinoProjectile : Area2D
+{
 
     [Export] Enums.Genes type;
-    
+
     Vector2 speed = new Vector2(600, 0);
 
     public bool disabled = true;
@@ -16,14 +17,17 @@ public class DinoProjectile : Area2D {
 
     public override void _PhysicsProcess(float delta)
     {
-        if (!disabled) {
+        if (!disabled)
+        {
             this.Show();
             Position += speed * delta;
         }
     }
 
-    void _on_DinoProjectile_area_entered(Area2D area) {
-        if (!disabled) {
+    void _on_DinoProjectile_area_entered(Area2D area)
+    {
+        if (!disabled)
+        {
             Events.publishProjectileHit(type);
         }
     }

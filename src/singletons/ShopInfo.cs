@@ -5,6 +5,7 @@ using Godot;
 public class ShopInfo : Node
 {
 
+    // TODO: move this to a StealthInfo.cs
     public static bool playerCaught = false;
 
     public static int gold = 30000;
