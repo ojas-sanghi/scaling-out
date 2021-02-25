@@ -1,6 +1,7 @@
 tool
 class_name UpgradeButton extends Button
 
+# TODO: MAKE THIS INTO AN ENUM
 export (String, "EXCEPTION", "dmg", "def", "speed", "ice", "fire", "hp", "delay") var button_mode = "EXCEPTION"
 
 #export (int, "EXCEPTION", Enums.stats.dmg, "def", "speed", "ice", "fire", "hp", "delay") var button_mode = "EXCEPTION"
