@@ -1,9 +1,8 @@
-using Godot;
 using System.Collections.Generic;
 
 public class TankyDino : BaseDino {
 
-    Area2D iceProjectile;
+    DinoProjectile iceProjectile;
 
     public TankyDino() {
         dinoType = Enums.Dinos.Tanky;
@@ -20,7 +19,7 @@ public class TankyDino : BaseDino {
 
     void ShootProjectile() {
         iceProjectile.Show();
-        // todo: code iceProjectile and disable it
+        iceProjectile.disabled = true;
     }
 
 }

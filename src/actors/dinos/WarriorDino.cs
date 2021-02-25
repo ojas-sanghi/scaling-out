@@ -1,9 +1,8 @@
-using Godot;
 using System.Collections.Generic;
 
 public class WarriorDino : BaseDino {
 
-    Area2D fireProjectile;
+    DinoProjectile fireProjectile;
 
     public WarriorDino() {
         dinoType = Enums.Dinos.Warrior;
@@ -20,7 +19,7 @@ public class WarriorDino : BaseDino {
 
     void ShootProjectile() {
         fireProjectile.Show();
-        // todo: code fireProjectile and disable it
+        fireProjectile.disabled = true;
     }
 
 }
