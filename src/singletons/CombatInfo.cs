@@ -17,7 +17,7 @@ public class CombatInfo : Node
     public Enums.Dinos dinoId;
 
     public List<Enums.Dinos> dinosDeploying = new List<Enums.Dinos>();
-    public List<int> selectorTimerList = new List<int>();
+    public List<Enums.Dinos> selectorTimerList = new List<Enums.Dinos>();
 
     public bool shotIce;
     public bool shotFire;

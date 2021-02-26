@@ -15,5 +15,10 @@ namespace Enums
         None, Ice, Fire, Florida
     }
 
+    public enum HomeScreenButtons
+    {
+        None, Map, Upgrades
+    }
+
 
 }

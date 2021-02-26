@@ -93,7 +93,7 @@ script = ExtResource( 62 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "move_handgun"
-frame = 18
+frame = 12
 playing = true
 
 [node name="Forward" type="Tween" parent="."]
@@ -108,5 +108,4 @@ shape = SubResource( 2 )
 rotation = -0.785398
 script = ExtResource( 29 )
 fov_color = Color( 0.909804, 0.211765, 0.0941176, 1 )
-
 [connection signal="body_entered" from="." to="." method="_on_BaseGuard_body_entered"]

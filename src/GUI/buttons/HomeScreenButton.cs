@@ -1,0 +1,61 @@
+using Godot;
+
+[Tool]
+public class HomeScreenButton : TextureButton
+{
+    [Export] Enums.HomeScreenButtons mode;
+
+    Label label;
+
+    public override void _Ready()
+    {
+        if (mode == Enums.HomeScreenButtons.None)
+        {
+            GD.PushError("HomeScreenButton mode must be set");
+            GD.PrintStack();
+            GetTree().Quit(1);
+        }
+        label = (Label)FindNode("Label");
+        SetButtonText();
+    }
+
+    public override void _Process(float delta)
+    {
+        if (Engine.EditorHint)
+        {
+            if (label.Text == "example text")
+            {
+                SetButtonText();
+            }
+        }
+    }
+
+
+    void SetButtonText()
+    {
+        switch (mode)
+        {
+            case Enums.HomeScreenButtons.Map:
+                label.Text = "Go fight!";
+                break;
+            case Enums.HomeScreenButtons.Upgrades:
+                label.Text = "View upgrade menu";
+                break;
+        }
+    }
+
+    //? do this work
+    void _on_Button_pressed()
+    {
+        switch (mode)
+        {
+            case Enums.HomeScreenButtons.Map:
+                SceneChanger.Instance.GoToScene("res://src/combat/CombatScreen.tscn");
+                break;
+            case Enums.HomeScreenButtons.Upgrades:
+                SceneChanger.Instance.GoToScene("res://src/GUI/screens/UpgradeScreen.tscn");
+                break;
+        }
+    }
+
+}

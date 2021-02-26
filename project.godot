@@ -59,12 +59,6 @@ default_bus_layout="res://src/default_bus_layout.tres"
 [autoload]
 
 Enums="*res://src/singletons/Enums.gd"
-SceneChanger="*res://src/singletons/SceneChanger.tscn"
-DinoInfo="*res://src/singletons/DinoInfo.gd"
-CombatInfo="*res://src/singletons/CombatInfo.gd"
-Signals="*res://src/singletons/Signals.gd"
-ShopInfo="*res://src/singletons/ShopInfo.gd"
-StealthInfo="*res://src/singletons/StealthInfo.gd"
 
 [debug]
 
