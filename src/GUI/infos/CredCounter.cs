@@ -8,7 +8,7 @@ public class CredCounter : Control
         SetCreds();
     }
 
-    void SetCreds()
+    public void SetCreds()
     {
         var label = (Label)FindNode("Label");
         label.Text = CombatInfo.Instance.creds.ToString();

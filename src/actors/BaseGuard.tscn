@@ -63,7 +63,6 @@
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_19.png" type="Texture" id=61]
 [ext_resource path="res://src/actors/BaseGuard.gd" type="Script" id=62]
 
-
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 2 ), ExtResource( 30 ), ExtResource( 21 ), ExtResource( 10 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 28 ), ExtResource( 44 ), ExtResource( 16 ), ExtResource( 57 ), ExtResource( 15 ), ExtResource( 46 ), ExtResource( 17 ), ExtResource( 7 ), ExtResource( 38 ), ExtResource( 52 ), ExtResource( 23 ), ExtResource( 47 ), ExtResource( 14 ), ExtResource( 13 ) ],
@@ -71,14 +70,14 @@ animations = [ {
 "name": "move_rifle",
 "speed": 19.0
 }, {
-"frames": [ ExtResource( 39 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 35 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 48 ), ExtResource( 18 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 24 ), ExtResource( 12 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 20 ), ExtResource( 25 ), ExtResource( 11 ) ],
-"loop": true,
-"name": "move_shotgun",
-"speed": 19.0
-}, {
 "frames": [ ExtResource( 58 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 45 ), ExtResource( 40 ), ExtResource( 49 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 59 ), ExtResource( 55 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 31 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 34 ), ExtResource( 41 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 61 ) ],
 "loop": true,
 "name": "move_handgun",
+"speed": 19.0
+}, {
+"frames": [ ExtResource( 39 ), ExtResource( 27 ), ExtResource( 26 ), ExtResource( 35 ), ExtResource( 9 ), ExtResource( 6 ), ExtResource( 1 ), ExtResource( 8 ), ExtResource( 48 ), ExtResource( 18 ), ExtResource( 22 ), ExtResource( 19 ), ExtResource( 24 ), ExtResource( 12 ), ExtResource( 5 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 20 ), ExtResource( 25 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "move_shotgun",
 "speed": 19.0
 } ]
 
@@ -94,7 +93,7 @@ script = ExtResource( 62 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "move_handgun"
-frame = 4
+frame = 18
 playing = true
 
 [node name="Forward" type="Tween" parent="."]
@@ -109,4 +108,5 @@ shape = SubResource( 2 )
 rotation = -0.785398
 script = ExtResource( 29 )
 fov_color = Color( 0.909804, 0.211765, 0.0941176, 1 )
+
 [connection signal="body_entered" from="." to="." method="_on_BaseGuard_body_entered"]

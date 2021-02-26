@@ -54,8 +54,7 @@ public class Combat : Node
         }
 
         GetTree().Paused = true;
-        // TODO: make a BuyMenu and fix this
-        GetNode<BuyMenu>("BuyMenu").show();
+        GetNode<BuyMenu>("BuyMenu").Show();
     }
 
     // When a new round starts, re-connect the won round signal

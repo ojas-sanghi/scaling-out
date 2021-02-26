@@ -50,7 +50,7 @@ public class Lane : Path2D
             return;
         }
 
-        // dont deploy fi the delay isn't over yet
+        // dont deploy if the delay isn't over yet
         if (CombatInfo.Instance.dinosDeploying.Contains(CombatInfo.Instance.dinoId))
         {
             return;
