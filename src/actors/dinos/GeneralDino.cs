@@ -14,7 +14,7 @@ public class BaseDino : Area2D
 
     bool dinoDead = false;
 
-    protected Enums.Dinos dinoType; // mega, tanky, warrior
+    public Enums.Dinos dinoType; // mega, tanky, warrior
     int dinoVariation; // skin, maybe change this system later
 
     double spawnDelay;

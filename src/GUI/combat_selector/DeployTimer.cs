@@ -17,8 +17,10 @@ public class DeployTimer : Control
         tween = (Tween)FindNode("Tween");
 
         // give the circle an id relating to each dino in the list
-        foreach (Enums.Dinos d in Enum.GetValues(typeof(Enums.Dinos))) {
-            if (CombatInfo.Instance.selectorTimerList.Contains(d)) {
+        foreach (Enums.Dinos d in Enum.GetValues(typeof(Enums.Dinos)))
+        {
+            if (CombatInfo.Instance.selectorTimerList.Contains(d))
+            {
                 continue;
             }
             CombatInfo.Instance.selectorTimerList.Add(d);
@@ -36,7 +38,8 @@ public class DeployTimer : Control
     void OnDinoDeployed()
     {
         // only bother if the dino being deployed is our associated ID
-        if (CombatInfo.Instance.dinoId != dinoId) {
+        if (CombatInfo.Instance.dinoId != dinoId)
+        {
             return;
         }
 

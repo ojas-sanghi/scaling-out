@@ -20,7 +20,7 @@ public class WarriorDino : BaseDino
         fireProjectile.Hide();
     }
 
-    void ShootProjectile()
+    public void ShootProjectile()
     {
         fireProjectile.Show();
         fireProjectile.disabled = true;

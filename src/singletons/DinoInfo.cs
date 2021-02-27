@@ -26,8 +26,8 @@ public class DinoInfo : Node
     public Dictionary<Enums.Dinos, StreamTexture> dinoAbilityIcons = new Dictionary<Enums.Dinos, StreamTexture>()
     {
         {Enums.Dinos.Mega, null},
-        {Enums.Dinos.Tanky, GD.Load<StreamTexture>("res://assets/dinos/tanky_dino/Armored_Dino_ICON.png")},
-        {Enums.Dinos.Warrior, GD.Load<StreamTexture>("res://assets/dinos/warrior_dino/Tribal_Dino_icon.png")},
+        {Enums.Dinos.Tanky, GD.Load<StreamTexture>("res://assets/dinos/misc/ice.png")},
+        {Enums.Dinos.Warrior, GD.Load<StreamTexture>("res://assets/dinos/misc/fire.png")},
         {Enums.Dinos.Gator, null},
     };
 

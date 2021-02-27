@@ -31,7 +31,7 @@ public class SpecialUpgrade : Control
                 sprite.Texture = GD.Load<Texture>("res://assets/dinos/misc/ice.png");
                 video.Stream = GD.Load<VideoStream>("res://assets/abilities/previews/ice-preview.ogv");
                 break;
-            
+
             case Enums.Dinos.Warrior:
                 name.Text = "Fire Projectile";
                 description.Text = "Unlock a fire projectile. When activated, will launch from a random warrior dino on the map. On impact, stops the army from firing from a few seconds. Can be used once per round.";
@@ -46,7 +46,8 @@ public class SpecialUpgrade : Control
     }
 
     //? does this wrok
-    void _on_VideoPlayer_finished() {
+    void _on_VideoPlayer_finished()
+    {
         video.Play();
     }
 

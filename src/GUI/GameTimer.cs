@@ -1,6 +1,6 @@
 using Godot;
 
-public class GameTimer : Control 
+public class GameTimer : Control
 {
     string labelText = "Time left: ";
 
@@ -19,7 +19,8 @@ public class GameTimer : Control
         timer.Start();
     }
 
-    void ResetTime() {
+    void ResetTime()
+    {
         timer.WaitTime = timerDuration;
     }
 
@@ -46,7 +47,8 @@ public class GameTimer : Control
     }
 
     //? do thios work
-    void _on_Timer_timeout() {
+    void _on_Timer_timeout()
+    {
         Events.publishConquestLost();
     }
 
