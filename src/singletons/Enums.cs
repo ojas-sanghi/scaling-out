@@ -20,5 +20,14 @@ namespace Enums
         None, Map, Upgrades
     }
 
+    public enum GameButtonModes
+    {
+        None, Quit, Play, RetryCombat, RetryStealth, Ice, Fire, ReturnHomeScreen, ReturnUpgrades, PlusDino, MinusDino, BuyDinos, ContinueConquest
+    }
+
+    public enum ShopUpgradeButtonModes 
+    {
+        None, Hp, Delay, Def, Dodge, Dmg, Speed, Ice, Fire
+    }
 
 }

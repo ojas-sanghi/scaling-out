@@ -27,12 +27,12 @@ public class CostIndicator : RichTextLabel
     public override void _Process(float delta)
     {
         // TODO: Make upgrade button and use it here
-        UpgradeButton parentButton = GetNodeOrNull<UpgradeButton>(parentNode);
-        if (!parentButton) return;
+        ShopUpgradeButton parentButton = GetNodeOrNull<ShopUpgradeButton>(parentNode);
+        if (parentButton == null) return;
 
         if (parentButton.infoSet)
         {
-            buttonMode = parentButton.button_mode;
+            buttonMode = parentButton.mode;
             SetUpgradeCost();
         }
         SetProcess(false);

@@ -20,6 +20,7 @@ public class Vault : Area2D
 
     //? Does this signal connection work?
     void _on_Vault_body_eneted(Node body)
+    // TODO: figure out a better way to organize
     {
         if (StealthInfo.findingIce)
         {
