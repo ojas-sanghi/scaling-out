@@ -7,7 +7,6 @@ public class UpgradeInfo : Node
 
     public UpgradeInfo(string path)
     {
-
         DinoInfoResource data = GD.Load<DinoInfoResource>(path);
 
         stats = new Dictionary<Enums.Stats, Stats>()
