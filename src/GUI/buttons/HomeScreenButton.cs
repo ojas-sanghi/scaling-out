@@ -9,7 +9,8 @@ public class HomeScreenButton : TextureButton
 
     public override void _Ready()
     {
-        if (Engine.EditorHint) {
+        if (Engine.EditorHint)
+        {
             return;
         }
 

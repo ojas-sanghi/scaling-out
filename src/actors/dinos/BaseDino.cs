@@ -137,7 +137,7 @@ public class BaseDino : Area2D
         {
             Events.publishConquestLost();
         }
-        
+
         QueueFree();
 
     }

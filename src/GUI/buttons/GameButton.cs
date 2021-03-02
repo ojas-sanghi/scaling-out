@@ -8,13 +8,14 @@ public class GameButton : Button
 
     public override void _Ready()
     {
-        if (Engine.EditorHint) {
+        if (Engine.EditorHint)
+        {
             return;
         }
-        
+
         if (buttonMode == b.None)
         {
-            GD.PushError("You must set buttonMode for GameButton! Located at: " + GetTree().CurrentScene.Filename );
+            GD.PushError("You must set buttonMode for GameButton! Located at: " + GetTree().CurrentScene.Filename);
             GD.PrintStack();
             GetTree().Quit(1);
         }
@@ -96,9 +97,12 @@ public class GameButton : Button
                 scnChng.GoToScene("res://src/combat/CombatScreen.tscn");
                 break;
             case b.RetryStealth:
-                if (StealthInfo.findingIce) {
+                if (StealthInfo.findingIce)
+                {
                     scnChng.GoToScene("res://src/stealth/StealthIce.tscn");
-                } else {
+                }
+                else
+                {
                     scnChng.GoToScene("res://src/stealth/StealthFire.tscn");
                 }
                 break;
@@ -122,7 +126,7 @@ public class GameButton : Button
             case b.ContinueConquest:
                 Events.publishNewRound();
                 break;
-        }   
+        }
     }
 
 }

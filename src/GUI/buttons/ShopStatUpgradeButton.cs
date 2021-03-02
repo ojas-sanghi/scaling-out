@@ -1,6 +1,5 @@
-using Godot;
 using System.Collections.Generic;
-
+using Godot;
 using b = Enums.ShopUpgradeButtonModes;
 using s = Enums.Stats;
 
@@ -20,7 +19,7 @@ public class ShopStatUpgradeButton : ShopUpgradeButton
 
                 statButtonMode = s.Hp;
                 break;
-            
+
             case b.Delay:
                 //? font_color or FontColor
                 stat.AddColorOverride("font_color", delayBlue);
@@ -35,7 +34,7 @@ public class ShopStatUpgradeButton : ShopUpgradeButton
         infoSet = true;
 
         var dinoInfo = DinoInfo.Instance.GetDinoInfo(ShopInfo.shopDino);
-        
+
         statNum.Text = dinoInfo.GetStat(statButtonMode).ToString();
         List<int> cost = dinoInfo.GetNextUpgradeCost(statButtonMode);
         goldCost = cost[0];

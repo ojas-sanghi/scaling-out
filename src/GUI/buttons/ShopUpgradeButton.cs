@@ -41,7 +41,8 @@ public class ShopUpgradeButton : Button
 
     public override void _Ready()
     {
-        if (Engine.EditorHint) {
+        if (Engine.EditorHint)
+        {
             return;
         }
 
@@ -108,18 +109,21 @@ public class ShopUpgradeButton : Button
                 image.Texture = GD.Load<Texture>("res://assets/abilities/fire.png");
                 statButtonMode = Enums.Stats.Special;
                 break;
-            
+
         }
         infoSet = true;
 
-        if (statButtonMode == Enums.Stats.Special) {
+        if (statButtonMode == Enums.Stats.Special)
+        {
             statNum.Text = dinoInfo.GetSpecial();
-        } else {
+        }
+        else
+        {
             statNum.Text = dinoInfo.GetStat(statButtonMode).ToString();
         }
-            
 
-        List<int> cost = dinoInfo.GetNextUpgradeCost(statButtonMode); 
+
+        List<int> cost = dinoInfo.GetNextUpgradeCost(statButtonMode);
         goldCost = cost[0];
         geneCost = cost[1];
     }
@@ -127,7 +131,7 @@ public class ShopUpgradeButton : Button
     void ColorSquares(Color color)
     {
         var squaresList = squaresContainer.GetChildren().Cast<ColorRect>().ToList<ColorRect>();
-        var filledSquares = dinoInfo.GetLevel(statButtonMode); 
+        var filledSquares = dinoInfo.GetLevel(statButtonMode);
 
         if (statButtonMode == s.Hp)
         {
@@ -170,7 +174,8 @@ public class ShopUpgradeButton : Button
             newSquare.RectSize = newSquare.RectMinSize;
 
             // don't make new squares every time
-            if (firstRun) {
+            if (firstRun)
+            {
                 squaresContainer.AddChild(newSquare);
             }
         }
@@ -201,10 +206,12 @@ public class ShopUpgradeButton : Button
             return;
         }
         // don't do anything if not enough gold/genes
-        if (ShopInfo.gold < goldCost) {
+        if (ShopInfo.gold < goldCost)
+        {
             return;
         }
-        if (ShopInfo.genes < geneCost) {
+        if (ShopInfo.genes < geneCost)
+        {
             return;
         }
 
@@ -224,7 +231,7 @@ public class ShopUpgradeButton : Button
         ShopInfo.gold -= goldCost;
         ShopInfo.genes -= geneCost;
 
-        dinoInfo.Upgrade(statButtonMode); 
+        dinoInfo.Upgrade(statButtonMode);
         Events.publishDinoUpgraded();
 
         StopUpgrading();

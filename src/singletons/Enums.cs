@@ -25,7 +25,7 @@ namespace Enums
         None, Quit, Play, RetryCombat, RetryStealth, StealthIce, StealthFire, ReturnHomeScreen, ReturnUpgrades, PlusDino, MinusDino, BuyDinos, ContinueConquest
     }
 
-    public enum ShopUpgradeButtonModes 
+    public enum ShopUpgradeButtonModes
     {
         None, Hp, Delay, Def, Dodge, Dmg, Speed, Ice, Fire
     }
