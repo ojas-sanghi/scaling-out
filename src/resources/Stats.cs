@@ -9,7 +9,7 @@ public class Stats : Resource
 
     [Export] public int level { get; set; } = 0;
 
-    public double GetStat()
+    public virtual double GetStat()
     {
         return stats[level];
     }

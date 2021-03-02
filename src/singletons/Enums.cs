@@ -22,7 +22,7 @@ namespace Enums
 
     public enum GameButtonModes
     {
-        None, Quit, Play, RetryCombat, RetryStealth, Ice, Fire, ReturnHomeScreen, ReturnUpgrades, PlusDino, MinusDino, BuyDinos, ContinueConquest
+        None, Quit, Play, RetryCombat, RetryStealth, StealthIce, StealthFire, ReturnHomeScreen, ReturnUpgrades, PlusDino, MinusDino, BuyDinos, ContinueConquest
     }
 
     public enum ShopUpgradeButtonModes 

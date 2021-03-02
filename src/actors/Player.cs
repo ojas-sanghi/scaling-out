@@ -109,7 +109,7 @@ public class Player : KinematicBody2D
         animSprite.Stop();
         win.Play();
 
-        SceneChanger.Instance.Fade();
+        await SceneChanger.Instance.Fade();
         GetNode<CanvasModulate>(nodePath + "CanvasModulate").Hide();
         GetNode<MoneyCounter>(nodePath + "CanvasLayer/CoinCounter").Hide();
         await ToSignal(win, "finished");
@@ -119,7 +119,7 @@ public class Player : KinematicBody2D
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/StealthWinDialogue.tscn");
     }
 
-    async void OnLevelFailed()
+    void OnLevelFailed()
     {
         Events.levelFailed -= OnLevelFailed;
 

@@ -6,8 +6,7 @@ public class CostIndicator : RichTextLabel
 {
     [Export] NodePath parentNode;
 
-    // TODO: make this an enum, after it's changed in UpgradeButton.cs
-    string buttonMode;
+    Enums.Stats buttonMode;
 
     int goldCost;
     int geneCost;
@@ -26,13 +25,12 @@ public class CostIndicator : RichTextLabel
 
     public override void _Process(float delta)
     {
-        // TODO: Make upgrade button and use it here
         ShopUpgradeButton parentButton = GetNodeOrNull<ShopUpgradeButton>(parentNode);
         if (parentButton == null) return;
 
         if (parentButton.infoSet)
         {
-            buttonMode = parentButton.mode;
+            buttonMode = parentButton.statButtonMode;
             SetUpgradeCost();
         }
         SetProcess(false);

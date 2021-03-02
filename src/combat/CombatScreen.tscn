@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/combat/Lane.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GUI/Timer.tscn" type="PackedScene" id=2]
@@ -6,10 +6,8 @@
 [ext_resource path="res://src/combat/Blockade.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/actors/ArmyDude.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/GUI/DinoCounter.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/combat/Combat.gd" type="Script" id=7]
-[ext_resource path="res://assets/combat/lanes/road.png" type="Texture" id=8]
+[ext_resource path="res://src/combat/Combat.cs" type="Script" id=7]
 [ext_resource path="res://assets/music/Battle Music.wav" type="AudioStream" id=9]
-[ext_resource path="res://assets/combat/lanes/opaque-center.png" type="Texture" id=10]
 [ext_resource path="res://src/GUI/BuyMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/GUI/RoundCounter.tscn" type="PackedScene" id=12]
 
@@ -26,15 +24,12 @@ position = Vector2( 0, 123 )
 
 [node name="Lane" parent="Lanes" instance=ExtResource( 1 )]
 position = Vector2( 0, -5 )
-lane_img = ExtResource( 8 )
 
 [node name="Lane2" parent="Lanes" instance=ExtResource( 1 )]
 position = Vector2( 0, 269 )
-lane_img = ExtResource( 10 )
 
 [node name="Lane3" parent="Lanes" instance=ExtResource( 1 )]
 position = Vector2( 0, 543 )
-lane_img = ExtResource( 8 )
 
 [node name="Army" type="Node2D" parent="."]
 

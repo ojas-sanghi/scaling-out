@@ -17,6 +17,7 @@ public class WarriorDino : BaseDino
 
     public override void _Ready()
     {
+        fireProjectile = (DinoProjectile)FindNode("FireProjectile");
         fireProjectile.Hide();
     }
 

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/Font75.tres" type="DynamicFont" id=2]
-[ext_resource path="res://src/GUI/buttons/Button.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=3]
 
 [node name="StealthWinDialogue" type="Control"]
 pause_mode = 2
@@ -52,4 +52,4 @@ margin_top = 80.0
 margin_right = 279.124
 margin_bottom = 204.0
 text = "Return Home"
-button_mode = "return home screen"
+buttonMode = 7

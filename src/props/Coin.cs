@@ -13,11 +13,11 @@ public class Coin : Area2D
 
         // Increase size
         effectTween.InterpolateProperty(
-            sprite, "Scale", sprite.Scale, new Vector2(2, 2), (float)0.6, Tween.TransitionType.Cubic, Tween.EaseType.Out
+            sprite, "scale", sprite.Scale, new Vector2(2, 2), (float)0.6, Tween.TransitionType.Cubic, Tween.EaseType.Out
         ); ;
         // Fade out
         effectTween.InterpolateProperty(
-            sprite, "Modulate", new Color(1, 1, 1, 1), new Color(0, 0, 0, 0), (float)0.6, Tween.TransitionType.Linear, Tween.EaseType.Out
+            sprite, "modulate", new Color(1, 1, 1, 1), new Color(0, 0, 0, 0), (float)0.6, Tween.TransitionType.Linear, Tween.EaseType.Out
         );
     }
 

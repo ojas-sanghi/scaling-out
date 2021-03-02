@@ -8,9 +8,13 @@ public class GameButton : Button
 
     public override void _Ready()
     {
+        if (Engine.EditorHint) {
+            return;
+        }
+        
         if (buttonMode == b.None)
         {
-            GD.PushError("You must set buttonMode for GameButton!");
+            GD.PushError("You must set buttonMode for GameButton! Located at: " + GetTree().CurrentScene.Filename );
             GD.PrintStack();
             GetTree().Quit(1);
         }
@@ -54,10 +58,10 @@ public class GameButton : Button
                 Text = "Return to Upgrades";
                 this.GrabFocus();
                 break;
-            case b.Ice:
+            case b.StealthIce:
                 Text = "Ice Stealth";
                 break;
-            case b.Fire:
+            case b.StealthFire:
                 Text = "Fire Stealth";
                 break;
             case b.PlusDino:
@@ -78,41 +82,41 @@ public class GameButton : Button
     //? work?
     void _on_Button_pressed()
     {
-        SceneChanger s = SceneChanger.Instance;
+        SceneChanger scnChng = SceneChanger.Instance;
         switch (buttonMode)
         {
             case b.Quit:
                 GetTree().Quit();
                 break;
             case b.Play:
-                s.GoToScene("res://src/GUI/screens/HomeScreen.tscn");
+                scnChng.GoToScene("res://src/GUI/screens/HomeScreen.tscn");
                 break;
             case b.RetryCombat:
                 CombatInfo.Instance.Reset();
-                s.GoToScene("res://src/combat/CombatScreen.tscn");
+                scnChng.GoToScene("res://src/combat/CombatScreen.tscn");
                 break;
             case b.RetryStealth:
                 if (StealthInfo.findingIce) {
-                    s.GoToScene("res://src/stealth/StealthIce.tscn");
+                    scnChng.GoToScene("res://src/stealth/StealthIce.tscn");
                 } else {
-                    s.GoToScene("res://src/stealth/StealthFire.tscn");
+                    scnChng.GoToScene("res://src/stealth/StealthFire.tscn");
                 }
                 break;
             case b.ReturnHomeScreen:
-                s.GoToScene("res://src/GUI/screens/HomeScreen.tscn");
+                scnChng.GoToScene("res://src/GUI/screens/HomeScreen.tscn");
                 break;
             case b.ReturnUpgrades:
-                s.GoToScene("res://src/GUI/screens/UpgradeScreen.tscn");
+                scnChng.GoToScene("res://src/GUI/screens/UpgradeScreen.tscn");
                 break;
-            case b.Ice:
+            case b.StealthIce:
                 StealthInfo.findingIce = true;
                 StealthInfo.findingFire = false;
-                s.GoToScene("res://src/stealth/StealthIce.tscn");
+                scnChng.GoToScene("res://src/stealth/StealthIce.tscn");
                 break;
-            case b.Fire:
+            case b.StealthFire:
                 StealthInfo.findingIce = false;
                 StealthInfo.findingFire = true;
-                s.GoToScene("res://src/stealth/StealthFire.tscn");
+                scnChng.GoToScene("res://src/stealth/StealthFire.tscn");
                 break;
             // nothing for plus, minus, or buy dinos: those are handled in their own scenes
             case b.ContinueConquest:

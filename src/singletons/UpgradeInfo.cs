@@ -38,6 +38,11 @@ public class UpgradeInfo : Node
             GD.PrintStack();
             GetTree().Quit(1);
         }
+        GD.Print(stat);
+        GD.Print(stats);
+        GD.Print(stats.Keys);
+        GD.Print(stats.ContainsKey(stat));
+        GD.Print(stats[stat]);
         return stats[stat].GetStat();
     }
     public string GetSpecial()

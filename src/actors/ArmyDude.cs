@@ -17,6 +17,7 @@ public class ArmyDude : Area2D
     public override void _Ready()
     {
         BulletSpawner spawner = (BulletSpawner)FindNode("BulletSpawner");
+        animPlayer = (AnimationPlayer)FindNode("AnimationPlayer");
         rayCast = (RayCast2D)FindNode("RayCast2D");
 
         GD.Randomize();

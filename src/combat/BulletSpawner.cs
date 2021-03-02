@@ -4,7 +4,7 @@ using Godot;
 public class BulletSpawner : Node2D
 {
     PackedScene bullet = GD.Load<PackedScene>("res://src/combat/Bullet.tscn");
-    PackedScene bulletGroupScene = GD.Load<PackedScene>("res://src/combat/BulletGroup.tscn");
+    PackedScene bulletGroupScene = GD.Load<PackedScene>("res://src/combat/BulletsGroup.tscn");
 
     List<Bullet> bullets = new List<Bullet>();
 

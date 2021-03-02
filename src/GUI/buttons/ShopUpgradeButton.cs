@@ -12,7 +12,7 @@ public class ShopUpgradeButton : Button
     // the other is the button mode that goes off the Enums.stats
     // we need to convert it since Enums.stats is used in all the DinoInfo.cs files and everything
     [Export] public b exportedButtonMode;
-    protected Enums.Stats statButtonMode;
+    public Enums.Stats statButtonMode;
 
     int maxSquares;
     bool firstRun = true;
@@ -41,6 +41,10 @@ public class ShopUpgradeButton : Button
 
     public override void _Ready()
     {
+        if (Engine.EditorHint) {
+            return;
+        }
+
         if (exportedButtonMode == b.None)
         {
             GD.PushError("You must set exportedButtonMode for ShopUpgradeButton!");
@@ -89,6 +93,7 @@ public class ShopUpgradeButton : Button
             // todo: figure out a better way for the ice and fire? 
             // maybe consolidate into b.Special and get icons and stuff like that from the resource file
             // that would even fix the issue of having two different buttonModes
+            // maybe do just special and then check what to do based on what dino from ShopInfo. but resource sounds better
             case b.Ice:
                 name.Text = "Special";
                 stat.Text = "";
@@ -107,7 +112,12 @@ public class ShopUpgradeButton : Button
         }
         infoSet = true;
 
-        statNum.Text = dinoInfo.GetStat(statButtonMode).ToString();
+        if (statButtonMode == Enums.Stats.Special) {
+            statNum.Text = dinoInfo.GetSpecial();
+        } else {
+            statNum.Text = dinoInfo.GetStat(statButtonMode).ToString();
+        }
+            
 
         List<int> cost = dinoInfo.GetNextUpgradeCost(statButtonMode); 
         goldCost = cost[0];
@@ -116,7 +126,7 @@ public class ShopUpgradeButton : Button
 
     void ColorSquares(Color color)
     {
-        var squaresList = (List<ColorRect>)squaresContainer.GetChildren().Cast<ColorRect>();
+        var squaresList = squaresContainer.GetChildren().Cast<ColorRect>().ToList<ColorRect>();
         var filledSquares = dinoInfo.GetLevel(statButtonMode); 
 
         if (statButtonMode == s.Hp)

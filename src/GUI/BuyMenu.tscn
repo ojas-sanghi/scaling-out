@@ -3,8 +3,8 @@
 [ext_resource path="res://src/GUI/infos/CredCounter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/fonts/Font100.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/Font50.tres" type="DynamicFont" id=3]
-[ext_resource path="res://src/GUI/BuyMenu.gd" type="Script" id=4]
-[ext_resource path="res://src/GUI/buttons/Button.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/GUI/BuyMenu.cs" type="Script" id=4]
+[ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/fonts/Font35.tres" type="DynamicFont" id=6]
 [ext_resource path="res://src/GUI/themes/PlusMinusButtonTheme.tres" type="Theme" id=7]
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=8]
@@ -141,7 +141,7 @@ margin_right = 34.8863
 margin_bottom = 101.531
 theme = ExtResource( 7 )
 text = "-"
-button_mode = "minus dino"
+buttonMode = 10
 
 [node name="SpinBox" type="SpinBox" parent="Buy"]
 margin_left = 40.0
@@ -167,7 +167,7 @@ margin_right = 240.569
 margin_bottom = 101.531
 theme = ExtResource( 7 )
 text = "+"
-button_mode = "plus dino"
+buttonMode = 9
 
 [node name="Purchase" parent="Buy" instance=ExtResource( 5 )]
 anchor_left = 0.0
@@ -180,7 +180,7 @@ margin_right = 223.273
 margin_bottom = 193.0
 custom_fonts/font = ExtResource( 6 )
 text = "Purchase"
-button_mode = "buy dinos"
+buttonMode = 11
 
 [node name="Conquest" parent="." instance=ExtResource( 5 )]
 margin_left = 232.0
@@ -189,7 +189,8 @@ margin_right = 609.0
 margin_bottom = 391.0
 custom_fonts/font = ExtResource( 6 )
 text = "Continue Conquest"
-button_mode = "continue conquest"
+buttonMode = 12
+
 [connection signal="visibility_changed" from="." to="." method="_on_BuyMenu_visibility_changed"]
 [connection signal="pressed" from="Buy/Minus" to="." method="_on_Minus_pressed"]
 [connection signal="pressed" from="Buy/Plus" to="." method="_on_Plus_pressed"]

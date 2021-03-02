@@ -36,7 +36,7 @@ public class DinoInfo : Node
         {Enums.Dinos.Mega, new UpgradeInfo("res://src/actors/dinos/stats/MegaDino.tres")},
         {Enums.Dinos.Tanky, new UpgradeInfo("res://src/actors/dinos/stats/TankyDino.tres")},
         {Enums.Dinos.Warrior, new UpgradeInfo("res://src/actors/dinos/stats/WarriorDino.tres")},
-        {Enums.Dinos.Gator, new UpgradeInfo("res://src/actors/dinos/stats/GatorDino.tres")}
+        {Enums.Dinos.Gator, new UpgradeInfo("res://src/actors/dinos/stats/GatorGecko.tres")}
     };
 
     public override void _Ready()

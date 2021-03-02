@@ -19,6 +19,10 @@ public class SelectorSprite : Control
 
     public override void _Ready()
     {
+        if (Engine.EditorHint) {
+            return;
+        }
+
         sprite = (Sprite)FindNode("Sprite");
         label = (Label)FindNode("Label");
         disabled = (Sprite)FindNode("disabled");

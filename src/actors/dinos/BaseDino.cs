@@ -132,16 +132,17 @@ public class BaseDino : Area2D
         await ToSignal(transparencyTween, "tween_completed");
         await ToSignal(deathSound, "finished");
 
-        QueueFree();
-
         CombatInfo.Instance.dinosDied += 1;
         if (CombatInfo.Instance.dinosDied == CombatInfo.Instance.maxDinos)
         {
             Events.publishConquestLost();
         }
+        
+        QueueFree();
+
     }
 
-    public void UpdateHealth(double dmgTaken)
+    async public void UpdateHealth(double dmgTaken)
     {
         var healthTween = (Tween)FindNode("HealthTween");
 
@@ -160,8 +161,8 @@ public class BaseDino : Area2D
         {
             if (!dinoDead)
             {
-                KillDino();
                 dinoDead = true;
+                await KillDino();
             }
         }
     }

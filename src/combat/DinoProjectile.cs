@@ -3,7 +3,7 @@ using Godot;
 public class DinoProjectile : Area2D
 {
 
-    [Export] Enums.Genes type;
+    [Export] Enums.Genes type = Enums.Genes.None;
 
     Vector2 speed = new Vector2(600, 0);
 
@@ -12,6 +12,12 @@ public class DinoProjectile : Area2D
 
     public override void _Ready()
     {
+        if (type == Enums.Genes.None)
+        {
+            GD.PushError("DinoProjectile type must be set");
+            GD.PrintStack();
+            GetTree().Quit(1);
+        }
         this.Hide();
     }
 

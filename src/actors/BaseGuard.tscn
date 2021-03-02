@@ -61,7 +61,7 @@
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_8.png" type="Texture" id=59]
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_11.png" type="Texture" id=60]
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_19.png" type="Texture" id=61]
-[ext_resource path="res://src/actors/BaseGuard.gd" type="Script" id=62]
+[ext_resource path="res://src/actors/BaseGuard.cs" type="Script" id=62]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

@@ -1,6 +1,7 @@
 using System;
+using Godot;
 
-public class Events
+public class Events : Node
 {
     public static event Action dinoDeployed;
     public static event Action dinoFullySpawned;
@@ -53,4 +54,9 @@ public class Events
     public static void publishAllDinosExpended() => allDinosExpended?.Invoke();
 
     public static void publishDinoUpgraded() => dinoUpgraded?.Invoke();
+
+    public override void _Ready()
+    {
+        OS.WindowMaximized = true;
+    }
 }

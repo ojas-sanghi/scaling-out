@@ -17,6 +17,7 @@ public class TankyDino : BaseDino
 
     public override void _Ready()
     {
+        iceProjectile = (DinoProjectile)FindNode("IceProjectile");
         iceProjectile.Hide();
     }
 

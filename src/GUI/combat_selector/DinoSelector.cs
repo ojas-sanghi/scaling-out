@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Godot.Collections;
 
 public class DinoSelector : Node2D
 {
@@ -21,7 +22,7 @@ public class DinoSelector : Node2D
 
         SetupSelectors();
         // get a list of children
-        selectorList = (List<SelectorSprite>)hBox.GetChildren().Cast<SelectorSprite>();
+        selectorList = hBox.GetChildren().Cast<SelectorSprite>().ToList<SelectorSprite>();
         selectorList[0].ShowParticles();
     }
 
@@ -79,7 +80,7 @@ public class DinoSelector : Node2D
     // turn on particles for this selector and turns off all other particles
     void EnableExclusiveParticles(int index)
     {
-        var selectors = (List<SelectorSprite>)hBox.GetChildren().Cast<SelectorSprite>();
+        var selectors = hBox.GetChildren().Cast<SelectorSprite>().ToList<SelectorSprite>();
         foreach (SelectorSprite s in selectors)
         {
             s.HideParticles();

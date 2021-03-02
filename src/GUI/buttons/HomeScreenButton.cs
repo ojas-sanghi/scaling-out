@@ -3,12 +3,16 @@ using Godot;
 [Tool]
 public class HomeScreenButton : TextureButton
 {
-    [Export] Enums.HomeScreenButtons mode;
+    [Export] Enums.HomeScreenButtons mode = Enums.HomeScreenButtons.None;
 
     Label label;
 
     public override void _Ready()
     {
+        if (Engine.EditorHint) {
+            return;
+        }
+
         if (mode == Enums.HomeScreenButtons.None)
         {
             GD.PushError("HomeScreenButton mode must be set");
