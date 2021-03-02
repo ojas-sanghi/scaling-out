@@ -94,6 +94,7 @@ margin_left = 61.9443
 margin_top = -29.3107
 margin_right = 261.944
 margin_bottom = 20.6893
+parentNode = NodePath("..")
 
 [connection signal="button_down" from="." to="." method="_on_UpgradeButton_button_down"]
 [connection signal="button_up" from="." to="." method="_on_UpgradeButton_button_up"]

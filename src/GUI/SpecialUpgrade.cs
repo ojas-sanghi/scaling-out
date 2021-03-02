@@ -2,9 +2,6 @@ using Godot;
 
 public class SpecialUpgrade : Control
 {
-    //? Why do we have this if we set the dino using ShopInfo
-    [Export] Enums.Genes mode;
-
     Label name;
     Label description;
     Sprite sprite;

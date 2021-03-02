@@ -89,9 +89,9 @@ __meta__ = {
 
 [node name="UpgradeButton" parent="." instance=ExtResource( 16 )]
 margin_left = 103.0
-margin_top = 322.0
+margin_top = 325.0
 margin_right = 103.96
-margin_bottom = 322.32
+margin_bottom = 325.32
 exportedButtonMode = 3
 
 [node name="UpgradeButton2" parent="." instance=ExtResource( 16 )]

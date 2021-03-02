@@ -11,6 +11,13 @@ public class Lane : Path2D
 
     public override void _Ready()
     {
+        if (laneImg == null)
+        {
+            GD.PushError("You must set laneImg for Lane!");
+            GD.PrintStack();
+            GetTree().Quit(1);
+        }
+
         GetNode<Sprite>("Sprite").Texture = laneImg;
         Events.newRound += OnNewRound;
     }

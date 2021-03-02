@@ -14,6 +14,13 @@ public class CostIndicator : RichTextLabel
 
     public override void _Ready()
     {
+        if (parentNode == null)
+        {
+            GD.PushError("You must set parentNode for CostIndicator!");
+            GD.PrintStack();
+            GetTree().Quit(1);
+        }
+
         Events.dinoUpgraded += SetUpgradeCost;
     }
 
