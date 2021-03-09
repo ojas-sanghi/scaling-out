@@ -1,97 +1,97 @@
 [gd_resource type="Resource" load_steps=19 format=2]
 
-[ext_resource path="res://src/resources/Stats.gd" type="Script" id=1]
+[ext_resource path="res://src/resources/Stats.cs" type="Script" id=1]
 [ext_resource path="res://src/resources/DinoInfoResource.cs" type="Script" id=2]
-[ext_resource path="res://src/resources/Cost.gd" type="Script" id=3]
-[ext_resource path="res://src/resources/SpecialStat.gd" type="Script" id=4]
+[ext_resource path="res://src/resources/SpecialStat.cs" type="Script" id=3]
+[ext_resource path="res://src/resources/Cost.cs" type="Script" id=4]
 
 [sub_resource type="Resource" id=1]
-script = ExtResource( 3 )
-stat_name = "Cost Def"
+script = ExtResource( 4 )
+statName = ""
 gold = [ 50, 100, 150, 200, 250 ]
 genes = [ 30, 50, 80, 100, 150 ]
 
 [sub_resource type="Resource" id=2]
 script = ExtResource( 1 )
-stat_name = "Def"
+statName = "Def"
 stats = [ 1.0, 0.98, 0.95, 0.92, 0.87 ]
 cost = SubResource( 1 )
 level = 0
 
 [sub_resource type="Resource" id=3]
-script = ExtResource( 3 )
-stat_name = "Cost Delay"
+script = ExtResource( 4 )
+statName = ""
 gold = [ 50, 100, 150 ]
 genes = [ 30, 50, 80 ]
 
 [sub_resource type="Resource" id=4]
 script = ExtResource( 1 )
-stat_name = "Delay"
+statName = "Delay"
 stats = [ 2.0, 1.75, 1.5 ]
 cost = SubResource( 3 )
 level = 0
 
 [sub_resource type="Resource" id=5]
-script = ExtResource( 3 )
-stat_name = "Cost Dmg"
+script = ExtResource( 4 )
+statName = ""
 gold = [ 50, 100, 150, 200, 250, 300, 350, 400, 450, 500 ]
 genes = [ 30, 50, 80, 100, 130, 150, 175, 200, 220, 250 ]
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 1 )
-stat_name = "Dmg"
+statName = "Dmg"
 stats = [ 2.0, 3.5, 5.0, 6.0, 7.5, 8.0, 9.0, 10.0, 10.5, 11.0 ]
 cost = SubResource( 5 )
 level = 0
 
 [sub_resource type="Resource" id=7]
-script = ExtResource( 3 )
-stat_name = "Cost Dodge"
+script = ExtResource( 4 )
+statName = ""
 gold = [ 0 ]
 genes = [ 0 ]
 
 [sub_resource type="Resource" id=8]
 script = ExtResource( 1 )
-stat_name = "Dodge"
+statName = "Dodge"
 stats = [ 0.0 ]
 cost = SubResource( 7 )
 level = 0
 
 [sub_resource type="Resource" id=9]
-script = ExtResource( 3 )
-stat_name = "Cost HP"
+script = ExtResource( 4 )
+statName = "Cost HP"
 gold = [ 50, 100, 150 ]
 genes = [ 30, 50, 80 ]
 
 [sub_resource type="Resource" id=10]
 script = ExtResource( 1 )
-stat_name = "HP"
+statName = "HP"
 stats = [ 100.0, 135.0, 150.0 ]
 cost = SubResource( 9 )
 level = 0
 
 [sub_resource type="Resource" id=11]
-script = ExtResource( 3 )
-stat_name = "Cost Special"
+script = ExtResource( 4 )
+statName = "Cost Special"
 gold = [ 0, 175 ]
 genes = [ 0, 125 ]
 
 [sub_resource type="Resource" id=12]
-script = ExtResource( 4 )
-stat_name = "Special"
+script = ExtResource( 3 )
+statName = "Special"
 special = "Fire"
 cost = SubResource( 11 )
 level = 0
 
 [sub_resource type="Resource" id=13]
-script = ExtResource( 3 )
-stat_name = "Cost Speed"
+script = ExtResource( 4 )
+statName = ""
 gold = [ 50, 100, 150, 200, 225, 250, 300, 350 ]
 genes = [ 30, 50, 80, 100, 130, 150, 180, 200 ]
 
 [sub_resource type="Resource" id=14]
 script = ExtResource( 1 )
-stat_name = "Speed"
+statName = "Speed"
 stats = [ 50.0, 55.0, 60.0, 66.0, 70.0, 77.0, 84.0, 88.0 ]
 cost = SubResource( 13 )
 level = 0

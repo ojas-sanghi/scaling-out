@@ -1,15 +1,15 @@
-using System.Collections.Generic;
+using Godot.Collections;
 using Godot;
 
 public class Stats : Resource
 {
     [Export] public virtual string statName { get; set; } = "";
-    [Export] public List<double> stats { get; set; }
+    [Export] public Array<double> stats { get; set; } = new Array<double>();
     [Export] public Cost cost { get; set; }
 
     [Export] public int level { get; set; } = 0;
 
-    public virtual double GetStat()
+    public double GetStat()
     {
         return stats[level];
     }

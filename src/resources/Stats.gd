@@ -1,4 +1,3 @@
-class_name Stats
 extends Resource
 
 export var stat_name = ""

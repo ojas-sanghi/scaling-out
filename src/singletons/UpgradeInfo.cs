@@ -37,11 +37,6 @@ public class UpgradeInfo : Node
             GD.PrintStack();
             GetTree().Quit(1);
         }
-        GD.Print(stat);
-        GD.Print(stats);
-        GD.Print(stats.Keys);
-        GD.Print(stats.ContainsKey(stat));
-        GD.Print(stats[stat]);
         return stats[stat].GetStat();
     }
     public string GetSpecial()
@@ -87,7 +82,9 @@ public class UpgradeInfo : Node
         else
         {
             // our level is 0-indexed but count is not, so decrement one
-            return stats[stat].stats.Count - 1;
+            return 1;
+            // TODO: reimplement this
+            // return stats[stat].stats.Count - 1;
         }
     }
 

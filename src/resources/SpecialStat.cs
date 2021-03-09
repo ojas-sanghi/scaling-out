@@ -1,11 +1,17 @@
 using Godot;
+using Godot.Collections;
 
 public class SpecialStat : Stats
 {
     [Export] public override string statName { get; set; } = "Special";
     [Export] public string special { get; set; } = "";
 
-    //* A `level` of 0 for SpecialStat means not unlocked, 1 means unlocked
+    // "new" so that the order is different in the exported 
+    [Export] new Cost cost { get; set; }
+    [Export] new int level { get; set; } = 0; //0 is locked, 1 is unlocked
+
+    // hide the stats variable in the exported version
+    new Array<double> stats;
 
     public string GetSpecial()
     {

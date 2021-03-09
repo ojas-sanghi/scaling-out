@@ -50,8 +50,10 @@ public class Lane : Path2D
     }
 
     //? does this engine signal connection work
-    void _on_Button_pressed()
+    void OnButtonPressed()
     {
+        GD.Print("button pressed");
+
         if (CombatInfo.Instance.dinosRemaining <= 0)
         {
             return;
@@ -81,7 +83,10 @@ public class Lane : Path2D
         pathFollow.AddChild(dinoNode);
         // set dinos position
         dinoNode.Position = spawnPoint;
+        GD.Print("stop 5");
+        //! crashes here
         Events.publishDinoDeployed();
+        GD.Print("stop 6");
     }
 
     void OnNewRound()

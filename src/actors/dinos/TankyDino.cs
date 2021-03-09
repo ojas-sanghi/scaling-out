@@ -5,18 +5,16 @@ public class TankyDino : BaseDino
 
     DinoProjectile iceProjectile;
 
-    public TankyDino()
+    public override void _Ready()
     {
+        base._Ready();
+
         dinoType = Enums.Dinos.Tanky;
         specialGene = Enums.Genes.Ice;
 
         dinoUnlockCost = new List<int>() { 25, 50 };
 
         CalculateUpgrades();
-    }
-
-    public override void _Ready()
-    {
         iceProjectile = (DinoProjectile)FindNode("IceProjectile");
         iceProjectile.Hide();
     }

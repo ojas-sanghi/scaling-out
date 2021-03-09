@@ -9,6 +9,7 @@ public class HomeScreenButton : TextureButton
 
     public override void _Ready()
     {
+        label = (Label)FindNode("Label");
         if (Engine.EditorHint)
         {
             return;
@@ -20,7 +21,6 @@ public class HomeScreenButton : TextureButton
             GD.PrintStack();
             GetTree().Quit(1);
         }
-        label = (Label)FindNode("Label");
         SetButtonText();
     }
 

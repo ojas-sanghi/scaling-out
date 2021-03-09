@@ -73,7 +73,7 @@ public class BaseDino : Area2D
         animSprite.RotationDegrees = -90;
 
         GD.Randomize();
-        dinoVariation = (int)GD.Randi() % 3 + 1;
+        dinoVariation = new RandomNumberGenerator().RandiRange(1, 3);
 
         animSprite.Animation = dinoVariation.ToString() + "walk";
 

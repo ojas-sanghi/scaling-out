@@ -1,4 +1,3 @@
-class_name SpecialStat
 extends Resource
 
 export var stat_name = "Special"

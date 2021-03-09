@@ -33,6 +33,10 @@ public class CombatInfo : Node
     // TODO: Remove this from here and place it somewhere it makes sense
     public int bulletSpeed = 400;
 
+    public CombatInfo() {
+        Instance = this;
+    }
+
     public override void _Ready()
     {
         Reset();
@@ -77,7 +81,7 @@ public class CombatInfo : Node
         dinosDeployingTimer.OneShot = true;
         AddChild(dinosDeployingTimer);
 
-        dinosDeployingTimer.Connect("timeout", this, "OnDinosDeployingTimerTimeout", new Array(dinoId));
+        dinosDeployingTimer.Connect("timeout", this, "OnDinosDeployingTimerTimeout", new Array(new Enums.Dinos[] {dinoId}));
         dinosDeployingTimer.Start((float)delay);
     }
 

@@ -1,4 +1,3 @@
-class_name Cost
 extends Resource
 
 export var stat_name = ""

@@ -39,6 +39,10 @@ public class DinoInfo : Node
         {Enums.Dinos.Gator, new UpgradeInfo("res://src/actors/dinos/stats/GatorGecko.tres")}
     };
 
+    public DinoInfo() {
+        Instance = this;
+    }
+
     public override void _Ready()
     {
         Instance = this;

@@ -9,25 +9,10 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Resource",
-"class": "Cost",
-"language": "GDScript",
-"path": "res://src/resources/Cost.gd"
-}, {
 "base": "Area2D",
 "class": "GeneralDino",
 "language": "GDScript",
 "path": "res://src/actors/dinos/GeneralDino.gd"
-}, {
-"base": "Resource",
-"class": "SpecialStat",
-"language": "GDScript",
-"path": "res://src/resources/SpecialStat.gd"
-}, {
-"base": "Resource",
-"class": "Stats",
-"language": "GDScript",
-"path": "res://src/resources/Stats.gd"
 }, {
 "base": "Button",
 "class": "UpgradeButton",
@@ -35,10 +20,7 @@ _global_script_classes=[ {
 "path": "res://src/GUI/buttons/UpgradeButton.gd"
 } ]
 _global_script_class_icons={
-"Cost": "",
 "GeneralDino": "res://assets/dinos/mega_dino/mega_dino.png",
-"SpecialStat": "",
-"Stats": "",
 "UpgradeButton": ""
 }
 
