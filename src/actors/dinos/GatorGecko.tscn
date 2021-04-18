@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://src/actors/dinos/GeneralDino.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/actors/dinos/BaseDino.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/actors/dinos/spriteframes/GatorGecko.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://src/actors/dinos/GatorGecko.cs" type="Script" id=3]
 

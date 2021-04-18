@@ -71,6 +71,7 @@ __meta__ = {
 [node name="CostIndicator" parent="NameCostContainer" instance=ExtResource( 3 )]
 margin_left = 132.0
 margin_right = 332.0
+parentNode = NodePath("../..")
 
 [node name="Container" type="HBoxContainer" parent="."]
 margin_left = 148.0

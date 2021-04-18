@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/gater_gecko_icon.png-3f5daff4bf26de832acfd4851970b372.stex"
+path="res://.import/gator_gecko_icon.png-e18347868c673bba46156a42c0b53aca.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dinos/gator_gecko/gater_gecko_icon.png"
-dest_files=[ "res://.import/gater_gecko_icon.png-3f5daff4bf26de832acfd4851970b372.stex" ]
+source_file="res://assets/dinos/gator_gecko/gator_gecko_icon.png"
+dest_files=[ "res://.import/gator_gecko_icon.png-e18347868c673bba46156a42c0b53aca.stex" ]
 
 [params]
 

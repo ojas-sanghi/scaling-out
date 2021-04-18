@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/dinos/lifebar_fill.png" type="Texture" id=1]
-[ext_resource path="res://assets/dinos/lifebar_bg.png" type="Texture" id=2]
-[ext_resource path="res://assets/music/Robot Dino Died.wav" type="AudioStream" id=3]
-[ext_resource path="res://src/actors/dinos/spriteframes/MegaDino.tres" type="SpriteFrames" id=4]
-[ext_resource path="res://assets/music/thump.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/music/thump.wav" type="AudioStream" id=1]
+[ext_resource path="res://src/actors/dinos/spriteframes/MegaDino.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://assets/dinos/lifebar_fill.png" type="Texture" id=3]
+[ext_resource path="res://assets/music/Robot Dino Died.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/dinos/lifebar_bg.png" type="Texture" id=5]
 [ext_resource path="res://src/actors/dinos/BaseDino.cs" type="Script" id=6]
 
 [sub_resource type="Animation" id=1]
@@ -163,7 +163,7 @@ tracks/3/keys = {
 "values": [ Vector2( 0.374588, 0.0227356 ), Vector2( 0.374588, 11.26 ), Vector2( 0.374588, 23.4338 ), Vector2( 0.374588, 16.0047 ), Vector2( 0.374588, 5.39168 ) ]
 }
 
-[node name="GeneralDino" type="Area2D" groups=[
+[node name="BaseDino" type="Area2D" groups=[
 "dinos",
 ]]
 collision_mask = 76
@@ -172,7 +172,7 @@ script = ExtResource( 6 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 rotation = -1.57079
 scale = Vector2( 1.15, 1.15 )
-frames = ExtResource( 4 )
+frames = ExtResource( 2 )
 animation = "1walk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -192,8 +192,8 @@ margin_bottom = -4.59242
 rect_scale = Vector2( 0.205609, 0.205609 )
 value = 27.0
 rounded = true
-texture_under = ExtResource( 2 )
-texture_progress = ExtResource( 1 )
+texture_under = ExtResource( 5 )
+texture_progress = ExtResource( 3 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -203,16 +203,16 @@ __meta__ = {
 [node name="TransparencyTween" type="Tween" parent="."]
 
 [node name="DeathSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 volume_db = 3.0
 
 [node name="ThumpSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 5 )
+stream = ExtResource( 1 )
 volume_db = 10.0
 
 [node name="AttackingTimer" type="Timer" parent="."]
 
 [node name="PathFollowTween" type="Tween" parent="."]
-[connection signal="area_entered" from="." to="." method="_on_GeneralDino_area_entered"]
-[connection signal="body_entered" from="." to="." method="_on_GeneralDino_body_entered"]
-[connection signal="timeout" from="AttackingTimer" to="." method="_on_AttackingTimer_timeout"]
+
+[connection signal="area_entered" from="." to="." method="OnBaseDinoAreaEntered"]
+[connection signal="timeout" from="AttackingTimer" to="." method="OnAttackingTimerTimeout"]

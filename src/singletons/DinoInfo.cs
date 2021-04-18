@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using System;
 
 public class DinoInfo : Node
 {
@@ -20,7 +21,7 @@ public class DinoInfo : Node
         {Enums.Dinos.Mega, GD.Load<StreamTexture>("res://assets/dinos/mega_dino/mega_dino.png")},
         {Enums.Dinos.Tanky, GD.Load<StreamTexture>("res://assets/dinos/tanky_dino/Armored_Dino_ICON.png")},
         {Enums.Dinos.Warrior, GD.Load<StreamTexture>("res://assets/dinos/warrior_dino/Tribal_Dino_icon.png")},
-        {Enums.Dinos.Gator, GD.Load<StreamTexture>("res://assets/dinos/gator_gecko/gater_gecko_icon.png")},
+        {Enums.Dinos.Gator, GD.Load<StreamTexture>("res://assets/dinos/gator_gecko/gator_gecko_icon.png")},
     };
 
     public Dictionary<Enums.Dinos, StreamTexture> dinoAbilityIcons = new Dictionary<Enums.Dinos, StreamTexture>()
@@ -55,14 +56,14 @@ public class DinoInfo : Node
 
     public double GetDinoTimerDelay()
     {
-        return (double)GetDinoProperty("spawnDelayValue");
+        return Convert.ToDouble(GetDinoProperty("spawnDelay"));
     }
 
     // Instance dino, get variable we want, then remove it
     public object GetDinoProperty(string property)
     {
         PackedScene DinoScene = dinoList[CombatInfo.Instance.dinoId];
-        Node DinoInstance = DinoScene.Instance();
+        BaseDino DinoInstance = (BaseDino)DinoScene.Instance();
 
         object DinoProperty = DinoInstance.Get(property);
 

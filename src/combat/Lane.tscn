@@ -36,4 +36,4 @@ __meta__ = {
 autostart = true
 
 [connection signal="pressed" from="Button" to="." method="OnButtonPressed"]
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

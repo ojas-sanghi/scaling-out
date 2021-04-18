@@ -55,7 +55,7 @@ public class DeployTimer : Control
 
         double delay = DinoInfo.Instance.GetDinoTimerDelay();
         tween.InterpolateProperty(
-            progress, "Value", 0, 100, (float)delay //? Is "Value" correct or "value"
+            progress, "value", 0, 100, (float)delay
         );
         tween.Start();
     }

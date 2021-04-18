@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class GaterGecko : BaseDino
+public class GatorGecko : BaseDino
 {
 
     public override void _Ready()

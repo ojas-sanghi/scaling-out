@@ -215,7 +215,7 @@ public class ShopUpgradeButton : Button
             return;
         }
 
-        tween.InterpolateProperty(GetNode<TextureProgress>("TextureProgress"), "Value", 0, 100, (float)1.5); //? Value or value
+        tween.InterpolateProperty(GetNode<TextureProgress>("TextureProgress"), "value", 0, 100, (float)1.5);
         tween.Start();
     }
 
