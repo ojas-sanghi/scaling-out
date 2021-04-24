@@ -16,29 +16,31 @@ public class PathFollowGuard : Path2D
         forwardTween = (Tween)baseGuard.GetNode("Forward");
         backwardTween = (Tween)baseGuard.GetNode("Backward");
 
-        // Start the other tween once one finishes
-        forwardTween.Connect("tween_completed", this, "BackwardTween");
-        backwardTween.Connect("tween_completed", this, "ForwardTween");
+        ForwardTween();
     }
 
-    void ForwardTween()
+    async void ForwardTween()
     {
-        //? does this property work
         forwardTween.InterpolateProperty(
-            follow, "UnitOffset", 0, 1, walkTime, Tween.TransitionType.Linear, Tween.EaseType.InOut
+            follow, "unit_offset", 0, 1, walkTime, Tween.TransitionType.Linear, Tween.EaseType.InOut
         );
         baseGuard.RotationDegrees = 0;
         forwardTween.Start();
+
+        await ToSignal(forwardTween, "tween_completed");
+        BackwardTween();
     }
 
-    void BackwardTween()
+    async void BackwardTween()
     {
-        //? does this property work
         backwardTween.InterpolateProperty(
-            follow, "UnitOffset", 1, 0, walkTime, Tween.TransitionType.Linear, Tween.EaseType.InOut
+            follow, "unit_offset", 1, 0, walkTime, Tween.TransitionType.Linear, Tween.EaseType.InOut
         );
         baseGuard.RotationDegrees = 180;
         backwardTween.Start();
+
+        await ToSignal(backwardTween, "tween_completed");
+        ForwardTween();
     }
 
 
