@@ -8,22 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Area2D",
-"class": "GeneralDino",
-"language": "GDScript",
-"path": "res://src/actors/dinos/GeneralDino.gd"
-}, {
-"base": "Button",
-"class": "UpgradeButton",
-"language": "GDScript",
-"path": "res://src/GUI/buttons/UpgradeButton.gd"
-} ]
-_global_script_class_icons={
-"GeneralDino": "res://assets/dinos/mega_dino/mega_dino.png",
-"UpgradeButton": ""
-}
-
 [application]
 
 config/name="Scaling Out"
