@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using Godot;
 
-public class UpgradeInfo : Node
+
+public class UpgradeInfo
 {
     public Dictionary<Enums.Stats, Stats> stats;
 
@@ -35,7 +37,7 @@ public class UpgradeInfo : Node
         {
             GD.PushError("Use GetSpecial() to get the info on a dino special!");
             GD.PrintStack();
-            GetTree().Quit(1);
+            throw new InvalidOperationException("Use GetSpecial() to get the info on a dino special!");
         }
         return stats[stat].GetStat();
     }
