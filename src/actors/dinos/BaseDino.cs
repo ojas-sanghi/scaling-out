@@ -39,9 +39,7 @@ public class BaseDino : Area2D
         transparencyTween = (Tween)FindNode("TransparencyTween");
         var thumpSound = (AudioStreamPlayer)FindNode("ThumpSound");
 
-        GD.Print("before spawn");
         await SpawnDelay();
-        GD.Print("after spawn");
 
         bar.MaxValue = dinoHealth;
         bar.Value = dinoHealth;
@@ -57,7 +55,6 @@ public class BaseDino : Area2D
 
         Events.dinoHit += UpdateHealth;
 
-        GD.Print("completelde done");
     }
 
     public override void _ExitTree()
@@ -76,29 +73,18 @@ public class BaseDino : Area2D
         bar.Hide();
         animSprite.RotationDegrees = -90;
 
-        GD.Print("checkpoint 1");
-
         GD.Randomize();
         dinoVariation = new RandomNumberGenerator().RandiRange(1, 3);
 
-        GD.Print("checkpoint 2");
-
         animSprite.Animation = dinoVariation.ToString() + "walk";
-
-        GD.Print("checkpoint 3");
 
         transparencyTween.InterpolateProperty(this, "modulate", new Color(1, 1, 1, 0), new Color(1, 1, 1, 1), (float)spawnDelay);
         transparencyTween.Start();
-        GD.Print("checkpoint 4");
-        // await GetTree().CreateTimer(transparencyTween.GetRuntime());
         await ToSignal(transparencyTween, "tween_completed");
-        GD.Print("checkpoint 5");
 
         spawningIn = false;
-        GD.Print("checkpoint 6");
 
         Events.publishDinoFullySpawned();
-        GD.Print("checkpoint 7");
     }
 
     protected void CalculateUpgrades()

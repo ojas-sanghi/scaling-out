@@ -2,19 +2,22 @@ using System.Collections.Generic;
 
 public class TankyDino : BaseDino
 {
-
     DinoProjectile iceProjectile;
 
-    public override void _Ready()
+    public TankyDino()
     {
-        base._Ready();
+        CalculateUpgrades();
 
         dinoType = Enums.Dinos.Tanky;
         specialGene = Enums.Genes.Ice;
 
         dinoUnlockCost = new List<int>() { 25, 50 };
+    }
 
-        CalculateUpgrades();
+    public override void _Ready()
+    {
+        base._Ready();
+
         iceProjectile = (DinoProjectile)FindNode("IceProjectile");
         iceProjectile.Hide();
     }

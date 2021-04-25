@@ -96,7 +96,7 @@ public class Lane : Path2D
     //? does this engine signal connection work
     void OnTimerTimeout()
     {
-        OnNewRound();
+        GetSortedPositionDinos();
     }
 
 }

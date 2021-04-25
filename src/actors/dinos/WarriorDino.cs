@@ -2,19 +2,22 @@ using System.Collections.Generic;
 
 public class WarriorDino : BaseDino
 {
-
     DinoProjectile fireProjectile;
 
-    public override void _Ready()
+    public WarriorDino()
     {
-        base._Ready();
+        CalculateUpgrades();
 
         dinoType = Enums.Dinos.Warrior;
         specialGene = Enums.Genes.Fire;
 
         dinoUnlockCost = new List<int>() { 50, 60 };
+    }
 
-        CalculateUpgrades();
+    public override void _Ready()
+    {
+        base._Ready();
+
         fireProjectile = (DinoProjectile)FindNode("FireProjectile");
         fireProjectile.Hide();
     }

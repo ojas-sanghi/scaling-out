@@ -1,20 +1,21 @@
-using Godot;
 using System.Collections.Generic;
+using Godot;
 
 public class MegaDino : BaseDino
 {
-
-    public override void _Ready()
+    public MegaDino()
     {
-        base._Ready();
-        
+        CalculateUpgrades();
+
         dinoType = Enums.Dinos.Mega;
         specialGene = Enums.Genes.None;
 
         dinoUnlockCost = new List<int>() { 10, 10 };
+    }
 
-        CalculateUpgrades();
-        
+    public override void _Ready()
+    {
+        base._Ready();
     }
 
 }

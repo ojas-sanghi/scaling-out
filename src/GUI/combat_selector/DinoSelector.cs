@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
-using Godot.Collections;
 
 public class DinoSelector : Node2D
 {
@@ -53,7 +52,7 @@ public class DinoSelector : Node2D
             // skip if no icon
             if (n.Value == null)
             {
-                return;
+                continue;
             }
 
             // TODO: FOR THE LOVE OF GOD PLEASE CHANGE THIS LOGIC
@@ -61,7 +60,7 @@ public class DinoSelector : Node2D
             var fileName = n.Value.ResourcePath;
             var abilityStart = fileName.FindLast("/");
             var abilityEnd = fileName.Find(".png");
-            var abilityString = fileName.Substring(abilityStart, abilityEnd);
+            var abilityString = fileName.Substr(abilityStart, abilityEnd);
 
             SelectorSprite newSelector = (SelectorSprite)selectorScene.Instance();
             newSelector.spriteTexture = n.Value;
