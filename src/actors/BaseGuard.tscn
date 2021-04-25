@@ -61,8 +61,7 @@
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_8.png" type="Texture" id=59]
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_11.png" type="Texture" id=60]
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_19.png" type="Texture" id=61]
-[ext_resource path="res://src/actors/BaseGuard.gd" type="Script" id=62]
-
+[ext_resource path="res://src/actors/BaseGuard.cs" type="Script" id=62]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -94,7 +93,7 @@ script = ExtResource( 62 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "move_handgun"
-frame = 4
+frame = 2
 playing = true
 
 [node name="Forward" type="Tween" parent="."]
@@ -109,4 +108,5 @@ shape = SubResource( 2 )
 rotation = -0.785398
 script = ExtResource( 29 )
 fov_color = Color( 0.909804, 0.211765, 0.0941176, 1 )
-[connection signal="body_entered" from="." to="." method="_on_BaseGuard_body_entered"]
+
+[connection signal="body_entered" from="." to="." method="OnBaseGuardBodyEntered"]

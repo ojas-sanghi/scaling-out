@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/fonts/Font30.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/GUI/buttons/ShopStatUpgradeButton.cs" type="Script" id=2]
+[ext_resource path="res://assets/dinos/misc/hex.png" type="Texture" id=3]
+[ext_resource path="res://assets/dinos/misc/hex-progress.png" type="Texture" id=4]
+[ext_resource path="res://assets/icons/heart.png" type="Texture" id=5]
+[ext_resource path="res://src/GUI/infos/CostIndicator.tscn" type="PackedScene" id=6]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.6, 0.6, 0.6, 0 )
+
+[node name="ShopStatUpgradeButton" type="Button"]
+margin_right = 480.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 480, 70 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 1 )
+custom_styles/focus = SubResource( 1 )
+custom_styles/normal = SubResource( 1 )
+custom_constants/hseparation = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 28.0
+margin_top = -14.0
+margin_right = 306.0
+margin_bottom = 264.0
+rect_rotation = 30.0
+rect_scale = Vector2( 0.25, 0.25 )
+texture_under = ExtResource( 3 )
+texture_progress = ExtResource( 4 )
+fill_mode = 4
+tint_under = Color( 1, 1, 1, 0.168627 )
+tint_progress = Color( 0.0588235, 0.67451, 0.415686, 1 )
+radial_initial_angle = 330.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Img" type="Sprite" parent="."]
+position = Vector2( 40.3241, 35.7239 )
+scale = Vector2( 0.04, 0.04 )
+texture = ExtResource( 5 )
+
+[node name="Container" type="HBoxContainer" parent="."]
+margin_left = 74.0
+margin_top = 14.7838
+margin_right = 454.0
+margin_bottom = 49.7838
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Squares" type="HBoxContainer" parent="Container"]
+margin_right = 270.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 270, 30 )
+custom_constants/separation = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatNum" type="Label" parent="Container"]
+margin_left = 280.0
+margin_right = 326.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 1 )
+text = "100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Stat" type="Label" parent="Container"]
+margin_left = 336.0
+margin_right = 381.0
+margin_bottom = 35.0
+custom_fonts/font = ExtResource( 1 )
+text = "HP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true
+
+[node name="CostIndicator" parent="." instance=ExtResource( 6 )]
+margin_left = 61.9443
+margin_top = -29.3107
+margin_right = 261.944
+margin_bottom = 20.6893
+parentNode = NodePath("..")
+
+[connection signal="button_down" from="." to="." method="OnUpgradeButtonButtonDown"]
+[connection signal="button_up" from="." to="." method="OnUpgradeButtonButtonUp"]
+[connection signal="tween_completed" from="Tween" to="." method="OnTweenTweenCompleted"]

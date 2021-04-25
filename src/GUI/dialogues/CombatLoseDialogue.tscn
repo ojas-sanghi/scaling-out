@@ -2,9 +2,7 @@
 
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/Font100.tres" type="DynamicFont" id=2]
-[ext_resource path="res://src/GUI/buttons/Button.tscn" type="PackedScene" id=3]
-
-
+[ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=3]
 
 [node name="CombatLoseDialogue" type="Control"]
 pause_mode = 2
@@ -47,4 +45,4 @@ margin_top = 78.2838
 margin_right = 127.18
 margin_bottom = 173.283
 text = "Retry"
-button_mode = "retry combat"
+buttonMode = 3

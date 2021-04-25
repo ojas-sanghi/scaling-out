@@ -8,40 +8,6 @@
 
 config_version=4
 
-_global_script_classes=[ {
-"base": "Resource",
-"class": "Cost",
-"language": "GDScript",
-"path": "res://src/resources/Cost.gd"
-}, {
-"base": "Area2D",
-"class": "GeneralDino",
-"language": "GDScript",
-"path": "res://src/actors/dinos/GeneralDino.gd"
-}, {
-"base": "Resource",
-"class": "SpecialStat",
-"language": "GDScript",
-"path": "res://src/resources/SpecialStat.gd"
-}, {
-"base": "Resource",
-"class": "Stats",
-"language": "GDScript",
-"path": "res://src/resources/Stats.gd"
-}, {
-"base": "Button",
-"class": "UpgradeButton",
-"language": "GDScript",
-"path": "res://src/GUI/buttons/UpgradeButton.gd"
-} ]
-_global_script_class_icons={
-"Cost": "",
-"GeneralDino": "res://assets/dinos/mega_dino/mega_dino.png",
-"SpecialStat": "",
-"Stats": "",
-"UpgradeButton": ""
-}
-
 [application]
 
 config/name="Scaling Out"
@@ -58,13 +24,12 @@ default_bus_layout="res://src/default_bus_layout.tres"
 
 [autoload]
 
-Enums="*res://src/singletons/Enums.gd"
+Events="*res://src/singletons/Events.cs"
 SceneChanger="*res://src/singletons/SceneChanger.tscn"
-DinoInfo="*res://src/singletons/DinoInfo.gd"
-CombatInfo="*res://src/singletons/CombatInfo.gd"
-Signals="*res://src/singletons/Signals.gd"
-ShopInfo="*res://src/singletons/ShopInfo.gd"
-StealthInfo="*res://src/singletons/StealthInfo.gd"
+ShopInfo="*res://src/singletons/ShopInfo.cs"
+StealthInfo="*res://src/singletons/StealthInfo.cs"
+CombatInfo="*res://src/singletons/CombatInfo.cs"
+DinoInfo="*res://src/singletons/DinoInfo.cs"
 
 [debug]
 
@@ -76,6 +41,7 @@ gdscript/warnings/return_value_discarded=false
 window/size/width=1920
 window/size/height=1080
 window/stretch/mode="2d"
+window/stretch/aspect="keep"
 
 [input]
 
@@ -153,7 +119,6 @@ dino_6={
 2d_physics/layer_5="vault"
 2d_physics/layer_6="stealth-guard"
 2d_physics/layer_7="bullet"
-2d_physics/layer_8="ice-proj"
-2d_physics/layer_9="fire-proj"
+2d_physics/layer_8="dino projectile"
 2d_physics/layer_10="coin"
 2d_physics/layer_11="tiles"
