@@ -77,6 +77,11 @@ public class CombatInfo : Node
 
         // Wait for the dino-specific delay
         double delay = DinoInfo.Instance.GetDinoTimerDelay();
+        // await ToSignal(GetTree().CreateTimer((float)delay), "timeout");
+
+        // // remove dino from list
+        // dinosDeploying.Remove(dinoId);
+
         Timer dinosDeployingTimer = new Timer();
         dinosDeployingTimer.OneShot = true;
         AddChild(dinosDeployingTimer);

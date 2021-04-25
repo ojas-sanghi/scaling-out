@@ -56,6 +56,8 @@ public class BaseDino : Area2D
         pathTween.Start();
 
         Events.dinoHit += UpdateHealth;
+
+        GD.Print("completelde done");
     }
 
     public override void _ExitTree()

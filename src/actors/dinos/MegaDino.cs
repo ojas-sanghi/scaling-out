@@ -6,14 +6,14 @@ public class MegaDino : BaseDino
 
     public override void _Ready()
     {
-        CalculateUpgrades();
+        base._Ready();
         
         dinoType = Enums.Dinos.Mega;
         specialGene = Enums.Genes.None;
 
         dinoUnlockCost = new List<int>() { 10, 10 };
 
-        base._Ready();
+        CalculateUpgrades();
         
     }
 

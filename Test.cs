@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Godot;
 using System.Threading.Tasks;
 
@@ -25,8 +26,18 @@ public class Test : Node
         // GD.Print(hp);
 
         PathFollow2D pathFollow = new PathFollow2D();
+        PathFollow2D pathFollo2 = new PathFollow2D();
+        AddChild(pathFollo2);
         AddChild(pathFollow);
         pathFollow.AddChild(new Area2D());
+
+        List<PathFollow2D> newChildren = new List<PathFollow2D>();
+
+        newChildren.Add(pathFollow);
+        newChildren.Add(pathFollo2);
+        
+
+        newChildren.Clear();
 
     }
 
