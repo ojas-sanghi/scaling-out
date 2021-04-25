@@ -80,7 +80,4 @@ margin_bottom = 261.921
 text = "Fire Stealth"
 buttonMode = 6
 
-[connection signal="pressed" from="Map" to="Map" method="OnButtonPressed"]
-[connection signal="pressed" from="Flask" to="Flask" method="OnButtonPressed"]
-
 [editable path="Flask"]
