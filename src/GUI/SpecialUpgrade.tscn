@@ -7,7 +7,6 @@
 [ext_resource path="res://src/GUI/themes/SpecialBGTheme.tres" type="Theme" id=5]
 [ext_resource path="res://assets/abilities/previews/ice-preview.ogv" type="VideoStream" id=6]
 
-
 [node name="SpecialUpgrade" type="Control"]
 margin_right = 514.0
 margin_bottom = 1080.0
@@ -71,4 +70,5 @@ autoplay = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]

@@ -7,7 +7,6 @@ public class SpecialStat : Stats
     [Export] public string special { get; set; } = "";
 
     // "new" so that the order is different in the exported 
-    [Export] new Cost cost { get; set; }
     [Export] new int level { get; set; } = 0; //0 is locked, 1 is unlocked
 
     // hide the stats variable in the exported version

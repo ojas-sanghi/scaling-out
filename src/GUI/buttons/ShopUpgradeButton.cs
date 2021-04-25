@@ -142,8 +142,7 @@ public class ShopUpgradeButton : Button
             color = delayBlue;
         }
 
-        //? < or <=
-        for (int i = 0; i <= filledSquares; i++)
+        for (int i = 0; i < filledSquares; i++)
         {
             if (filledSquares == maxSquares)
             {
@@ -165,8 +164,7 @@ public class ShopUpgradeButton : Button
     {
         maxSquares = dinoInfo.GetMaxLevel(statButtonMode);
 
-        //? < or <=
-        for (int i = 0; i <= maxSquares; i++)
+        for (int i = 0; i < maxSquares; i++)
         {
             var newSquare = new ColorRect();
             newSquare.Color = new Color(0, 0, 0, (float)0.5);

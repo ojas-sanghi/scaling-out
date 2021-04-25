@@ -13,7 +13,7 @@ var dino_icons := {
 	Enums.dinos.mega: preload("res://assets/dinos/mega_dino/mega_dino.png"),
 	Enums.dinos.tanky: preload("res://assets/dinos/tanky_dino/Armored_Dino_ICON.png"),
 	Enums.dinos.warrior: preload("res://assets/dinos/warrior_dino/Tribal_Dino_icon.png"),
-	Enums.dinos.gator: preload("res://assets/dinos/gator_gecko/gater_gecko_icon.png"),
+	Enums.dinos.gator: preload("res://assets/dinos/gator_gecko/gator_gecko_icon.png"),
 }
 
 var dino_ability_icons = {

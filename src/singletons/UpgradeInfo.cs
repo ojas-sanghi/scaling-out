@@ -7,9 +7,8 @@ public class UpgradeInfo
 {
     public Dictionary<Enums.Stats, Stats> stats;
 
-    public UpgradeInfo(string path)
-    {
-        DinoInfoResource data = GD.Load<DinoInfoResource>(path);
+    public UpgradeInfo(string path) {
+        var data = GD.Load<DinoInfoResource>(path);
 
         stats = new Dictionary<Enums.Stats, Stats>()
         {
@@ -84,9 +83,7 @@ public class UpgradeInfo
         else
         {
             // our level is 0-indexed but count is not, so decrement one
-            return 1;
-            // TODO: reimplement this
-            // return stats[stat].stats.Count - 1;
+            return stats[stat].stats.Count - 1;
         }
     }
 
@@ -101,25 +98,12 @@ public class UpgradeInfo
             return new List<int>() { 0, 0 };
         }
 
-        GD.Print(stat);
-        GD.Print(CurrentLevel);
-        GD.Print(GetMaxLevel(stat));
-
+        Stats statData = stats[stat];
         if (stat == Enums.Stats.Special) {
-            var specialStat = ((SpecialStat)stats[stat]);
-            GD.Print(specialStat);
-            GD.Print(specialStat.cost);
-            //! specialStat.cost is null for some reason, need to fix that!
-            // GD.Print(specialCost.genes);
-            // return new List<int> { specialCost.gold[CurrentLevel + 1], specialCost.genes[CurrentLevel + 1] };
+            statData = (SpecialStat)statData;
         }
-
-
-        int GoldCost = stats[stat].GetGold(CurrentLevel + 1);
-        GD.Print(GoldCost);
-
-        int GeneCost = stats[stat].GetGenes(CurrentLevel + 1);
-
+        int GoldCost = statData.GetGold(CurrentLevel + 1);
+        int GeneCost = statData.GetGenes(CurrentLevel + 1);
         return new List<int> { GoldCost, GeneCost };
     }
 

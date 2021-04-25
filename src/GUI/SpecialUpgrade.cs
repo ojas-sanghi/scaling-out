@@ -4,14 +4,14 @@ public class SpecialUpgrade : Control
 {
     Label name;
     Label description;
-    Sprite sprite;
+    TextureRect sprite;
     VideoPlayer video;
 
     public override void _Ready()
     {
         name = (Label)FindNode("name");
         description = (Label)FindNode("Description");
-        sprite = (Sprite)FindNode("Sprite");
+        sprite = (TextureRect)FindNode("Sprite");
         video = (VideoPlayer)FindNode("VideoPlayer");
 
         SetText();
