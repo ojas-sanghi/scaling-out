@@ -1,11 +1,10 @@
-using System.Collections.Generic;
 using Godot;
-using System.Threading.Tasks;
 
 public class Test : Node
 {
     public override void _Ready()
     {
+        GD.Print("start");
         // UpgradeInfo u = new UpgradeInfo("res://src/actors/dinos/stats/MegaDino.tres");
 
         // var statsdict = u.stats;
@@ -25,19 +24,9 @@ public class Test : Node
         // var hp = u.GetStat(Enums.Stats.Hp);
         // GD.Print(hp);
 
-        PathFollow2D pathFollow = new PathFollow2D();
-        PathFollow2D pathFollo2 = new PathFollow2D();
-        AddChild(pathFollo2);
-        AddChild(pathFollow);
-        pathFollow.AddChild(new Area2D());
-
-        List<PathFollow2D> newChildren = new List<PathFollow2D>();
-
-        newChildren.Add(pathFollow);
-        newChildren.Add(pathFollo2);
-        
-
-        newChildren.Clear();
+        UpgradeInfo u = new UpgradeInfo("res://src/actors/dinos/stats/MegaDino.tres");
+        GD.Print(u);
+        GD.Print("end");
 
     }
 

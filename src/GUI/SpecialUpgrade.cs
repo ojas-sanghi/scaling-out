@@ -42,8 +42,7 @@ public class SpecialUpgrade : Control
         //? Maybe find a new video format for the preview vids
     }
 
-    //? does this wrok
-    void _on_VideoPlayer_finished()
+    void OnVideoPlayerFinished()
     {
         video.Play();
     }

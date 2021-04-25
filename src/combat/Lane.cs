@@ -22,6 +22,7 @@ public class Lane : Path2D
         Events.newRound += OnNewRound;
     }
 
+    // sort in order of progress on the lane
     public class sortDinos : IComparer<PathFollow2D>
     {
         public int Compare(PathFollow2D a, PathFollow2D b)
@@ -44,7 +45,6 @@ public class Lane : Path2D
     List<PathFollow2D> GetSortedPositionDinos()
     {
         List<PathFollow2D> sortedChildren = new List<PathFollow2D>(newChildren);
-        //? Test if this works
         sortedChildren.Sort(new sortDinos());
         return sortedChildren;
     }
@@ -93,7 +93,6 @@ public class Lane : Path2D
         newChildren.Clear();
     }
 
-    //? does this engine signal connection work
     void OnTimerTimeout()
     {
         GetSortedPositionDinos();

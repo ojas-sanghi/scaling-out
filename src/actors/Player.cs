@@ -41,23 +41,22 @@ public class Player : KinematicBody2D
     Vector2 GetInput()
     {
         // Detect up/down/left/right keystrokes and move only when pressed
-
         var newVelocity = Vector2.Zero;
         if (Input.IsActionPressed("ui_right"))
         {
-            velocity.x++;
+            newVelocity.x++;
         }
         if (Input.IsActionPressed("ui_left"))
         {
-            velocity.x--;
+            newVelocity.x--;
         }
         if (Input.IsActionPressed("ui_down"))
         {
-            velocity.y++;
+            newVelocity.y++;
         }
         if (Input.IsActionPressed("ui_up"))
         {
-            velocity.y--;
+            newVelocity.y--;
         }
 
         return newVelocity;
@@ -121,6 +120,7 @@ public class Player : KinematicBody2D
 
     void OnLevelFailed()
     {
+        // remove here since we want it to be one-shot
         Events.levelFailed -= OnLevelFailed;
 
         /*

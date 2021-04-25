@@ -46,8 +46,7 @@ public class GameTimer : Control
         label.Text = labelText;
     }
 
-    //? do thios work
-    void _on_Timer_timeout()
+    void OnTimerTimeout()
     {
         Events.publishConquestLost();
     }

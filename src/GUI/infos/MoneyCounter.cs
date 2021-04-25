@@ -9,18 +9,17 @@ public class MoneyCounter : Control
     {
         num = (Label)FindNode("Num");
 
-        Events.coinGrabbed += _on_Coin_grabbed;
+        Events.coinGrabbed += OnCoinGrabbed;
         Events.dinoUpgraded += UpdateGoldAmountFromGlobal;
     }
 
     public override void _ExitTree()
     {
-        Events.coinGrabbed -= _on_Coin_grabbed;
+        Events.coinGrabbed -= OnCoinGrabbed;
         Events.dinoUpgraded -= UpdateGoldAmountFromGlobal;
     }
 
-    //? I don't think this connection works
-    void _on_Coin_grabbed(int value)
+    void OnCoinGrabbed(int value)
     {
         goldAmt += value;
         UpdateGoldAmount();

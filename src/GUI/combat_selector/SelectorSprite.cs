@@ -8,7 +8,7 @@ public class SelectorSprite : Control
     public string text;
     public Enums.Dinos dinoId;
 
-    public string abilityMode = ""; //TODO: change this once the file logic in DinoSelector is changed
+    public string abilityMode = ""; // TODO: change this once the file logic in DinoSelector is changed
     public Vector2 customScale = new Vector2((float)0.511, (float)0.519);
 
     Sprite sprite;

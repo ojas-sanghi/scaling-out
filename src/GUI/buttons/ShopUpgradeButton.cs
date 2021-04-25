@@ -195,8 +195,7 @@ public class ShopUpgradeButton : Button
         tween.ResetAll();
     }
 
-    //? do signal work?
-    void _on_UpgradeButton_button_down()
+    void OnUpgradeButtonButtonDown()
     {
         // don't do anything if max upgrades reached
         if (dinoInfo.IsMaxedOut(statButtonMode))
@@ -217,14 +216,12 @@ public class ShopUpgradeButton : Button
         tween.Start();
     }
 
-    //? do signal work?
-    void _on_UpgradeButton_button_up()
+    void OnUpgradeButtonButtonUp()
     {
         StopUpgrading();
     }
 
-    //? do signal work?
-    void _on_Tween_tween_completed(object @object, NodePath key)
+    void OnTweenTweenCompleted(object @object, NodePath key)
     {
         ShopInfo.gold -= goldCost;
         ShopInfo.genes -= geneCost;

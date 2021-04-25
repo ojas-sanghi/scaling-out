@@ -191,7 +191,7 @@ custom_fonts/font = ExtResource( 6 )
 text = "Continue Conquest"
 buttonMode = 12
 
-[connection signal="visibility_changed" from="." to="." method="_on_BuyMenu_visibility_changed"]
+[connection signal="visibility_changed" from="." to="." method="OnBuyMenuVisibilityChanged"]
 [connection signal="pressed" from="Buy/Minus" to="." method="_on_Minus_pressed"]
 [connection signal="pressed" from="Buy/Plus" to="." method="_on_Plus_pressed"]
 [connection signal="pressed" from="Buy/Purchase" to="." method="_on_Purchase_pressed"]

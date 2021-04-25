@@ -31,16 +31,14 @@ public class Bullet : Area2D
         Position += bulletVel * delta;
     }
 
-    //? Does this connection work
-    void _on_Bullet_area_entered(BaseDino dino)
+    void OnBulletAreaEntered(BaseDino dino)
     {
         dino.UpdateHealth(bulletDmg);
         QueueFree();
     }
 
-    //? Does this connection work
     // Damage dropoff after certain time
-    void _on_ExistenceTimer_timeout()
+    void OnExistenceTimerTimeout()
     {
         bulletDmg = 1;
     }

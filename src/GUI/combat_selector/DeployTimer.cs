@@ -60,8 +60,7 @@ public class DeployTimer : Control
         tween.Start();
     }
 
-    //? does this work
-    void _on_Timer_timeout()
+    void OnTimerTimeout()
     {
         progress.Hide();
     }

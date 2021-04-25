@@ -13,8 +13,7 @@ public class BuyMenu : Control
         spinBox = (SpinBox)FindNode("SpinBox");
     }
 
-    //? does this work    
-    void _on_BuyMenu_visbility_changed()
+    void OnBuyMenuVisibilityChanged()
     {
         var bonusLabel = (Label)FindNode("ArmyElimBonus");
 

@@ -21,8 +21,7 @@ public class Coin : Area2D
         );
     }
 
-    //? Does this signal connection work?
-    async void _on_Coin_body_entered(Node body)
+    async void OnCoinBodyEntered(Node body)
     {
         var collision = (CollisionShape2D)FindNode("CollisionShape2D");
         // Turn off collision to make sure no extra collisions while the effect is playinf

@@ -49,8 +49,7 @@ public class HomeScreenButton : TextureButton
         }
     }
 
-    //? do this work
-    void _on_Button_pressed()
+    void OnButtonPressed()
     {
         switch (mode)
         {

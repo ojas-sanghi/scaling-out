@@ -43,8 +43,8 @@ margin_bottom = -28.6385
 [node name="Particles2D" type="Particles2D" parent="Particles"]
 position = Vector2( 2.1, -36.8687 )
 scale = Vector2( 1.5, 1.5 )
+emitting = false
 amount = 50
-speed_scale = 28.01
 process_material = ExtResource( 1 )
 __meta__ = {
 "_editor_description_": ""

@@ -3,8 +3,7 @@
 [ext_resource path="res://src/GUI/GameTimer.cs" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=2]
 
-
-[node name="Timer" type="Control" groups=[
+[node name="GameTimer" type="Control" groups=[
 "level_timer",
 ]]
 anchor_right = 1.0
@@ -17,7 +16,7 @@ __meta__ = {
 }
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 120.0
+wait_time = 5.0
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
@@ -28,4 +27,5 @@ text = "Time left: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

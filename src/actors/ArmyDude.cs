@@ -77,17 +77,15 @@ public class ArmyDude : Area2D
 
     async void OnProjectileHit(Enums.Genes type)
     {
-        //? Does this work?
-        //? Once types are changed to Enums, we don't need to do this
         string strType = type.ToString();
 
-        if (strType == "ice")
+        if (strType == "Ice")
         {
             animPlayer.PlaybackSpeed = (float)0.5;
             await ToSignal(GetTree().CreateTimer((float)10.0), "timeout");
             animPlayer.PlaybackSpeed = (float)1.0;
         }
-        else if (strType == "fire")
+        else if (strType == "Fire")
         {
             animPlayer.Stop();
             await ToSignal(GetTree().CreateTimer((float)3), "timeout");

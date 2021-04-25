@@ -10,7 +10,6 @@ public class ShopStatUpgradeButton : ShopUpgradeButton
         switch (exportedButtonMode)
         {
             case b.Hp:
-                //? font_color or FontColor
                 stat.AddColorOverride("font_color", hpRed);
                 statNum.AddColorOverride("font_color", hpRed);
 
@@ -21,7 +20,6 @@ public class ShopStatUpgradeButton : ShopUpgradeButton
                 break;
 
             case b.Delay:
-                //? font_color or FontColor
                 stat.AddColorOverride("font_color", delayBlue);
                 statNum.AddColorOverride("font_color", delayBlue);
 

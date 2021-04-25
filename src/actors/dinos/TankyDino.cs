@@ -26,7 +26,7 @@ public class TankyDino : BaseDino
     public void ShootProjectile()
     {
         iceProjectile.Show();
-        iceProjectile.disabled = true;
+        iceProjectile.disabled = false;
     }
 
 }

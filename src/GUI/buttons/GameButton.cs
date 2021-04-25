@@ -80,8 +80,7 @@ public class GameButton : Button
         }
     }
 
-    //? work?
-    void _on_Button_pressed()
+    void OnButtonPressed()
     {
         SceneChanger scnChng = SceneChanger.Instance;
         switch (buttonMode)

@@ -21,5 +21,6 @@ shape = SubResource( 1 )
 
 [node name="ExistenceTimer" type="Timer" parent="."]
 wait_time = 2.5
-[connection signal="area_entered" from="." to="." method="_on_Bullet_area_entered"]
-[connection signal="timeout" from="ExistenceTimer" to="." method="_on_ExistenceTimer_timeout"]
+
+[connection signal="area_entered" from="." to="." method="OnBulletAreaEntered"]
+[connection signal="timeout" from="ExistenceTimer" to="." method="OnExistenceTimerTimeout"]

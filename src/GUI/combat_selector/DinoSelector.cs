@@ -39,7 +39,7 @@ public class DinoSelector : Node2D
             SelectorSprite newSelector = (SelectorSprite)selectorScene.Instance();
             newSelector.spriteTexture = n.Value;
             newSelector.dinoId = n.Key;
-            newSelector.text = iconId.ToString() + 1;
+            newSelector.text = (iconId + 1).ToString();
 
             hBox.AddChild(newSelector);
 
@@ -65,7 +65,7 @@ public class DinoSelector : Node2D
             SelectorSprite newSelector = (SelectorSprite)selectorScene.Instance();
             newSelector.spriteTexture = n.Value;
             newSelector.dinoId = n.Key;
-            newSelector.text = (abilityId + d.dinoIcons.Count).ToString(); // position in list + number of dinos
+            newSelector.text = (abilityId + d.dinoIcons.Count + 1).ToString(); // position in list + number of dinos
 
             newSelector.abilityMode = abilityString;
             newSelector.customScale = new Vector2((float)0.07, (float)0.07);
@@ -115,8 +115,7 @@ public class DinoSelector : Node2D
         // TODO: change this. #73, https://app.gitkraken.com/glo/view/card/75f5162699514eddb32954a7629c6423
         else if (@event.IsActionPressed("dino_5"))
         {
-            //? does the negate work properly here? 
-            if (!d.GetDinoInfo(Enums.Dinos.Tanky).UnlockedSpecial() || CombatInfo.Instance.shotIce)
+            if (!(d.GetDinoInfo(Enums.Dinos.Tanky).UnlockedSpecial()) || CombatInfo.Instance.shotIce)
             {
                 return;
             }
@@ -136,8 +135,7 @@ public class DinoSelector : Node2D
         }
         else if (@event.IsActionPressed("dino_6"))
         {
-            //? does the negate work properly here? 
-            if (!d.GetDinoInfo(Enums.Dinos.Warrior).UnlockedSpecial() || CombatInfo.Instance.shotFire)
+            if (!(d.GetDinoInfo(Enums.Dinos.Warrior).UnlockedSpecial()) || CombatInfo.Instance.shotFire)
             {
                 return;
             }
@@ -163,11 +161,12 @@ public class DinoSelector : Node2D
     {
         Enums.Dinos dinoType = (Enums.Dinos)d.GetDinoProperty("dinoType");
 
-        //TODO: do this better
+        // TODO: do this better
+        // TODO: fix this lol
 
         if (dinoType == Enums.Dinos.Tanky)
         {
-            if (d.GetDinoInfo(dinoType).UnlockedSpecial() && !CombatInfo.Instance.shotIce)
+            if (d.GetDinoInfo(dinoType).UnlockedSpecial() && !(CombatInfo.Instance.shotIce))
             {
                 selectorList[4].EnableAbility();
             }
@@ -187,7 +186,7 @@ public class DinoSelector : Node2D
     {
         var dinosLeft = GetTree().GetNodesInGroup("dinos");
 
-        //TODO: do this better
+        // TODO: do this better
 
         if (type == Enums.Dinos.Tanky)
         {
