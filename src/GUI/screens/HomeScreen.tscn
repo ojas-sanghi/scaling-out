@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/homeButtons/map-normal.png" type="Texture" id=5]
 [ext_resource path="res://assets/homeButtons/map-out.png" type="Texture" id=6]
 [ext_resource path="res://assets/homeButtons/flask-normal.png" type="Texture" id=7]
-[ext_resource path="res://src/GUI/buttons/Button.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=8]
 
 [node name="HomeScreen" type="Control"]
 anchor_right = 1.0
@@ -38,7 +38,7 @@ margin_bottom = 733.945
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 6 )
 texture_focused = ExtResource( 6 )
-button_mode = "map"
+mode = 1
 
 [node name="Flask" parent="." instance=ExtResource( 3 )]
 anchor_left = 0.79
@@ -53,12 +53,12 @@ texture_normal = ExtResource( 7 )
 texture_pressed = ExtResource( 4 )
 texture_hover = ExtResource( 4 )
 texture_focused = ExtResource( 4 )
-button_mode = "upgrades"
+mode = 2
 
 [node name="Label" parent="Flask" index="0"]
 margin_left = -26.4207
 margin_right = 144.579
-text = "View upgrades menu"
+text = "View upgrade menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
@@ -70,7 +70,7 @@ margin_top = -168.825
 margin_right = 163.502
 margin_bottom = 3.1748
 text = "Ice Stealth"
-button_mode = "ice"
+buttonMode = 5
 
 [node name="Button2" parent="." instance=ExtResource( 8 )]
 margin_left = -142.498
@@ -78,6 +78,6 @@ margin_top = 89.9212
 margin_right = 163.502
 margin_bottom = 261.921
 text = "Fire Stealth"
-button_mode = "fire"
+buttonMode = 6
 
 [editable path="Flask"]

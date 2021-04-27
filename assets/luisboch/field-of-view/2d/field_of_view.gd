@@ -93,7 +93,11 @@ func check_view():
 						is_enemy = true
 
 				if is_enemy:
-					Signals.emit_signal("level_failed")
+					var cs_events_script = load("res://src/singletons/Events.cs")
+					var cs_events_node = cs_events_script.new()
+					cs_events_node.publishLevelFailed()
+
+#					Signals.emit_signal("level_failed")
 					level = 1
 					if dist < radius_danger:
 						level = 2

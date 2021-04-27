@@ -1,17 +1,17 @@
 [gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://src/GUI/buttons/Button.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/music/Upgrade screen and menu.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/dinos/tanky_dino/Armored_Dino_ICON.png" type="Texture" id=12]
 [ext_resource path="res://src/GUI/infos/MoneyCounter.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/upgrade_background_rough_draft.png" type="Texture" id=14]
 [ext_resource path="res://src/GUI/SpecialUpgrade.tscn" type="PackedScene" id=15]
-[ext_resource path="res://src/GUI/buttons/UpgradeButton.tscn" type="PackedScene" id=16]
-[ext_resource path="res://src/GUI/screens/UpgradeScreen.gd" type="Script" id=17]
+[ext_resource path="res://src/GUI/buttons/ShopUpgradeButton.tscn" type="PackedScene" id=16]
+[ext_resource path="res://src/GUI/screens/UpgradeScreen.cs" type="Script" id=17]
 [ext_resource path="res://assets/fonts/Font35.tres" type="DynamicFont" id=18]
 [ext_resource path="res://assets/fonts/Font60.tres" type="DynamicFont" id=19]
 [ext_resource path="res://src/GUI/infos/DNACounter.tscn" type="PackedScene" id=20]
-[ext_resource path="res://src/GUI/buttons/StatUpgradeButton.tscn" type="PackedScene" id=22]
+[ext_resource path="res://src/GUI/buttons/ShopStatUpgradeButton.tscn" type="PackedScene" id=22]
 
 [node name="UpgradeScreen" type="Control"]
 anchor_right = 1.0
@@ -48,14 +48,14 @@ margin_left = 24.0
 margin_top = 139.0
 margin_right = 504.0
 margin_bottom = 209.0
-button_mode = "hp"
+exportedButtonMode = 1
 
 [node name="StatUpgradeButton4" parent="." instance=ExtResource( 22 )]
 margin_left = 24.0
 margin_top = 228.27
 margin_right = 504.0
 margin_bottom = 298.27
-button_mode = "delay"
+exportedButtonMode = 2
 
 [node name="NameContainer" type="HBoxContainer" parent="."]
 margin_left = 40.0359
@@ -89,31 +89,31 @@ __meta__ = {
 
 [node name="UpgradeButton" parent="." instance=ExtResource( 16 )]
 margin_left = 103.0
-margin_top = 322.0
+margin_top = 325.0
 margin_right = 103.96
-margin_bottom = 322.32
-button_mode = "def"
+margin_bottom = 325.32
+exportedButtonMode = 3
 
 [node name="UpgradeButton2" parent="." instance=ExtResource( 16 )]
 margin_left = 27.0
 margin_top = 437.0
 margin_right = 27.96
 margin_bottom = 437.32
-button_mode = "dmg"
+exportedButtonMode = 5
 
 [node name="UpgradeButton3" parent="." instance=ExtResource( 16 )]
 margin_left = 106.0
 margin_top = 552.0
 margin_right = 106.96
 margin_bottom = 552.32
-button_mode = "speed"
+exportedButtonMode = 6
 
 [node name="UpgradeButton4" parent="." instance=ExtResource( 16 )]
 margin_left = 26.0
 margin_top = 667.0
 margin_right = 26.96
 margin_bottom = 667.32
-button_mode = "ice"
+exportedButtonMode = 7
 
 [node name="SpecialUpgrade" parent="." instance=ExtResource( 15 )]
 margin_left = 1328.72
@@ -127,7 +127,7 @@ margin_top = 370.0
 margin_right = -582.0
 margin_bottom = 503.0
 text = "Return Home"
-button_mode = "return home screen"
+buttonMode = 7
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

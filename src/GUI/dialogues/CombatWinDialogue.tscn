@@ -2,8 +2,7 @@
 
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/Font100.tres" type="DynamicFont" id=2]
-[ext_resource path="res://src/GUI/buttons/Button.tscn" type="PackedScene" id=3]
-
+[ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=3]
 
 [node name="CombatWinDialogue" type="Control"]
 pause_mode = 2
@@ -46,4 +45,4 @@ margin_top = 112.663
 margin_right = 171.0
 margin_bottom = 210.663
 text = "Return Home"
-button_mode = "return home screen"
+buttonMode = 7
