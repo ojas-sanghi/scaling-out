@@ -1,11 +1,12 @@
 [gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=1]
-[ext_resource path="res://src/GUI/SpecialUpgrade.cs" type="Script" id=2]
+[ext_resource path="res://src/GUI/SpecialUpgrade.gd" type="Script" id=2]
 [ext_resource path="res://assets/dinos/misc/ice.png" type="Texture" id=3]
 [ext_resource path="res://assets/fonts/Font30.tres" type="DynamicFont" id=4]
 [ext_resource path="res://src/GUI/themes/SpecialBGTheme.tres" type="Theme" id=5]
 [ext_resource path="res://assets/abilities/previews/ice-preview.ogv" type="VideoStream" id=6]
+
 
 [node name="SpecialUpgrade" type="Control"]
 margin_right = 514.0
@@ -70,5 +71,4 @@ autoplay = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[connection signal="finished" from="VideoPlayer" to="." method="OnVideoPlayerFinished"]
+[connection signal="finished" from="VideoPlayer" to="." method="_on_VideoPlayer_finished"]
