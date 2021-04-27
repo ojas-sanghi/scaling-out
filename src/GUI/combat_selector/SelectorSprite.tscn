@@ -2,7 +2,7 @@
 
 [ext_resource path="res://src/GUI/themes/SelectorParticles.tres" type="Material" id=1]
 [ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=2]
-[ext_resource path="res://src/GUI/combat_selector/SelectorSprite.cs" type="Script" id=3]
+[ext_resource path="res://src/GUI/combat_selector/SelectorSprite.gd" type="Script" id=3]
 [ext_resource path="res://assets/dinos/misc/x.png" type="Texture" id=4]
 [ext_resource path="res://src/GUI/combat_selector/DeployTimer.tscn" type="PackedScene" id=5]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://src/combat/BulletSpawner.cs" type="Script" id=1]
+[ext_resource path="res://src/combat/BulletSpawner.gd" type="Script" id=1]
 [ext_resource path="res://assets/music/Gun shot.wav" type="AudioStream" id=2]
 
 [node name="BulletSpawner" type="Node2D"]

@@ -11,16 +11,13 @@ export_presets.cfg
 .mono/
 data_*/
 .vs/
-*.csproj.old*
+
 UpgradeLog.htm
-
 .DS_Store
-
-# JetBrains
 .idea/
 
-# VS Code
-.vscode/settings.json
+*.csproj.old*
 
-# Project specific
+.vscode/
+
 screenshots/
