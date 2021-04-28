@@ -1,9 +1,9 @@
 using Godot;
+using Enums;
 
 public class ArmyDude : Area2D
 {
-    // TODO: convert this to an enum
-    string mode;
+    ArmyWeapons mode;
 
     double rps;
     int magSize;
@@ -26,21 +26,21 @@ public class ArmyDude : Area2D
         switch (random)
         {
             case 0:
-                mode = "pistol";
+                mode = ArmyWeapons.Pistol;
                 rps = 1;
                 magSize = 15;
                 reloadTime = 2;
                 break;
 
             case 1:
-                mode = "rifle";
+                mode = ArmyWeapons.Rifle;
                 rps = 2;
                 magSize = 20;
                 reloadTime = 3;
                 break;
 
             case 2:
-                mode = "shotgun";
+                mode = ArmyWeapons.Shotgun;
                 rps = 1.2;
                 magSize = 5;
                 reloadTime = 2.5;
@@ -50,7 +50,9 @@ public class ArmyDude : Area2D
         spawner.mode = mode;
         bulletsLeft = magSize;
 
-        animPlayer.Play("shoot_" + mode);
+        //? what happens when you cast enum to strin    
+
+        animPlayer.Play("shoot_" + mode.ToString().ToLower());
         animPlayer.Seek((float)0.1, true);
 
         rayCast.CastTo = new Vector2(-GetViewport().Size.x, 0);
@@ -89,7 +91,7 @@ public class ArmyDude : Area2D
         {
             animPlayer.Stop();
             await ToSignal(GetTree().CreateTimer((float)3), "timeout");
-            animPlayer.Play("shoot_" + mode);
+            animPlayer.Play("shoot_" + mode.ToString().ToLower());
         }
 
     }
@@ -108,7 +110,7 @@ public class ArmyDude : Area2D
             // play reload anim
             await ToSignal(GetTree().CreateTimer((float)reloadTime), "timeout");
             bulletsLeft = magSize;
-            animPlayer.Play("shoot_" + mode);
+            animPlayer.Play("shoot_" + mode.ToString().ToLower());
         }
     }
 }

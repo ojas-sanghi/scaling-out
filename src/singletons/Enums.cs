@@ -30,4 +30,9 @@ namespace Enums
         None, Hp, Delay, Def, Dodge, Dmg, Speed, Ice, Fire
     }
 
+    public enum ArmyWeapons
+    {
+        Pistol, Rifle, Shotgun
+    }
+
 }

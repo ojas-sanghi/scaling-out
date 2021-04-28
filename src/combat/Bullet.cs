@@ -1,9 +1,9 @@
 using Godot;
+using Enums;
 
 public class Bullet : Area2D
 {
-    // TODO: covert this to an enum
-    public string mode = "pistol";
+    public ArmyWeapons mode = ArmyWeapons.Pistol;
 
     int speed = CombatInfo.Instance.bulletSpeed / 2;
     int bulletDmg = 14;
@@ -12,7 +12,7 @@ public class Bullet : Area2D
     {
         Timer timer = (Timer)FindNode("ExistenceTimer");
 
-        if (mode == "shotgun")
+        if (mode == ArmyWeapons.Shotgun)
         {
             bulletDmg = 6;
             timer.WaitTime = (float)0.75;

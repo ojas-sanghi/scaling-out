@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Godot;
+using Enums;
 
 public class BulletSpawner : Node2D
 {
@@ -8,7 +9,7 @@ public class BulletSpawner : Node2D
 
     List<Bullet> bullets = new List<Bullet>();
 
-    public string mode;
+    public ArmyWeapons mode;
 
     void NewBullet()
     {
@@ -24,7 +25,7 @@ public class BulletSpawner : Node2D
         BulletsGroup bulletsGroup = (BulletsGroup)bulletGroupScene.Instance();
         bulletsGroup.RotationDegrees = (float)GD.RandRange(-5, 5);
 
-        if (mode == "shotgun")
+        if (mode == ArmyWeapons.Shotgun)
         {
             // make three new bullets
             foreach (int i in GD.Range(0, 3))
