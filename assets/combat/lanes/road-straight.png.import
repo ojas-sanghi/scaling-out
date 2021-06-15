@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/green.png-530f05dc564f7fef27633c677be8dee4.stex"
+path="res://.import/road-straight.png-7e1e83ba81cd6e4225588623d48cad82.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/combat/lanes/green.png"
-dest_files=[ "res://.import/green.png-530f05dc564f7fef27633c677be8dee4.stex" ]
+source_file="res://assets/combat/lanes/road-straight.png"
+dest_files=[ "res://.import/road-straight.png-7e1e83ba81cd6e4225588623d48cad82.stex" ]
 
 [params]
 

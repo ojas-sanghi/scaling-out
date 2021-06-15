@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/road.png-e2f5ec4735007447d7bf2f4c7a773584.stex"
+path="res://.import/grass-curved.png-102b3b4781043fc571a4d0e068030a62.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/combat/lanes/road.png"
-dest_files=[ "res://.import/road.png-e2f5ec4735007447d7bf2f4c7a773584.stex" ]
+source_file="res://assets/combat/lanes/grass-curved.png"
+dest_files=[ "res://.import/grass-curved.png-102b3b4781043fc571a4d0e068030a62.stex" ]
 
 [params]
 
