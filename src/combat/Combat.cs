@@ -43,8 +43,8 @@ public class Combat : Node
         c.creds += 150; // TODO: extract this to a singleton
         c.creds += 50 * c.numArmyKilled;
 
-        // num of max dinos for next round is remaining + number of bought
-        // ? is this correct?
+        // set the remaining to the max
+        // the dinos that are bought will be added to the max later
         c.maxDinos = c.dinosRemaining;
 
         if (c.currentRound > c.maxRounds)

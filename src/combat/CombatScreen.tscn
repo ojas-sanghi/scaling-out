@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://src/combat/Lane.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GUI/GameTimer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/GUI/combat_selector/DinoSelector.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/combat/Blockade.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/actors/ArmyDude.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/GUI/DinoCounter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/combat/Combat.cs" type="Script" id=7]
+[ext_resource path="res://src/combat/lanes/LanesCreator.cs" type="Script" id=8]
 [ext_resource path="res://assets/music/Battle Music.wav" type="AudioStream" id=9]
 [ext_resource path="res://src/GUI/BuyMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/GUI/RoundCounter.tscn" type="PackedScene" id=12]
@@ -19,21 +19,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Lanes" type="Node2D" parent="."]
-position = Vector2( 0, 123 )
-
-[node name="Lane" parent="Lanes" instance=ExtResource( 1 )]
-position = Vector2( 0, -5 )
-
-[node name="Lane2" parent="Lanes" instance=ExtResource( 1 )]
-position = Vector2( 0, 269 )
-
-[node name="Lane3" parent="Lanes" instance=ExtResource( 1 )]
-position = Vector2( 0, 543 )
+[node name="LanesCreator" type="Node2D" parent="."]
+position = Vector2( 700.5, 531.815 )
+script = ExtResource( 8 )
+laneTypes = [ 0, 0, 0, 0 ]
 
 [node name="Army" type="Node2D" parent="."]
 
-[node name="ColorRect" type="ColorRect" parent="Army"]
+[node name="ArmyBase" type="ColorRect" parent="Army"]
 margin_left = 1400.48
 margin_top = 99.2383
 margin_right = 1922.48
@@ -66,21 +59,21 @@ position = Vector2( 1726.97, 521.097 )
 [node name="Selectors" type="Node2D" parent="."]
 position = Vector2( 300, -4.29114 )
 
-[node name="ColorRect" type="ColorRect" parent="Selectors"]
+[node name="TopBar" type="ColorRect" parent="Selectors"]
 margin_left = -300.0
-margin_top = 948.0
+margin_top = 5.0
 margin_right = 1620.0
-margin_bottom = 1085.0
+margin_bottom = 125.0
 color = Color( 0.054902, 0.635294, 0.886275, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect2" type="ColorRect" parent="Selectors"]
+[node name="BottomBar" type="ColorRect" parent="Selectors"]
 margin_left = -300.0
-margin_top = 5.0
+margin_top = 948.0
 margin_right = 1620.0
-margin_bottom = 125.0
+margin_bottom = 1085.0
 color = Color( 0.054902, 0.635294, 0.886275, 1 )
 __meta__ = {
 "_edit_use_anchors_": false

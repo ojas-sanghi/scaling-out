@@ -35,4 +35,9 @@ namespace Enums
         Pistol, Rifle, Shotgun
     }
 
+    public enum LaneTypes 
+    {
+        RoadStraight, RoadEmpty
+    }
+
 }

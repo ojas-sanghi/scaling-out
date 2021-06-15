@@ -30,6 +30,7 @@ ShopInfo="*res://src/singletons/ShopInfo.cs"
 StealthInfo="*res://src/singletons/StealthInfo.cs"
 CombatInfo="*res://src/singletons/CombatInfo.cs"
 DinoInfo="*res://src/singletons/DinoInfo.cs"
+LaneInfo="*res://src/singletons/LaneInfo.cs"
 
 [debug]
 
