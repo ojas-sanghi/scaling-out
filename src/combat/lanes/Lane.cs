@@ -18,10 +18,17 @@ public class Lane : Path2D
 			GetTree().Quit(1);
 		}
 
-		spawnPoint = GetNode<TextureButton>("Button").RectGlobalPosition + new Vector2(70, 30);
+		TextureButton button = GetNode<TextureButton>("Button");
+		spawnPoint = button.RectGlobalPosition + new Vector2(70, 30);
 
 		GetNode<Sprite>("Sprite").Texture = laneImg;
 		Events.newRound += OnNewRound;
+
+		// we're an empty lane, don't allow deploys
+		if (Curve.GetPointCount() == 0) 
+		{
+			button.Hide();
+		}
 	}
 
 	public override void _ExitTree() 
