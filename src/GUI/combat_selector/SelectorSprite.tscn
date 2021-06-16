@@ -38,6 +38,8 @@ margin_top = -28.6385
 margin_right = -29.0668
 margin_bottom = -28.6385
 
+[node name="CooldownTimer" type="Timer" parent="."]
+
 [node name="Particles" type="Node2D" parent="."]
 
 [node name="Particles2D" type="Particles2D" parent="Particles"]

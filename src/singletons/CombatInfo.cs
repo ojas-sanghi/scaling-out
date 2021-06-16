@@ -22,9 +22,6 @@ public class CombatInfo : Node
     public bool shotIce;
     public bool shotFire;
 
-    // Number of army people killed; you get a cred bonus for each
-    public int numArmyKilled;
-
     public int currentRound = 1;
     public int maxRounds = 3;
 
@@ -63,8 +60,6 @@ public class CombatInfo : Node
 
         shotIce = false;
         shotFire = false;
-
-        numArmyKilled = 0;
 
         maxRounds = _MaxRounds;
     }

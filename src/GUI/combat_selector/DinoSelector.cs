@@ -12,10 +12,14 @@ public class DinoSelector : Node2D
 
     DinoInfo d = DinoInfo.Instance;
 
+    bool allDinosExpended = false;
+
     public override void _Ready()
     {
         Events.dinoFullySpawned += OnDinoFullySpawned;
         Events.dinoDied += OnDinoDied;
+        Events.allDinosExpended += OnAllDinosExpended;
+        Events.dinosPurchased += OnDinosPurchased;
 
         hBox = (HBoxContainer)FindNode("HBoxContainer");
 
@@ -23,12 +27,15 @@ public class DinoSelector : Node2D
         // get a list of children
         selectorList = hBox.GetChildren().Cast<SelectorSprite>().ToList<SelectorSprite>();
         selectorList[0].ShowParticles();
+
     }
 
     public override void _ExitTree()
     {
         Events.dinoFullySpawned -= OnDinoFullySpawned;
         Events.dinoDied -= OnDinoDied;
+        Events.allDinosExpended -= OnAllDinosExpended;
+        Events.dinosPurchased -= OnDinosPurchased;
     }
 
     void SetupSelectors()
@@ -90,6 +97,11 @@ public class DinoSelector : Node2D
 
     public override void _Input(InputEvent @event)
     {
+        if (allDinosExpended)
+        {
+            return;
+        }
+
         // TODO: change this. #107, https://app.gitkraken.com/glo/view/card/a9b9034aa0834eb5bdabe2aac01a4200
         if (@event.IsActionPressed("dino_1"))
         {
@@ -210,6 +222,28 @@ public class DinoSelector : Node2D
                 }
             }
             selectorList[5].DisableAbility();
+        }
+    }
+
+    void OnAllDinosExpended()
+    {
+        allDinosExpended = true;
+    }
+
+    async void OnDinosPurchased(int numDinos)
+    {
+        // Wait for 0.1 seconds to allow for the same signal to be registered and executed in Combat.cs
+        // Only once that code executes will our un-fading code work properly
+        // Kinda hacky but oh well
+        await ToSignal(GetTree().CreateTimer((float)0.1), "timeout");
+        
+        if (CombatInfo.Instance.dinosRemaining > 0)
+        {
+            allDinosExpended = false;
+            foreach (SelectorSprite ss in selectorList)
+            {
+                ss.UnFadeSprite();
+            }
         }
     }
 

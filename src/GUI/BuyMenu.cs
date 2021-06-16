@@ -15,19 +15,11 @@ public class BuyMenu : Control
 
     void OnBuyMenuVisibilityChanged()
     {
+        // TODO: make this a time bonus. se #119 https://app.gitkraken.com/glo/view/card/517b681f2d11497db53fc1bec843370a
         var bonusLabel = (Label)FindNode("ArmyElimBonus");
 
         UpdateMaxValue();
         cred.SetCreds();
-
-        if (CombatInfo.Instance.numArmyKilled == 0)
-        {
-            bonusLabel.Text = "";
-        }
-        else
-        {
-            bonusLabel.Text = "Army elimination bonus: +" + (50 * CombatInfo.Instance.numArmyKilled).ToString();
-        }
     }
 
     void UpdateMaxValue()

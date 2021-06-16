@@ -100,6 +100,7 @@ __meta__ = {
 }
 
 [node name="ArmyElimBonus" type="Label" parent="Labels"]
+visible = false
 margin_left = 442.579
 margin_top = 450.194
 margin_right = 1264.58

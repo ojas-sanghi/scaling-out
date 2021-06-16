@@ -18,7 +18,7 @@ public class DinoCounter : Control
     void OnDinoDeployed()
     {
         CombatInfo.Instance.dinosRemaining--;
-        if (CombatInfo.Instance.dinosRemaining == 0)
+        if (CombatInfo.Instance.dinosRemaining <= 0)
         {
             Events.publishAllDinosExpended();
         }

@@ -41,11 +41,11 @@ public class Combat : Node
 
         c.currentRound += 1;
         c.creds += 150; // TODO: extract this to a singleton
-        c.creds += 50 * c.numArmyKilled;
 
         // set the remaining to the max
         // the dinos that are bought will be added to the max later
-        c.maxDinos = c.dinosRemaining;
+        maxDinos = c.dinosRemaining;
+        c.Reset(maxDinos);
 
         if (c.currentRound > c.maxRounds)
         {

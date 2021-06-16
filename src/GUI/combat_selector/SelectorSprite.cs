@@ -15,7 +15,9 @@ public class SelectorSprite : Control
     Label label;
     Sprite disabled;
     DeployTimer deployTimer;
+    Timer cooldownTimer;
     Node2D particles;
+
 
     public override void _Ready()
     {
@@ -28,6 +30,7 @@ public class SelectorSprite : Control
         label = (Label)FindNode("Label");
         disabled = (Sprite)FindNode("disabled");
         deployTimer = (DeployTimer)FindNode("DeployTimer");
+        cooldownTimer = (Timer)FindNode("CooldownTimer");
         particles = (Node2D)FindNode("Particles");
 
         sprite.Texture = spriteTexture;
@@ -62,7 +65,7 @@ public class SelectorSprite : Control
         label.Modulate = new Color(1, 1, 1, (float)0.5);
     }
 
-    void UnFadeSprite()
+    public void UnFadeSprite()
     {
         // only unfade if we have more dinos left
         if (CombatInfo.Instance.dinosRemaining != 0)
@@ -74,7 +77,7 @@ public class SelectorSprite : Control
 
     public void DisableAbility()
     {
-        if (abilityMode == "none")
+        if (abilityMode == "")
         {
             return;
         }
@@ -84,7 +87,7 @@ public class SelectorSprite : Control
 
     public void EnableAbility()
     {
-        if (abilityMode == "none")
+        if (abilityMode == "")
         {
             return;
         }
@@ -117,10 +120,8 @@ public class SelectorSprite : Control
         }
 
         FadeSprite();
-        await ToSignal(
-            GetTree().CreateTimer((float)DinoInfo.Instance.GetDinoTimerDelay(), false),
-            "timeout"
-        );
+        cooldownTimer.Start((float)DinoInfo.Instance.GetDinoTimerDelay());
+        await ToSignal(cooldownTimer, "timeout");
         UnFadeSprite();
     }
 
@@ -128,8 +129,9 @@ public class SelectorSprite : Control
     {
         // don't fade the sprite if it's an ability
         // even if there aren't any dinos left to deploy you can still use abilities
-        if (abilityMode == "none")
+        if (abilityMode == "")
         {
+            cooldownTimer.Stop();
             FadeSprite();
             HideParticles();
             deployTimer.Hide();
