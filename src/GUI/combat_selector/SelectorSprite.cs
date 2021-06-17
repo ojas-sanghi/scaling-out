@@ -19,6 +19,8 @@ public class SelectorSprite : Control
 
     Material blackWhiteShader;
 
+    DinoInfo d = DinoInfo.Instance;
+
     public override void _Ready()
     {
         if (Engine.EditorHint)
@@ -55,7 +57,6 @@ public class SelectorSprite : Control
         Events.allDinosExpended -= OnAllDinosExpended;
     }
 
-
     void FadeSprite()
     {
         // only execute if we're a dino
@@ -86,7 +87,30 @@ public class SelectorSprite : Control
     // this just makes the sprite back to normal color, no longer black and white
     public void EnableSprite()
     {
-        sprite.Material = null;
+        // for abilities -- only enable if conditions are met
+        if (abilityMode.Contains("ice"))
+        {
+            if (CombatInfo.Instance.IsAbilityDeployable(Enums.Dinos.Tanky))
+            {
+                sprite.Material = null;
+            }
+        }
+        else if (abilityMode.Contains("fire"))
+        {
+            if (CombatInfo.Instance.IsAbilityDeployable(Enums.Dinos.Warrior))
+            {
+                sprite.Material = null;
+            }
+        }
+        else
+        {
+            // if we're a dino -- then enable it regardless
+            if (abilityMode == "")
+            {
+                sprite.Material = null;
+            }
+            // if we're an ability still, then stay disabled since no conditions are met
+        }
     }
 
     public void HideParticles()
@@ -131,7 +155,7 @@ public class SelectorSprite : Control
 
         // unfade them so that they don't look weird when made B&W
         UnFadeSprite();
-        
+
         DisableSprite();
         HideParticles();
         deployTimer.Hide();

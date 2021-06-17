@@ -178,7 +178,7 @@ public class DinoSelector : Node2D
 
         if (dinoType == Enums.Dinos.Tanky)
         {
-            if (d.GetDinoInfo(dinoType).UnlockedSpecial() && !(CombatInfo.Instance.shotIce))
+            if (CombatInfo.Instance.IsAbilityDeployable(dinoType))
             {
                 selectorList[4].EnableSprite();
             }
@@ -186,7 +186,7 @@ public class DinoSelector : Node2D
 
         if (dinoType == Enums.Dinos.Warrior)
         {
-            if (d.GetDinoInfo(dinoType).UnlockedSpecial() && !CombatInfo.Instance.shotFire)
+            if (CombatInfo.Instance.IsAbilityDeployable(dinoType))
             {
                 selectorList[5].EnableSprite();
             }
@@ -202,6 +202,10 @@ public class DinoSelector : Node2D
 
         if (type == Enums.Dinos.Tanky)
         {
+            // go through each dino
+            // if any of them are tanky dinos, then shooting ice is still possible
+            // if so, then exit out. 
+            // but if there are no more tanky dinos, then disable sprite
             foreach (BaseDino d in dinosLeft)
             {
                 if (d.dinoType == Enums.Dinos.Tanky)
@@ -214,6 +218,7 @@ public class DinoSelector : Node2D
 
         if (type == Enums.Dinos.Warrior)
         {
+            // same as above for warrior dinos
             foreach (BaseDino d in dinosLeft)
             {
                 if (d.dinoType == Enums.Dinos.Warrior)
@@ -236,8 +241,8 @@ public class DinoSelector : Node2D
         // Only once that code executes will our un-fading code work properly
         // Kinda hacky but oh well
         await ToSignal(GetTree().CreateTimer((float)0.1), "timeout");
-        
-        // reset switch, unfade all sprites once more dinos are bought
+
+        // reset switch, re-enable all sprites once more dinos are bought
         if (CombatInfo.Instance.dinosRemaining > 0)
         {
             allDinosExpended = false;

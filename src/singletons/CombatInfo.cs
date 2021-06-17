@@ -30,7 +30,8 @@ public class CombatInfo : Node
     // TODO: Remove this from here and place it somewhere it makes sense
     public int bulletSpeed = 400;
 
-    public CombatInfo() {
+    public CombatInfo()
+    {
         Instance = this;
     }
 
@@ -64,6 +65,24 @@ public class CombatInfo : Node
         maxRounds = _MaxRounds;
     }
 
+    public bool IsAbilityDeployable(Enums.Dinos dinoType)
+    {
+        DinoInfo d = DinoInfo.Instance;
+
+        if (dinoType == Enums.Dinos.Tanky)
+        {
+            return d.GetDinoInfo(dinoType).UnlockedSpecial() && !this.shotIce;
+        }
+        else if (dinoType == Enums.Dinos.Warrior)
+        {
+            return d.GetDinoInfo(dinoType).UnlockedSpecial() && !this.shotFire;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     void OnDinoDeployed()
     {
         // Add to list of dinos just deployed
@@ -81,7 +100,7 @@ public class CombatInfo : Node
         dinosDeployingTimer.OneShot = true;
         AddChild(dinosDeployingTimer);
 
-        dinosDeployingTimer.Connect("timeout", this, "OnDinosDeployingTimerTimeout", new Array(new Enums.Dinos[] {dinoId}));
+        dinosDeployingTimer.Connect("timeout", this, "OnDinosDeployingTimerTimeout", new Array(new Enums.Dinos[] { dinoId }));
         dinosDeployingTimer.Start((float)delay);
     }
 
