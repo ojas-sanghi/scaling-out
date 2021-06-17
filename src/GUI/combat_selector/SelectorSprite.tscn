@@ -3,8 +3,8 @@
 [ext_resource path="res://src/GUI/themes/SelectorParticles.tres" type="Material" id=1]
 [ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/GUI/combat_selector/SelectorSprite.cs" type="Script" id=3]
-[ext_resource path="res://assets/dinos/misc/x.png" type="Texture" id=4]
 [ext_resource path="res://src/GUI/combat_selector/DeployTimer.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/dinos/gator_gecko/gator_gecko_icon.png" type="Texture" id=6]
 
 [node name="SelectorSprite" type="Control"]
 script = ExtResource( 3 )
@@ -14,12 +14,7 @@ __meta__ = {
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.511, 0.519 )
-
-[node name="disabled" type="Sprite" parent="."]
-visible = false
-position = Vector2( 17.1335, 19.5811 )
-scale = Vector2( 0.351647, 0.351647 )
-texture = ExtResource( 4 )
+texture = ExtResource( 6 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 40.2963

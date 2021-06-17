@@ -13,11 +13,11 @@ public class SelectorSprite : Control
 
     Sprite sprite;
     Label label;
-    Sprite disabled;
     DeployTimer deployTimer;
     Timer cooldownTimer;
     Node2D particles;
 
+    Material blackWhiteShader;
 
     public override void _Ready()
     {
@@ -28,23 +28,20 @@ public class SelectorSprite : Control
 
         sprite = (Sprite)FindNode("Sprite");
         label = (Label)FindNode("Label");
-        disabled = (Sprite)FindNode("disabled");
         deployTimer = (DeployTimer)FindNode("DeployTimer");
         cooldownTimer = (Timer)FindNode("CooldownTimer");
         particles = (Node2D)FindNode("Particles");
+        blackWhiteShader = GD.Load<Material>("res://assets/shaders/BlackWhiteShaderMaterial.tres");
 
         sprite.Texture = spriteTexture;
         sprite.Scale = customScale;
         label.Text = text;
         HideParticles();
 
-        if (abilityMode == "")
+        // if it's an ability, then disable it at the starting
+        if (abilityMode != "")
         {
-            disabled.Hide();
-        }
-        else
-        {
-            DisableAbility();
+            DisableSprite();
             deployTimer.Hide();
         }
 
@@ -61,38 +58,35 @@ public class SelectorSprite : Control
 
     void FadeSprite()
     {
-        sprite.Modulate = new Color(1, 1, 1, (float)0.5);
-        label.Modulate = new Color(1, 1, 1, (float)0.5);
+        // only execute if we're a dino
+        if (abilityMode == "")
+        {
+            sprite.Modulate = new Color(1, 1, 1, (float)0.5);
+            label.Modulate = new Color(1, 1, 1, (float)0.5);
+        }
     }
 
     public void UnFadeSprite()
     {
-        // only unfade if we have more dinos left
-        if (CombatInfo.Instance.dinosRemaining != 0)
+        // only execute if we're a dino
+        if (abilityMode == "")
         {
             sprite.Modulate = new Color(1, 1, 1, 1);
             label.Modulate = new Color(1, 1, 1, 1);
         }
+
     }
 
-    public void DisableAbility()
+    // this just makes the sprite black and white
+    public void DisableSprite()
     {
-        if (abilityMode == "")
-        {
-            return;
-        }
-        disabled.Show();
-        FadeSprite();
+        sprite.Material = blackWhiteShader;
     }
 
-    public void EnableAbility()
+    // this just makes the sprite back to normal color, no longer black and white
+    public void EnableSprite()
     {
-        if (abilityMode == "")
-        {
-            return;
-        }
-        disabled.Hide();
-        UnFadeSprite();
+        sprite.Material = null;
     }
 
     public void HideParticles()
@@ -101,7 +95,6 @@ public class SelectorSprite : Control
         {
             particle.Emitting = false;
         }
-
     }
 
     public void ShowParticles()
@@ -129,13 +122,19 @@ public class SelectorSprite : Control
     {
         // don't fade the sprite if it's an ability
         // even if there aren't any dinos left to deploy you can still use abilities
-        if (abilityMode == "")
+        if (abilityMode != "")
         {
-            cooldownTimer.Stop();
-            FadeSprite();
-            HideParticles();
-            deployTimer.Hide();
+            return;
         }
+        // if the dino is in the middle of a cooldown after being deployed, then stop it
+        cooldownTimer.Stop();
+
+        // unfade them so that they don't look weird when made B&W
+        UnFadeSprite();
+        
+        DisableSprite();
+        HideParticles();
+        deployTimer.Hide();
     }
 
 

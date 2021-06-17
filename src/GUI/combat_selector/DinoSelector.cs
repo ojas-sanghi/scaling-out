@@ -138,7 +138,7 @@ public class DinoSelector : Node2D
                 {
                     TankyDino tanky = (TankyDino)d;
                     tanky.ShootProjectile();
-                    selectorList[4].DisableAbility();
+                    selectorList[4].DisableSprite();
                     CombatInfo.Instance.shotIce = true;
                     return;
                 }
@@ -158,7 +158,7 @@ public class DinoSelector : Node2D
                 {
                     WarriorDino warrior = (WarriorDino)d;
                     warrior.ShootProjectile();
-                    selectorList[5].DisableAbility();
+                    selectorList[5].DisableSprite();
                     CombatInfo.Instance.shotFire = true;
                     return;
                 }
@@ -180,7 +180,7 @@ public class DinoSelector : Node2D
         {
             if (d.GetDinoInfo(dinoType).UnlockedSpecial() && !(CombatInfo.Instance.shotIce))
             {
-                selectorList[4].EnableAbility();
+                selectorList[4].EnableSprite();
             }
         }
 
@@ -188,7 +188,7 @@ public class DinoSelector : Node2D
         {
             if (d.GetDinoInfo(dinoType).UnlockedSpecial() && !CombatInfo.Instance.shotFire)
             {
-                selectorList[5].EnableAbility();
+                selectorList[5].EnableSprite();
             }
         }
 
@@ -209,7 +209,7 @@ public class DinoSelector : Node2D
                     return;
                 }
             }
-            selectorList[4].DisableAbility();
+            selectorList[4].DisableSprite();
         }
 
         if (type == Enums.Dinos.Warrior)
@@ -221,7 +221,7 @@ public class DinoSelector : Node2D
                     return;
                 }
             }
-            selectorList[5].DisableAbility();
+            selectorList[5].DisableSprite();
         }
     }
 
@@ -237,12 +237,13 @@ public class DinoSelector : Node2D
         // Kinda hacky but oh well
         await ToSignal(GetTree().CreateTimer((float)0.1), "timeout");
         
+        // reset switch, unfade all sprites once more dinos are bought
         if (CombatInfo.Instance.dinosRemaining > 0)
         {
             allDinosExpended = false;
             foreach (SelectorSprite ss in selectorList)
             {
-                ss.UnFadeSprite();
+                ss.EnableSprite();
             }
         }
     }
