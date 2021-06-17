@@ -7,7 +7,7 @@ public class GameTimer : Control
     Timer timer;
     Label label;
 
-    [Export] int timerDuration = 120;
+    public int timerDuration = 0;
 
 
     public override void _Ready()
@@ -15,13 +15,12 @@ public class GameTimer : Control
         timer = (Timer)FindNode("Timer");
         label = (Label)FindNode("Label");
 
-        timer.WaitTime = timerDuration;
-        timer.Start();
+        Events.newRound += OnNewRound;
     }
 
-    void ResetTime()
+    public void StartTimer()
     {
-        timer.WaitTime = timerDuration;
+        timer.Start(timerDuration);
     }
 
     public override void _Process(float delta)
@@ -44,6 +43,12 @@ public class GameTimer : Control
 
         // Assign new text
         label.Text = labelText;
+    }
+
+    void OnNewRound()
+    {
+        // restart Timer with more time in a new round
+        timer.Start(timer.TimeLeft + timerDuration);
     }
 
     void OnTimerTimeout()

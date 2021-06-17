@@ -5,6 +5,7 @@ public class Combat : Node
     [Export] int maxDinos = 10;
     [Export] int rewardGold = 100;
     [Export] int maxRounds = 3;
+    [Export] int roundLengthSeconds = 120;
 
     CombatInfo c = CombatInfo.Instance;
 
@@ -16,6 +17,10 @@ public class Combat : Node
         // can't put that in reset() since otherwise it would do that between rounds
         // note: this executes AFTER RoundCounter grabs the data, so...
         //	CombatInfo.current_round = 3
+
+        GameTimer gameTimer = (GameTimer)FindNode("GameTimer");
+        gameTimer.timerDuration = roundLengthSeconds;
+        gameTimer.StartTimer();
 
         Events.roundWon += OnRoundWon;
         Events.newRound += OnNewRound;
