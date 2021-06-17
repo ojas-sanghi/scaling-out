@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 
 namespace Enums
@@ -44,40 +45,41 @@ namespace Enums
 
     public enum USAStates
     {
-        [Description("Alaska")] AK, 
         [Description("Alabama")] AL,
-        [Description("Arkansas")] AR,
+        [Description("Alaska")] AK,
         [Description("Arizona")] AZ,
+        [Description("Arkansas")] AR,
         [Description("California")] CA,
         [Description("Colorado")] CO,
         [Description("Connecticut")] CT,
-        [Description("Deliware")] DE,
+        [Description("Delaware")] DE,
+        [Description("District of Columbia")] DC,
         [Description("Florida")] FL,
         [Description("Georgia")] GA,
         [Description("Hawaii")] HI,
-        [Description("Iowa")] IA,
         [Description("Idaho")] ID,
         [Description("Illinois")] IL,
         [Description("Indiana")] IN,
+        [Description("Iowa")] IA,
         [Description("Kansas")] KS,
         [Description("Kentucky")] KY,
         [Description("Louisiana")] LA,
-        [Description("Massachusetts")] MA,
-        [Description("Maryland")] MD,
         [Description("Maine")] ME,
+        [Description("Maryland")] MD,
+        [Description("Massachusetts")] MA,
         [Description("Michigan")] MI,
         [Description("Minnessota")] MN,
-        [Description("Missouri")] MO,
         [Description("Mississippi")] MS,
+        [Description("Missouri")] MO,
         [Description("Montana")] MT,
-        [Description("North Carolina")] NC,
-        [Description("North Dakota")] ND,
         [Description("Nebraska")] NE,
+        [Description("Nevada")] NV,
         [Description("New Hampshire")] NH,
         [Description("New Jersey")] NJ,
         [Description("New Mexico")] NM,
-        [Description("Nevada")] NV,
         [Description("New York")] NY,
+        [Description("North Carolina")] NC,
+        [Description("North Dakota")] ND,
         [Description("Ohio")] OH,
         [Description("Oklahoma")] OK,
         [Description("Oregon")] OR,
@@ -88,27 +90,206 @@ namespace Enums
         [Description("Tennessee")] TN,
         [Description("Texas")] TX,
         [Description("Utah")] UT,
-        [Description("Virginia")] VA,
         [Description("Vermont")] VT,
+        [Description("Virginia")] VA,
         [Description("Washington")] WA,
-        [Description("Wisconson")] WI,
         [Description("West Virginia")] WV,
+        [Description("Wisconson")] WI,
         [Description("Wyoming")] WY
     }
 
-    // TODO: add major cities
     public enum USACities
     {
-        Tucson, Phoenix
+        // AL
+        Birmingham, Montgomery,
+
+        // AK
+        Anchorage, Juneau,
+
+        // AZ
+        Tucson, Phoenix,
+
+        // AR
+        [Description("Little Rock")] LittleRock, 
+
+        // CA
+        [Description("Los Angeles")] LosAngeles,
+        [Description("San Francisco")] SanFrancisco,
+        Sacramento,
+
+        // CO
+        Denver,
+
+        // CT
+        Bridgeport, Hartford,
+
+        // DE
+        Dover,
+
+        // DC
+        [Description("Washington, D.C.")] WashingtonDC,
+
+        // FL
+        Jacksonville, Miami, Orlando, Tallahassee,
+
+        // GA
+        Atlanta,
+
+        // HI
+        Honolulu,
+
+        // ID
+        Boise,
+
+        // IL
+        Chicago, Springfield,
+
+        // IN
+        Indianapolis,
+
+        // IA
+        [Description("Des Moines")] DesMoines,
+
+        // KS
+        Wichita,
+        [Description("Kansas City")] KansasCity,
+        Topeka,
+
+        // KY
+        Louisville, Lexington, Frankfort,
+        
+        // LA
+        [Description("New Orleans")] NewOrleans,
+        [Description("Baton Rouge")] BatonRouge,
+
+        // ME
+        Portland,
+        Augusta,
+
+        // MD
+        Baltimore, Annapolis,
+
+        // MA
+        Cambridge, Boston,
+
+        // MI
+        Detroit, Lansing,
+
+        // MN
+        Minneapolis,
+        [Description("Saint Paul")] SaintPaul,
+
+        // MS
+        Jackson,
+
+        // MO
+        [Description("Kansas City")] KansasCity2, 
+        [Description("Saint Louis")] SaintLouis,
+        [Description("Jefferson City")] JeffersonCity,
+
+        // MT
+        Billings,
+        Helena,
+
+        // NE
+        Omaha,
+        Lincoln,
+
+        // NV
+        [Description("Las Vegas")] LasVegas,
+        [Description("Carson City")] CarsonCity,
+
+        // NH
+        Manchester, Nashua, Concord,
+
+        // NJ
+        Newark,
+        [Description("Jersey City")] JerseyCity,
+        Trenton,
+
+        // NM
+        Albuquerque, 
+        [Description("Las Cruces")] LasCruces,
+        Roswell,
+        [Description("Santa Fe")] SantaFe,
+
+        // NY
+        [Description("New York City")] NewYorkCity,
+        Buffalo,
+        Albany,
+
+        // NC
+        Charlotte, Raleigh,
+
+        // ND
+        Fargo, Bismarck,
+
+        // OH
+        Cleveland, Columbus,
+
+        // OK
+        Tulsa,
+        [Description("Oklahoma City")] OklahomaCity,
+
+        // OR
+        [Description("Portland")] Portland2, 
+        Salem,
+
+        // PA
+        Philadelphia, Pittsburgh, Harrisburg,
+
+        // RI
+        Providence,
+
+        // SC
+        Charleston, Columbia,
+
+        // SD
+        [Description("Sioux Falls")] SiouxFalls,
+        Pierre,
+
+        // TN
+        Memphis, Nashville,
+
+        // TX
+        Houston, 
+        [Description("San Antonio")] SanAntonio, 
+        Dallas, 
+        [Description("Fort Worth")] FortWorth, 
+        Austin,
+
+        // UT
+        [Description("Salt Lake City")] SaltLakeCity,
+
+        // VT
+        Burlington, Montpelier,
+
+        // VA
+        Chesapeake, Richmond,
+
+        // WA
+        Seattle, Vancouver, Olympia,
+
+        // WV
+        [Description("Charleston")] Charleston2,
+
+        // WI
+        Milwaukee, Madison,
+
+        // WY
+        Cheyenne
     }
 
     public static class EnumToString
     {
-        
-        public static string GetUSAStateName(USAStates state)
+        public static string GetUSAPlaceName<T>(this T place) where T : struct
         {
-            var type = state.GetType();
-            var memberInfo = type.GetMember(state.ToString());
+            var type = place.GetType();
+            if (!type.IsEnum) {
+                throw new ArgumentException($"{nameof(place)} must be of Enum type", nameof(place));
+            }
+
+            var memberInfo = type.GetMember(place.ToString());
             if (memberInfo.Length > 0)
             {
                 var attrs = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
@@ -117,7 +298,7 @@ namespace Enums
                     return ((DescriptionAttribute)attrs[0]).Description;
                 }
             }
-            return state.ToString();
+            return place.ToString();
         }
 
     }
