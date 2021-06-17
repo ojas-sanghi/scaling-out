@@ -1,0 +1,12 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://src/resources/CityInfoResource.cs" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+state = 3
+city = 1
+levelNum = 2
+lanesInfo = [ 0, 1, 0 ]
+rounds = 3
+timePerRoundSeconds = [ 100, 100, 100 ]

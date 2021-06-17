@@ -3,9 +3,6 @@ using Godot.Collections;
 
 public class LanesCreator : Node2D
 {
-    // TODO: read this in from a config/list later when setting the details for all the cities
-    [Export] public Array<Enums.LaneTypes> laneTypes = new Array<Enums.LaneTypes>();
-
     Dictionary<int, double> yPositionForNumLanes = new Dictionary<int, double>() 
     {
         {1, 532},
@@ -18,12 +15,8 @@ public class LanesCreator : Node2D
     // programmatically makes lanes at startup based on a config for how many lanes the specific conquest needs
     public override void _Ready()
     {
-        if (laneTypes.Count == 0)
-        {
-            GD.PushError("laneTypes list must be passed");
-            GD.PrintStack();
-            GetTree().Quit(1);
-        }
+        var laneTypes = CitiesInfo.Instance.currentCity.lanesInfo;
+
         // set number of lanes and position of the parent of the lanes (this node) based off dict
         // hard coded, but no other way
         int numLanes = laneTypes.Count;
