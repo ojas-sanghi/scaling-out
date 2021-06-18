@@ -3,7 +3,6 @@ using Godot;
 public class Combat : Node
 {
     [Export] int maxDinos = 10;
-    [Export] int rewardGold = 100;
     [Export] int maxRounds = 3;
     [Export] int roundLengthSeconds = 120;
 
@@ -76,7 +75,10 @@ public class Combat : Node
     void OnConquestWon()
     {
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/CombatWinDialogue.tscn");
-        ShopInfo.gold += rewardGold;
+
+        var rewardMoney = CitiesInfo.Instance.currentCity.rewardMoney;
+        ShopInfo.gold += rewardMoney.gold;
+        ShopInfo.genes += rewardMoney.genes;
     }
 
     void OnDinosPurchased(int num)
