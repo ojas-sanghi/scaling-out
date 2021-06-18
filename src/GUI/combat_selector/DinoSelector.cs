@@ -43,6 +43,12 @@ public class DinoSelector : Node2D
         int iconId = 0;
         foreach (KeyValuePair<Enums.Dinos, StreamTexture> n in d.dinoIcons)
         {
+            // skip if not unlocked the dino yet
+            if (!PlayerStats.dinosUnlocked.Contains(n.Key))
+            {
+                continue;
+            }
+
             SelectorSprite newSelector = (SelectorSprite)selectorScene.Instance();
             newSelector.spriteTexture = n.Value;
             newSelector.dinoId = n.Key;
@@ -58,6 +64,13 @@ public class DinoSelector : Node2D
         {
             // skip if no icon
             if (n.Value == null)
+            {
+                continue;
+            }
+
+            // skip if not unlocked the speical for the dino yet
+            // this naturally also skips dinos we haven't unlocked at all, so we don't need to worry about having a check for that
+            if (!PlayerStats.dinsoWithSpecialsUnlocked.Contains(n.Key))
             {
                 continue;
             }
