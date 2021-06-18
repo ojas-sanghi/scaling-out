@@ -89,7 +89,7 @@ public class Player : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
-        if (ShopInfo.playerCaught)
+        if (StealthInfo.playerCaught)
         {
             return;
         }
