@@ -63,11 +63,11 @@ public class CostIndicator : RichTextLabel
         string goldText = goldCost.ToString();
         string geneText = geneCost.ToString();
 
-        if (goldCost > ShopInfo.gold)
+        if (goldCost > PlayerStats.gold)
         {
             goldText = String.Format("[color=#ff0000] {0} [/color]", goldText);
         }
-        if (geneCost > ShopInfo.genes)
+        if (geneCost > PlayerStats.genes)
         {
             geneText = String.Format("[color=#ff0000] {0} [/color]", geneText);
         }

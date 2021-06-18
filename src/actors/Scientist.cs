@@ -1,6 +1,6 @@
 using Godot;
 
-public class Player : KinematicBody2D
+public class Scientist : KinematicBody2D
 {
     [Export] int speed = 300;
 
@@ -114,7 +114,7 @@ public class Player : KinematicBody2D
         await ToSignal(win, "finished");
 
         GetNode<Vault>(nodePath + "Vault").Hide();
-        ShopInfo.gold += coinsCollected;
+        PlayerStats.gold += coinsCollected;
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/StealthWinDialogue.tscn");
     }
 

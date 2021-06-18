@@ -203,11 +203,11 @@ public class ShopUpgradeButton : Button
             return;
         }
         // don't do anything if not enough gold/genes
-        if (ShopInfo.gold < goldCost)
+        if (PlayerStats.gold < goldCost)
         {
             return;
         }
-        if (ShopInfo.genes < geneCost)
+        if (PlayerStats.genes < geneCost)
         {
             return;
         }
@@ -223,8 +223,8 @@ public class ShopUpgradeButton : Button
 
     void OnTweenTweenCompleted(object @object, NodePath key)
     {
-        ShopInfo.gold -= goldCost;
-        ShopInfo.genes -= geneCost;
+        PlayerStats.gold -= goldCost;
+        PlayerStats.genes -= geneCost;
 
         dinoInfo.Upgrade(statButtonMode);
         Events.publishDinoUpgraded();

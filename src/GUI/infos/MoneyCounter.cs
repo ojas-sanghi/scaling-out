@@ -2,7 +2,7 @@ using Godot;
 
 public class MoneyCounter : Control
 {
-    int goldAmt = ShopInfo.gold;
+    int goldAmt = PlayerStats.gold;
     Label num;
 
     public override void _Ready()
@@ -32,7 +32,7 @@ public class MoneyCounter : Control
 
     void UpdateGoldAmountFromGlobal()
     {
-        num.Text = ShopInfo.gold.ToString();
+        num.Text = PlayerStats.gold.ToString();
     }
 
 

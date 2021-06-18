@@ -1,4 +1,5 @@
 using Godot;
+using e = Enums;
 
 public class Test : Node
 {
@@ -24,9 +25,22 @@ public class Test : Node
         // var hp = u.GetStat(Enums.Stats.Hp);
         // GD.Print(hp);
 
-        UpgradeInfo u = new UpgradeInfo("res://src/actors/dinos/stats/MegaDino.tres");
-        GD.Print(u);
-        GD.Print("end");
+        // UpgradeInfo u = new UpgradeInfo("res://src/actors/dinos/stats/MegaDino.tres");
+        // GD.Print(u);
+        // GD.Print("end");
+
+        // GD.Print(e.EnumToString.GetUSAStateName(e.USAStates.Alabama));
+        // GD.Print(e.EnumToString.GetUSAStateName(e.USAStates.RhodeIsland));
+
+        string pathStart = "res://src/combat/levelsInfo/Level";
+        string pathEnd = "Info.tres";
+
+        GD.Print(pathStart + 1 + pathEnd);
+        GD.Print((pathStart + 1 + pathEnd).GetType());
+        GD.Print(pathStart + 2 + pathEnd);
+        GD.Print((pathStart + 2 + pathEnd).GetType());
+
+
 
     }
 

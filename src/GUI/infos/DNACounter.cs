@@ -16,7 +16,7 @@ public class DNACounter : Control
     void UpdateGeneAmt()
     {
         Label label = (Label)FindNode("Label");
-        label.Text = ShopInfo.genes.ToString();
+        label.Text = PlayerStats.genes.ToString();
     }
 
 }
