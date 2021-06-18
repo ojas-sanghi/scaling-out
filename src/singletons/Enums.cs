@@ -176,8 +176,7 @@ namespace Enums
         Detroit, Lansing,
 
         // MN
-        Minneapolis,
-        [Description("Saint Paul")] SaintPaul,
+        [Description("Minneapolis - Saint Paul")] MinneapolisSaintPaul,
 
         // MS
         Jackson,
@@ -204,7 +203,6 @@ namespace Enums
 
         // NJ
         Newark,
-        [Description("Jersey City")] JerseyCity,
         Trenton,
 
         // NM
@@ -265,10 +263,11 @@ namespace Enums
         Burlington, Montpelier,
 
         // VA
-        Chesapeake, Richmond,
+        [Description("Virginia Beach")] VirginiaBeach, 
+        Richmond,
 
         // WA
-        Seattle, Vancouver, Olympia,
+        Seattle, Spokane, Olympia,
 
         // WV
         [Description("Charleston")] Charleston2,
@@ -284,11 +283,13 @@ namespace Enums
     {
         public static string GetUSAPlaceName<T>(this T place) where T : struct
         {
+            // ensure they pass an enum
             var type = place.GetType();
             if (!type.IsEnum) {
                 throw new ArgumentException($"{nameof(place)} must be of Enum type", nameof(place));
             }
 
+            // return enum's description if it has it; if not, return the enum as a string
             var memberInfo = type.GetMember(place.ToString());
             if (memberInfo.Length > 0)
             {
