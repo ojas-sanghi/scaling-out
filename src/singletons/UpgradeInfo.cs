@@ -5,11 +5,15 @@ using Godot;
 
 public class UpgradeInfo
 {
+    public int unlockCostGold;
+    public int unlockCostGenes;
     public Dictionary<Enums.Stats, Stats> stats;
 
     public UpgradeInfo(string path) {
         var data = GD.Load<DinoInfoResource>(path);
 
+        unlockCostGold = data.unlockCost.gold;
+        unlockCostGenes = data.unlockCost.genes;
         stats = new Dictionary<Enums.Stats, Stats>()
         {
             {Enums.Stats.Hp, data.hpStat},

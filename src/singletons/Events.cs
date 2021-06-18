@@ -15,7 +15,8 @@ public class Events : Node
     public static event Action conquestWon;
     public static event Action conquestLost;
 
-    public static event Action<int> dinosPurchased;
+    public static event Action<int> dinosPurchased; // this is during combat
+    public static event Action dinoUnlocked; // this is in the shop
 
     public static event Action<int> coinGrabbed;
 
@@ -43,6 +44,7 @@ public class Events : Node
     public static void publishConquestLost() => conquestLost?.Invoke();
 
     public static void publishDinosPurchased(int num) => dinosPurchased?.Invoke(num);
+    public static void publishDinoUnlocked() => dinoUnlocked?.Invoke();
 
     public static void publishCoinGrabbed(int num) => coinGrabbed?.Invoke(num);
 

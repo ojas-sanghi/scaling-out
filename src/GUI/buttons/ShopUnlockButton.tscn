@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/GUI/themes/BlueButton.tres" type="Theme" id=1]
+[ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=2]
+[ext_resource path="res://src/GUI/buttons/ShopUnlockButton.cs" type="Script" id=3]
+
+[node name="ShopUnlockButton" type="Button"]
+anchor_left = 0.423
+anchor_top = 0.769
+anchor_right = 0.598
+anchor_bottom = 0.911
+margin_left = -0.160034
+margin_top = -0.520081
+margin_right = -0.160156
+margin_bottom = 0.119934
+rect_pivot_offset = Vector2( -1221.87, -764.006 )
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+anchor_right = 0.986
+anchor_bottom = 0.962
+margin_left = -1.0
+margin_top = 1.0
+margin_right = 3.70401
+margin_bottom = 6.85201
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]Unlock
+[color=red] [img=50]res://assets/icons/coins.png[/img] 100
+[img=50]res://assets/icons/dna.png[/img]50
+[/color]
+[/center]"
+text = "Unlock
+  100
+50
+
+"
+scroll_active = false
+__meta__ = {
+"_edit_use_anchors_": false
+}

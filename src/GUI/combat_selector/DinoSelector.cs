@@ -68,9 +68,8 @@ public class DinoSelector : Node2D
                 continue;
             }
 
-            // skip if not unlocked the speical for the dino yet
-            // this naturally also skips dinos we haven't unlocked at all, so we don't need to worry about having a check for that
-            if (!PlayerStats.dinsoWithSpecialsUnlocked.Contains(n.Key))
+            // skip if not unlocked the speical for the dino yet or if not unlocked the dino itself
+            if (!PlayerStats.dinosUnlocked.Contains(n.Key) || !DinoInfo.Instance.GetDinoInfo(n.Key).HasSpecial())
             {
                 continue;
             }

@@ -1,10 +1,8 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/GUI/themes/BlueButton.tres" type="Theme" id=2]
-[ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/GUI/buttons/ShopUnlockButton.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/fonts/Font30.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/shaders/BlackWhiteShaderMaterial.tres" type="Material" id=5]
 [ext_resource path="res://assets/music/Upgrade screen and menu.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/dinos/tanky_dino/Armored_Dino_ICON.png" type="Texture" id=12]
 [ext_resource path="res://src/GUI/infos/MoneyCounter.tscn" type="PackedScene" id=13]
@@ -20,7 +18,6 @@
 [sub_resource type="StyleBoxFlat" id=1]
 
 [node name="UpgradeScreen" type="Control"]
-material = ExtResource( 5 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 17 )
@@ -28,7 +25,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="."]
 anchor_right = 1.003
 anchor_bottom = 1.015
 margin_right = -690.76
@@ -71,30 +68,23 @@ margin_right = 504.0
 margin_bottom = 298.27
 exportedButtonMode = 2
 
-[node name="NameContainer" type="HBoxContainer" parent="."]
+[node name="Name" type="Label" parent="."]
 margin_left = 40.0359
 margin_top = 41.3685
-margin_right = 675.036
+margin_right = 549.036
 margin_bottom = 109.368
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Name" type="Label" parent="NameContainer"]
-margin_right = 509.0
-margin_bottom = 68.0
 custom_fonts/font = ExtResource( 19 )
 text = "ARMORED DINO"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Name2" type="Label" parent="NameContainer"]
-margin_left = 529.0
-margin_top = 14.0
-margin_right = 858.0
-margin_bottom = 54.0
+[node name="LockedStatus" type="Label" parent="."]
+visible = false
+margin_left = 855.0
+margin_top = 80.0
+margin_right = 1184.0
+margin_bottom = 120.0
 custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "(NOT UNLOCKED)"
@@ -152,45 +142,7 @@ margin_bottom = 503.0
 text = "Return Home"
 buttonMode = 7
 
-[node name="UnlockButton" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -148.0
-margin_top = 290.0
-margin_right = 188.0
-margin_bottom = 444.0
-theme = ExtResource( 2 )
-text = "asdasdasdas"
-__meta__ = {
-"_edit_use_anchors_": false,
-"_editor_description_": ""
-}
-
-[node name="RichTextLabel" type="RichTextLabel" parent="UnlockButton"]
-visible = false
-anchor_right = 0.986
-anchor_bottom = 0.962
-margin_left = -1.0
-margin_top = 1.0
-margin_right = 3.79596
-margin_bottom = 7.48599
-hint_tooltip = "asdasdadasd"
-custom_fonts/normal_font = ExtResource( 3 )
-bbcode_enabled = true
-bbcode_text = "[center]Unlock
-[img=50]res://assets/icons/coins.png[/img] 100
-[img=50]res://assets/icons/dna.png[/img]50
-[/center]"
-text = "Unlock
- 100
-50
-"
-scroll_active = false
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ShopUnlockButton" parent="." instance=ExtResource( 2 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -221,4 +173,4 @@ margin_bottom = 160.585
 stream = ExtResource( 7 )
 autoplay = true
 
-[connection signal="pressed" from="UnlockButton" to="." method="_on_UnlockButton_pressed"]
+[connection signal="pressed" from="ShopUnlockButton" to="ShopUnlockButton" method="OnShopUnlockButtonPressed"]

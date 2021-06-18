@@ -16,7 +16,15 @@ public class UpgradeScreen : Control
         BWShader = GD.Load<ShaderMaterial>("res://assets/shaders/BlackWhiteShaderMaterial.tres");
         specialUpgradeTheme = GD.Load<Theme>("res://src/GUI/themes/SpecialBGTheme.tres");
 
+        Events.dinoUnlocked += OnDinoUnlocked;
+
         SetInfo();
+        SetDisabledUIStatus();
+    }
+
+    public override void _ExitTree()
+    {
+        Events.dinoUnlocked -= OnDinoUnlocked;
     }
 
     void SetInfo()
@@ -41,25 +49,31 @@ public class UpgradeScreen : Control
 
                 // TODO: add gator dino
         }
-
     }
 
-    void _on_UnlockButton_pressed()
+    void SetDisabledUIStatus()
     {
-        var specialUpgrade = GetNode<Control>("SpecialUpgrade");
-        Panel specialUpgradePanel = specialUpgrade.GetNode<Panel>("Panel");
+        ShaderMaterial shaderToChangeTo;
+        Theme themeToChangeTo;
 
-        ShaderMaterial shaderToChangeTo = BWShader;
-        Theme themeToChangeTo = specialUpgradeTheme;
-        
+        ShopUnlockButton unlockButton = GetNode<ShopUnlockButton>("ShopUnlockButton");
+        Label lockedStatusLabel = GetNode<Label>("LockedStatus");
 
-        if (image.Material == BWShader)
+        // if locked
+        if (!PlayerStats.dinosUnlocked.Contains(ShopInfo.shopDino))
+        {
+            shaderToChangeTo = BWShader;
+            themeToChangeTo = null;
+            unlockButton.Show();
+            lockedStatusLabel.Show();
+        }
+        // if unlocked
+        else
         {
             shaderToChangeTo = null;
-        } 
-        if (specialUpgradePanel.Theme == themeToChangeTo)
-        {
-            themeToChangeTo = null;
+            themeToChangeTo = specialUpgradeTheme;
+            unlockButton.Hide();
+            lockedStatusLabel.Hide();
         }
 
         image.Material = shaderToChangeTo;
@@ -78,9 +92,14 @@ public class UpgradeScreen : Control
             ((RichTextLabel)b.FindNode("CostIndicator")).Material = shaderToChangeTo;
         }
 
-        specialUpgradePanel.Theme = themeToChangeTo;
+        Control specialUpgrade = GetNode<Control>("SpecialUpgrade");
+        Panel specialUpgradePanel = specialUpgrade.GetNode<Panel>("Panel");
         specialUpgrade.GetNode<TextureRect>("Sprite").Material = shaderToChangeTo;
-
+        specialUpgradePanel.Theme = themeToChangeTo;
     }
 
+    void OnDinoUnlocked()
+    {
+        SetDisabledUIStatus();
+    }
 }

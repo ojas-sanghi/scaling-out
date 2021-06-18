@@ -9,14 +9,18 @@ public class MoneyCounter : Control
     {
         num = (Label)FindNode("Num");
 
+        UpdateGoldAmountFromGlobal();
+
         Events.coinGrabbed += OnCoinGrabbed;
         Events.dinoUpgraded += UpdateGoldAmountFromGlobal;
+        Events.dinoUnlocked += UpdateGoldAmountFromGlobal;
     }
 
     public override void _ExitTree()
     {
         Events.coinGrabbed -= OnCoinGrabbed;
         Events.dinoUpgraded -= UpdateGoldAmountFromGlobal;
+        Events.dinoUnlocked -= UpdateGoldAmountFromGlobal;
     }
 
     void OnCoinGrabbed(int value)
