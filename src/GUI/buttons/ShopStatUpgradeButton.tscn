@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/fonts/Font30.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/GUI/buttons/ShopStatUpgradeButton.cs" type="Script" id=2]
 [ext_resource path="res://assets/dinos/misc/hex.png" type="Texture" id=3]
-[ext_resource path="res://assets/dinos/misc/hex-progress.png" type="Texture" id=4]
+[ext_resource path="res://assets/dinos/misc/hex progress.png" type="Texture" id=4]
 [ext_resource path="res://assets/icons/heart.png" type="Texture" id=5]
 [ext_resource path="res://src/GUI/infos/CostIndicator.tscn" type="PackedScene" id=6]
 
@@ -25,18 +25,16 @@ __meta__ = {
 }
 
 [node name="TextureProgress" type="TextureProgress" parent="."]
-margin_left = 28.0
-margin_top = -14.0
-margin_right = 306.0
-margin_bottom = 264.0
-rect_rotation = 30.0
-rect_scale = Vector2( 0.25, 0.25 )
+margin_left = 11.7243
+margin_top = 1.71446
+margin_right = 289.724
+margin_bottom = 294.714
+rect_scale = Vector2( 0.22, 0.22 )
 texture_under = ExtResource( 3 )
 texture_progress = ExtResource( 4 )
 fill_mode = 4
 tint_under = Color( 1, 1, 1, 0.168627 )
 tint_progress = Color( 0.0588235, 0.67451, 0.415686, 1 )
-radial_initial_angle = 330.0
 __meta__ = {
 "_edit_use_anchors_": false
 }

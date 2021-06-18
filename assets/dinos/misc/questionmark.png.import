@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/hex-progress.png-9415b6507c49c767e7f06ad7d230e2dc.stex"
+path="res://.import/questionmark.png-f3803e76581c823c813811108feb2274.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/dinos/misc/hex-progress.png"
-dest_files=[ "res://.import/hex-progress.png-9415b6507c49c767e7f06ad7d230e2dc.stex" ]
+source_file="res://assets/dinos/misc/questionmark.png"
+dest_files=[ "res://.import/questionmark.png-f3803e76581c823c813811108feb2274.stex" ]
 
 [params]
 

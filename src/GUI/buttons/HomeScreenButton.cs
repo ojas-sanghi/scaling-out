@@ -57,7 +57,7 @@ public class HomeScreenButton : TextureButton
                 SceneChanger.Instance.GoToScene("res://src/combat/CombatScreen.tscn");
                 break;
             case Enums.HomeScreenButtons.Upgrades:
-                SceneChanger.Instance.GoToScene("res://src/GUI/screens/UpgradeScreen.tscn");
+                SceneChanger.Instance.GoToScene("res://src/GUI/screens/DinoUpgradeSelectScreen.tscn");
                 break;
         }
     }

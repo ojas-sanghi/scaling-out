@@ -1,0 +1,262 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://src/GUI/buttons/DinoSelectTileButton.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.4, 0.207843, 0.627451, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+width = 1920
+
+[node name="DinoUpgradeSelectScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="GradientBG" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1920.0
+margin_right = 1080.0
+margin_bottom = 840.0
+rect_rotation = 90.0
+texture = SubResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
+
+[node name="Icons" type="Control" parent="."]
+margin_left = 153.0
+margin_top = 127.0
+margin_right = 193.0
+margin_bottom = 167.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Icons"]
+margin_left = 378.0
+margin_top = 198.0
+margin_right = 1218.0
+margin_bottom = 259.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_constants/separation = 280
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DinoSelectTileButton" parent="Icons/HBoxContainer" instance=ExtResource( 2 )]
+margin_right = 0.0
+margin_bottom = 61.0
+edgeColor = Color( 0.14902, 0.482353, 0.462745, 1 )
+dino = 1
+
+[node name="DinoSelectTileButton2" parent="Icons/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 280.0
+margin_right = 280.0
+margin_bottom = 61.0
+
+[node name="DinoSelectTileButton3" parent="Icons/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 560.0
+margin_right = 560.0
+margin_bottom = 61.0
+
+[node name="DinoSelectTileButton4" parent="Icons/HBoxContainer" instance=ExtResource( 2 )]
+margin_left = 840.0
+margin_right = 840.0
+margin_bottom = 61.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Icons"]
+margin_left = 929.574
+margin_top = 121.967
+margin_right = 1341.57
+margin_bottom = 279.967
+rect_scale = Vector2( 0.85, 0.85 )
+custom_constants/separation = 275
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DinoSelectTileButton" parent="Icons/HBoxContainer2" instance=ExtResource( 2 )]
+margin_right = 0.0
+margin_bottom = 158.0
+edgeColor = Color( 0.592157, 0, 1, 1 )
+
+[node name="DinoSelectTileButton2" parent="Icons/HBoxContainer2" instance=ExtResource( 2 )]
+margin_left = 275.0
+margin_right = 275.0
+margin_bottom = 158.0
+edgeColor = Color( 0.592157, 0, 1, 1 )
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="Icons"]
+margin_left = 927.574
+margin_top = 647.492
+margin_right = 1339.57
+margin_bottom = 925.492
+rect_scale = Vector2( 0.85, 0.85 )
+custom_constants/separation = 275
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DinoSelectTileButton" parent="Icons/HBoxContainer7" instance=ExtResource( 2 )]
+margin_right = 0.0
+margin_bottom = 278.0
+edgeColor = Color( 0.592157, 0, 1, 1 )
+
+[node name="DinoSelectTileButton2" parent="Icons/HBoxContainer7" instance=ExtResource( 2 )]
+margin_left = 275.0
+margin_right = 275.0
+margin_bottom = 278.0
+edgeColor = Color( 0.592157, 0, 1, 1 )
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="Icons"]
+margin_left = 308.0
+margin_top = 315.0
+margin_right = 1428.0
+margin_bottom = 376.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_constants/separation = 280
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DinoSelectTileButton" parent="Icons/HBoxContainer6" instance=ExtResource( 2 )]
+margin_right = 0.0
+margin_bottom = 61.0
+edgeColor = Color( 0.219608, 0.427451, 0.831373, 1 )
+dino = 2
+
+[node name="DinoSelectTileButton2" parent="Icons/HBoxContainer6" instance=ExtResource( 2 )]
+margin_left = 280.0
+margin_right = 280.0
+margin_bottom = 61.0
+edgeColor = Color( 0.941176, 0.0784314, 0.0784314, 1 )
+dino = 3
+
+[node name="DinoSelectTileButton3" parent="Icons/HBoxContainer6" instance=ExtResource( 2 )]
+margin_left = 560.0
+margin_right = 560.0
+margin_bottom = 61.0
+
+[node name="DinoSelectTileButton4" parent="Icons/HBoxContainer6" instance=ExtResource( 2 )]
+margin_left = 840.0
+margin_right = 840.0
+margin_bottom = 61.0
+
+[node name="DinoSelectTileButton5" parent="Icons/HBoxContainer6" instance=ExtResource( 2 )]
+margin_left = 1120.0
+margin_right = 1120.0
+margin_bottom = 61.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Icons"]
+margin_left = 379.0
+margin_top = 430.0
+margin_right = 1219.0
+margin_bottom = 491.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_constants/separation = 280
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DinoSelectTileButton" parent="Icons/HBoxContainer3" instance=ExtResource( 2 )]
+margin_right = 0.0
+margin_bottom = 61.0
+edgeColor = Color( 1, 1, 1, 1 )
+
+[node name="DinoSelectTileButton2" parent="Icons/HBoxContainer3" instance=ExtResource( 2 )]
+margin_left = 280.0
+margin_right = 280.0
+margin_bottom = 61.0
+edgeColor = Color( 1, 1, 1, 1 )
+
+[node name="DinoSelectTileButton3" parent="Icons/HBoxContainer3" instance=ExtResource( 2 )]
+margin_left = 560.0
+margin_right = 560.0
+margin_bottom = 61.0
+edgeColor = Color( 1, 1, 1, 1 )
+
+[node name="DinoSelectTileButton4" parent="Icons/HBoxContainer3" instance=ExtResource( 2 )]
+margin_left = 840.0
+margin_right = 840.0
+margin_bottom = 61.0
+edgeColor = Color( 1, 1, 1, 1 )
+
+[node name="HBoxContainer8" type="HBoxContainer" parent="Icons"]
+margin_left = 308.0
+margin_top = 547.0
+margin_right = 1428.0
+margin_bottom = 608.0
+rect_scale = Vector2( 0.5, 0.5 )
+custom_constants/separation = 280
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DinoSelectTileButton" parent="Icons/HBoxContainer8" instance=ExtResource( 2 )]
+margin_right = 0.0
+margin_bottom = 61.0
+edgeColor = Color( 0, 0.952941, 1, 1 )
+
+[node name="DinoSelectTileButton2" parent="Icons/HBoxContainer8" instance=ExtResource( 2 )]
+margin_left = 280.0
+margin_right = 280.0
+margin_bottom = 61.0
+edgeColor = Color( 0, 0.952941, 1, 1 )
+
+[node name="DinoSelectTileButton3" parent="Icons/HBoxContainer8" instance=ExtResource( 2 )]
+margin_left = 560.0
+margin_right = 560.0
+margin_bottom = 61.0
+edgeColor = Color( 0, 0.952941, 1, 1 )
+
+[node name="DinoSelectTileButton4" parent="Icons/HBoxContainer8" instance=ExtResource( 2 )]
+margin_left = 840.0
+margin_right = 840.0
+margin_bottom = 61.0
+edgeColor = Color( 0, 0.952941, 1, 1 )
+
+[node name="DinoSelectTileButton5" parent="Icons/HBoxContainer8" instance=ExtResource( 2 )]
+margin_left = 1120.0
+margin_right = 1120.0
+margin_bottom = 61.0
+edgeColor = Color( 0, 0.952941, 1, 1 )
+
+[node name="DinoSelectTileButton" parent="Icons" instance=ExtResource( 2 )]
+margin_left = 1098.0
+margin_top = 431.0
+margin_right = 1162.0
+margin_bottom = 505.0
+rect_scale = Vector2( 0.7, 0.7 )
+edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
+
+[node name="DinoSelectTileButton2" parent="Icons" instance=ExtResource( 2 )]
+margin_left = 1332.32
+margin_top = 313.328
+margin_right = 1396.32
+margin_bottom = 387.328
+rect_scale = Vector2( 0.5, 0.5 )
+edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
+
+[node name="DinoSelectTileButton3" parent="Icons" instance=ExtResource( 2 )]
+margin_left = 1407.0
+margin_top = 432.251
+margin_right = 1471.0
+margin_bottom = 506.251
+rect_scale = Vector2( 0.5, 0.5 )
+edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
+
+[node name="DinoSelectTileButton4" parent="Icons" instance=ExtResource( 2 )]
+margin_left = 1338.0
+margin_top = 554.99
+margin_right = 1402.0
+margin_bottom = 628.99
+rect_scale = Vector2( 0.5, 0.5 )
+edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )

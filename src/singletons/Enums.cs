@@ -10,7 +10,7 @@ namespace Enums
 
     public enum Dinos
     {
-        Mega, Tanky, Warrior, Gator
+        None, Mega, Tanky, Warrior, Gator
     }
 
     public enum Genes
