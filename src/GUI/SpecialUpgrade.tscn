@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=1]
 [ext_resource path="res://src/GUI/SpecialUpgrade.cs" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://assets/fonts/Font30.tres" type="DynamicFont" id=4]
 [ext_resource path="res://src/GUI/themes/SpecialBGTheme.tres" type="Theme" id=5]
 [ext_resource path="res://assets/abilities/previews/ice-preview.ogv" type="VideoStream" id=6]
+[ext_resource path="res://src/GUI/themes/BlueButtonTheme.tres" type="Theme" id=7]
 
 [node name="SpecialUpgrade" type="Control"]
 margin_right = 514.0
@@ -18,17 +19,17 @@ __meta__ = {
 [node name="Panel" type="Panel" parent="."]
 margin_top = 4.0
 margin_right = 514.0
-margin_bottom = 535.0
+margin_bottom = 614.0
 theme = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="name" type="Label" parent="."]
-margin_left = 124.554
-margin_top = 34.3166
-margin_right = 393.554
-margin_bottom = 80.3166
+margin_left = 127.252
+margin_top = 15.5086
+margin_right = 396.252
+margin_bottom = 61.5086
 custom_fonts/font = ExtResource( 1 )
 text = "Ice Projectile"
 __meta__ = {
@@ -36,11 +37,13 @@ __meta__ = {
 }
 
 [node name="Sprite" type="TextureRect" parent="."]
-margin_left = 64.1857
-margin_top = -34.8966
-margin_right = 2064.19
-margin_bottom = 1965.1
+margin_left = 61.0
+margin_top = -60.0
+margin_right = 2061.0
+margin_bottom = 1940.0
 rect_scale = Vector2( 0.2, 0.2 )
+size_flags_horizontal = 0
+size_flags_vertical = 0
 texture = ExtResource( 3 )
 stretch_mode = 5
 __meta__ = {
@@ -48,10 +51,10 @@ __meta__ = {
 }
 
 [node name="Description" type="Label" parent="."]
-margin_left = 9.0
-margin_top = 256.545
-margin_right = 506.0
-margin_bottom = 481.545
+margin_left = 6.51019
+margin_top = 224.244
+margin_right = 504.51
+margin_bottom = 449.244
 custom_fonts/font = ExtResource( 4 )
 text = "Unlock an ice projectile. When activated, will launch from a random tanky dinosaur on the map. On impact, slows down the rate of fire of the army. Can be used once per round."
 align = 1
@@ -60,12 +63,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="PreviewButton" type="Button" parent="."]
+margin_left = 135.864
+margin_top = 492.227
+margin_right = 415.864
+margin_bottom = 571.227
+theme = ExtResource( 7 )
+text = "Show Preview"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="VideoPlayer" type="VideoPlayer" parent="."]
-visible = false
-margin_left = 64.0
-margin_top = 534.0
-margin_right = 464.0
-margin_bottom = 891.0
+margin_left = 6.0
+margin_top = 163.973
+margin_right = 507.0
+margin_bottom = 445.973
 stream = ExtResource( 6 )
 autoplay = true
 __meta__ = {

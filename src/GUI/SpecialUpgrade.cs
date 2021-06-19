@@ -5,6 +5,7 @@ public class SpecialUpgrade : Control
     Label name;
     Label description;
     TextureRect sprite;
+    Button previewButton;
     VideoPlayer video;
 
     public override void _Ready()
@@ -12,8 +13,10 @@ public class SpecialUpgrade : Control
         name = (Label)FindNode("name");
         description = (Label)FindNode("Description");
         sprite = (TextureRect)FindNode("Sprite");
+        previewButton = (Button)FindNode("PreviewButton");
         video = (VideoPlayer)FindNode("VideoPlayer");
 
+        video.Hide();
         SetText();
     }
 
@@ -40,6 +43,20 @@ public class SpecialUpgrade : Control
 
         // TODO: add gator
         //? Maybe find a new video format for the preview vids
+    }
+
+    public override void _Process(float delta)
+    {
+        if (previewButton.IsHovered())
+        {
+            if (!video.Visible) video.Show();
+            if (!video.IsPlaying()) video.Play() ;
+        }
+        else
+        {
+            if (video.Visible) video.Hide();
+            if (video.IsPlaying()) video.Stop();
+        }
     }
 
     void OnVideoPlayerFinished()

@@ -53,6 +53,8 @@ public class DinoSelectTileButton : TextureButton
 
     void OnDinoSelectTileButtonPressed()
     {
+        if (dino == Enums.Dinos.None) return;
+
         ShopInfo.shopDino = dino;
         SceneChanger.Instance.GoToScene("res://src/GUI/screens/UpgradeScreen.tscn");
     }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://src/GUI/themes/BlueButton.tres" type="Theme" id=1]
+[ext_resource path="res://src/GUI/themes/BlueButtonTheme.tres" type="Theme" id=1]
 [ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/GUI/buttons/ShopUnlockButton.cs" type="Script" id=3]
 
