@@ -10,6 +10,7 @@ public class DinoSelectTileButton : TextureButton
     public override void _Ready()
     {
         setButtonInfo();
+        this.FocusMode = FocusModeEnum.None;
     }
 
     public override void _Process(float delta)
@@ -20,6 +21,16 @@ public class DinoSelectTileButton : TextureButton
             {
                 GetNode<TextureRect>("Edge").Modulate = edgeColor;
             }
+            return;
+        }
+
+        if (IsHovered())
+        {
+            this.RectScale = new Vector2((float)1.25, (float)1.25);
+        } 
+        else
+        {
+            this.RectScale = Vector2.One;
         }
     }
 
@@ -45,4 +56,5 @@ public class DinoSelectTileButton : TextureButton
         ShopInfo.shopDino = dino;
         SceneChanger.Instance.GoToScene("res://src/GUI/screens/UpgradeScreen.tscn");
     }
+
 }

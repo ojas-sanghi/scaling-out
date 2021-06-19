@@ -139,8 +139,8 @@ margin_left = -872.0
 margin_top = 370.0
 margin_right = -582.0
 margin_bottom = 503.0
-text = "Return Home"
-buttonMode = 7
+text = "Return"
+buttonMode = 8
 
 [node name="ShopUnlockButton" parent="." instance=ExtResource( 2 )]
 

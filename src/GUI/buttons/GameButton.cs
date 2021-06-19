@@ -55,8 +55,8 @@ public class GameButton : Button
                 Text = "Return Home";
                 this.GrabFocus();
                 break;
-            case b.ReturnUpgrades:
-                Text = "Return to Upgrades";
+            case b.ReturnUpgradeSelect:
+                Text = "Return";
                 this.GrabFocus();
                 break;
             case b.StealthIce:
@@ -108,8 +108,8 @@ public class GameButton : Button
             case b.ReturnHomeScreen:
                 scnChng.GoToScene("res://src/GUI/screens/HomeScreen.tscn");
                 break;
-            case b.ReturnUpgrades:
-                scnChng.GoToScene("res://src/GUI/screens/UpgradeScreen.tscn");
+            case b.ReturnUpgradeSelect:
+                scnChng.GoToScene("res://src/GUI/screens/DinoUpgradeSelectScreen.tscn");
                 break;
             case b.StealthIce:
                 StealthInfo.findingIce = true;

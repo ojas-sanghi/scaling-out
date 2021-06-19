@@ -1,0 +1,15 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+path="res://.import/hex click mask.png-ce2d535948b48dda4df6c6efe77e6296.res"
+
+[deps]
+
+source_file="res://assets/dinos/misc/hex click mask.png"
+dest_files=[ "res://.import/hex click mask.png-ce2d535948b48dda4df6c6efe77e6296.res" ]
+
+[params]
+
+create_from=0
+threshold=0.5
