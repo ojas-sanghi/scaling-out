@@ -42,7 +42,7 @@ __meta__ = {
 }
 
 [node name="Img" type="Sprite" parent="."]
-position = Vector2( 73.9953, 66.6232 )
+position = Vector2( 79, 64.239 )
 scale = Vector2( 0.06, 0.06 )
 texture = ExtResource( 6 )
 
