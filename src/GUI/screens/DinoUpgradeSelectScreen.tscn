@@ -67,8 +67,8 @@ __meta__ = {
 
 [node name="DinoSelectTileButton" parent="DinoTiles/HBoxContainer" instance=ExtResource( 2 )]
 margin_bottom = 296.0
-dino = 1
 edgeColor = Color( 0.14902, 0.482353, 0.462745, 1 )
+dino = 1
 
 [node name="DinoSelectTileButton2" parent="DinoTiles/HBoxContainer" instance=ExtResource( 2 )]
 margin_left = 276.0
@@ -119,16 +119,16 @@ __meta__ = {
 
 [node name="DinoSelectTileButton" parent="DinoTiles/HBoxContainer6" instance=ExtResource( 2 )]
 margin_bottom = 296.0
-dino = 2
 edgeColor = Color( 0.219608, 0.427451, 0.831373, 1 )
+dino = 2
 
 [node name="DinoSelectTileButton2" parent="DinoTiles/HBoxContainer6" instance=ExtResource( 2 )]
 margin_left = 276.0
 margin_right = 532.0
 margin_bottom = 296.0
 focus_mode = 2
-dino = 3
 edgeColor = Color( 0.941176, 0.0784314, 0.0784314, 1 )
+dino = 3
 
 [node name="DinoSelectTileButton3" parent="DinoTiles/HBoxContainer6" instance=ExtResource( 2 )]
 margin_left = 552.0

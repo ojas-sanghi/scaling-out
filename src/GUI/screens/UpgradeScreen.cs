@@ -55,6 +55,8 @@ public class UpgradeScreen : Control
     {
         ShaderMaterial shaderToChangeTo;
         Theme themeToChangeTo;
+        CursorShape cursorToChangeTo;
+        MouseFilterEnum mouseFilterToChangeTo;
 
         ShopUnlockButton unlockButton = GetNode<ShopUnlockButton>("ShopUnlockButton");
         Label lockedStatusLabel = GetNode<Label>("LockedStatus");
@@ -66,6 +68,8 @@ public class UpgradeScreen : Control
             themeToChangeTo = null;
             unlockButton.Show();
             lockedStatusLabel.Show();
+            cursorToChangeTo = CursorShape.Forbidden;
+            mouseFilterToChangeTo = MouseFilterEnum.Ignore;
         }
         // if unlocked
         else
@@ -74,6 +78,8 @@ public class UpgradeScreen : Control
             themeToChangeTo = specialUpgradeTheme;
             unlockButton.Hide();
             lockedStatusLabel.Hide();
+            cursorToChangeTo = CursorShape.Arrow;
+            mouseFilterToChangeTo = MouseFilterEnum.Stop;
         }
 
         image.Material = shaderToChangeTo;
@@ -84,12 +90,18 @@ public class UpgradeScreen : Control
             ((Label)b.FindNode("StatNum")).Material = shaderToChangeTo;
             ((Label)b.FindNode("Stat")).Material = shaderToChangeTo;
             b.GetNode<RichTextLabel>("CostIndicator").Material = shaderToChangeTo;
+
+            b.MouseDefaultCursorShape = cursorToChangeTo;
+            b.MouseFilter = mouseFilterToChangeTo;
         }
 
         foreach (ShopUpgradeButton b in GetNode("UpgradeButtons").GetChildren())
         {
             b.GetNode<Sprite>("Img").Material = shaderToChangeTo;
             ((RichTextLabel)b.FindNode("CostIndicator")).Material = shaderToChangeTo;
+
+            b.MouseDefaultCursorShape = cursorToChangeTo;
+            b.MouseFilter = mouseFilterToChangeTo;
         }
 
         Control specialUpgrade = GetNode<Control>("SpecialUpgrade");
