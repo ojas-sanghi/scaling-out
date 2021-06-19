@@ -49,6 +49,12 @@ public class UpgradeScreen : Control
 
                 // TODO: add gator dino
         }
+
+        // hide special upgrade panel if the dino doesn't have any
+        if (!DinoInfo.Instance.GetDinoInfo(ShopInfo.shopDino).HasSpecial())
+        {
+            GetNode<Control>("SpecialUpgrade").Hide();
+        }
     }
 
     void SetDisabledUIStatus()
