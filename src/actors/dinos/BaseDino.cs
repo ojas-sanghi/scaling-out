@@ -14,7 +14,7 @@ public class BaseDino : Area2D
 
     bool dinoDead = false;
 
-    public Enums.Dinos dinoType; // mega, tanky, warrior
+    public Enums.Dinos dinoType;
     int dinoVariation; // skin, maybe change this system later
 
     double spawnDelay;
@@ -84,7 +84,7 @@ public class BaseDino : Area2D
 
         spawningIn = false;
 
-        Events.publishDinoFullySpawned();
+        Events.publishDinoFullySpawned(dinoType);
     }
 
     protected void CalculateUpgrades()

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Godot;
 using System;
+using System.Linq;
 
 public class DinoInfo : Node
 {
@@ -60,15 +61,15 @@ public class DinoInfo : Node
         return upgradesInfo[dino];
     }
 
-    public double GetDinoTimerDelay()
+    public double GetDinoTimerDelay(Enums.Dinos dinoType)
     {
-        return Convert.ToDouble(GetDinoProperty("spawnDelay"));
+        return Convert.ToDouble(GetDinoProperty(dinoType, "spawnDelay"));
     }
 
     // Instance dino, get variable we want, then remove it
-    public object GetDinoProperty(string property)
+    public object GetDinoProperty(Enums.Dinos dinoType, string property)
     {
-        PackedScene DinoScene = dinoList[CombatInfo.Instance.dinoId];
+        PackedScene DinoScene = dinoList[dinoType];
         BaseDino DinoInstance = (BaseDino)DinoScene.Instance();
 
         object DinoProperty = DinoInstance.Get(property);

@@ -5,9 +5,9 @@ public class GatorGecko : BaseDino
 
     public GatorGecko()
     {
+        dinoType = Enums.Dinos.Gator;
         CalculateUpgrades();
 
-        dinoType = Enums.Dinos.Gator;
         specialGene = Enums.Genes.Florida;
 
         dinoUnlockCost = new List<int>() { 50, 50 };

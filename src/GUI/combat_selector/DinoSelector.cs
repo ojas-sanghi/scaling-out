@@ -4,7 +4,7 @@ using Godot;
 
 public class DinoSelector : Node2D
 {
-    Enums.Dinos activeId;
+    Enums.Dinos selectedDinoType;
     PackedScene selectorScene = GD.Load<PackedScene>("res://src/GUI/combat_selector/SelectorSprite.tscn");
     List<SelectorSprite> selectorList = new List<SelectorSprite>();
 
@@ -27,6 +27,8 @@ public class DinoSelector : Node2D
         // get a list of children
         selectorList = hBox.GetChildren().Cast<SelectorSprite>().ToList<SelectorSprite>();
         selectorList[0].ShowParticles();
+
+        GD.Print(CombatInfo.Instance.selectedDinoType);
 
     }
 
@@ -117,22 +119,22 @@ public class DinoSelector : Node2D
         // TODO: change this. #107, https://app.gitkraken.com/glo/view/card/a9b9034aa0834eb5bdabe2aac01a4200
         if (@event.IsActionPressed("dino_1"))
         {
-            activeId = Enums.Dinos.Mega;
+            this.selectedDinoType = Enums.Dinos.Mega;
             EnableExclusiveParticles(0);
         }
         else if (@event.IsActionPressed("dino_2"))
         {
-            activeId = Enums.Dinos.Tanky;
+            this.selectedDinoType = Enums.Dinos.Tanky;
             EnableExclusiveParticles(1);
         }
         else if (@event.IsActionPressed("dino_3"))
         {
-            activeId = Enums.Dinos.Warrior;
+            this.selectedDinoType = Enums.Dinos.Warrior;
             EnableExclusiveParticles(2);
         }
         else if (@event.IsActionPressed("dino_4"))
         {
-            activeId = Enums.Dinos.Gator;
+            this.selectedDinoType = Enums.Dinos.Gator;
             EnableExclusiveParticles(3);
         }
 
@@ -178,13 +180,11 @@ public class DinoSelector : Node2D
 
         }
 
-        CombatInfo.Instance.dinoId = activeId;
+        CombatInfo.Instance.selectedDinoType = this.selectedDinoType;
     }
 
-    void OnDinoFullySpawned()
+    void OnDinoFullySpawned(Enums.Dinos dinoType)
     {
-        Enums.Dinos dinoType = (Enums.Dinos)d.GetDinoProperty("dinoType");
-
         // TODO: do this better
         // TODO: fix this lol
 

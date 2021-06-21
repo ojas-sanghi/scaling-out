@@ -35,25 +35,25 @@ public class DeployTimer : Control
         Events.dinoDeployed -= OnDinoDeployed;
     }
 
-    void OnDinoDeployed()
+    void OnDinoDeployed(Enums.Dinos dinoType)
     {
         // only bother if the dino being deployed is our associated ID
-        if (CombatInfo.Instance.dinoId != dinoId)
+        if (dinoType != dinoId)
         {
             return;
         }
 
-        double delay = DinoInfo.Instance.GetDinoTimerDelay();
+        double delay = DinoInfo.Instance.GetDinoTimerDelay(dinoType);
         dinoTimer.Start((float)delay);
 
-        UpdateProgressBar();
+        UpdateProgressBar(dinoType);
     }
 
-    void UpdateProgressBar()
+    void UpdateProgressBar(Enums.Dinos dinoType)
     {
         progress.Show();
 
-        double delay = DinoInfo.Instance.GetDinoTimerDelay();
+        double delay = DinoInfo.Instance.GetDinoTimerDelay(dinoType);
         tween.InterpolateProperty(
             progress, "value", 0, 100, (float)delay
         );

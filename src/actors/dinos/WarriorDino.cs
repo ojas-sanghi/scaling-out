@@ -6,9 +6,9 @@ public class WarriorDino : BaseDino
 
     public WarriorDino()
     {
+        dinoType = Enums.Dinos.Warrior;
         CalculateUpgrades();
 
-        dinoType = Enums.Dinos.Warrior;
         specialGene = Enums.Genes.Fire;
 
         dinoUnlockCost = new List<int>() { 50, 60 };

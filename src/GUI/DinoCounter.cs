@@ -15,7 +15,7 @@ public class DinoCounter : Control
         Events.newRound -= UpdateText;
     }
 
-    void OnDinoDeployed()
+    void OnDinoDeployed(Enums.Dinos dinoType)
     {
         CombatInfo.Instance.dinosRemaining--;
         if (CombatInfo.Instance.dinosRemaining <= 0)

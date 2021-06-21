@@ -27,7 +27,7 @@ public class DinoSelectTileButton : TextureButton
         if (IsHovered())
         {
             this.RectScale = new Vector2((float)1.25, (float)1.25);
-        } 
+        }
         else
         {
             this.RectScale = Vector2.One;
@@ -53,10 +53,12 @@ public class DinoSelectTileButton : TextureButton
 
     void OnDinoSelectTileButtonPressed()
     {
-        if (dino == Enums.Dinos.None) return;
+        if (dino != Enums.Dinos.None)
+        {
+            ShopInfo.shopDino = dino;
+            SceneChanger.Instance.GoToScene("res://src/GUI/screens/UpgradeScreen.tscn");
+        }
 
-        ShopInfo.shopDino = dino;
-        SceneChanger.Instance.GoToScene("res://src/GUI/screens/UpgradeScreen.tscn");
     }
 
 }

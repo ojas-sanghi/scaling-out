@@ -129,15 +129,16 @@ public class SelectorSprite : Control
         }
     }
 
-    async void OnDinoDeployed()
+    async void OnDinoDeployed(Enums.Dinos dinoType)
     {
-        if (CombatInfo.Instance.dinoId != dinoId)
+        // only bother if the dino being deployed is our associated ID
+        if (dinoType != dinoId)
         {
             return;
         }
 
         FadeSprite();
-        cooldownTimer.Start((float)DinoInfo.Instance.GetDinoTimerDelay());
+        cooldownTimer.Start((float)DinoInfo.Instance.GetDinoTimerDelay(dinoType));
         await ToSignal(cooldownTimer, "timeout");
         UnFadeSprite();
     }

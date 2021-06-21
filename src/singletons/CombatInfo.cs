@@ -14,7 +14,7 @@ public class CombatInfo : Node
     public int dinosRemaining;
     public int dinosDied;
 
-    public Enums.Dinos dinoId;
+    public Enums.Dinos selectedDinoType;
 
     public List<Enums.Dinos> dinosDeploying = new List<Enums.Dinos>();
     public List<Enums.Dinos> selectorTimerList = new List<Enums.Dinos>();
@@ -54,7 +54,7 @@ public class CombatInfo : Node
         dinosRemaining = _MaxDinos;
         dinosDied = 0;
 
-        dinoId = Enums.Dinos.Tanky;
+        selectedDinoType = Enums.Dinos.Mega;
 
         dinosDeploying.Clear();
         selectorTimerList.Clear();
@@ -83,14 +83,14 @@ public class CombatInfo : Node
         }
     }
 
-    void OnDinoDeployed()
+    void OnDinoDeployed(Enums.Dinos dinoType)
     {
         // Add to list of dinos just deployed
         // Prevents this type from being deployed until cooldown finished
-        dinosDeploying.Add(dinoId);
+        dinosDeploying.Add(dinoType);
 
         // Wait for the dino-specific delay
-        double delay = DinoInfo.Instance.GetDinoTimerDelay();
+        double delay = DinoInfo.Instance.GetDinoTimerDelay(dinoType);
         // await ToSignal(GetTree().CreateTimer((float)delay), "timeout");
 
         // // remove dino from list
@@ -100,13 +100,13 @@ public class CombatInfo : Node
         dinosDeployingTimer.OneShot = true;
         AddChild(dinosDeployingTimer);
 
-        dinosDeployingTimer.Connect("timeout", this, "OnDinosDeployingTimerTimeout", new Array(new Enums.Dinos[] { dinoId }));
+        dinosDeployingTimer.Connect("timeout", this, "OnDinosDeployingTimerTimeout", new Array(new Enums.Dinos[] { dinoType }));
         dinosDeployingTimer.Start((float)delay);
     }
 
-    void OnDinosDeployingTimerTimeout(Enums.Dinos id)
+    void OnDinosDeployingTimerTimeout(Enums.Dinos dinoType)
     {
-        dinosDeploying.Remove(id);
+        dinosDeploying.Remove(dinoType);
     }
 
 }

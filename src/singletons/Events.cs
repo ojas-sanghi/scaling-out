@@ -3,8 +3,8 @@ using Godot;
 
 public class Events : Node
 {
-    public static event Action dinoDeployed;
-    public static event Action dinoFullySpawned;
+    public static event Action<Enums.Dinos> dinoDeployed;
+    public static event Action<Enums.Dinos> dinoFullySpawned;
     public static event Action<Enums.Dinos> dinoDied;
 
     public static event Action<double> dinoHit;
@@ -31,8 +31,8 @@ public class Events : Node
 
     ///////////////////////////////////
 
-    public static void publishDinoDeployed() => dinoDeployed?.Invoke();
-    public static void publishDinoFullySpawned() => dinoFullySpawned?.Invoke();
+    public static void publishDinoDeployed(Enums.Dinos type) => dinoDeployed?.Invoke(type);
+    public static void publishDinoFullySpawned(Enums.Dinos type) => dinoFullySpawned?.Invoke(type);
     public static void publishDinoDied(Enums.Dinos type) => dinoDied?.Invoke(type);
 
     public static void publishDinoHit(double damage) => dinoHit?.Invoke(damage);

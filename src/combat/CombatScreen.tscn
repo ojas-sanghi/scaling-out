@@ -22,7 +22,6 @@ __meta__ = {
 [node name="LanesCreator" type="Node2D" parent="."]
 position = Vector2( 700.5, 531.815 )
 script = ExtResource( 8 )
-laneTypes = [ 1, 0, 0, 0 ]
 
 [node name="Army" type="Node2D" parent="."]
 

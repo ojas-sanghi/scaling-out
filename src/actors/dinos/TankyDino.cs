@@ -6,9 +6,9 @@ public class TankyDino : BaseDino
 
     public TankyDino()
     {
+        dinoType = Enums.Dinos.Tanky;
         CalculateUpgrades();
 
-        dinoType = Enums.Dinos.Tanky;
         specialGene = Enums.Genes.Ice;
 
         dinoUnlockCost = new List<int>() { 25, 50 };

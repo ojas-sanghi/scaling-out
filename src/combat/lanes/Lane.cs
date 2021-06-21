@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections.Generic;
 using Godot;
 
@@ -66,13 +67,15 @@ public class Lane : Path2D
 
 	void OnButtonPressed()
 	{
+		// CombatInfo.Instance.selectedDinoType = Enums.Dinos.Mega;
+
 		if (CombatInfo.Instance.dinosRemaining <= 0)
 		{
 			return;
 		}
 
 		// dont deploy if the delay isn't over yet
-		if (CombatInfo.Instance.dinosDeploying.Contains(CombatInfo.Instance.dinoId))
+		if (CombatInfo.Instance.dinosDeploying.Contains(CombatInfo.Instance.selectedDinoType))
 		{
 			return;
 		}
@@ -85,7 +88,8 @@ public class Lane : Path2D
 		newChildren.Add(pathFollow);
 
 		// make a new dino
-		PackedScene dinoScene = DinoInfo.Instance.dinoList[CombatInfo.Instance.dinoId];
+		GD.Print("Lane.cs dino id: " + CombatInfo.Instance.selectedDinoType);
+		PackedScene dinoScene = DinoInfo.Instance.dinoList[CombatInfo.Instance.selectedDinoType];
 		BaseDino dinoNode = (BaseDino)dinoScene.Instance();
 
 		// set dino speed
@@ -96,7 +100,7 @@ public class Lane : Path2D
 		// set dinos position
 		dinoNode.GlobalPosition = spawnPoint;
 
-		Events.publishDinoDeployed();
+		Events.publishDinoDeployed(dinoNode.dinoType);
 	}
 
 	void OnNewRound()
