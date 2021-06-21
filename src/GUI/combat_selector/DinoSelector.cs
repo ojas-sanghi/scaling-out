@@ -151,7 +151,6 @@ public class DinoSelector : Node2D
                     tanky.ShootProjectile();
                     selectorList[4].DisableSprite();
                     CombatInfo.Instance.shotIce = true;
-                    return;
                 }
             }
 
@@ -171,7 +170,6 @@ public class DinoSelector : Node2D
                     warrior.ShootProjectile();
                     selectorList[5].DisableSprite();
                     CombatInfo.Instance.shotFire = true;
-                    return;
                 }
             }
 
