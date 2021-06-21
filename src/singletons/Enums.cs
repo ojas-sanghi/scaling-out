@@ -18,6 +18,11 @@ namespace Enums
         None, Ice, Fire, Florida
     }
 
+    public enum SpecialAbilities
+    {
+        None, IceProjectile, FireProjectile
+    }
+
     public enum HomeScreenButtons
     {
         None, Map, Upgrades

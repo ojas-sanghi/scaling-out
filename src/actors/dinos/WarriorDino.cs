@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-public class WarriorDino : BaseDino
+public class WarriorDino : AbilityDino
 {
     DinoProjectile fireProjectile;
 
@@ -13,19 +13,4 @@ public class WarriorDino : BaseDino
 
         dinoUnlockCost = new List<int>() { 50, 60 };
     }
-
-    public override void _Ready()
-    {
-        base._Ready();
-
-        fireProjectile = (DinoProjectile)FindNode("FireProjectile");
-        fireProjectile.Hide();
-    }
-
-    public void ShootProjectile()
-    {
-        fireProjectile.Show();
-        fireProjectile.disabled = false;
-    }
-
 }

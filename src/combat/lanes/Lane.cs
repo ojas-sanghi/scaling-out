@@ -67,8 +67,6 @@ public class Lane : Path2D
 
 	void OnButtonPressed()
 	{
-		// CombatInfo.Instance.selectedDinoType = Enums.Dinos.Mega;
-
 		if (CombatInfo.Instance.dinosRemaining <= 0)
 		{
 			return;

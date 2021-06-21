@@ -11,7 +11,8 @@ public class DinoInfo : Node
 
     public Dictionary<Enums.Dinos, PackedScene> dinoList;
     public Dictionary<Enums.Dinos, StreamTexture> dinoIcons;
-    public Dictionary<Enums.Dinos, StreamTexture> dinoAbilityIcons;
+    public Dictionary<Enums.Dinos, Enums.SpecialAbilities> dinoTypesAndAbilities;
+    public Dictionary<Enums.SpecialAbilities, StreamTexture> dinoAbilityIcons;
     public Dictionary<Enums.Dinos, UpgradeInfo> upgradesInfo;
 
     public DinoInfo()
@@ -39,12 +40,18 @@ public class DinoInfo : Node
             {Enums.Dinos.Gator, GD.Load<StreamTexture>("res://assets/dinos/gator_gecko/gator_gecko_icon.png")},
         };
 
-        dinoAbilityIcons = new Dictionary<Enums.Dinos, StreamTexture>()
+        dinoTypesAndAbilities = new Dictionary<Enums.Dinos, Enums.SpecialAbilities>()
         {
-            {Enums.Dinos.Mega, null},
-            {Enums.Dinos.Tanky, GD.Load<StreamTexture>("res://assets/dinos/misc/ice.png")},
-            {Enums.Dinos.Warrior, GD.Load<StreamTexture>("res://assets/dinos/misc/fire.png")},
-            {Enums.Dinos.Gator, null},
+            {Enums.Dinos.Mega, Enums.SpecialAbilities.None},
+            {Enums.Dinos.Tanky, Enums.SpecialAbilities.IceProjectile},
+            {Enums.Dinos.Warrior, Enums.SpecialAbilities.FireProjectile},
+            {Enums.Dinos.Gator, Enums.SpecialAbilities.None},
+        };
+
+        dinoAbilityIcons = new Dictionary<Enums.SpecialAbilities, StreamTexture>()
+        {
+            {Enums.SpecialAbilities.IceProjectile, GD.Load<StreamTexture>("res://assets/dinos/misc/ice.png")},
+            {Enums.SpecialAbilities.FireProjectile, GD.Load<StreamTexture>("res://assets/dinos/misc/fire.png")},
         };
 
         upgradesInfo = new Dictionary<Enums.Dinos, UpgradeInfo>()

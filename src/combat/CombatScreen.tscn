@@ -49,7 +49,7 @@ position = Vector2( 1609.91, 540.8 )
 position = Vector2( 1546.59, 811.593 )
 
 [node name="ArmyDude3" parent="Army" instance=ExtResource( 5 )]
-position = Vector2( 1626.31, 263.326 )
+position = Vector2( 1626.31, 318.418 )
 
 [node name="ArmyDude4" parent="Army" instance=ExtResource( 5 )]
 visible = false

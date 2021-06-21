@@ -69,13 +69,20 @@ public class CombatInfo : Node
     {
         DinoInfo d = DinoInfo.Instance;
 
+        var dinosLeft = GetTree().GetNodesInGroup("dinos");
+        bool specificDinoTypeLeft = false;
+        foreach (BaseDino baseDino in dinosLeft)
+        {
+            if (baseDino.dinoType == dinoType) specificDinoTypeLeft = true;
+        }
+
         if (dinoType == Enums.Dinos.Tanky)
         {
-            return d.GetDinoInfo(dinoType).UnlockedSpecial() && !this.shotIce;
+            return specificDinoTypeLeft && d.GetDinoInfo(dinoType).UnlockedSpecial() && !this.shotIce;
         }
         else if (dinoType == Enums.Dinos.Warrior)
         {
-            return d.GetDinoInfo(dinoType).UnlockedSpecial() && !this.shotFire;
+            return specificDinoTypeLeft && d.GetDinoInfo(dinoType).UnlockedSpecial() && !this.shotFire;
         }
         else
         {

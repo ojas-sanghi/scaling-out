@@ -7,11 +7,13 @@ public class SelectorSprite : Button
     public Texture spriteTexture;
     public string text;
     public Enums.Dinos dinoType;
-
-    public string abilityMode = ""; // TODO: change this once the file logic in DinoSelector is changed
     public Vector2 customScale = new Vector2((float)0.511, (float)0.519);
 
-    Sprite sprite;
+    public bool isAbilitySelector = false;
+    public Enums.SpecialAbilities abilityType;
+    public Enums.Dinos abilitySelectorAssociatedDino;
+
+    protected Sprite sprite;
     Label label;
     DeployTimer deployTimer;
     Timer cooldownTimer;
@@ -41,7 +43,7 @@ public class SelectorSprite : Button
         HideParticles();
 
         // if it's an ability, then disable it at the starting
-        if (abilityMode != "")
+        if (isAbilitySelector)
         {
             DisableSprite();
             deployTimer.Hide();
@@ -65,7 +67,7 @@ public class SelectorSprite : Button
     void FadeSprite()
     {
         // only execute if we're a dino
-        if (abilityMode == "")
+        if (!isAbilitySelector)
         {
             sprite.Modulate = new Color(1, 1, 1, (float)0.5);
             label.Modulate = new Color(1, 1, 1, (float)0.5);
@@ -75,7 +77,7 @@ public class SelectorSprite : Button
     public void UnFadeSprite()
     {
         // only execute if we're a dino
-        if (abilityMode == "")
+        if (!isAbilitySelector)
         {
             sprite.Modulate = new Color(1, 1, 1, 1);
             label.Modulate = new Color(1, 1, 1, 1);
@@ -92,17 +94,12 @@ public class SelectorSprite : Button
     // this just makes the sprite back to normal color, no longer black and white
     public void EnableSprite()
     {
-        // for abilities -- only enable if conditions are met
-        if (abilityMode.Contains("ice"))
+        // if we're an ability selector, cast ourselves to that specific class
+        // then call that specific EnableSprite()
+        if (isAbilitySelector)
         {
-            if (CombatInfo.Instance.IsAbilityDeployable(Enums.Dinos.Tanky))
-            {
-                sprite.Material = null;
-            }
-        }
-        else if (abilityMode.Contains("fire"))
-        {
-            if (CombatInfo.Instance.IsAbilityDeployable(Enums.Dinos.Warrior))
+            // only enable self if we're actually deployable
+            if (CombatInfo.Instance.IsAbilityDeployable(abilitySelectorAssociatedDino))
             {
                 sprite.Material = null;
             }
@@ -110,11 +107,7 @@ public class SelectorSprite : Button
         else
         {
             // if we're a dino -- then enable it regardless
-            if (abilityMode == "")
-            {
-                sprite.Material = null;
-            }
-            // if we're an ability still, then stay disabled since no conditions are met
+            sprite.Material = null;
         }
     }
 
@@ -137,7 +130,8 @@ public class SelectorSprite : Button
     async void OnDinoDeployed(Enums.Dinos _dinoType)
     {
         // only bother if the dino being deployed is our associated ID
-        if (_dinoType != this.dinoType)
+        // and if we're a dino selector
+        if (_dinoType != this.dinoType || isAbilitySelector)
         {
             return;
         }
@@ -152,7 +146,7 @@ public class SelectorSprite : Button
     {
         // don't fade the sprite if it's an ability
         // even if there aren't any dinos left to deploy you can still use abilities
-        if (abilityMode != "")
+        if (isAbilitySelector)
         {
             return;
         }

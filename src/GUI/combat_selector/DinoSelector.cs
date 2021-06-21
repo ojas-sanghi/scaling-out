@@ -17,8 +17,8 @@ public class DinoSelector : Node2D
 
     public override void _Ready()
     {
-        Events.dinoFullySpawned += OnDinoFullySpawned;
-        Events.dinoDied += OnDinoDied;
+        Events.dinoFullySpawned += validateAbilityStatus;
+        Events.dinoDied += validateAbilityStatus;
         Events.allDinosExpended += OnAllDinosExpended;
         Events.dinosPurchased += OnDinosPurchased;
         Events.selectorSelected += OnSelectorSelected;
@@ -33,15 +33,15 @@ public class DinoSelector : Node2D
 
     public override void _ExitTree()
     {
-        Events.dinoFullySpawned -= OnDinoFullySpawned;
-        Events.dinoDied -= OnDinoDied;
+        Events.dinoFullySpawned -= validateAbilityStatus;
+        Events.dinoDied -= validateAbilityStatus;
         Events.allDinosExpended -= OnAllDinosExpended;
         Events.dinosPurchased -= OnDinosPurchased;
     }
 
     void SetupSelectors()
     {
-        int iconId = 0;
+        int selectorPositionInList = 1;
         foreach (KeyValuePair<Enums.Dinos, StreamTexture> n in d.dinoIcons)
         {
             // skip if not unlocked the dino yet
@@ -53,59 +53,47 @@ public class DinoSelector : Node2D
             SelectorSprite newSelector = (SelectorSprite)selectorScene.Instance();
             newSelector.spriteTexture = n.Value;
             newSelector.dinoType = n.Key;
-            newSelector.text = (iconId + 1).ToString();
+            newSelector.text = selectorPositionInList.ToString();
 
-            // key 0 number + 1 (to make the lowest number key 1) + iconId 
-            // iconId starts from 0, so that's why we add 1 manually
             newSelector.Shortcut = new ShortCut();
             newSelector.Shortcut.Shortcut = new InputEventKey();
-            ((InputEventKey)newSelector.Shortcut.Shortcut).Scancode = ((int)Godot.KeyList.Key0) + 1 + (uint)iconId;
+            ((InputEventKey)newSelector.Shortcut.Shortcut).Scancode = ((int)Godot.KeyList.Key0) + (uint)selectorPositionInList;
 
             hBox.AddChild(newSelector);
 
-            iconId++;
+            selectorPositionInList++;
         }
 
-        int abilityId = 0;
-        foreach (KeyValuePair<Enums.Dinos, StreamTexture> n in d.dinoAbilityIcons)
+        foreach (KeyValuePair<Enums.SpecialAbilities, StreamTexture> n in d.dinoAbilityIcons)
         {
-            // skip if no icon
-            if (n.Value == null)
-            {
-                continue;
-            }
+            // lookup dictionary to get key by value
+            // ty :) https://stackoverflow.com/questions/2444033/get-dictionary-key-by-value#2444064
+            Enums.Dinos associatedDino = d.dinoTypesAndAbilities.FirstOrDefault(x => x.Value == n.Key).Key;
 
             // skip if not unlocked the speical for the dino yet or if not unlocked the dino itself
-            if (!PlayerStats.dinosUnlocked.Contains(n.Key) || !DinoInfo.Instance.GetDinoInfo(n.Key).HasSpecial())
+            if (!PlayerStats.dinosUnlocked.Contains(associatedDino) || !d.GetDinoInfo(associatedDino).HasSpecial())
             {
                 continue;
             }
 
-            // TODO: FOR THE LOVE OF GOD PLEASE CHANGE THIS LOGIC
-            // find the filename of the image, which is also the name of the ability itself
-            var fileName = n.Value.ResourcePath;
-            var abilityStart = fileName.FindLast("/");
-            var abilityEnd = fileName.Find(".png");
-            var abilityString = fileName.Substr(abilityStart, abilityEnd);
-
             SelectorSprite newSelector = (SelectorSprite)selectorScene.Instance();
+            newSelector.isAbilitySelector = true;
             newSelector.spriteTexture = n.Value;
-            newSelector.dinoType = n.Key;
-            newSelector.text = (abilityId + d.dinoIcons.Count + 1).ToString(); // position in list + number of dinos
+            newSelector.abilityType = n.Key;
+            newSelector.dinoType = Enums.Dinos.None;
+            newSelector.abilitySelectorAssociatedDino = associatedDino;
 
-            newSelector.abilityMode = abilityString;
+            newSelector.text = selectorPositionInList.ToString(); // position in list + number of dinos
+
             newSelector.customScale = new Vector2((float)0.07, (float)0.07);
 
-            // key 0 number + 1 (to make the lowest number key 1) + iconId 
-            // iconId starts from 0, so that's why we add 1 manually
-            // iconId is *also* used in this for loop because it ensures the key id is correct
             newSelector.Shortcut = new ShortCut();
             newSelector.Shortcut.Shortcut = new InputEventKey();
-            ((InputEventKey)newSelector.Shortcut.Shortcut).Scancode = ((int)Godot.KeyList.Key0) + 1 + (uint)iconId;
+            ((InputEventKey)newSelector.Shortcut.Shortcut).Scancode = ((int)Godot.KeyList.Key0) + (uint)selectorPositionInList;
 
             hBox.AddChild(newSelector);
 
-            abilityId++;
+            selectorPositionInList++;
         }
     }
 
@@ -122,120 +110,77 @@ public class DinoSelector : Node2D
 
     void OnSelectorSelected(SelectorSprite selector)
     {
-        this.selectedDinoType = selector.dinoType;
-        EnableExclusiveParticles(selector);
-    }
-
-    public override void _Input(InputEvent @event)
-    {
-        if (allDinosExpended)
+        if (!selector.isAbilitySelector)
         {
-            return;
+            if (allDinosExpended) return;
+
+            CombatInfo.Instance.selectedDinoType = selector.dinoType;
+            EnableExclusiveParticles(selector);
         }
-
-        // TODO: change this. #73, https://app.gitkraken.com/glo/view/card/75f5162699514eddb32954a7629c6423
-        if (@event.IsActionPressed("dino_5"))
+        else
         {
-            if (!(d.GetDinoInfo(Enums.Dinos.Tanky).UnlockedSpecial()) || CombatInfo.Instance.shotIce)
+            if (!CombatInfo.Instance.IsAbilityDeployable(selector.abilitySelectorAssociatedDino))
             {
                 return;
             }
 
             foreach (BaseDino d in GetTree().GetNodesInGroup("dinos"))
             {
-                if (d.dinoType == Enums.Dinos.Tanky)
+                if (d.dinoType == selector.abilitySelectorAssociatedDino)
                 {
-                    TankyDino tanky = (TankyDino)d;
-                    tanky.ShootProjectile();
-                    selectorList[4].DisableSprite();
-                    CombatInfo.Instance.shotIce = true;
+                    var abilityDino = (AbilityDino)d;
+                    abilityDino.ShootProjectile();
+                    GetSelectorSprite(selector.abilityType).DisableSprite();
+
+                    // TODO: figure out a better system for this
+                    if (d.dinoType == Enums.Dinos.Tanky) CombatInfo.Instance.shotIce = true;
+                    else if (d.dinoType == Enums.Dinos.Warrior) CombatInfo.Instance.shotFire = true;
                 }
             }
-
-        }
-        else if (@event.IsActionPressed("dino_6"))
-        {
-            if (!(d.GetDinoInfo(Enums.Dinos.Warrior).UnlockedSpecial()) || CombatInfo.Instance.shotFire)
-            {
-                return;
-            }
-
-            foreach (BaseDino d in GetTree().GetNodesInGroup("dinos"))
-            {
-                if (d.dinoType == Enums.Dinos.Warrior)
-                {
-                    WarriorDino warrior = (WarriorDino)d;
-                    warrior.ShootProjectile();
-                    selectorList[5].DisableSprite();
-                    CombatInfo.Instance.shotFire = true;
-                }
-            }
-
         }
 
-        if (this.selectedDinoType != Enums.Dinos.None)
-        {
-            CombatInfo.Instance.selectedDinoType = this.selectedDinoType;
-        }
-    }
-
-    void OnDinoFullySpawned(Enums.Dinos dinoType)
-    {
-        // TODO: do this better
-        // TODO: fix this lol
-
-        if (dinoType == Enums.Dinos.Tanky)
-        {
-            if (CombatInfo.Instance.IsAbilityDeployable(dinoType))
-            {
-                selectorList[4].EnableSprite();
-            }
-        }
-
-        if (dinoType == Enums.Dinos.Warrior)
-        {
-            if (CombatInfo.Instance.IsAbilityDeployable(dinoType))
-            {
-                selectorList[5].EnableSprite();
-            }
-        }
 
     }
 
-    void OnDinoDied(Enums.Dinos type)
+    SelectorSprite GetSelectorSprite(Enums.Dinos dinoType)
     {
-        var dinosLeft = GetTree().GetNodesInGroup("dinos");
-
-        // TODO: do this better
-
-        if (type == Enums.Dinos.Tanky)
+        foreach (SelectorSprite s in selectorList)
         {
-            // go through each dino
-            // if any of them are tanky dinos, then shooting ice is still possible
-            // if so, then exit out. 
-            // but if there are no more tanky dinos, then disable sprite
-            foreach (BaseDino d in dinosLeft)
+            if (!s.isAbilitySelector && s.dinoType == dinoType)
             {
-                if (d.dinoType == Enums.Dinos.Tanky)
-                {
-                    return;
-                }
+                return s;
             }
-            selectorList[4].DisableSprite();
+        }
+        throw new KeyNotFoundException();
+    }
+
+    SelectorSprite GetSelectorSprite(Enums.SpecialAbilities ability)
+    {
+        foreach (SelectorSprite s in selectorList)
+        {
+            if (s.isAbilitySelector && s.abilityType == ability)
+            {
+                return s;
+            }
+        }
+        throw new KeyNotFoundException();
+    }
+
+    // when dinos are spawned/die, check if any associated special abilities should be enabled/disabled
+    void validateAbilityStatus(Enums.Dinos dinoType)
+    {
+        // get ability selector for associated dino type
+        // then turn it on/off according 
+        var selector = GetSelectorSprite(d.dinoTypesAndAbilities[dinoType]);
+        if (CombatInfo.Instance.IsAbilityDeployable(dinoType))
+        {
+            selector.EnableSprite();
+        }
+        else
+        {
+            selector.DisableSprite();
         }
 
-        if (type == Enums.Dinos.Warrior)
-        {
-            // same as above for warrior dinos
-            foreach (BaseDino d in dinosLeft)
-            {
-                if (d.dinoType == Enums.Dinos.Warrior)
-                {
-                    return;
-                }
-            }
-            selectorList[5].DisableSprite();
-        }
     }
 
     void OnAllDinosExpended()
