@@ -88,7 +88,6 @@ public class Lane : Path2D
 		newChildren.Add(pathFollow);
 
 		// make a new dino
-		GD.Print("Lane.cs dino id: " + CombatInfo.Instance.selectedDinoType);
 		PackedScene dinoScene = DinoInfo.Instance.dinoList[CombatInfo.Instance.selectedDinoType];
 		BaseDino dinoNode = (BaseDino)dinoScene.Instance();
 

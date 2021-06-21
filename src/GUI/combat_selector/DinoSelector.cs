@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Godot;
+using Godot.Collections;
 
 public class DinoSelector : Node2D
 {
@@ -20,6 +21,7 @@ public class DinoSelector : Node2D
         Events.dinoDied += OnDinoDied;
         Events.allDinosExpended += OnAllDinosExpended;
         Events.dinosPurchased += OnDinosPurchased;
+        Events.selectorSelected += OnSelectorSelected;
 
         hBox = (HBoxContainer)FindNode("HBoxContainer");
 
@@ -50,8 +52,14 @@ public class DinoSelector : Node2D
 
             SelectorSprite newSelector = (SelectorSprite)selectorScene.Instance();
             newSelector.spriteTexture = n.Value;
-            newSelector.dinoId = n.Key;
+            newSelector.dinoType = n.Key;
             newSelector.text = (iconId + 1).ToString();
+
+            // key 0 number + 1 (to make the lowest number key 1) + iconId 
+            // iconId starts from 0, so that's why we add 1 manually
+            newSelector.Shortcut = new ShortCut();
+            newSelector.Shortcut.Shortcut = new InputEventKey();
+            ((InputEventKey)newSelector.Shortcut.Shortcut).Scancode = ((int)Godot.KeyList.Key0) + 1 + (uint)iconId;
 
             hBox.AddChild(newSelector);
 
@@ -82,11 +90,18 @@ public class DinoSelector : Node2D
 
             SelectorSprite newSelector = (SelectorSprite)selectorScene.Instance();
             newSelector.spriteTexture = n.Value;
-            newSelector.dinoId = n.Key;
+            newSelector.dinoType = n.Key;
             newSelector.text = (abilityId + d.dinoIcons.Count + 1).ToString(); // position in list + number of dinos
 
             newSelector.abilityMode = abilityString;
             newSelector.customScale = new Vector2((float)0.07, (float)0.07);
+
+            // key 0 number + 1 (to make the lowest number key 1) + iconId 
+            // iconId starts from 0, so that's why we add 1 manually
+            // iconId is *also* used in this for loop because it ensures the key id is correct
+            newSelector.Shortcut = new ShortCut();
+            newSelector.Shortcut.Shortcut = new InputEventKey();
+            ((InputEventKey)newSelector.Shortcut.Shortcut).Scancode = ((int)Godot.KeyList.Key0) + 1 + (uint)iconId;
 
             hBox.AddChild(newSelector);
 
@@ -95,15 +110,20 @@ public class DinoSelector : Node2D
     }
 
     // turn on particles for this selector and turns off all other particles
-    void EnableExclusiveParticles(int index)
+    void EnableExclusiveParticles(SelectorSprite selectorToKeepOn)
     {
         var selectors = hBox.GetChildren().Cast<SelectorSprite>().ToList<SelectorSprite>();
         foreach (SelectorSprite s in selectors)
         {
             s.HideParticles();
+            if (s == selectorToKeepOn) s.ShowParticles();
         }
-        selectors[index].ShowParticles();
+    }
 
+    void OnSelectorSelected(SelectorSprite selector)
+    {
+        this.selectedDinoType = selector.dinoType;
+        EnableExclusiveParticles(selector);
     }
 
     public override void _Input(InputEvent @event)
@@ -113,30 +133,8 @@ public class DinoSelector : Node2D
             return;
         }
 
-        // TODO: change this. #107, https://app.gitkraken.com/glo/view/card/a9b9034aa0834eb5bdabe2aac01a4200
-        if (@event.IsActionPressed("dino_1"))
-        {
-            this.selectedDinoType = Enums.Dinos.Mega;
-            EnableExclusiveParticles(0);
-        }
-        else if (@event.IsActionPressed("dino_2"))
-        {
-            this.selectedDinoType = Enums.Dinos.Tanky;
-            EnableExclusiveParticles(1);
-        }
-        else if (@event.IsActionPressed("dino_3"))
-        {
-            this.selectedDinoType = Enums.Dinos.Warrior;
-            EnableExclusiveParticles(2);
-        }
-        else if (@event.IsActionPressed("dino_4"))
-        {
-            this.selectedDinoType = Enums.Dinos.Gator;
-            EnableExclusiveParticles(3);
-        }
-
         // TODO: change this. #73, https://app.gitkraken.com/glo/view/card/75f5162699514eddb32954a7629c6423
-        else if (@event.IsActionPressed("dino_5"))
+        if (@event.IsActionPressed("dino_5"))
         {
             if (!(d.GetDinoInfo(Enums.Dinos.Tanky).UnlockedSpecial()) || CombatInfo.Instance.shotIce)
             {

@@ -1,12 +1,12 @@
 using Godot;
 
 [Tool]
-public class SelectorSprite : Control
+public class SelectorSprite : Button
 {
     // these are set by DinoSelector parent
     public Texture spriteTexture;
     public string text;
-    public Enums.Dinos dinoId;
+    public Enums.Dinos dinoType;
 
     public string abilityMode = ""; // TODO: change this once the file logic in DinoSelector is changed
     public Vector2 customScale = new Vector2((float)0.511, (float)0.519);
@@ -55,6 +55,11 @@ public class SelectorSprite : Control
     {
         Events.dinoDeployed -= OnDinoDeployed;
         Events.allDinosExpended -= OnAllDinosExpended;
+    }
+
+    void OnSelectorSpritePressed()
+    {
+        Events.publishSelectorSelected(this);
     }
 
     void FadeSprite()
@@ -129,10 +134,10 @@ public class SelectorSprite : Control
         }
     }
 
-    async void OnDinoDeployed(Enums.Dinos dinoType)
+    async void OnDinoDeployed(Enums.Dinos _dinoType)
     {
         // only bother if the dino being deployed is our associated ID
-        if (dinoType != dinoId)
+        if (_dinoType != this.dinoType)
         {
             return;
         }
@@ -161,6 +166,4 @@ public class SelectorSprite : Control
         HideParticles();
         deployTimer.Hide();
     }
-
-
 }

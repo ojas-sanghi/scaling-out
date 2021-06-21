@@ -29,6 +29,8 @@ public class Events : Node
 
     public static event Action dinoUpgraded;
 
+    public static event Action<SelectorSprite> selectorSelected; 
+
     ///////////////////////////////////
 
     public static void publishDinoDeployed(Enums.Dinos type) => dinoDeployed?.Invoke(type);
@@ -56,6 +58,8 @@ public class Events : Node
     public static void publishAllDinosExpended() => allDinosExpended?.Invoke();
 
     public static void publishDinoUpgraded() => dinoUpgraded?.Invoke();
+
+    public static void publishSelectorSelected(SelectorSprite selector) => selectorSelected?.Invoke(selector);
 
     public override void _Ready()
     {
