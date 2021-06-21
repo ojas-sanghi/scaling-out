@@ -27,9 +27,6 @@ public class DinoSelector : Node2D
         // get a list of children
         selectorList = hBox.GetChildren().Cast<SelectorSprite>().ToList<SelectorSprite>();
         selectorList[0].ShowParticles();
-
-        GD.Print(CombatInfo.Instance.selectedDinoType);
-
     }
 
     public override void _ExitTree()
@@ -180,7 +177,10 @@ public class DinoSelector : Node2D
 
         }
 
-        CombatInfo.Instance.selectedDinoType = this.selectedDinoType;
+        if (this.selectedDinoType != Enums.Dinos.None)
+        {
+            CombatInfo.Instance.selectedDinoType = this.selectedDinoType;
+        }
     }
 
     void OnDinoFullySpawned(Enums.Dinos dinoType)
