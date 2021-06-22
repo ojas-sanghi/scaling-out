@@ -130,7 +130,7 @@ public class DinoSelector : Node2D
                 {
                     var abilityDino = (AbilityDino)d;
                     abilityDino.ShootProjectile();
-                    GetSelectorSprite(selector.abilityType).DisableSprite();
+                    GetAbilitySelector(selector.abilityType).DisableSprite();
 
                     // TODO: figure out a better system for this
                     if (d.dinoType == Enums.Dinos.Tanky) CombatInfo.Instance.shotIce = true;
@@ -142,36 +142,14 @@ public class DinoSelector : Node2D
 
     }
 
-    SelectorSprite GetSelectorSprite(Enums.Dinos dinoType)
-    {
-        foreach (SelectorSprite s in selectorList)
-        {
-            if (!s.isAbilitySelector && s.dinoType == dinoType)
-            {
-                return s;
-            }
-        }
-        throw new KeyNotFoundException();
-    }
-
-    SelectorSprite GetSelectorSprite(Enums.SpecialAbilities ability)
-    {
-        foreach (SelectorSprite s in selectorList)
-        {
-            if (s.isAbilitySelector && s.abilityType == ability)
-            {
-                return s;
-            }
-        }
-        throw new KeyNotFoundException();
-    }
-
     // when dinos are spawned/die, check if any associated special abilities should be enabled/disabled
     void validateAbilityStatus(Enums.Dinos dinoType)
     {
         // get ability selector for associated dino type
         // then turn it on/off according 
-        var selector = GetSelectorSprite(d.dinoTypesAndAbilities[dinoType]);
+        var selector = GetAbilitySelectorOrNull(d.dinoTypesAndAbilities[dinoType]);
+        if (selector == null) return;
+
         if (CombatInfo.Instance.IsAbilityDeployable(dinoType))
         {
             selector.EnableSprite();
@@ -181,11 +159,6 @@ public class DinoSelector : Node2D
             selector.DisableSprite();
         }
 
-    }
-
-    void OnAllDinosExpended()
-    {
-        allDinosExpended = true;
     }
 
     async void OnDinosPurchased(int numDinos)
@@ -206,4 +179,58 @@ public class DinoSelector : Node2D
         }
     }
 
+    void OnAllDinosExpended()
+    {
+        allDinosExpended = true;
+    }
+
+    SelectorSprite GetDinoSelectorOrNull(Enums.Dinos dinoType)
+    {
+        foreach (SelectorSprite s in selectorList)
+        {
+            if (!s.isAbilitySelector && s.dinoType == dinoType)
+            {
+                return s;
+            }
+        }
+        return null;
+    }
+
+    SelectorSprite GetDinoSelector(Enums.Dinos dinoType)
+    {
+        var dinoSelector = GetDinoSelectorOrNull(dinoType);
+        if (dinoSelector == null)
+        {
+            throw new KeyNotFoundException("Couldn't find dino selector for passed in parameter: " + dinoType);
+        }
+        else
+        {
+            return dinoSelector;
+        }
+    }
+
+    SelectorSprite GetAbilitySelectorOrNull(Enums.SpecialAbilities ability)
+    {
+        foreach (SelectorSprite s in selectorList)
+        {
+            if (s.isAbilitySelector && s.abilityType == ability)
+            {
+                return s;
+            }
+        }
+        return null;
+    }
+
+    SelectorSprite GetAbilitySelector(Enums.SpecialAbilities ability)
+    {
+        var abilitySelector = GetAbilitySelectorOrNull(ability);
+        if (abilitySelector == null)
+        {
+            throw new KeyNotFoundException("Couldn't find ability selector for passed in parameter: " + ability);
+        }
+        else
+        {
+            return abilitySelector;
+        }
+    }
 }
