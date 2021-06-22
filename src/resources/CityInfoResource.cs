@@ -20,6 +20,4 @@ public class CityInfoResource : Resource
 
     [Export] public ConquestRewardMoney rewardMoney;
 
-    // TODO: reward $ and genes after a conquest
-
 }

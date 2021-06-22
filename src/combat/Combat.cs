@@ -43,8 +43,8 @@ public class Combat : Node
     {
         Events.roundWon -= OnRoundWon;
 
-        c.currentRound += 1;
-        c.creds += 150; // TODO: extract this to a singleton
+        c.currentRound++;
+        c.creds += 150; // TODO: extract this to a singleton (once we figure out post-round credit granting mechanic)
 
         // set the remaining to the max
         // the dinos that are bought will be added to the max later
