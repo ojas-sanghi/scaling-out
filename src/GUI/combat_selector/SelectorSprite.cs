@@ -40,6 +40,7 @@ public class SelectorSprite : Button
         sprite.Texture = spriteTexture;
         sprite.Scale = customScale;
         label.Text = text;
+        deployTimer.dinoType = this.dinoType;
         HideParticles();
 
         // if it's an ability, then disable it at the starting

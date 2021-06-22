@@ -3,7 +3,7 @@ using Godot;
 
 public class DeployTimer : Control
 {
-    Enums.Dinos dinoId = 0;
+    public Enums.Dinos dinoType = 0;
     Timer dinoTimer;
     TextureProgress progress;
     Tween tween;
@@ -16,17 +16,6 @@ public class DeployTimer : Control
         progress = (TextureProgress)FindNode("TextureProgress");
         tween = (Tween)FindNode("Tween");
 
-        // give the circle an id relating to each dino in the list
-        foreach (Enums.Dinos d in Enum.GetValues(typeof(Enums.Dinos)))
-        {
-            if (CombatInfo.Instance.selectorTimerList.Contains(d))
-            {
-                continue;
-            }
-            CombatInfo.Instance.selectorTimerList.Add(d);
-            dinoId = d;
-            break;
-        }
         progress.Hide();
     }
 
@@ -35,10 +24,10 @@ public class DeployTimer : Control
         Events.dinoDeployed -= OnDinoDeployed;
     }
 
-    void OnDinoDeployed(Enums.Dinos dinoType)
+    void OnDinoDeployed(Enums.Dinos _dinoType)
     {
         // only bother if the dino being deployed is our associated ID
-        if (dinoType != dinoId)
+        if (_dinoType != this.dinoType)
         {
             return;
         }

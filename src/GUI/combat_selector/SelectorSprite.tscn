@@ -6,6 +6,8 @@
 [ext_resource path="res://src/GUI/combat_selector/DeployTimer.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/dinos/gator_gecko/gator_gecko_icon.png" type="Texture" id=6]
 
+[sub_resource type="StyleBoxEmpty" id=1]
+
 [sub_resource type="StyleBoxEmpty" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=3]
@@ -14,14 +16,12 @@
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
-[sub_resource type="StyleBoxEmpty" id=1]
-
 [node name="SelectorSprite" type="Button"]
-custom_styles/hover = SubResource( 2 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/focus = SubResource( 4 )
-custom_styles/disabled = SubResource( 5 )
-custom_styles/normal = SubResource( 1 )
+custom_styles/hover = SubResource( 1 )
+custom_styles/pressed = SubResource( 2 )
+custom_styles/focus = SubResource( 3 )
+custom_styles/disabled = SubResource( 4 )
+custom_styles/normal = SubResource( 5 )
 text = null
 script = ExtResource( 3 )
 __meta__ = {
