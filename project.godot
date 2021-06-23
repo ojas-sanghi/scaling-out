@@ -24,6 +24,7 @@ default_bus_layout="res://src/default_bus_layout.tres"
 
 [autoload]
 
+EnumUtils="*res://src/singletons/EnumUtils.cs"
 Events="*res://src/singletons/Events.cs"
 SceneChanger="*res://src/singletons/SceneChanger.tscn"
 ShopInfo="*res://src/singletons/ShopInfo.cs"

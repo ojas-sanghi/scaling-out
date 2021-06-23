@@ -11,7 +11,7 @@ public class CityInfoResource : Resource
     [Export] public int levelNum;
 
     [Export] public Array<Enums.LaneTypes> lanesInfo;
-    // [Export] public Array<Enums.ArmyWeapons> guards; //? we doing this?
+    // [Export] public Array<Enums.ArmyGunTypes> guards; //? we doing this?
 
     [Export] public int rounds = 3;
     [Export] public Array<int> timePerRoundSeconds; // list of how long each round is, as many entries as there are rounds

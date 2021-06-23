@@ -9,7 +9,8 @@ public class UpgradeInfo
     public int unlockCostGenes;
     public Dictionary<Enums.Stats, Stats> stats;
 
-    public UpgradeInfo(string path) {
+    public UpgradeInfo(string path)
+    {
         var data = GD.Load<DinoInfoResource>(path);
 
         unlockCostGold = data.unlockCost.gold;
@@ -64,9 +65,17 @@ public class UpgradeInfo
     }
 
     // If the user has paid and unlocked the special
+    // Also ensure that they actually have the special
     public bool UnlockedSpecial()
     {
-        return GetLevel(Enums.Stats.Special) == 1;
+        if (HasSpecial())
+        {
+            return GetLevel(Enums.Stats.Special) == 1;
+        }
+        else
+        {
+            return false;
+        }
     }
     // If the dino has a special you can unlock
     public bool HasSpecial()
@@ -103,7 +112,8 @@ public class UpgradeInfo
         }
 
         Stats statData = stats[stat];
-        if (stat == Enums.Stats.Special) {
+        if (stat == Enums.Stats.Special)
+        {
             statData = (SpecialStat)statData;
         }
         int GoldCost = statData.GetGold(CurrentLevel + 1);

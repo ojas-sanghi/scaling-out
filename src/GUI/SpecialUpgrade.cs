@@ -23,25 +23,15 @@ public class SpecialUpgrade : Control
 
     void SetText()
     {
-        switch (ShopInfo.shopDino)
-        {
-            case Enums.Dinos.Tanky:
-                name.Text = "Ice Projectile";
-                description.Text = "Unlock an ice projectile. When activated, will launch from a random tanky dinosaur on the map. On impact, slows down the rate of fire of the army. Can be used once per round.";
-                sprite.Texture = GD.Load<Texture>("res://assets/dinos/misc/ice.png");
-                video.Stream = GD.Load<VideoStream>("res://assets/abilities/previews/ice-preview.ogv");
-                break;
+        var associatedAbility = DinoInfo.Instance.dinoTypesAndAbilities[ShopInfo.shopDino];
 
-            case Enums.Dinos.Warrior:
-                name.Text = "Fire Projectile";
-                description.Text = "Unlock a fire projectile. When activated, will launch from a random warrior dino on the map. On impact, stops the army from firing from a few seconds. Can be used once per round.";
-                sprite.Texture = GD.Load<Texture>("res://assets/dinos/misc/fire.png");
-                // video.Stream = GD.Load<VideoStream>("res://assets/abilities/previews/ice-preview.ogv");
-                break;
-        }
+        name.Text = EnumUtils.GetSpecialAbilityName(associatedAbility);
+        description.Text = EnumUtils.GetSpecialAbilityDescription(associatedAbility);
+        sprite.Texture = DinoInfo.Instance.specialAbilityIcons[associatedAbility];
+
+        video.Stream = DinoInfo.Instance.specialAbilityVidPreviews[associatedAbility];
+
         video.Play();
-
-        // TODO: add gator
         //? Maybe find a new video format for the preview vids
     }
 

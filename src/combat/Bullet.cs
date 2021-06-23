@@ -3,16 +3,16 @@ using Enums;
 
 public class Bullet : Area2D
 {
-    public ArmyWeapons mode = ArmyWeapons.Pistol;
+    public ArmyGunTypes mode = ArmyGunTypes.Pistol;
 
-    int speed = CombatInfo.Instance.bulletSpeed / 2;
+    public int speed;
     int bulletDmg = 14;
 
     public override void _Ready()
     {
         Timer timer = (Timer)FindNode("ExistenceTimer");
 
-        if (mode == ArmyWeapons.Shotgun)
+        if (mode == ArmyGunTypes.Shotgun)
         {
             bulletDmg = 6;
             timer.WaitTime = (float)0.75;

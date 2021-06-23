@@ -2,7 +2,7 @@ using Godot;
 
 public class BulletsGroup : Area2D
 {
-    int speed = CombatInfo.Instance.bulletSpeed / 2;
+    public int speed;
 
     public override void _PhysicsProcess(float delta)
     {

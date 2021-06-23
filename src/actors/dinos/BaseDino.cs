@@ -175,8 +175,6 @@ public class BaseDino : Area2D
 
         pathTween.SetActive(false);
 
-        // todo: play attacking animations
-
         animPlayer.Stop();
         attackTimer.Start();
     }

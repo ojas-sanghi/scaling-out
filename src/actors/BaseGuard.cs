@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public class BaseGuard : Area2D
 {
@@ -9,21 +10,10 @@ public class BaseGuard : Area2D
 
         GD.Randomize();
         uint random = GD.Randi() % 3;
-        // TODO: convert this to an enum
-        string weapon = "rifle";
-        switch (random)
-        {
-            case 0:
-                weapon = "rifle";
-                break;
-            case 1:
-                weapon = "handgun";
-                break;
-            case 2:
-                weapon = "shotgun";
-                break;
-        }
-        string animString = "move_" + weapon;
+
+        Enums.ArmyGunTypes weapon = (Enums.ArmyGunTypes)random;
+
+        string animString = "move_" + weapon.ToString();
         animSprite.Play(animString);
     }
 

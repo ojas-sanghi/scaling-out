@@ -15,7 +15,6 @@ public class BuyMenu : Control
 
     void OnBuyMenuVisibilityChanged()
     {
-        // TODO: make this a time bonus. se #119 https://app.gitkraken.com/glo/view/card/517b681f2d11497db53fc1bec843370a
         var bonusLabel = (Label)FindNode("ArmyElimBonus");
 
         UpdateMaxValue();

@@ -9,11 +9,13 @@ public class BulletSpawner : Node2D
 
     List<Bullet> bullets = new List<Bullet>();
 
-    public ArmyWeapons mode;
+    public ArmyGunTypes mode;
+    public int bulletSpeed = 200;
 
     void NewBullet()
     {
         Bullet newBullet = (Bullet)bullet.Instance();
+        newBullet.speed = bulletSpeed;
         newBullet.mode = mode;
         bullets.Add(newBullet);
     }
@@ -23,9 +25,10 @@ public class BulletSpawner : Node2D
         bullets.Clear();
 
         BulletsGroup bulletsGroup = (BulletsGroup)bulletGroupScene.Instance();
+        bulletsGroup.speed = bulletSpeed;
         bulletsGroup.RotationDegrees = (float)GD.RandRange(-5, 5);
 
-        if (mode == ArmyWeapons.Shotgun)
+        if (mode == ArmyGunTypes.Shotgun)
         {
             // make three new bullets
             foreach (int i in GD.Range(0, 3))

@@ -64,7 +64,7 @@ public class DinoSelector : Node2D
             selectorPositionInList++;
         }
 
-        foreach (KeyValuePair<Enums.SpecialAbilities, StreamTexture> n in d.dinoAbilityIcons)
+        foreach (KeyValuePair<Enums.SpecialAbilities, StreamTexture> n in d.specialAbilityIcons)
         {
             // lookup dictionary to get key by value
             // ty :) https://stackoverflow.com/questions/2444033/get-dictionary-key-by-value#2444064
@@ -132,9 +132,7 @@ public class DinoSelector : Node2D
                     abilityDino.ShootProjectile();
                     GetAbilitySelector(selector.abilityType).DisableSprite();
 
-                    // TODO: figure out a better system for this
-                    if (d.dinoType == Enums.Dinos.Tanky) CombatInfo.Instance.shotIce = true;
-                    else if (d.dinoType == Enums.Dinos.Warrior) CombatInfo.Instance.shotFire = true;
+                    CombatInfo.Instance.abilitiesUsed.Append(DinoInfo.Instance.dinoTypesAndAbilities[d.dinoType]);
                 }
             }
         }

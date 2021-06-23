@@ -1,4 +1,3 @@
-using System;
 using System.ComponentModel;
 
 namespace Enums
@@ -35,10 +34,10 @@ namespace Enums
 
     public enum ShopUpgradeButtonModes
     {
-        None, Hp, Delay, Def, Dodge, Dmg, Speed, Ice, Fire
+        None, Hp, Delay, Def, Dodge, Dmg, Speed, Special
     }
 
-    public enum ArmyWeapons
+    public enum ArmyGunTypes
     {
         Pistol, Rifle, Shotgun
     }
@@ -284,30 +283,6 @@ namespace Enums
         Cheyenne
     }
 
-    public static class EnumToString
-    {
-        public static string GetUSAPlaceName<T>(this T place) where T : struct
-        {
-            // ensure they pass an enum
-            var type = place.GetType();
-            if (!type.IsEnum) {
-                throw new ArgumentException($"{nameof(place)} must be of Enum type", nameof(place));
-            }
-
-            // return enum's description if it has it; if not, return the enum as a string
-            var memberInfo = type.GetMember(place.ToString());
-            if (memberInfo.Length > 0)
-            {
-                var attrs = memberInfo[0].GetCustomAttributes(typeof(DescriptionAttribute), false);
-                if (attrs.Length > 0)
-                {
-                    return ((DescriptionAttribute)attrs[0]).Description;
-                }
-            }
-            return place.ToString();
-        }
-
-    }
-
+    
 
 }

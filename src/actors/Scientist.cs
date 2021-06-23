@@ -1,4 +1,6 @@
 using Godot;
+using System;
+using System.Linq;
 
 public class Scientist : KinematicBody2D
 {
@@ -19,15 +21,9 @@ public class Scientist : KinematicBody2D
         Events.levelPassed += OnLevelPassed;
         Events.coinGrabbed += OnCoinGrabbed;
 
-        // TODO: find a better way of doing this
-        if (StealthInfo.findingIce)
-        {
-            nodePath = "/root/StealthIce/";
-        }
-        else
-        {
-            nodePath = "/root/StealthFire/";
-        }
+        // TODO: when more gene-specific scenes are made, change this
+        string geneString = StealthInfo.geneBeingPursued.ToString();
+        nodePath = "/root/Stealth" + geneString.First().ToString().ToUpper() + geneString.Substring(1);
     }
 
     public override void _ExitTree()

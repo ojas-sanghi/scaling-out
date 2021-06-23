@@ -91,25 +91,18 @@ public class ShopUpgradeButton : Button
                 image.Texture = GD.Load<Texture>("res://assets/abilities/speed.png");
                 statButtonMode = Enums.Stats.Speed;
                 break;
-            // todo: figure out a better way for the ice and fire? 
-            // maybe consolidate into b.Special and get icons and stuff like that from the resource file
-            // that would even fix the issue of having two different buttonModes
-            // maybe do just special and then check what to do based on what dino from ShopInfo. but resource sounds better
-            case b.Ice:
+            case b.Special:
                 name.Text = "Special";
                 stat.Text = "";
                 statNum.Text = "";
-                image.Texture = GD.Load<Texture>("res://assets/abilities/ice.png");
-                statButtonMode = Enums.Stats.Special;
-                break;
-            case b.Fire:
-                name.Text = "Special";
-                stat.Text = "";
-                statNum.Text = "";
-                image.Texture = GD.Load<Texture>("res://assets/abilities/fire.png");
-                statButtonMode = Enums.Stats.Special;
-                break;
+                
+                // get the current special ability type using the info about the current dino screen we're on (shopinfo.shopdino)
+                // then get the icon using that special ability type
+                var ability = DinoInfo.Instance.dinoTypesAndAbilities[ShopInfo.shopDino];
+                image.Texture = DinoInfo.Instance.specialAbilityIcons[ability];
 
+                statButtonMode = Enums.Stats.Special;
+                break;
         }
         infoSet = true;
 

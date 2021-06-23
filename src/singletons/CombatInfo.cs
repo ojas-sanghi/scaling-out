@@ -19,16 +19,12 @@ public class CombatInfo : Node
     public List<Enums.Dinos> dinosDeploying = new List<Enums.Dinos>();
     public List<Enums.Dinos> selectorTimerList = new List<Enums.Dinos>();
 
-    public bool shotIce;
-    public bool shotFire;
+    public List<Enums.SpecialAbilities> abilitiesUsed;
 
     public int currentRound = 1;
     public int maxRounds = 3;
 
     public int creds = 100;
-
-    // TODO: Remove this from here and place it somewhere it makes sense
-    public int bulletSpeed = 400;
 
     public CombatInfo()
     {
@@ -59,8 +55,7 @@ public class CombatInfo : Node
         dinosDeploying.Clear();
         selectorTimerList.Clear();
 
-        shotIce = false;
-        shotFire = false;
+        abilitiesUsed = new List<Enums.SpecialAbilities>();
 
         maxRounds = _MaxRounds;
     }
@@ -76,18 +71,11 @@ public class CombatInfo : Node
             if (baseDino.dinoType == dinoType) specificDinoTypeLeft = true;
         }
 
-        if (dinoType == Enums.Dinos.Tanky)
-        {
-            return specificDinoTypeLeft && d.GetDinoInfo(dinoType).UnlockedSpecial() && !this.shotIce;
-        }
-        else if (dinoType == Enums.Dinos.Warrior)
-        {
-            return specificDinoTypeLeft && d.GetDinoInfo(dinoType).UnlockedSpecial() && !this.shotFire;
-        }
-        else
-        {
-            return false;
-        }
+        // check for 3 things
+        // 1. there are dinos of dinoType left that are still alive
+        // 2. user has unlocked the special ability
+        // 3. the associated ability for dinoType has not been used yet
+        return specificDinoTypeLeft && d.GetDinoInfo(dinoType).UnlockedSpecial() && !abilitiesUsed.Contains(DinoInfo.Instance.dinoTypesAndAbilities[dinoType]);
     }
 
     void OnDinoDeployed(Enums.Dinos dinoType)

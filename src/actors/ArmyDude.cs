@@ -3,7 +3,7 @@ using Enums;
 
 public class ArmyDude : Area2D
 {
-    ArmyWeapons mode;
+    ArmyGunTypes mode;
 
     double rps;
     int magSize;
@@ -26,21 +26,21 @@ public class ArmyDude : Area2D
         switch (random)
         {
             case 0:
-                mode = ArmyWeapons.Pistol;
+                mode = ArmyGunTypes.Pistol;
                 rps = 1;
                 magSize = 15;
                 reloadTime = 2;
                 break;
 
             case 1:
-                mode = ArmyWeapons.Rifle;
+                mode = ArmyGunTypes.Rifle;
                 rps = 2;
                 magSize = 20;
                 reloadTime = 3;
                 break;
 
             case 2:
-                mode = ArmyWeapons.Shotgun;
+                mode = ArmyGunTypes.Shotgun;
                 rps = 1.2;
                 magSize = 5;
                 reloadTime = 2.5;
@@ -96,7 +96,6 @@ public class ArmyDude : Area2D
 
     }
 
-    // TODO: fix animation playuer going to wrong function
     async void CheckReload()
     {
         //? how does this work

@@ -11,9 +11,10 @@ public class DinoInfo : Node
 
     public Dictionary<Enums.Dinos, PackedScene> dinoList;
     public Dictionary<Enums.Dinos, StreamTexture> dinoIcons;
-    public Dictionary<Enums.Dinos, Enums.SpecialAbilities> dinoTypesAndAbilities;
-    public Dictionary<Enums.SpecialAbilities, StreamTexture> dinoAbilityIcons;
     public Dictionary<Enums.Dinos, UpgradeInfo> upgradesInfo;
+    public Dictionary<Enums.Dinos, Enums.SpecialAbilities> dinoTypesAndAbilities;
+    public Dictionary<Enums.SpecialAbilities, StreamTexture> specialAbilityIcons;
+    public Dictionary<Enums.SpecialAbilities, VideoStream> specialAbilityVidPreviews;
 
     public DinoInfo()
     {
@@ -40,6 +41,14 @@ public class DinoInfo : Node
             {Enums.Dinos.Gator, GD.Load<StreamTexture>("res://assets/dinos/gator_gecko/gator_gecko_icon.png")},
         };
 
+        upgradesInfo = new Dictionary<Enums.Dinos, UpgradeInfo>()
+        {
+            {Enums.Dinos.Mega, new UpgradeInfo("res://src/actors/dinos/stats/MegaDino.tres")},
+            {Enums.Dinos.Tanky, new UpgradeInfo("res://src/actors/dinos/stats/TankyDino.tres")},
+            {Enums.Dinos.Warrior, new UpgradeInfo("res://src/actors/dinos/stats/WarriorDino.tres")},
+            {Enums.Dinos.Gator, new UpgradeInfo("res://src/actors/dinos/stats/GatorGecko.tres")}
+        };
+
         dinoTypesAndAbilities = new Dictionary<Enums.Dinos, Enums.SpecialAbilities>()
         {
             {Enums.Dinos.Mega, Enums.SpecialAbilities.None},
@@ -48,19 +57,18 @@ public class DinoInfo : Node
             {Enums.Dinos.Gator, Enums.SpecialAbilities.None},
         };
 
-        dinoAbilityIcons = new Dictionary<Enums.SpecialAbilities, StreamTexture>()
+        specialAbilityIcons = new Dictionary<Enums.SpecialAbilities, StreamTexture>()
         {
             {Enums.SpecialAbilities.IceProjectile, GD.Load<StreamTexture>("res://assets/dinos/misc/ice.png")},
             {Enums.SpecialAbilities.FireProjectile, GD.Load<StreamTexture>("res://assets/dinos/misc/fire.png")},
         };
 
-        upgradesInfo = new Dictionary<Enums.Dinos, UpgradeInfo>()
+        specialAbilityVidPreviews = new Dictionary<Enums.SpecialAbilities, VideoStream>()
         {
-            {Enums.Dinos.Mega, new UpgradeInfo("res://src/actors/dinos/stats/MegaDino.tres")},
-            {Enums.Dinos.Tanky, new UpgradeInfo("res://src/actors/dinos/stats/TankyDino.tres")},
-            {Enums.Dinos.Warrior, new UpgradeInfo("res://src/actors/dinos/stats/WarriorDino.tres")},
-            {Enums.Dinos.Gator, new UpgradeInfo("res://src/actors/dinos/stats/GatorGecko.tres")}
+            {Enums.SpecialAbilities.IceProjectile, GD.Load<VideoStream>("res://assets/abilities/previews/ice-preview.ogv")},
+            {Enums.SpecialAbilities.FireProjectile, new VideoStreamWebm()},
         };
+
     }
 
     public UpgradeInfo GetDinoInfo(Enums.Dinos dino)

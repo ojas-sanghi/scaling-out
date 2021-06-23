@@ -29,26 +29,8 @@ public class UpgradeScreen : Control
 
     void SetInfo()
     {
-        // TODO: figure out a better way of doing this
-        switch (ShopInfo.shopDino)
-        {
-            case Enums.Dinos.Tanky:
-                name.Text = "TANKY DINO";
-                image.Texture = GD.Load<Texture>("res://assets/dinos/tanky_dino/Armored_Dino_ICON.png");
-                break;
-
-            case Enums.Dinos.Warrior:
-                name.Text = "WARRIOR DINO";
-                image.Texture = GD.Load<Texture>("res://assets/dinos/warrior_dino/Tribal_Dino_icon.png");
-                break;
-
-            case Enums.Dinos.Mega:
-                name.Text = "MEGA DINO";
-                image.Texture = GD.Load<Texture>("res://assets/dinos/mega_dino/mega_dino.png");
-                break;
-
-                // TODO: add gator dino
-        }
+        name.Text = EnumUtils.GetDinoName(ShopInfo.shopDino).ToUpper();
+        image.Texture = DinoInfo.Instance.dinoIcons[ShopInfo.shopDino];
 
         // hide special upgrade panel if the dino doesn't have any
         if (!DinoInfo.Instance.GetDinoInfo(ShopInfo.shopDino).HasSpecial())
