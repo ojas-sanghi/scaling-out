@@ -11,3 +11,4 @@ levelNum = 2
 lanesInfo = [ 0, 1, 0 ]
 rounds = 3
 timePerRoundSeconds = [ 100, 100, 100 ]
+rewardGold = 100

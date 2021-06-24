@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Enums;
 using Godot;
 
 public class LaneInfo : Node
@@ -7,6 +6,7 @@ public class LaneInfo : Node
     public static LaneInfo Instance;
     
     public Dictionary<Enums.LaneTypes, LaneDetails> laneInfoList;
+    public record LaneDetails(Texture image, Curve2D curve);
 
     public override void _Ready()
     {

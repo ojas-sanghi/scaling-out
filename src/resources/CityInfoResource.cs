@@ -18,6 +18,6 @@ public class CityInfoResource : Resource
 
     // [Export] public Array<int> credsPerRound; //? how will this work??  #119
 
-    [Export] public ConquestRewardMoney rewardMoney;
+    [Export] public int rewardGold;
 
 }

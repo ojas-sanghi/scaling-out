@@ -1,12 +1,6 @@
-[gd_resource type="Resource" load_steps=4 format=2]
+[gd_resource type="Resource" load_steps=2 format=2]
 
 [ext_resource path="res://src/resources/CityInfoResource.cs" type="Script" id=1]
-[ext_resource path="res://src/resources/ConquestRewardMoney.cs" type="Script" id=2]
-
-[sub_resource type="Resource" id=1]
-script = ExtResource( 2 )
-gold = 15
-genes = 15
 
 [resource]
 script = ExtResource( 1 )
@@ -17,4 +11,4 @@ levelNum = 1
 lanesInfo = [ 0, 0, 0 ]
 rounds = 3
 timePerRoundSeconds = [ 120, 120, 120 ]
-rewardMoney = SubResource( 1 )
+rewardGold = 50

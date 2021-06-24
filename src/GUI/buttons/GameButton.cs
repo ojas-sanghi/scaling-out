@@ -96,7 +96,7 @@ public class GameButton : Button
                 scnChng.GoToScene("res://src/combat/CombatScreen.tscn");
                 break;
             case b.RetryStealth:
-                if (StealthInfo.findingIce)
+                if (StealthInfo.geneBeingPursued == Enums.Genes.Ice)
                 {
                     scnChng.GoToScene("res://src/stealth/StealthIce.tscn");
                 }
@@ -112,13 +112,11 @@ public class GameButton : Button
                 scnChng.GoToScene("res://src/GUI/screens/DinoUpgradeSelectScreen.tscn");
                 break;
             case b.StealthIce:
-                StealthInfo.findingIce = true;
-                StealthInfo.findingFire = false;
+                StealthInfo.geneBeingPursued = Enums.Genes.Ice;
                 scnChng.GoToScene("res://src/stealth/StealthIce.tscn");
                 break;
             case b.StealthFire:
-                StealthInfo.findingIce = false;
-                StealthInfo.findingFire = true;
+                StealthInfo.geneBeingPursued = Enums.Genes.Fire;
                 scnChng.GoToScene("res://src/stealth/StealthFire.tscn");
                 break;
             // nothing for plus, minus, or buy dinos: those are handled in their own scenes

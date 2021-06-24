@@ -2,6 +2,6 @@
   <PropertyGroup>
     <TargetFramework>net472</TargetFramework>
     <RootNamespace>ScalingOut</RootNamespace>
-    <LangVersion>8</LangVersion>
+    <LangVersion>9.0</LangVersion>
   </PropertyGroup>
 </Project>
