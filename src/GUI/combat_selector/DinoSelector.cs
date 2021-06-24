@@ -45,7 +45,7 @@ public class DinoSelector : Node2D
         foreach (KeyValuePair<Enums.Dinos, StreamTexture> n in d.dinoIcons)
         {
             // skip if not unlocked the dino yet
-            if (!PlayerStats.dinosUnlocked.Contains(n.Key))
+            if (!PlayerStats.Instance.dinosUnlocked.Contains(n.Key))
             {
                 continue;
             }
@@ -71,7 +71,7 @@ public class DinoSelector : Node2D
             Enums.Dinos associatedDino = d.dinoTypesAndAbilities.FirstOrDefault(x => x.Value == n.Key).Key;
 
             // skip if not unlocked the speical for the dino yet or if not unlocked the dino itself
-            if (!PlayerStats.dinosUnlocked.Contains(associatedDino) || !d.GetDinoInfo(associatedDino).HasSpecial())
+            if (!PlayerStats.Instance.dinosUnlocked.Contains(associatedDino) || !d.GetDinoInfo(associatedDino).HasSpecial())
             {
                 continue;
             }

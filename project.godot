@@ -33,6 +33,7 @@ CombatInfo="*res://src/singletons/CombatInfo.cs"
 DinoInfo="*res://src/singletons/DinoInfo.cs"
 LaneInfo="*res://src/singletons/LaneInfo.cs"
 CitiesInfo="*res://src/singletons/CitiesInfo.cs"
+PlayerStats="*res://src/singletons/PlayerStats.cs"
 
 [debug]
 

@@ -12,10 +12,11 @@ public class ShopUnlockButton : Button
     public override void _Ready()
     {
         // don't do anything if the dino is unlocked
-        if (PlayerStats.dinosUnlocked.Contains(ShopInfo.shopDino))
+        if (PlayerStats.Instance.dinosUnlocked.Contains(ShopInfo.shopDino))
         {
             return;
         }
+        
         richLabel = GetNode<RichTextLabel>("RichTextLabel");
         
         var dinoUpgradeInfo = DinoInfo.Instance.GetDinoInfo(ShopInfo.shopDino);
@@ -47,7 +48,8 @@ public class ShopUnlockButton : Button
         {
             PlayerStats.gold -= goldCost;
             PlayerStats.genes -= genesCost;
-            PlayerStats.dinosUnlocked.Add(ShopInfo.shopDino);
+            PlayerStats.Instance.dinosUnlocked.Add(ShopInfo.shopDino);
+            PlayerStats.Instance.statsResource.SaveResource();
             Events.publishDinoUnlocked();
         }
     }

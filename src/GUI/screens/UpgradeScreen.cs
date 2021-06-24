@@ -31,12 +31,6 @@ public class UpgradeScreen : Control
     {
         name.Text = EnumUtils.GetDinoName(ShopInfo.shopDino).ToUpper();
         image.Texture = DinoInfo.Instance.dinoIcons[ShopInfo.shopDino];
-
-        // hide special upgrade panel if the dino doesn't have any
-        if (!DinoInfo.Instance.GetDinoInfo(ShopInfo.shopDino).HasSpecial())
-        {
-            GetNode<Control>("SpecialUpgrade").Hide();
-        }
     }
 
     void SetDisabledUIStatus()
@@ -50,7 +44,7 @@ public class UpgradeScreen : Control
         Label lockedStatusLabel = GetNode<Label>("LockedStatus");
 
         // if locked
-        if (!PlayerStats.dinosUnlocked.Contains(ShopInfo.shopDino))
+        if (!PlayerStats.Instance.dinosUnlocked.Contains(ShopInfo.shopDino))
         {
             shaderToChangeTo = BWShader;
             themeToChangeTo = null;

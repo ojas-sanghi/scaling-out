@@ -8,10 +8,11 @@ public class UpgradeInfo
     public int unlockCostGold;
     public int unlockCostGenes;
     public Dictionary<Enums.Stats, Stats> stats;
+    public DinoInfoResource data;
 
     public UpgradeInfo(string path)
     {
-        var data = GD.Load<DinoInfoResource>(path);
+        data = GD.Load<DinoInfoResource>(path);
 
         unlockCostGold = data.unlockCost.gold;
         unlockCostGenes = data.unlockCost.genes;
@@ -31,7 +32,7 @@ public class UpgradeInfo
     {
         if (!IsMaxedOut(stat))
         {
-            stats[stat].level++;
+            data.UpgradeStat(stats[stat]);
         }
     }
 

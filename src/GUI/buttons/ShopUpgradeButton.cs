@@ -92,6 +92,15 @@ public class ShopUpgradeButton : Button
                 statButtonMode = Enums.Stats.Speed;
                 break;
             case b.Special:
+                statButtonMode = Enums.Stats.Special;
+                
+                var dinoUpgradeInfo = DinoInfo.Instance.upgradesInfo[ShopInfo.shopDino];
+                if (!dinoUpgradeInfo.HasSpecial()) {
+                    Hide();
+                    break;
+                }
+
+
                 name.Text = "Special";
                 stat.Text = "";
                 statNum.Text = "";
@@ -101,7 +110,6 @@ public class ShopUpgradeButton : Button
                 var ability = DinoInfo.Instance.dinoTypesAndAbilities[ShopInfo.shopDino];
                 image.Texture = DinoInfo.Instance.specialAbilityIcons[ability];
 
-                statButtonMode = Enums.Stats.Special;
                 break;
         }
         infoSet = true;
