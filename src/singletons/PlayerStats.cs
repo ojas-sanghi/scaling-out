@@ -13,6 +13,11 @@ public class PlayerStats : Node
     public Array<Enums.Dinos> dinosUnlocked;
     public Array<Enums.Genes> genesFound;
 
+    public PlayerStats()
+    {
+        Instance = this;
+    }
+
     public override void _Ready()
     {
         Instance = this;

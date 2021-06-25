@@ -8,6 +8,8 @@ public class CityInfoResource : Resource
     [Export] public Enums.USACities city;
     [Export] public bool capitalCity;
 
+    [Export] public Enums.Biomes biome;
+
     [Export] public int levelNum;
 
     [Export] public Array<Enums.LaneTypes> lanesInfo;

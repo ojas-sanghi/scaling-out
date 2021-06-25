@@ -5,6 +5,11 @@ public class SceneChanger : Control
 {
     public static SceneChanger Instance;
 
+    public SceneChanger()
+    {
+        Instance = this;
+    }
+
     public override void _Ready()
     {
         Instance = this;

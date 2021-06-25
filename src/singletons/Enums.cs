@@ -47,6 +47,11 @@ namespace Enums
         RoadStraight, RoadEmpty
     }
 
+    public enum Biomes
+    {
+        Desert, Forest, Grassland, Hills, River, Oceanside
+    }
+
     public enum USAStates
     {
         [Description("Alabama")] AL,

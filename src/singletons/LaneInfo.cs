@@ -8,6 +8,11 @@ public class LaneInfo : Node
     public Dictionary<Enums.LaneTypes, LaneDetails> laneInfoList;
     public record LaneDetails(Texture image, Curve2D curve);
 
+    public LaneInfo()
+    {
+        Instance = this;
+    }
+    
     public override void _Ready()
     {
         Instance = this;
