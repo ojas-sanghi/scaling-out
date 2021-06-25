@@ -11,7 +11,7 @@ public class SpecialUpgrade : Control
     public override void _Ready()
     {
         // don't do anything if this dino doesn't have a speical upgrade
-        var dinoUpgradeInfo = DinoInfo.Instance.upgradesInfo[ShopInfo.shopDino];
+        var dinoUpgradeInfo = DinoInfo.Instance.GetDinoInfo(ShopInfo.shopDino);
         if (!dinoUpgradeInfo.HasSpecial())
         {
             SetProcess(false);

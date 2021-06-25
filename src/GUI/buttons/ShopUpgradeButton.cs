@@ -36,6 +36,7 @@ public class ShopUpgradeButton : Button
     protected Label stat;
     protected Label statNum;
     protected Sprite image;
+    CostIndicator costIndicator;
     HBoxContainer squaresContainer;
     Tween tween;
 
@@ -57,6 +58,7 @@ public class ShopUpgradeButton : Button
         stat = (Label)FindNode("Stat");
         statNum = (Label)FindNode("StatNum");
         image = (Sprite)FindNode("Img");
+        costIndicator = (CostIndicator)FindNode("CostIndicator");
         squaresContainer = (HBoxContainer)FindNode("Squares");
         tween = (Tween)FindNode("Tween");
 
@@ -68,6 +70,11 @@ public class ShopUpgradeButton : Button
         DoEverything();
     }
 
+    void DoEverything()
+    {
+        SetButtonInfo();
+        SetUpgradeSquares();
+    }
 
     public virtual void SetButtonInfo()
     {
@@ -93,23 +100,35 @@ public class ShopUpgradeButton : Button
                 break;
             case b.Special:
                 statButtonMode = Enums.Stats.Special;
-                
-                var dinoUpgradeInfo = DinoInfo.Instance.upgradesInfo[ShopInfo.shopDino];
-                if (!dinoUpgradeInfo.HasSpecial()) {
+
+                if (!dinoInfo.HasSpecial())
+                {
                     Hide();
                     break;
                 }
 
-
-                name.Text = "Special";
-                stat.Text = "";
-                statNum.Text = "";
-                
                 // get the current special ability type using the info about the current dino screen we're on (shopinfo.shopdino)
                 // then get the icon using that special ability type
                 var ability = DinoInfo.Instance.dinoTypesAndAbilities[ShopInfo.shopDino];
                 image.Texture = DinoInfo.Instance.specialAbilityIcons[ability];
+                name.Text = "Special";
+                stat.Text = "";
+                statNum.Text = "";
 
+                // check if player has unlocked gene for the ability
+                if (PlayerStats.Instance.genesFound.Contains(DinoInfo.Instance.dinoAbilitiesAndGenes[ability]))
+                {
+                    Disabled = false;
+                    image.Material = null;
+                    costIndicator.Material = null;
+                }
+                // if they haven't
+                else
+                {
+                    Disabled = true;
+                    // for some reason, the Materials need to be set in _process
+                    // otherwise they keep getting reset to null
+                }
                 break;
         }
         infoSet = true;
@@ -127,6 +146,32 @@ public class ShopUpgradeButton : Button
         List<int> cost = dinoInfo.GetNextUpgradeCost(statButtonMode);
         goldCost = cost[0];
         geneCost = cost[1];
+    }
+
+    void SetUpgradeSquares()
+    {
+        maxSquares = dinoInfo.GetMaxLevel(statButtonMode);
+
+        for (int i = 0; i < maxSquares; i++)
+        {
+            var newSquare = new ColorRect();
+            newSquare.Color = new Color(0, 0, 0, (float)0.5);
+            newSquare.RectMinSize = new Vector2(containerLength / maxSquares, containerHeight);
+            newSquare.RectSize = newSquare.RectMinSize;
+
+            // don't make new squares every time
+            if (firstRun)
+            {
+                squaresContainer.AddChild(newSquare);
+            }
+        }
+        firstRun = false;
+        ColorSquares();
+    }
+
+    void ColorSquares()
+    {
+        ColorSquares(new Color(1, 1, 1, 1));
     }
 
     void ColorSquares(Color color)
@@ -156,39 +201,12 @@ public class ShopUpgradeButton : Button
         }
     }
 
-    void ColorSquares()
-    {
-        ColorSquares(new Color(1, 1, 1, 1));
-    }
-
-    void SetUpgradeSquares()
-    {
-        maxSquares = dinoInfo.GetMaxLevel(statButtonMode);
-
-        for (int i = 0; i < maxSquares; i++)
-        {
-            var newSquare = new ColorRect();
-            newSquare.Color = new Color(0, 0, 0, (float)0.5);
-            newSquare.RectMinSize = new Vector2(containerLength / maxSquares, containerHeight);
-            newSquare.RectSize = newSquare.RectMinSize;
-
-            // don't make new squares every time
-            if (firstRun)
-            {
-                squaresContainer.AddChild(newSquare);
-            }
-        }
-        firstRun = false;
-        ColorSquares();
-    }
-
-    void DoEverything()
-    {
-        SetButtonInfo();
-        SetUpgradeSquares();
-    }
-
     //////////////
+
+    void OnUpgradeButtonButtonUp()
+    {
+        StopUpgrading();
+    }
 
     void StopUpgrading()
     {
@@ -217,11 +235,6 @@ public class ShopUpgradeButton : Button
         tween.Start();
     }
 
-    void OnUpgradeButtonButtonUp()
-    {
-        StopUpgrading();
-    }
-
     void OnTweenTweenCompleted(object @object, NodePath key)
     {
         PlayerStats.gold -= goldCost;
@@ -232,6 +245,18 @@ public class ShopUpgradeButton : Button
 
         StopUpgrading();
         DoEverything();
+    }
+
+    public override void _Process(float delta)
+    {
+        if (Disabled)
+        {
+            var BWShader = GD.Load<ShaderMaterial>("res://assets/shaders/BlackWhiteShaderMaterial.tres");
+
+            image.Material = BWShader;
+            costIndicator.Material = BWShader;
+        }
+
     }
 
 }

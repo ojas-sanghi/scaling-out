@@ -13,6 +13,7 @@ public class DinoInfo : Node
     public Dictionary<Enums.Dinos, StreamTexture> dinoIcons;
     public Dictionary<Enums.Dinos, UpgradeInfo> upgradesInfo;
     public Dictionary<Enums.Dinos, Enums.SpecialAbilities> dinoTypesAndAbilities;
+    public Dictionary<Enums.SpecialAbilities, Enums.Genes> dinoAbilitiesAndGenes;
     public Dictionary<Enums.SpecialAbilities, StreamTexture> specialAbilityIcons;
     public Dictionary<Enums.SpecialAbilities, VideoStream> specialAbilityVidPreviews;
 
@@ -55,6 +56,12 @@ public class DinoInfo : Node
             {Enums.Dinos.Tanky, Enums.SpecialAbilities.IceProjectile},
             {Enums.Dinos.Warrior, Enums.SpecialAbilities.FireProjectile},
             {Enums.Dinos.Gator, Enums.SpecialAbilities.None},
+        };
+
+        dinoAbilitiesAndGenes = new Dictionary<Enums.SpecialAbilities, Enums.Genes>()
+        {
+            {Enums.SpecialAbilities.IceProjectile, Enums.Genes.Ice},
+            {Enums.SpecialAbilities.FireProjectile, Enums.Genes.Fire},
         };
 
         specialAbilityIcons = new Dictionary<Enums.SpecialAbilities, StreamTexture>()
