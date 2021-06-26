@@ -93,12 +93,10 @@ script = ExtResource( 62 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "move_handgun"
-frame = 2
+frame = 6
 playing = true
 
-[node name="Forward" type="Tween" parent="."]
-
-[node name="Backward" type="Tween" parent="."]
+[node name="Tween" type="Tween" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( -9.52698, 11.3362 )

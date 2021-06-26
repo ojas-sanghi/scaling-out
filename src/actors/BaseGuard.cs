@@ -17,10 +17,8 @@ public class BaseGuard : Area2D
         animSprite.Play(animString);
     }
 
-    //? Is this connected to the FOV code? Do we change this?
     void OnBaseGuardBodyEntered(Node2D body)
     {
-        GD.Print("body entered");
         // var rotateDeg = Mathf.
         var rotateBy = Position.AngleTo(body.Position);
         Rotation += rotateBy;

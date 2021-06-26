@@ -1,48 +1,67 @@
 using Godot;
+using System.Threading.Tasks;
 
 public class PathFollowGuard : Path2D
 {
     PathFollow2D follow;
     BaseGuard baseGuard;
-    Tween forwardTween;
-    Tween backwardTween;
+    Tween tween;
 
     int walkTime = 4;
+    float turnTime = 1.5f;
+    float pauseTime = 0.5f;
 
     public override void _Ready()
     {
         follow = (PathFollow2D)FindNode("Follow");
         baseGuard = (BaseGuard)FindNode("BaseGuard");
-        forwardTween = (Tween)baseGuard.GetNode("Forward");
-        backwardTween = (Tween)baseGuard.GetNode("Backward");
+        tween = (Tween)baseGuard.GetNode("Tween");
 
         ForwardTween();
     }
 
     async void ForwardTween()
     {
-        forwardTween.InterpolateProperty(
+        tween.InterpolateProperty(
             follow, "unit_offset", 0, 1, walkTime, Tween.TransitionType.Linear, Tween.EaseType.InOut
         );
-        baseGuard.RotationDegrees = 0;
-        forwardTween.Start();
+        tween.Start();
 
-        await ToSignal(forwardTween, "tween_completed");
+        await ToSignal(tween, "tween_completed");
+
+        await Turn180Tween();
         BackwardTween();
     }
 
     async void BackwardTween()
     {
-        backwardTween.InterpolateProperty(
+        // pause before turning
+        await ToSignal(GetTree().CreateTimer(pauseTime, false), "timeout");
+
+        tween.InterpolateProperty(
             follow, "unit_offset", 1, 0, walkTime, Tween.TransitionType.Linear, Tween.EaseType.InOut
         );
-        baseGuard.RotationDegrees = 180;
-        backwardTween.Start();
+        // baseGuard.RotationDegrees = 180;
+        tween.Start();
 
-        await ToSignal(backwardTween, "tween_completed");
+        await ToSignal(tween, "tween_completed");
+
+        await Turn180Tween();
         ForwardTween();
     }
 
+    async Task Turn180Tween()
+    {
+        // if we're at 0 degrees, turn to 180
+        // else, go back to 0 degrees
+        var degToTurnTo = baseGuard.RotationDegrees == 0 ? 180 : 0;
 
+        tween.InterpolateProperty(
+            baseGuard, "rotation_degrees", null, degToTurnTo, turnTime
+        );
+        tween.Start();
+
+        await ToSignal(tween, "tween_completed");
+    }
 
 }
