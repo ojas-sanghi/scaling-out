@@ -1,28 +1,190 @@
-name: Build Godot Project
+name: Build and Release Latest
 
 on:
-  push: {}
-  pull_request: {}
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+env:
+  GODOT_VERSION: 3.3.2
+  GODOT_VERSION_MODIFIER: "stable.mono"
+  EXPORT_NAME: Scaling-Out
+  GAME_SUBDIRECTORY: project.godot
+  CUSTOM_ICON: "false"
 
 jobs:
-  Godot:
+  build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        platform: [Windows, Linux, MacOSX, HTML5]
+    container:
+      image: barichello/godot-ci:mono-3.3.2
+
     steps:
-      - uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+      with:
+        lfs: true
+
+    - name: Setup .NET 5
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    # ======================================================
+    # pull deps and build 
+    # ======================================================
+    # copy the godot DLLs where they are expected
+    - name: Setup Godot dlls
+      run: |
+        mkdir -p .mono/assemblies/Debug
+        cp /usr/local/bin/GodotSharp/Api/Release/* .mono/assemblies/Debug
+    # build the solution
+    - name: Build
+      run: dotnet build
+
+    # run dotnet unit tests
+    - name: Test
+      run: dotnet test
+
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: build
+    outputs:
+      release_upload_url: ${{ steps.create_release.outputs.upload_url }}
+      version: latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
         with:
           lfs: true
-      - name: Build
+      - name: Delete latest release
+        uses: dev-drprasad/delete-tag-and-release@v0.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          delete_release: true
+          tag_name: latest
+      - name: Create/Update Latest Release
+        id: create_release
+        uses: ncipollo/release-action@v1.8.6
+        with:
+          name: Latest Release
+          tag: "latest"
+          body: "Latest release, built from the most recent code! Click on \"Assets\" to view the .zip files to download for your platform. \n\n If there is a yellow dot next to the repo name, then the latest versions are still being compiled and will be available in a few minutes. If there is a green checkmark, then they are all ready and you can go ahead and download them."
+          prerelease: true
+          allowUpdates: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  export:
+    name: Export
+    runs-on: ubuntu-latest
+    needs: release
+    strategy:
+      matrix:
+        include:
+          - platform: Windows
+            preset: "CICD-Windows"
+            extension: .exe
+            type: executable
+          - platform: Mac
+            preset: "CICD-MacOSX"
+            extension: .zip
+            type: archive
+          - platform: Linux
+            preset: "CICD-Linux"
+            extension: .x86_64
+            type: executable
+          - platform: HTML
+            preset: "CICD-HTML5"
+            extension: .html
+            type: executable
+    container:
+      image: barichello/godot-ci:mono-3.3.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup WINE and rcedit for windows build
+        if: ${{ matrix.platform == 'Windows' && env.CUSTOM_ICON == 'true' }}
+        run: |
+          dpkg --add-architecture i386 && apt-get update && apt-get install -y wine
+          chown root:root -R ~
+          wget https://github.com/electron/rcedit/releases/download/v1.1.1/rcedit-x64.exe && mkdir -v -p ~/.local/share/rcedit && mv rcedit-x64.exe ~/.local/share/rcedit/ && chmod +x ~/.local/share/rcedit/rcedit-x64.exe
+          mkdir dummy && godot -v --path dummy -q
+          echo 'export/windows/wine = "/usr/bin/wine64"' >> ~/.config/godot/editor_settings-3.tres && echo "export/windows/rcedit = \"$(realpath ~/.local/share/rcedit/rcedit-x64.exe)\"" >> ~/.config/godot/editor_settings-3.tres
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.${GODOT_VERSION_MODIFIER} ~/.local/share/godot/templates/${GODOT_VERSION}.${GODOT_VERSION_MODIFIER}
+      - name: File information setup
+        id: file-information
+        env:
+          EXPORT_PLATFORM: ${{ matrix.platform }}
+          FILE_EXTENSION: ${{ matrix.extension }}
+        run: |
+          if [ "${EXPORT_PLATFORM}" = "HTML" ]
+          then
+              echo "::set-output name=name::index${FILE_EXTENSION}"
+          else
+              echo "::set-output name=name::${EXPORT_NAME}${FILE_EXTENSION}"
+          fi
+      - name: Setup .NET 5
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 5.0.x
+
+      # copy the godot DLLs where they are expected
+      - name: Setup Godot dlls for dotnet Build
+        run: |
+          mkdir -p .mono/assemblies/Debug
+          cp /usr/local/bin/GodotSharp/Api/Release/* .mono/assemblies/Debug
+      # build the solution
+      - name: dotnet Build
+        run: dotnet build
+
+      - name: Build Export
         id: build
-        uses: josephbmanley/build-godot-action@v1.4.1
+        env:
+          EXPORT_PLATFORM: ${{ matrix.platform }}
+          EXPORT_PRESET: ${{ matrix.preset }}
+          EXPORT_FILENAME: ${{ steps.file-information.outputs.name }}
+        run: |
+          buildPath="${GITHUB_WORKSPACE}/build/${EXPORT_PLATFORM}"
+          filePath="${buildPath}/${EXPORT_FILENAME}"
+          mkdir -v -p "${buildPath}"
+          godot -v --path ./project.godot --export "${EXPORT_PRESET}" "${filePath}"
+          echo "::set-output name=build_directory::${buildPath}"
+          echo "::set-output name=build_file::${filePath}"
+      - name: Archive
+        id: archive
+        env:
+          EXPORT_PLATFORM: ${{ matrix.platform }}
+          EXPORT_PRESET: ${{ matrix.preset }}
+          BUILD_DIRECTORY: ${{ steps.build.outputs.build_directory }}
+          BUILD_FILE: ${{ steps.build.outputs.build_file }}
+          FILE_TYPE: ${{ matrix.type }}
+          VERSION: ${{ needs.release.outputs.version }}
+        run: |
+          rootBuildPath="${GITHUB_WORKSPACE}/build"
+          formattedExportName="$( echo ${EXPORT_NAME} | sed 's/ /-/g' )"
+          filename="${formattedExportName}-${EXPORT_PLATFORM}-${VERSION}.zip"
+          filePath="${rootBuildPath}/${filename}"
+          if [ "${FILE_TYPE}" = "executable" ]
+          then
+              zip -r "${filePath}" *
+          else
+              mv "${BUILD_FILE}" "${filePath}"
+          fi
+          echo "::set-output name=path::${filePath}"
+          echo "::set-output name=filename::${filename}"
+      - name: Upload Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          name: Scaling-Out
-          preset: "CICD-${{ matrix.platform }}"
-          debugMode: "false"
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: CICD ${{ matrix.platform }}
-          path: ${{ github.workspace }}/${{ steps.build.outputs.build }}
+          upload_url: ${{ needs.release.outputs.release_upload_url }}
+          asset_path: ${{ steps.archive.outputs.path }}
+          asset_name: ${{ steps.archive.outputs.filename }}
+          asset_content_type: application/zip
