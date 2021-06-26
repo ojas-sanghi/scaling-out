@@ -55,243 +55,264 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="DinoTiles"]
-margin_left = 378.0
-margin_top = 198.0
-margin_right = 1218.0
-margin_bottom = 259.0
+[node name="Row1" type="Control" parent="DinoTiles"]
+margin_left = 308.0
+margin_top = 122.0
+margin_right = 915.0
+margin_bottom = 317.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DinoSelectTileButton" parent="DinoTiles/Row1" instance=ExtResource( 2 )]
+margin_left = 1.26544
+margin_top = 0.0318298
+margin_right = 257.265
+margin_bottom = 296.032
 rect_scale = Vector2( 0.5, 0.5 )
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DinoSelectTileButton" parent="DinoTiles/HBoxContainer" instance=ExtResource( 2 )]
-margin_bottom = 296.0
-edgeColor = Color( 0.14902, 0.482353, 0.462745, 1 )
 dino = 1
+edgeColor = Color( 0.14902, 0.482353, 0.462745, 1 )
 
-[node name="DinoSelectTileButton2" parent="DinoTiles/HBoxContainer" instance=ExtResource( 2 )]
-margin_left = 276.0
-margin_right = 532.0
-margin_bottom = 296.0
+[node name="DinoSelectTileButton2" parent="DinoTiles/Row1" instance=ExtResource( 2 )]
+margin_left = 139.265
+margin_top = 0.0318298
+margin_right = 395.265
+margin_bottom = 296.032
+rect_scale = Vector2( 0.5, 0.5 )
 
-[node name="DinoSelectTileButton3" parent="DinoTiles/HBoxContainer" instance=ExtResource( 2 )]
-margin_left = 552.0
-margin_right = 808.0
-margin_bottom = 296.0
+[node name="DinoSelectTileButton3" parent="DinoTiles/Row1" instance=ExtResource( 2 )]
+margin_left = 277.265
+margin_top = 0.0318298
+margin_right = 533.265
+margin_bottom = 296.032
+rect_scale = Vector2( 0.5, 0.5 )
 
-[node name="DinoSelectTileButton4" parent="DinoTiles/HBoxContainer" instance=ExtResource( 2 )]
-margin_left = 828.0
-margin_right = 1084.0
-margin_bottom = 296.0
+[node name="DinoSelectTileButton4" parent="DinoTiles/Row1" instance=ExtResource( 2 )]
+margin_left = 415.266
+margin_top = 0.0318298
+margin_right = 671.266
+margin_bottom = 296.032
+rect_scale = Vector2( 0.5, 0.5 )
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="DinoTiles"]
-margin_left = 929.574
-margin_top = 121.967
-margin_right = 1461.57
-margin_bottom = 415.967
+[node name="BigRow1" type="Control" parent="DinoTiles"]
+margin_left = 930.0
+margin_top = 122.0
+margin_right = 1389.0
+margin_bottom = 349.0
+
+[node name="DinoSelectTileButton" parent="DinoTiles/BigRow1" instance=ExtResource( 2 )]
+margin_left = -22.163
+margin_top = -35.3039
+margin_right = 233.837
+margin_bottom = 260.696
 rect_scale = Vector2( 0.85, 0.85 )
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DinoSelectTileButton" parent="DinoTiles/HBoxContainer2" instance=ExtResource( 2 )]
-margin_bottom = 296.0
 edgeColor = Color( 0.592157, 0, 1, 1 )
 
-[node name="DinoSelectTileButton2" parent="DinoTiles/HBoxContainer2" instance=ExtResource( 2 )]
-margin_left = 276.0
-margin_right = 532.0
-margin_bottom = 296.0
+[node name="DinoSelectTileButton2" parent="DinoTiles/BigRow1" instance=ExtResource( 2 )]
+margin_left = 201.646
+margin_top = -36.4944
+margin_right = 457.646
+margin_bottom = 259.506
+rect_scale = Vector2( 0.85, 0.85 )
 edgeColor = Color( 0.592157, 0, 1, 1 )
 
-[node name="HBoxContainer6" type="HBoxContainer" parent="DinoTiles"]
+[node name="Row2" type="Control" parent="DinoTiles"]
 margin_left = 308.0
 margin_top = 315.0
-margin_right = 1668.0
-margin_bottom = 609.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+margin_right = 1442.0
+margin_bottom = 447.0
 
-[node name="DinoSelectTileButton" parent="DinoTiles/HBoxContainer6" instance=ExtResource( 2 )]
-margin_bottom = 296.0
-edgeColor = Color( 0.219608, 0.427451, 0.831373, 1 )
+[node name="DinoSelectTileButton" parent="DinoTiles/Row2" instance=ExtResource( 2 )]
+margin_left = -65.6393
+margin_top = -74.1111
+margin_right = 190.361
+margin_bottom = 221.889
+rect_scale = Vector2( 0.5, 0.5 )
 dino = 2
+edgeColor = Color( 0.219608, 0.427451, 0.831373, 1 )
 
-[node name="DinoSelectTileButton2" parent="DinoTiles/HBoxContainer6" instance=ExtResource( 2 )]
-margin_left = 276.0
-margin_right = 532.0
-margin_bottom = 296.0
-focus_mode = 2
-edgeColor = Color( 0.941176, 0.0784314, 0.0784314, 1 )
-dino = 3
-
-[node name="DinoSelectTileButton3" parent="DinoTiles/HBoxContainer6" instance=ExtResource( 2 )]
-margin_left = 552.0
-margin_right = 808.0
-margin_bottom = 296.0
-
-[node name="DinoSelectTileButton4" parent="DinoTiles/HBoxContainer6" instance=ExtResource( 2 )]
-margin_left = 828.0
-margin_right = 1084.0
-margin_bottom = 296.0
-
-[node name="DinoSelectTileButton5" parent="DinoTiles/HBoxContainer6" instance=ExtResource( 2 )]
-margin_left = 1104.0
-margin_right = 1360.0
-margin_bottom = 296.0
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="DinoTiles"]
-margin_left = 379.0
-margin_top = 430.0
-margin_right = 1219.0
-margin_bottom = 491.0
+[node name="DinoSelectTileButton2" parent="DinoTiles/Row2" instance=ExtResource( 2 )]
+margin_left = 73.6464
+margin_top = -76.492
+margin_right = 329.646
+margin_bottom = 219.508
 rect_scale = Vector2( 0.5, 0.5 )
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
+focus_mode = 2
+dino = 3
+edgeColor = Color( 0.941176, 0.0784314, 0.0784314, 1 )
 
-[node name="DinoSelectTileButton" parent="DinoTiles/HBoxContainer3" instance=ExtResource( 2 )]
-margin_bottom = 296.0
-edgeColor = Color( 1, 1, 1, 1 )
+[node name="DinoSelectTileButton3" parent="DinoTiles/Row2" instance=ExtResource( 2 )]
+margin_left = 209.361
+margin_top = -75.3015
+margin_right = 465.361
+margin_bottom = 220.698
+rect_scale = Vector2( 0.5, 0.5 )
 
-[node name="DinoSelectTileButton2" parent="DinoTiles/HBoxContainer3" instance=ExtResource( 2 )]
-margin_left = 276.0
-margin_right = 532.0
-margin_bottom = 296.0
-edgeColor = Color( 1, 1, 1, 1 )
+[node name="DinoSelectTileButton4" parent="DinoTiles/Row2" instance=ExtResource( 2 )]
+margin_left = 347.456
+margin_top = -75.3016
+margin_right = 603.456
+margin_bottom = 220.698
+rect_scale = Vector2( 0.5, 0.5 )
 
-[node name="DinoSelectTileButton3" parent="DinoTiles/HBoxContainer3" instance=ExtResource( 2 )]
-margin_left = 552.0
-margin_right = 808.0
-margin_bottom = 296.0
-edgeColor = Color( 1, 1, 1, 1 )
+[node name="DinoSelectTileButton5" parent="DinoTiles/Row2" instance=ExtResource( 2 )]
+margin_left = 485.551
+margin_top = -76.4921
+margin_right = 741.551
+margin_bottom = 219.508
+rect_scale = Vector2( 0.5, 0.5 )
 
-[node name="DinoSelectTileButton4" parent="DinoTiles/HBoxContainer3" instance=ExtResource( 2 )]
-margin_left = 828.0
-margin_right = 1084.0
-margin_bottom = 296.0
-edgeColor = Color( 1, 1, 1, 1 )
-
-[node name="Control" type="Control" parent="DinoTiles"]
-margin_left = 234.051
-margin_top = 56.2968
-margin_right = 274.051
-margin_bottom = 96.2968
-rect_scale = Vector2( 0.75, 0.75 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DinoSelectTileButton" parent="DinoTiles/Control" instance=ExtResource( 2 )]
-margin_left = 1105.85
-margin_top = 456.974
-margin_right = 1361.85
-margin_bottom = 750.974
+[node name="DinoSelectTileButton6" parent="DinoTiles/Row2" instance=ExtResource( 2 )]
+margin_left = 947.456
+margin_top = -83.6348
+margin_right = 1203.46
+margin_bottom = 212.365
+rect_scale = Vector2( 0.5, 0.5 )
 edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
 
-[node name="HBoxContainer8" type="HBoxContainer" parent="DinoTiles"]
-margin_left = 308.0
-margin_top = 547.0
-margin_right = 1428.0
-margin_bottom = 608.0
-rect_scale = Vector2( 0.5, 0.5 )
-custom_constants/separation = 20
+[node name="Row3" type="Control" parent="DinoTiles"]
+margin_left = 379.0
+margin_top = 430.0
+margin_right = 1510.0
+margin_bottom = 571.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DinoSelectTileButton" parent="DinoTiles/HBoxContainer8" instance=ExtResource( 2 )]
-margin_bottom = 296.0
+[node name="DinoSelectTileButton" parent="DinoTiles/Row3" instance=ExtResource( 2 )]
+margin_left = -66.4012
+margin_top = -72.4444
+margin_right = 189.599
+margin_bottom = 223.556
+rect_scale = Vector2( 0.5, 0.5 )
+edgeColor = Color( 1, 1, 1, 1 )
+
+[node name="DinoSelectTileButton2" parent="DinoTiles/Row3" instance=ExtResource( 2 )]
+margin_left = 71.6941
+margin_top = -72.4444
+margin_right = 327.694
+margin_bottom = 223.556
+rect_scale = Vector2( 0.5, 0.5 )
+edgeColor = Color( 1, 1, 1, 1 )
+
+[node name="DinoSelectTileButton3" parent="DinoTiles/Row3" instance=ExtResource( 2 )]
+margin_left = 209.789
+margin_top = -72.4444
+margin_right = 465.789
+margin_bottom = 223.556
+rect_scale = Vector2( 0.5, 0.5 )
+edgeColor = Color( 1, 1, 1, 1 )
+
+[node name="DinoSelectTileButton4" parent="DinoTiles/Row3" instance=ExtResource( 2 )]
+margin_left = 347.885
+margin_top = -72.4444
+margin_right = 603.885
+margin_bottom = 223.556
+rect_scale = Vector2( 0.5, 0.5 )
+edgeColor = Color( 1, 1, 1, 1 )
+
+[node name="DinoSelectTileButton6" parent="DinoTiles/Row3" instance=ExtResource( 2 )]
+margin_left = 651.456
+margin_top = -79.5872
+margin_right = 907.456
+margin_bottom = 216.413
+rect_scale = Vector2( 0.75, 0.75 )
+edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
+
+[node name="DinoSelectTileButton5" parent="DinoTiles/Row3" instance=ExtResource( 2 )]
+margin_left = 939.551
+margin_top = -74.8253
+margin_right = 1195.55
+margin_bottom = 221.175
+rect_scale = Vector2( 0.5, 0.5 )
+edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
+
+[node name="Row 4" type="Control" parent="DinoTiles"]
+margin_left = 308.0
+margin_top = 547.0
+margin_right = 1454.0
+margin_bottom = 692.0
+
+[node name="DinoSelectTileButton" parent="DinoTiles/Row 4" instance=ExtResource( 2 )]
+margin_left = -65.3536
+margin_top = -73.6587
+margin_right = 190.646
+margin_bottom = 222.341
+rect_scale = Vector2( 0.5, 0.5 )
 edgeColor = Color( 0, 0.952941, 1, 1 )
 
-[node name="DinoSelectTileButton2" parent="DinoTiles/HBoxContainer8" instance=ExtResource( 2 )]
-margin_left = 276.0
-margin_right = 532.0
-margin_bottom = 296.0
+[node name="DinoSelectTileButton2" parent="DinoTiles/Row 4" instance=ExtResource( 2 )]
+margin_left = 74.8369
+margin_top = -70.3968
+margin_right = 330.837
+margin_bottom = 225.603
+rect_scale = Vector2( 0.5, 0.5 )
 edgeColor = Color( 0, 0.952941, 1, 1 )
 
-[node name="DinoSelectTileButton3" parent="DinoTiles/HBoxContainer8" instance=ExtResource( 2 )]
-margin_left = 552.0
-margin_right = 808.0
-margin_bottom = 296.0
+[node name="DinoSelectTileButton3" parent="DinoTiles/Row 4" instance=ExtResource( 2 )]
+margin_left = 211.742
+margin_top = -69.2064
+margin_right = 467.742
+margin_bottom = 226.794
+rect_scale = Vector2( 0.5, 0.5 )
 edgeColor = Color( 0, 0.952941, 1, 1 )
 
-[node name="DinoSelectTileButton4" parent="DinoTiles/HBoxContainer8" instance=ExtResource( 2 )]
-margin_left = 828.0
-margin_right = 1084.0
-margin_bottom = 296.0
+[node name="DinoSelectTileButton4" parent="DinoTiles/Row 4" instance=ExtResource( 2 )]
+margin_left = 349.837
+margin_top = -69.2063
+margin_right = 605.837
+margin_bottom = 226.794
+rect_scale = Vector2( 0.5, 0.5 )
 edgeColor = Color( 0, 0.952941, 1, 1 )
 
-[node name="DinoSelectTileButton5" parent="DinoTiles/HBoxContainer8" instance=ExtResource( 2 )]
-margin_left = 1104.0
-margin_right = 1360.0
-margin_bottom = 296.0
+[node name="DinoSelectTileButton5" parent="DinoTiles/Row 4" instance=ExtResource( 2 )]
+margin_left = 483.17
+margin_top = -69.2064
+margin_right = 739.17
+margin_bottom = 226.794
+rect_scale = Vector2( 0.5, 0.5 )
 edgeColor = Color( 0, 0.952941, 1, 1 )
 
-[node name="HBoxContainer7" type="HBoxContainer" parent="DinoTiles"]
+[node name="DinoSelectTileButton6" parent="DinoTiles/Row 4" instance=ExtResource( 2 )]
+margin_left = 940.313
+margin_top = -75.1586
+margin_right = 1196.31
+margin_bottom = 220.841
+rect_scale = Vector2( 0.5, 0.5 )
+edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
+
+[node name="BigRow5" type="Control" parent="DinoTiles"]
 margin_left = 927.574
 margin_top = 647.492
 margin_right = 1459.57
 margin_bottom = 941.492
+
+[node name="DinoSelectTileButton" parent="DinoTiles/BigRow5" instance=ExtResource( 2 )]
+margin_left = -20.7352
+margin_top = -21.2103
+margin_right = 235.265
+margin_bottom = 274.79
+rect_rotation = -0.158213
 rect_scale = Vector2( 0.85, 0.85 )
-custom_constants/separation = 20
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DinoSelectTileButton" parent="DinoTiles/HBoxContainer7" instance=ExtResource( 2 )]
-margin_bottom = 296.0
 edgeColor = Color( 0.592157, 0, 1, 1 )
 
-[node name="DinoSelectTileButton2" parent="DinoTiles/HBoxContainer7" instance=ExtResource( 2 )]
-margin_left = 276.0
-margin_right = 532.0
-margin_bottom = 296.0
+[node name="DinoSelectTileButton2" parent="DinoTiles/BigRow5" instance=ExtResource( 2 )]
+margin_left = 207.836
+margin_top = -21.2103
+margin_right = 463.836
+margin_bottom = 274.79
+rect_scale = Vector2( 0.85, 0.85 )
 edgeColor = Color( 0.592157, 0, 1, 1 )
-
-[node name="Control2" type="Control" parent="DinoTiles"]
-margin_left = 638.404
-margin_top = 204.494
-margin_right = 678.404
-margin_bottom = 244.494
-rect_scale = Vector2( 0.5, 0.5 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="DinoSelectTileButton2" parent="DinoTiles/Control2" instance=ExtResource( 2 )]
-margin_left = 1366.01
-margin_top = 231.372
-margin_right = 1622.01
-margin_bottom = 525.372
-edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
-
-[node name="DinoSelectTileButton3" parent="DinoTiles/Control2" instance=ExtResource( 2 )]
-margin_left = 1501.19
-margin_top = 466.429
-margin_right = 1757.19
-margin_bottom = 760.429
-edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
-
-[node name="DinoSelectTileButton4" parent="DinoTiles/Control2" instance=ExtResource( 2 )]
-margin_left = 1351.47
-margin_top = 692.591
-margin_right = 1607.47
-margin_bottom = 986.591
-edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
 
 [node name="GameButton" parent="." instance=ExtResource( 1 )]
-margin_left = -843.571
-margin_top = 274.206
-margin_right = -520.571
-margin_bottom = 428.206
+anchor_left = 0.061
+anchor_top = 0.754
+anchor_right = 0.229
+anchor_bottom = 0.896
+margin_left = -0.690994
+margin_top = -0.114014
+margin_right = -0.251007
+margin_bottom = 0.52594
 text = "Return Home"
 buttonMode = 7
 

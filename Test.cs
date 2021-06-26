@@ -6,41 +6,18 @@ public class Test : Node
     public override void _Ready()
     {
         GD.Print("start");
-        // UpgradeInfo u = new UpgradeInfo("res://src/actors/dinos/stats/MegaDino.tres");
 
-        // var statsdict = u.stats;
-        // var hp_stats = statsdict[Enums.Stats.Hp];
+        var tree = GetNode<Tree>("Tree");
+        var root = tree.CreateItem();
+        tree.HideRoot = true;
 
-        // GD.Print(hp_stats);
-        // GD.Print(hp_stats.GetType());
-
-
-        // GD.Print("before statname ands tata");
-
-        // GD.Print(hp_stats.statName);
-        // GD.Print(hp_stats.stats);
-
-        // GD.Print("after statname ands tats");
-
-        // var hp = u.GetStat(Enums.Stats.Hp);
-        // GD.Print(hp);
-
-        // UpgradeInfo u = new UpgradeInfo("res://src/actors/dinos/stats/MegaDino.tres");
-        // GD.Print(u);
-        // GD.Print("end");
-
-        // GD.Print(e.EnumToString.GetUSAStateName(e.USAStates.Alabama));
-        // GD.Print(e.EnumToString.GetUSAStateName(e.USAStates.RhodeIsland));
-
-        string pathStart = "res://src/combat/levelsInfo/Level";
-        string pathEnd = "Info.tres";
-
-        GD.Print(pathStart + 1 + pathEnd);
-        GD.Print((pathStart + 1 + pathEnd).GetType());
-        GD.Print(pathStart + 2 + pathEnd);
-        GD.Print((pathStart + 2 + pathEnd).GetType());
-
-
+        var child1 = tree.CreateItem(root);
+        child1.SetText(0, "child 1");
+        var child2 = tree.CreateItem(root);
+        child2.SetText(0, "child 2");
+        var subchild1 = tree.CreateItem(child1);
+        // subchild1.SetText(0, "subchild1");
+        subchild1.SetText(1, "subchild1 cloluimn 2?");
 
     }
 

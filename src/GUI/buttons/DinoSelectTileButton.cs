@@ -7,10 +7,18 @@ public class DinoSelectTileButton : TextureButton
     [Export] public Color edgeColor;
     [Export] public Enums.Dinos dino = Enums.Dinos.None;
 
+    Vector2 origScale;
+    int origIndex;
+
+    bool hovered = false;
+    float enlargeFactor = 1.5f; // how much the button enlarges by when hovered
+
     public override void _Ready()
     {
+        origScale = this.RectScale;
+        origIndex = this.GetIndex();
+
         setButtonInfo();
-        this.FocusMode = FocusModeEnum.None;
     }
 
     public override void _Process(float delta)
@@ -24,13 +32,28 @@ public class DinoSelectTileButton : TextureButton
             return;
         }
 
-        if (IsHovered())
+        // get this button's rect and check if we're still being hovered
+        Rect2 buttonRect = GetChild<Control>(0).GetRect();
+        hovered = buttonRect.HasPoint(GetLocalMousePosition());
+
+        if (hovered)
         {
-            this.RectScale = new Vector2((float)1.25, (float)1.25);
+            this.RectScale = origScale * enlargeFactor;
+
+            var parent = GetParent();
+            var bigParent = GetParent().GetParent();
+
+            // move this node and parent node to bottom of the respective trees they are in
+            // this ensures they are drawn on top of everything else
+            // and the buttonRect thing we do ensures the hover detection is still accurate
+            parent.MoveChild(this, parent.GetChildCount() - 1);
+            bigParent.MoveChild(parent, bigParent.GetChildCount() - 1);
+
+            // TODO: fix multiple stuff being hovered at once
         }
         else
         {
-            this.RectScale = Vector2.One;
+            this.RectScale = origScale;
         }
     }
 
@@ -60,5 +83,4 @@ public class DinoSelectTileButton : TextureButton
         }
 
     }
-
 }

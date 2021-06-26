@@ -83,7 +83,7 @@ public class DinoSelector : Node2D
             newSelector.dinoType = Enums.Dinos.None;
             newSelector.abilitySelectorAssociatedDino = associatedDino;
 
-            newSelector.text = selectorPositionInList.ToString(); // position in list + number of dinos
+            newSelector.text = selectorPositionInList.ToString();
 
             newSelector.customScale = new Vector2((float)0.07, (float)0.07);
 
