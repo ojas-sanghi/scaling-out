@@ -9,6 +9,7 @@ public class DinoSelectTileButton : TextureButton
 
     Vector2 origScale;
     int origIndex;
+    Rect2 origRect;
 
     bool hovered = false;
     float enlargeFactor = 1.5f; // how much the button enlarges by when hovered
@@ -17,6 +18,11 @@ public class DinoSelectTileButton : TextureButton
     {
         origScale = this.RectScale;
         origIndex = this.GetIndex();
+
+        // get this button's rect
+        // used later for hover detection
+        origRect = GetChild<Control>(0).GetRect();
+        origRect.Size /= 1.35f; // make it a bit smaller so that multiple buttons cant be simultaneously hovered
 
         setButtonInfo();
     }
@@ -32,9 +38,8 @@ public class DinoSelectTileButton : TextureButton
             return;
         }
 
-        // get this button's rect and check if we're still being hovered
-        Rect2 buttonRect = GetChild<Control>(0).GetRect();
-        hovered = buttonRect.HasPoint(GetLocalMousePosition());
+        // check if the mouse is over the button; ie, if we're being hovered
+        hovered = origRect.HasPoint(GetLocalMousePosition());
 
         if (hovered)
         {
@@ -48,8 +53,6 @@ public class DinoSelectTileButton : TextureButton
             // and the buttonRect thing we do ensures the hover detection is still accurate
             parent.MoveChild(this, parent.GetChildCount() - 1);
             bigParent.MoveChild(parent, bigParent.GetChildCount() - 1);
-
-            // TODO: fix multiple stuff being hovered at once
         }
         else
         {
