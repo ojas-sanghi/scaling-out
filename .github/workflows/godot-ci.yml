@@ -172,7 +172,7 @@ jobs:
           filePath="${rootBuildPath}/${filename}"
           if [ "${FILE_TYPE}" = "executable" ]
           then
-              zip -r "${filePath}" *
+              cd "${BUILD_DIRECTORY}" && zip -r "${filePath}" *
           else
               mv "${BUILD_FILE}" "${filePath}"
           fi
