@@ -137,7 +137,6 @@ margin_top = -76.492
 margin_right = 329.646
 margin_bottom = 219.508
 rect_scale = Vector2( 0.5, 0.5 )
-focus_mode = 2
 dino = 3
 edgeColor = Color( 0.941176, 0.0784314, 0.0784314, 1 )
 

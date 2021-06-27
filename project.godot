@@ -117,7 +117,7 @@ dino_6={
 [layer_names]
 
 2d_physics/layer_1="dinos"
-2d_physics/layer_2="player"
+2d_physics/layer_2="scientist"
 2d_physics/layer_3="blockade"
 2d_physics/layer_4="army"
 2d_physics/layer_5="vault"

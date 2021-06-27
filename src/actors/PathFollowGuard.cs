@@ -17,6 +17,8 @@ public class PathFollowGuard : Path2D
         baseGuard = (BaseGuard)FindNode("BaseGuard");
         tween = (Tween)baseGuard.GetNode("Tween");
 
+        Events.levelFailed += OnLevelFailed;
+
         ForwardTween();
     }
 
@@ -62,6 +64,11 @@ public class PathFollowGuard : Path2D
         tween.Start();
 
         await ToSignal(tween, "tween_completed");
+    }
+
+    void OnLevelFailed()
+    {
+        tween.StopAll();
     }
 
 }

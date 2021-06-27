@@ -23,7 +23,7 @@ public class Scientist : KinematicBody2D
 
         // TODO: when more gene-specific scenes are made, change this
         string geneString = StealthInfo.geneBeingPursued.ToString();
-        nodePath = "/root/Stealth" + geneString.First().ToString().ToUpper() + geneString.Substring(1);
+        nodePath = "/root/Stealth" + geneString.First().ToString().ToUpper() + geneString.Substring(1) + "/";
     }
 
     public override void _ExitTree()
@@ -114,27 +114,26 @@ public class Scientist : KinematicBody2D
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/StealthWinDialogue.tscn");
     }
 
-    void OnLevelFailed()
+    async void OnLevelFailed()
     {
         // remove here since we want it to be one-shot
         Events.levelFailed -= OnLevelFailed;
 
-        /*
+        GD.Print("YOU FAILED!");
+        
         var caught = (AudioStreamPlayer) FindNode("Caught");
 
         SetPhysicsProcess(false);
         animSprite.Stop();
         caught.Play();
 
-        SceneChanger.Instance.Fade();
+        await SceneChanger.Instance.Fade();
         GetNode<CanvasModulate>(nodePath + "CanvasModulate").Hide();
         GetNode<MoneyCounter>(nodePath + "CanvasLayer/CoinCounter").Hide();
         await ToSignal(caught, "finished");
 
         GetNode<Vault>(nodePath + "Vault").Hide();
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/StealthLoseDialogue.tscn");
-        */
-        GD.Print("YOU FAILED!");
     }
 
     void OnCoinGrabbed(int value)
