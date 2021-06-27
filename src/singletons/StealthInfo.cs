@@ -5,7 +5,7 @@ public class StealthInfo : Node
 {
     public static Enums.Genes geneBeingPursued;
 
-    StealthInfo Instance;
+    public static StealthInfo Instance;
 
     public Dictionary<Enums.Genes, PackedScene> geneStealthMaps;
 

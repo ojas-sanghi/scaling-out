@@ -7,7 +7,7 @@ public static class EnumUtils
     public static string GetUSAPlaceName<T>(this T place) where T : struct
     {
         // ensure they pass an enum
-        var type = place.GetType();
+        Type type = place.GetType();
         if (!type.IsEnum)
         {
             throw new ArgumentException($"{nameof(place)} must be of Enum type", nameof(place));

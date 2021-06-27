@@ -24,5 +24,18 @@ public class PlayerStats : Node
         statsResource = GD.Load<PlayerStatsResource>("res://src/resources/PlayerStats.tres");
         dinosUnlocked = statsResource.dinosUnlocked;
         genesFound = statsResource.genesFound;
+        GD.Print(genesFound);
+    }
+
+    public void AddDinoUnlocked(Enums.Dinos dino)
+    {
+        dinosUnlocked.Add(dino);
+        statsResource.SaveResource();
+    }
+
+    public void AddGeneFound(Enums.Genes gene)
+    {
+        genesFound.Add(gene);
+        statsResource.SaveResource();
     }
 }

@@ -96,14 +96,8 @@ public class GameButton : Button
                 scnChng.GoToScene("res://src/combat/CombatScreen.tscn");
                 break;
             case b.RetryStealth:
-                if (StealthInfo.geneBeingPursued == Enums.Genes.Ice)
-                {
-                    scnChng.GoToScene("res://src/stealth/StealthIce.tscn");
-                }
-                else
-                {
-                    scnChng.GoToScene("res://src/stealth/StealthFire.tscn");
-                }
+                var stealthMap = StealthInfo.Instance.geneStealthMaps[StealthInfo.geneBeingPursued];
+                scnChng.GoToScene(stealthMap.ResourcePath);
                 break;
             case b.ReturnHomeScreen:
                 scnChng.GoToScene("res://src/GUI/screens/HomeScreen.tscn");

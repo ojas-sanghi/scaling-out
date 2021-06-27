@@ -24,8 +24,6 @@ public class BaseGuard : Area2D
     void OnBaseGuardBodyEntered(Node2D body)
     {
         Events.publishLevelFailed();
-
-        LookAt(body.GlobalPosition);
     }
 
     void OnLevelFailed()

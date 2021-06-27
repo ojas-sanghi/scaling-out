@@ -48,8 +48,7 @@ public class ShopUnlockButton : Button
         {
             PlayerStats.gold -= goldCost;
             PlayerStats.genes -= genesCost;
-            PlayerStats.Instance.dinosUnlocked.Add(ShopInfo.shopDino);
-            PlayerStats.Instance.statsResource.SaveResource();
+            PlayerStats.Instance.AddDinoUnlocked(ShopInfo.shopDino);
             Events.publishDinoUnlocked();
         }
     }
