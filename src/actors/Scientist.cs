@@ -85,11 +85,6 @@ public class Scientist : KinematicBody2D
 
     public override void _PhysicsProcess(float delta)
     {
-        if (StealthInfo.playerCaught)
-        {
-            return;
-        }
-
         velocity = GetInput();
         velocity = velocity.Normalized() * speed;
         AnimatePlayer();
