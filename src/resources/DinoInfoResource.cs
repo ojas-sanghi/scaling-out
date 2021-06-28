@@ -16,7 +16,7 @@ public class DinoInfoResource : Resource
         stats.level++;
         SaveResource();
     }
-    
+
     public void SaveResource()
     {
         ResourceSaver.Save(this.ResourcePath, this);

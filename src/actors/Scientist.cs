@@ -1,7 +1,5 @@
-using Godot;
-using Godot.Collections;
-using System;
 using System.Linq;
+using Godot;
 
 public class Scientist : KinematicBody2D
 {
@@ -116,8 +114,8 @@ public class Scientist : KinematicBody2D
         Events.levelFailed -= OnLevelFailed;
 
         GD.Print("YOU FAILED!");
-        
-        var caught = (AudioStreamPlayer) FindNode("Caught");
+
+        var caught = (AudioStreamPlayer)FindNode("Caught");
 
         SetPhysicsProcess(false);
         animSprite.Stop();

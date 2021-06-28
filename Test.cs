@@ -1,5 +1,4 @@
 using Godot;
-using e = Enums;
 
 public class Test : Node
 {

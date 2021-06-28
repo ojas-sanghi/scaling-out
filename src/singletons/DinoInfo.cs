@@ -1,7 +1,6 @@
+using System;
 using System.Collections.Generic;
 using Godot;
-using System;
-using System.Linq;
 
 public class DinoInfo : Node
 {

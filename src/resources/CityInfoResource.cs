@@ -1,6 +1,5 @@
 using Godot;
 using Godot.Collections;
-using System.Collections.Generic;
 
 public class CityInfoResource : Resource
 {

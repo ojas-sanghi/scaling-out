@@ -119,7 +119,7 @@ namespace Enums
         Tucson, Phoenix,
 
         // AR
-        [Description("Little Rock")] LittleRock, 
+        [Description("Little Rock")] LittleRock,
 
         // CA
         [Description("Los Angeles")] LosAngeles,
@@ -166,7 +166,7 @@ namespace Enums
 
         // KY
         Louisville, Lexington, Frankfort,
-        
+
         // LA
         [Description("New Orleans")] NewOrleans,
         [Description("Baton Rouge")] BatonRouge,
@@ -191,7 +191,7 @@ namespace Enums
         Jackson,
 
         // MO
-        [Description("Kansas City")] KansasCity2, 
+        [Description("Kansas City")] KansasCity2,
         [Description("Saint Louis")] SaintLouis,
         [Description("Jefferson City")] JeffersonCity,
 
@@ -215,7 +215,7 @@ namespace Enums
         Trenton,
 
         // NM
-        Albuquerque, 
+        Albuquerque,
         [Description("Las Cruces")] LasCruces,
         Roswell,
         [Description("Santa Fe")] SantaFe,
@@ -239,7 +239,7 @@ namespace Enums
         [Description("Oklahoma City")] OklahomaCity,
 
         // OR
-        [Description("Portland")] Portland2, 
+        [Description("Portland")] Portland2,
         Salem,
 
         // PA
@@ -259,10 +259,10 @@ namespace Enums
         Memphis, Nashville,
 
         // TX
-        Houston, 
-        [Description("San Antonio")] SanAntonio, 
-        Dallas, 
-        [Description("Fort Worth")] FortWorth, 
+        Houston,
+        [Description("San Antonio")] SanAntonio,
+        Dallas,
+        [Description("Fort Worth")] FortWorth,
         Austin,
 
         // UT
@@ -272,7 +272,7 @@ namespace Enums
         Burlington, Montpelier,
 
         // VA
-        [Description("Virginia Beach")] VirginiaBeach, 
+        [Description("Virginia Beach")] VirginiaBeach,
         Richmond,
 
         // WA
@@ -288,6 +288,6 @@ namespace Enums
         Cheyenne
     }
 
-    
+
 
 }

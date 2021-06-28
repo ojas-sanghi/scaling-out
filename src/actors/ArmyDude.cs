@@ -1,5 +1,5 @@
-using Godot;
 using Enums;
+using Godot;
 
 public class ArmyDude : Area2D
 {

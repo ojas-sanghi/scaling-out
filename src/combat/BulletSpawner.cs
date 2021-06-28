@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Godot;
 using Enums;
+using Godot;
 
 public class BulletSpawner : Node2D
 {

@@ -29,7 +29,7 @@ public class Events : Node
 
     public static event Action dinoUpgraded;
 
-    public static event Action<SelectorSprite> selectorSelected; 
+    public static event Action<SelectorSprite> selectorSelected;
 
     ///////////////////////////////////
 

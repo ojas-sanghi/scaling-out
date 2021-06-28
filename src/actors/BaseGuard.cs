@@ -1,6 +1,4 @@
 using Godot;
-using Godot.Collections;
-using System;
 
 public class BaseGuard : Area2D
 {
@@ -20,7 +18,7 @@ public class BaseGuard : Area2D
         // for ALL the guards, not just the one who found the scientist
         Events.levelFailed += OnLevelFailed;
     }
-    
+
     void OnBaseGuardBodyEntered(Node2D body)
     {
         Events.publishLevelFailed();

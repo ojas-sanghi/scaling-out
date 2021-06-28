@@ -9,8 +9,8 @@ public class GeneStealthMap : Node
         if (rewardGene == Enums.Genes.None)
         {
             GD.PushError("You must set rewardGene for GeneStealthMap!");
-			GD.PrintStack();
-			GetTree().Quit(1);
+            GD.PrintStack();
+            GetTree().Quit(1);
         }
 
         Events.levelPassed += OnLevelPassed;

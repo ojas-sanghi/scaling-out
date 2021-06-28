@@ -3,7 +3,7 @@ using Godot.Collections;
 
 public class LanesCreator : Node2D
 {
-    Dictionary<int, double> yPositionForNumLanes = new Dictionary<int, double>() 
+    Dictionary<int, double> yPositionForNumLanes = new Dictionary<int, double>()
     {
         {1, 532},
         {2, 327},
@@ -34,10 +34,11 @@ public class LanesCreator : Node2D
 
         // info about which lane in the list we're on -- used to set position of the lane later
         int laneIndex = 0;
-        foreach (Enums.LaneTypes type in laneTypes) {
+        foreach (Enums.LaneTypes type in laneTypes)
+        {
             // get their info
             var laneDetails = LaneInfo.Instance.laneInfoList[type];
-            
+
             // make new lane and set some info
             Lane newLane = GD.Load<PackedScene>("res://src/combat/lanes/Lane.tscn").Instance<Lane>();
             newLane.laneImg = laneDetails.image;

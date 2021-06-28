@@ -1,5 +1,3 @@
-using Godot;
-
 public class AbilityDino : BaseDino
 {
     DinoProjectile abilityProjectile;

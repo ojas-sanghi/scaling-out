@@ -1,6 +1,6 @@
-using Enums;
 using System;
 using System.ComponentModel;
+using Enums;
 
 public static class EnumUtils
 {

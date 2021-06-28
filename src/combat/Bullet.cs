@@ -1,5 +1,5 @@
-using Godot;
 using Enums;
+using Godot;
 
 public class Bullet : Area2D
 {

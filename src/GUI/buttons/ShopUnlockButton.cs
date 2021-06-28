@@ -1,12 +1,11 @@
 using Godot;
-using System;
 
 public class ShopUnlockButton : Button
 {
     bool canAfford = false;
     int goldCost;
     int genesCost;
-    
+
     RichTextLabel richLabel;
 
     public override void _Ready()
@@ -16,9 +15,9 @@ public class ShopUnlockButton : Button
         {
             return;
         }
-        
+
         richLabel = GetNode<RichTextLabel>("RichTextLabel");
-        
+
         var dinoUpgradeInfo = DinoInfo.Instance.GetDinoInfo(ShopInfo.shopDino);
         goldCost = dinoUpgradeInfo.unlockCostGold;
         genesCost = dinoUpgradeInfo.unlockCostGenes;

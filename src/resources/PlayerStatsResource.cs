@@ -1,5 +1,5 @@
-using Godot.Collections;
 using Godot;
+using Godot.Collections;
 
 public class PlayerStatsResource : Resource
 {

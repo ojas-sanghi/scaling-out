@@ -1,6 +1,6 @@
+using System.Collections.Generic;
 using Godot;
 using Godot.Collections;
-using System.Collections.Generic;
 
 public class GuardFOV : Node2D
 {
@@ -20,15 +20,15 @@ public class GuardFOV : Node2D
 
     [Export] float viewDetail = 60;
 
-    [Export] Array<string> enemyGroups = new() { "scientist" };
+    [Export] Array<string> enemyGroups = new () { "scientist" };
 
-    Array<Godot.Object> inDangerArea = new();
-    Array<Godot.Object> inWarnArea = new();
+    Array<Godot.Object> inDangerArea = new ();
+    Array<Godot.Object> inWarnArea = new ();
 
     record ArcPoint(Vector2 pos, int level);
 
     // Buffer to target points
-    List<ArcPoint> pointsArc = new();
+    List<ArcPoint> pointsArc = new ();
     bool isUpdate = false;
 
 
@@ -87,9 +87,9 @@ public class GuardFOV : Node2D
         var startAngle = dirDeg - (fieldOfView / 2);
         var endAngle = startAngle + fieldOfView;
 
-        pointsArc = new();
-        inDangerArea = new();
-        inWarnArea = new();
+        pointsArc = new ();
+        inDangerArea = new ();
+        inWarnArea = new ();
 
         var spaceState = GetWorld2d().DirectSpaceState;
 
