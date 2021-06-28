@@ -4,8 +4,6 @@ using System.Collections.Generic;
 
 public class GuardFOV : Node2D
 {
-
-
     [Export] float fieldOfView = 50;
     [Export] float radiusWarn = 350;
     [Export] float radiusDanger = 350;
