@@ -1,5 +1,6 @@
 using Godot;
 using Godot.Collections;
+using System.Collections.Generic;
 
 public class GuardFOV : Node2D
 {
@@ -29,7 +30,7 @@ public class GuardFOV : Node2D
     record ArcPoint(Vector2 pos, int level);
 
     // Buffer to target points
-    Array<ArcPoint> pointsArc = new();
+    List<ArcPoint> pointsArc = new();
     bool isUpdate = false;
 
 

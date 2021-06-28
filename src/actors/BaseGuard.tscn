@@ -93,7 +93,7 @@ script = ExtResource( 62 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "move_pistol"
-frame = 16
+frame = 17
 playing = true
 
 [node name="Tween" type="Tween" parent="."]
