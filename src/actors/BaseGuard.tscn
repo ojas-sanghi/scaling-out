@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=2]
+[gd_scene load_steps=65 format=2]
 
 [ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_6.png" type="Texture" id=1]
 [ext_resource path="res://assets/army/rifle/survivor-move_rifle_0.png" type="Texture" id=2]
@@ -28,6 +28,7 @@
 [ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_2.png" type="Texture" id=26]
 [ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_1.png" type="Texture" id=27]
 [ext_resource path="res://assets/army/rifle/survivor-move_rifle_6.png" type="Texture" id=28]
+[ext_resource path="res://src/stealth/GuardFOV.cs" type="Script" id=29]
 [ext_resource path="res://assets/army/rifle/survivor-move_rifle_1.png" type="Texture" id=30]
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_12.png" type="Texture" id=31]
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_6.png" type="Texture" id=32]
@@ -69,14 +70,14 @@ animations = [ {
 "name": "move_shotgun",
 "speed": 19.0
 }, {
-"frames": [ ExtResource( 2 ), ExtResource( 30 ), ExtResource( 21 ), ExtResource( 10 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 28 ), ExtResource( 44 ), ExtResource( 16 ), ExtResource( 57 ), ExtResource( 15 ), ExtResource( 46 ), ExtResource( 17 ), ExtResource( 7 ), ExtResource( 38 ), ExtResource( 52 ), ExtResource( 23 ), ExtResource( 47 ), ExtResource( 14 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "move_rifle",
-"speed": 19.0
-}, {
 "frames": [ ExtResource( 58 ), ExtResource( 56 ), ExtResource( 54 ), ExtResource( 45 ), ExtResource( 40 ), ExtResource( 49 ), ExtResource( 32 ), ExtResource( 33 ), ExtResource( 59 ), ExtResource( 55 ), ExtResource( 53 ), ExtResource( 60 ), ExtResource( 31 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 34 ), ExtResource( 41 ), ExtResource( 37 ), ExtResource( 36 ), ExtResource( 61 ) ],
 "loop": true,
 "name": "move_pistol",
+"speed": 19.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 30 ), ExtResource( 21 ), ExtResource( 10 ), ExtResource( 43 ), ExtResource( 42 ), ExtResource( 28 ), ExtResource( 44 ), ExtResource( 16 ), ExtResource( 57 ), ExtResource( 15 ), ExtResource( 46 ), ExtResource( 17 ), ExtResource( 7 ), ExtResource( 38 ), ExtResource( 52 ), ExtResource( 23 ), ExtResource( 47 ), ExtResource( 14 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "move_rifle",
 "speed": 19.0
 } ]
 
@@ -92,7 +93,7 @@ script = ExtResource( 62 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
 animation = "move_pistol"
-frame = 9
+frame = 16
 playing = true
 
 [node name="Tween" type="Tween" parent="."]
@@ -101,14 +102,9 @@ playing = true
 position = Vector2( -9.52698, 11.3362 )
 shape = SubResource( 2 )
 
-[node name="FieldOfView" type="Area2D" parent="."]
+[node name="GuardFOV" type="Node2D" parent="."]
 rotation = -0.785398
-collision_layer = 32
-collision_mask = 2
-
-[node name="FOVCollision" type="CollisionPolygon2D" parent="FieldOfView"]
-rotation = 0.785398
-polygon = PoolVector2Array( 0, 0, 325, 120, 325, -120 )
+script = ExtResource( 29 )
+fovColor = Color( 1, 0, 0, 0.698039 )
 
 [connection signal="body_entered" from="." to="." method="OnBaseGuardBodyEntered"]
-[connection signal="body_entered" from="FieldOfView" to="." method="OnBaseGuardBodyEntered"]

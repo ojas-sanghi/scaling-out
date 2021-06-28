@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 using System.Linq;
 
@@ -135,6 +136,53 @@ public class Scientist : KinematicBody2D
     {
         coinsCollected += value;
     }
+
+//     public override void _Draw()
+//     {
+//         FOV();
+//     }
+
+//     void GetOccluderPolygons()
+//     {
+//         var occluders = GetTree().GetNodesInGroup("fov_occluders").Cast<Node>();
+//         var polygons;
+//         foreach (var o in occluders)
+//         {
+//             var mask = (Polygon2D)o.GetNode("occlusion_mask");
+//             if (mask != null)
+//             {
+//                 var poly = mask.Polygon;
+//                 for 
+//             }
+//         }
+//     }
+
+//     void FOV() 
+//     {
+
+//     }
+
+//     func _draw():
+// 	fov()
+
+// func get_occluder_polygons():
+// 	var occluders = get_tree().get_nodes_in_group('fov_occluders')
+// 	var polygons = []
+// 	for o in occluders:
+// 		var mask = o.get_node('occlusion_mask')
+// 		if mask != null:
+// 			var poly = mask.polygon
+// 			for i in range(len(poly)):
+// 				poly[i] += (o.position - self.position)
+// 			polygons.append(poly)
+// 	return polygons
+
+// func fov():
+// 	var fov_computer = get_node('FOV')
+// 	var polygons = get_occluder_polygons()
+// 	var fov_center = Vector2(0,0)
+// 	var fov_poly = fov_computer.get_fov_from_polygons(polygons, fov_center)
+// 	draw_colored_polygon(fov_poly, Color(0,0,255))
 
 
 
