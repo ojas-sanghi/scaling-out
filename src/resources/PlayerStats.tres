@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource( 1 )
-dinosUnlocked = [ 3, 2 ]
-genesFound = [ 1, 2 ]
+genesFound = [ 2 ]
+dinosUnlocked = [ 3 ]

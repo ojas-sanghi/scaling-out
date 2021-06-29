@@ -31,31 +31,21 @@ public class ShopUnlockButton : Button
             geneString = "";
         }
 
-        canAfford = PlayerStats.gold >= goldCost && PlayerStats.genes >= genesCost && hasGene;
-        if (canAfford)
-        {
-            this.Disabled = false;
-            richLabel.BbcodeText =
+        bool canAffordGold = PlayerStats.gold >= goldCost;
+        bool canAffordGene = PlayerStats.genes >= genesCost;
+
+        string goldColor = canAffordGold ? "white" : "red";
+        string geneColor = canAffordGene ? "white" : "red";
+        string specialGeneColor = hasGene ? "white" : "red";
+
+        canAfford = canAffordGold && canAffordGene && hasGene;
+        this.Disabled = !canAfford;
+        richLabel.BbcodeText =
             $@"[center]Unlock
-[img=45]res://assets/icons/coins.png[/img]{goldCost}
-[img=45]res://assets/icons/dna.png[/img]{genesCost}
-{geneString}
+[img=45]res://assets/icons/coins.png[/img] [color={goldColor}] {goldCost} [/color]
+[img=45]res://assets/icons/dna.png[/img] [color={genesCost}] {genesCost} [/color]
+[color={specialGeneColor}] {geneString} [/color]
  [/center]";
-        }
-        else
-        {
-            this.Disabled = true;
-            richLabel.BbcodeText =
-            $@"[center]Unlock
-[color=red] [img=45]res://assets/icons/coins.png[/img]{goldCost}
-[img=45]res://assets/icons/dna.png[/img]{genesCost}
-{geneString}
- [/color]
- [/center]";
-
-
-
-        }
     }
 
     void OnShopUnlockButtonPressed()
