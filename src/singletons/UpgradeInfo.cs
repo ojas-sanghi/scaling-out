@@ -64,6 +64,10 @@ public class UpgradeInfo
     {
         return stats[stat].GetGenes();
     }
+    public Enums.Genes GetRequiredGene()
+    {
+        return data.requiredGene;
+    }
 
     // If the user has paid and unlocked the special
     // Also ensure that they actually have the special

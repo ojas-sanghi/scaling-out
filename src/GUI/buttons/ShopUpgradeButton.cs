@@ -107,28 +107,15 @@ public class ShopUpgradeButton : Button
                     break;
                 }
 
+                name.Text = "Special";
+                stat.Text = "";
+                statNum.Text = "";
+                
                 // get the current special ability type using the info about the current dino screen we're on (shopinfo.shopdino)
                 // then get the icon using that special ability type
                 var ability = DinoInfo.Instance.dinoTypesAndAbilities[ShopInfo.shopDino];
                 image.Texture = DinoInfo.Instance.specialAbilityIcons[ability];
-                name.Text = "Special";
-                stat.Text = "";
-                statNum.Text = "";
 
-                // check if player has unlocked gene for the ability
-                if (PlayerStats.Instance.genesFound.Contains(DinoInfo.Instance.dinoAbilitiesAndGenes[ability]))
-                {
-                    Disabled = false;
-                    image.Material = null;
-                    costIndicator.Material = null;
-                }
-                // if they haven't
-                else
-                {
-                    Disabled = true;
-                    // for some reason, the Materials need to be set in _process
-                    // otherwise they keep getting reset to null
-                }
                 break;
         }
         infoSet = true;
@@ -222,11 +209,7 @@ public class ShopUpgradeButton : Button
             return;
         }
         // don't do anything if not enough gold/genes
-        if (PlayerStats.gold < goldCost)
-        {
-            return;
-        }
-        if (PlayerStats.genes < geneCost)
+        if (PlayerStats.gold < goldCost || PlayerStats.genes < geneCost)
         {
             return;
         }
@@ -245,18 +228,6 @@ public class ShopUpgradeButton : Button
 
         StopUpgrading();
         DoEverything();
-    }
-
-    public override void _Process(float delta)
-    {
-        if (Disabled)
-        {
-            var BWShader = GD.Load<ShaderMaterial>("res://assets/shaders/BlackWhiteShaderMaterial.tres");
-
-            image.Material = BWShader;
-            costIndicator.Material = BWShader;
-        }
-
     }
 
 }

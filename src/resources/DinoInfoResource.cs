@@ -10,6 +10,7 @@ public class DinoInfoResource : Resource
     [Export] public Stats dmgStat;
     [Export] public Stats speedStat;
     [Export] public SpecialStat specialStat;
+    [Export] public Enums.Genes requiredGene = Enums.Genes.None;
 
     public void UpgradeStat(Stats stats)
     {

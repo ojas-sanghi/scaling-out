@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/GUI/themes/BlueButtonTheme.tres" type="Theme" id=1]
-[ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/Font25.tres" type="DynamicFont" id=2]
 [ext_resource path="res://src/GUI/buttons/ShopUnlockButton.cs" type="Script" id=3]
 
 [node name="ShopUnlockButton" type="Button"]
@@ -24,23 +24,23 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 anchor_right = 0.986
 anchor_bottom = 0.962
-margin_left = -1.0
-margin_top = 1.0
-margin_right = 3.70401
-margin_bottom = 6.85201
+margin_left = 0.757385
+margin_top = -1.18024
+margin_right = 5.46152
+margin_bottom = 7.67177
 mouse_filter = 2
 custom_fonts/normal_font = ExtResource( 2 )
 bbcode_enabled = true
 bbcode_text = "[center]Unlock
-[color=red] [img=50]res://assets/icons/coins.png[/img] 100
-[img=50]res://assets/icons/dna.png[/img]50
-[/color]
-[/center]"
+[color=red] [img=45]res://assets/icons/coins.png[/img] 100
+[img=45]res://assets/icons/dna.png[/img]50 [/color]
+Ice gene
+[/center] "
 text = "Unlock
   100
-50
-
-"
+50 
+Ice gene
+ "
 scroll_active = false
 __meta__ = {
 "_edit_use_anchors_": false

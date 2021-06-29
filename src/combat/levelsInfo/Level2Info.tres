@@ -7,6 +7,7 @@ script = ExtResource( 1 )
 state = 3
 city = 1
 capitalCity = false
+biome = 0
 levelNum = 2
 lanesInfo = [ 0, 1, 0 ]
 rounds = 3

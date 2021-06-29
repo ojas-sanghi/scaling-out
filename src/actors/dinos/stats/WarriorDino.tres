@@ -112,3 +112,4 @@ dodgeStat = SubResource( 8 )
 dmgStat = SubResource( 6 )
 speedStat = SubResource( 14 )
 specialStat = SubResource( 12 )
+requiredGene = 2

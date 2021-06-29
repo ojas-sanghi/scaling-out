@@ -21,23 +21,40 @@ public class ShopUnlockButton : Button
         var dinoUpgradeInfo = DinoInfo.Instance.GetDinoInfo(ShopInfo.shopDino);
         goldCost = dinoUpgradeInfo.unlockCostGold;
         genesCost = dinoUpgradeInfo.unlockCostGenes;
+        Enums.Genes requiredGene = dinoUpgradeInfo.GetRequiredGene();
 
-        canAfford = PlayerStats.gold >= goldCost && PlayerStats.genes >= genesCost;
+        bool hasGene = PlayerStats.Instance.genesFound.Contains(requiredGene);
+        string geneString = requiredGene.ToString() + " gene";
+        if (requiredGene == Enums.Genes.None)
+        {
+            hasGene = true;
+            geneString = "";
+        }
+
+        canAfford = PlayerStats.gold >= goldCost && PlayerStats.genes >= genesCost && hasGene;
         if (canAfford)
         {
             this.Disabled = false;
             richLabel.BbcodeText =
             $@"[center]Unlock
-[img=50]res://assets/icons/coins.png[/img]{goldCost}
- [img=50]res://assets/icons/dna.png[/img]{genesCost} [/center]";
+[img=45]res://assets/icons/coins.png[/img]{goldCost}
+[img=45]res://assets/icons/dna.png[/img]{genesCost}
+{geneString}
+ [/center]";
         }
         else
         {
             this.Disabled = true;
             richLabel.BbcodeText =
             $@"[center]Unlock
-[color=red] [img=50]res://assets/icons/coins.png[/img]{goldCost}
-[img=50]res://assets/icons/dna.png[/img]{genesCost} [/color] [/center]";
+[color=red] [img=45]res://assets/icons/coins.png[/img]{goldCost}
+[img=45]res://assets/icons/dna.png[/img]{genesCost}
+{geneString}
+ [/color]
+ [/center]";
+
+
+
         }
     }
 
