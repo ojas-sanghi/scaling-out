@@ -32,5 +32,12 @@ __meta__ = {
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
+[node name="DangerZone" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="DangerZoneCollision" type="CollisionShape2D" parent="DangerZone"]
+position = Vector2( 557.167, 0 )
+
 [connection signal="pressed" from="Button" to="." method="OnButtonPressed"]
 [connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
+[connection signal="area_entered" from="DangerZone" to="." method="OnDangerZoneAreaEntered"]

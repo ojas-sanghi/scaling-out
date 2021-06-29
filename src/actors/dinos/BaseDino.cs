@@ -116,7 +116,8 @@ public class BaseDino : Area2D
         var deathSound = (AudioStreamPlayer)FindNode("DeathSound");
 
         RemoveFromGroup("dinos");
-        Events.publishDinoDied(dinoType);
+        Events.publishDinoDiedType(dinoType);
+        Events.publishDinoDiedInstance(this);
         collision.SetDeferred("disabled", true);
         pathTween.SetActive(false);
 
@@ -149,14 +150,13 @@ public class BaseDino : Area2D
         }
 
         QueueFree();
-
     }
 
     async public void UpdateHealth(double dmgTaken)
     {
         var healthTween = (Tween)FindNode("HealthTween");
 
-        dmgTaken += dinoDefense;
+        dmgTaken *= dinoDefense;
         dinoHealth -= dmgTaken;
         healthTween.InterpolateProperty(
             this, "animatedHealth", animatedHealth, dinoHealth, 0.6f, Tween.TransitionType.Linear, Tween.EaseType.In

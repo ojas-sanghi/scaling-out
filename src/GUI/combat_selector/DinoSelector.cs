@@ -17,7 +17,7 @@ public class DinoSelector : Node2D
     public override void _Ready()
     {
         Events.dinoFullySpawned += validateAbilityStatus;
-        Events.dinoDied += validateAbilityStatus;
+        Events.dinoDiedType += validateAbilityStatus;
         Events.allDinosExpended += OnAllDinosExpended;
         Events.dinosPurchased += OnDinosPurchased;
         Events.selectorSelected += OnSelectorSelected;
@@ -33,7 +33,7 @@ public class DinoSelector : Node2D
     public override void _ExitTree()
     {
         Events.dinoFullySpawned -= validateAbilityStatus;
-        Events.dinoDied -= validateAbilityStatus;
+        Events.dinoDiedType -= validateAbilityStatus;
         Events.allDinosExpended -= OnAllDinosExpended;
         Events.dinosPurchased -= OnDinosPurchased;
     }

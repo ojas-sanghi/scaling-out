@@ -19,7 +19,9 @@ public class CombatInfo : Node
     public List<Enums.Dinos> dinosDeploying = new List<Enums.Dinos>();
     public List<Enums.Dinos> selectorTimerList = new List<Enums.Dinos>();
 
-    public List<Enums.SpecialAbilities> abilitiesUsed;
+    public List<Enums.SpecialAbilities> abilitiesUsed = new List<Enums.SpecialAbilities>(); 
+
+    public List<Lane> lanesInDanger = new List<Lane>();
 
     public int currentRound = 1;
     public int maxRounds = 3;
@@ -55,7 +57,8 @@ public class CombatInfo : Node
         dinosDeploying.Clear();
         selectorTimerList.Clear();
 
-        abilitiesUsed = new List<Enums.SpecialAbilities>();
+        abilitiesUsed.Clear();
+        lanesInDanger.Clear();
 
         maxRounds = _MaxRounds;
     }

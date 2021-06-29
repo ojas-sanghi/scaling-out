@@ -51,10 +51,6 @@ position = Vector2( 1546.59, 811.593 )
 [node name="ArmyDude3" parent="Army" instance=ExtResource( 5 )]
 position = Vector2( 1626.31, 273.163 )
 
-[node name="ArmyDude4" parent="Army" instance=ExtResource( 5 )]
-visible = false
-position = Vector2( 1726.97, 521.097 )
-
 [node name="Selectors" type="Node2D" parent="."]
 position = Vector2( 300, -4.29114 )
 

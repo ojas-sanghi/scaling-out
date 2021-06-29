@@ -6,7 +6,7 @@ public class BulletsGroup : Area2D
 
     public override void _PhysicsProcess(float delta)
     {
-        Vector2 velocity = Vector2.Left.Rotated(Rotation) * speed;
+        Vector2 velocity = Vector2.Right.Rotated(Rotation) * speed;
         Position += velocity * delta;
     }
 

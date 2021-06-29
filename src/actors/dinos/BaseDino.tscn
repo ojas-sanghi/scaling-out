@@ -166,7 +166,7 @@ tracks/3/keys = {
 [node name="BaseDino" type="Area2D" groups=[
 "dinos",
 ]]
-collision_mask = 76
+collision_mask = 332
 script = ExtResource( 6 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]

@@ -27,7 +27,7 @@ public class Bullet : Area2D
 
     public override void _PhysicsProcess(float delta)
     {
-        Vector2 bulletVel = Vector2.Left.Rotated(Rotation) * speed;
+        Vector2 bulletVel = Vector2.Right.Rotated(Rotation) * speed;
         Position += bulletVel * delta;
     }
 
@@ -41,6 +41,11 @@ public class Bullet : Area2D
     void OnExistenceTimerTimeout()
     {
         bulletDmg = 1;
+    }
+
+    void OnViewportExited(Viewport viewport)
+    {
+        QueueFree();
     }
 
 }

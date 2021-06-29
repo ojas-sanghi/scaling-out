@@ -5,7 +5,8 @@ public class Events : Node
 {
     public static event Action<Enums.Dinos> dinoDeployed;
     public static event Action<Enums.Dinos> dinoFullySpawned;
-    public static event Action<Enums.Dinos> dinoDied;
+    public static event Action<Enums.Dinos> dinoDiedType; // same signal, but different parameter for diff. situations
+    public static event Action<BaseDino> dinoDiedInstance; // same signal, but different parameter for diff. situations
 
     public static event Action<double> dinoHit;
     public static event Action<float> blockadeHit;
@@ -35,7 +36,8 @@ public class Events : Node
 
     public static void publishDinoDeployed(Enums.Dinos type) => dinoDeployed?.Invoke(type);
     public static void publishDinoFullySpawned(Enums.Dinos type) => dinoFullySpawned?.Invoke(type);
-    public static void publishDinoDied(Enums.Dinos type) => dinoDied?.Invoke(type);
+    public static void publishDinoDiedType(Enums.Dinos type) => dinoDiedType?.Invoke(type);
+    public static void publishDinoDiedInstance(BaseDino dino) => dinoDiedInstance?.Invoke(dino);
 
     public static void publishDinoHit(double damage) => dinoHit?.Invoke(damage);
     public static void publishBlockadeHit(float damage) => blockadeHit?.Invoke(damage);

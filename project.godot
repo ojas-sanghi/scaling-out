@@ -31,7 +31,7 @@ StealthInfo="*res://src/singletons/StealthInfo.cs"
 CombatInfo="*res://src/singletons/CombatInfo.cs"
 DinoInfo="*res://src/singletons/DinoInfo.cs"
 LaneInfo="*res://src/singletons/LaneInfo.cs"
-CitiesInfo="*res://src/singletons/CitiesInfo.cs"
+CityInfo="*res://src/singletons/CityInfo.cs"
 PlayerStats="*res://src/singletons/PlayerStats.cs"
 
 [debug]
@@ -123,5 +123,6 @@ dino_6={
 2d_physics/layer_6="stealth-guard"
 2d_physics/layer_7="bullet"
 2d_physics/layer_8="dino projectile"
+2d_physics/layer_9="lane-danger-zone"
 2d_physics/layer_10="coin"
 2d_physics/layer_11="tiles"

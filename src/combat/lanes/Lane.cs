@@ -6,7 +6,10 @@ public class Lane : Path2D
     [Export] public Texture laneImg;
     [Export] float curveSmoothFactor;
 
-    Vector2 spawnPoint; // = new Vector2(70, 10);
+    public List<BaseDino> dangerDinos = new List<BaseDino>();
+    public bool inDanger = false;
+
+    Vector2 spawnPoint;
     List<PathFollow2D> newChildren = new List<PathFollow2D>();
 
     public override void _Ready()
@@ -23,12 +26,23 @@ public class Lane : Path2D
 
         GetNode<Sprite>("Sprite").Texture = laneImg;
         Events.newRound += OnNewRound;
+        Events.dinoDiedInstance += OnDinoDiedInstance;
 
         // we're an empty lane, don't allow deploys
         if (Curve.GetPointCount() == 0)
         {
             button.Hide();
+            return;
         }
+
+        // make a hitbox for the danger zone
+        var dangerBox = new RectangleShape2D();
+        // divide by 1/2 since that's how extents work
+        // divide x by 1/3 since we want it to be that big
+        dangerBox.Extents = new Vector2(laneImg.GetSize().x / 2 / 3, laneImg.GetSize().y / 2 * GetNode<Sprite>("Sprite").Scale.y);
+        var dangerZoneCollision = GetNode("DangerZone").GetNode<CollisionShape2D>("DangerZoneCollision");
+        dangerZoneCollision.Shape = dangerBox;
+        dangerZoneCollision.Position = new Vector2(this.GlobalPosition.x / 1.255f, 0);
     }
 
     public override void _ExitTree()
@@ -42,11 +56,11 @@ public class Lane : Path2D
     {
         public int Compare(PathFollow2D a, PathFollow2D b)
         {
-            if (a.UnitOffset > b.UnitOffset)
+            if (a.UnitOffset < b.UnitOffset)
             {
                 return 1;
             }
-            if (a.UnitOffset < b.UnitOffset)
+            if (a.UnitOffset > b.UnitOffset)
             {
                 return -1;
             }
@@ -97,6 +111,31 @@ public class Lane : Path2D
         dinoNode.GlobalPosition = spawnPoint;
 
         Events.publishDinoDeployed(dinoNode.dinoType);
+    }
+
+    void OnDangerZoneAreaEntered(Area2D area)
+    {
+        BaseDino dinoEntered = (BaseDino)area;
+        inDanger = true;
+
+        if (!dangerDinos.Contains(dinoEntered))
+            dangerDinos.Add(dinoEntered);
+        
+        if (!CombatInfo.Instance.lanesInDanger.Contains(this))
+            CombatInfo.Instance.lanesInDanger.Add(this);
+
+    }
+
+    void OnDinoDiedInstance(BaseDino dino)
+    {
+        if (dangerDinos.Contains(dino))
+            dangerDinos.Remove(dino);
+        
+        if (dangerDinos.Count == 0)
+        {
+            inDanger = false;
+            CombatInfo.Instance.lanesInDanger.Remove(this);
+        }
     }
 
     void OnNewRound()
