@@ -113,7 +113,7 @@ public class ArmyDude : Area2D
 
     async void OnProjectileHit(Enums.Genes type)
     {
-        if (type == Enums.Genes.Ice)
+        if (type == Enums.Genes.Cryo)
         {
             animPlayer.PlaybackSpeed = 0.5f;
             await ToSignal(GetTree().CreateTimer(10f), "timeout");

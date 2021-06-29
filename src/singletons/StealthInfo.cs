@@ -20,7 +20,7 @@ public class StealthInfo : Node
 
         geneStealthMaps = new Dictionary<Enums.Genes, PackedScene>()
         {
-            { Enums.Genes.Ice, GD.Load<PackedScene>("res://src/stealth/StealthIce.tscn") },
+            { Enums.Genes.Cryo, GD.Load<PackedScene>("res://src/stealth/StealthIce.tscn") },
             { Enums.Genes.Fire, GD.Load<PackedScene>("res://src/stealth/StealthFire.tscn") },
         };
 

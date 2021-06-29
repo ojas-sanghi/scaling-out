@@ -9,7 +9,7 @@ public class TankyDino : AbilityDino
         dinoType = Enums.Dinos.Tanky;
         CalculateUpgrades();
 
-        specialGene = Enums.Genes.Ice;
+        specialGene = Enums.Genes.Cryo;
 
         dinoUnlockCost = new List<int>() { 25, 50 };
     }

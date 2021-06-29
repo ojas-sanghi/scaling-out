@@ -106,7 +106,7 @@ public class GameButton : Button
                 scnChng.GoToScene("res://src/GUI/screens/DinoUpgradeSelectScreen.tscn");
                 break;
             case b.StealthIce:
-                StealthInfo.geneBeingPursued = Enums.Genes.Ice;
+                StealthInfo.geneBeingPursued = Enums.Genes.Cryo;
                 scnChng.GoToScene("res://src/stealth/StealthIce.tscn");
                 break;
             case b.StealthFire:

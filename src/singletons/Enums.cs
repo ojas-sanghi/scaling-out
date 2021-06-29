@@ -14,7 +14,7 @@ namespace Enums
 
     public enum Genes
     {
-        None, Ice, Fire, Florida
+        None, Cryo, Fire, Florida
     }
 
     public enum SpecialAbilities
