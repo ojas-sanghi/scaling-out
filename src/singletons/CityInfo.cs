@@ -3,9 +3,9 @@ using Godot;
 using b = Enums.Biomes;
 using d = Enums.Dinos;
 
-public class CitiesInfo : Node
+public class CityInfo : Node
 {
-    public static CitiesInfo Instance;
+    public static CityInfo Instance;
 
     public List<CityInfoResource> citiesList = new List<CityInfoResource>();
     public CityInfoResource currentCity; // TODO: set this in the Map when we make that
@@ -13,7 +13,7 @@ public class CitiesInfo : Node
     public Dictionary<Enums.Biomes, List<Enums.Dinos>> biomeFavoredDinos;
     public Dictionary<Enums.Biomes, List<Enums.Dinos>> biomeRestrictedDinos;
 
-    public CitiesInfo()
+    public CityInfo()
     {
         Instance = this;
     }
@@ -41,8 +41,6 @@ public class CitiesInfo : Node
             {b.Oceanside, new List<d>() {d.None}},
             {b.River, new List<d>() {d.None}},
         };
-
-
 
         //////////////////////
         // load the CityInfoResource files

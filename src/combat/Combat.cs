@@ -76,7 +76,7 @@ public class Combat : Node
     {
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/CombatWinDialogue.tscn");
 
-        PlayerStats.gold += CitiesInfo.Instance.currentCity.rewardGold;
+        PlayerStats.gold += CityInfo.Instance.currentCity.rewardGold;
     }
 
     void OnDinosPurchased(int num)

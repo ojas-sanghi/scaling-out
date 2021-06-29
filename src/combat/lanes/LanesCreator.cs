@@ -15,7 +15,7 @@ public class LanesCreator : Node2D
     // programmatically makes lanes at startup based on a config for how many lanes the specific conquest needs
     public override void _Ready()
     {
-        var laneTypes = CitiesInfo.Instance.currentCity.lanesInfo;
+        var laneTypes = CityInfo.Instance.currentCity.lanesInfo;
 
         // set number of lanes and position of the parent of the lanes (this node) based off dict
         // hard coded, but no other way
