@@ -102,7 +102,7 @@ public class BaseDino : Area2D
 
         // add benefits if the dino is favored in the current biome
         //? maybe also do this in the selector sprite area for the small ui popup that will show?
-        Biome currentBiome = CityInfo.Instance.currentCity.biome;
+        Enums.Biomes currentBiome = CityInfo.Instance.currentCity.biome;
         bool isFavored = CityInfo.Instance.biomeFavoredDinos[currentBiome].Contains(this.dinoType);
         if (isFavored)
         {
