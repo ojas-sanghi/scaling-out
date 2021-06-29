@@ -31,8 +31,8 @@ public class DeployTimer : Control
             return;
         }
 
-        double delay = DinoInfo.Instance.GetDinoTimerDelay(dinoType);
-        dinoTimer.Start((float)delay);
+        float delay = DinoInfo.Instance.GetDinoTimerDelay(dinoType);
+        dinoTimer.Start(delay);
 
         UpdateProgressBar(dinoType);
     }
@@ -41,9 +41,9 @@ public class DeployTimer : Control
     {
         progress.Show();
 
-        double delay = DinoInfo.Instance.GetDinoTimerDelay(dinoType);
+        float delay = DinoInfo.Instance.GetDinoTimerDelay(dinoType);
         tween.InterpolateProperty(
-            progress, "value", 0, 100, (float)delay
+            progress, "value", 0, 100, delay
         );
         tween.Start();
     }

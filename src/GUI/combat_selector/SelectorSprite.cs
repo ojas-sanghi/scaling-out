@@ -7,7 +7,7 @@ public class SelectorSprite : Button
     public Texture spriteTexture;
     public string text;
     public Enums.Dinos dinoType;
-    public Vector2 customScale = new Vector2((float)0.511, (float)0.519);
+    public Vector2 customScale = new Vector2(0.511f, 0.519f);
 
     public bool isAbilitySelector = false;
     public Enums.SpecialAbilities abilityType;
@@ -70,8 +70,8 @@ public class SelectorSprite : Button
         // only execute if we're a dino
         if (!isAbilitySelector)
         {
-            sprite.Modulate = new Color(1, 1, 1, (float)0.5);
-            label.Modulate = new Color(1, 1, 1, (float)0.5);
+            sprite.Modulate = new Color(1, 1, 1, 0.5f);
+            label.Modulate = new Color(1, 1, 1, 0.5f);
         }
     }
 
@@ -138,7 +138,7 @@ public class SelectorSprite : Button
         }
 
         FadeSprite();
-        cooldownTimer.Start((float)DinoInfo.Instance.GetDinoTimerDelay(dinoType));
+        cooldownTimer.Start(DinoInfo.Instance.GetDinoTimerDelay(dinoType));
         await ToSignal(cooldownTimer, "timeout");
         UnFadeSprite();
     }

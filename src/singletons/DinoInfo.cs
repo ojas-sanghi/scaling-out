@@ -82,9 +82,9 @@ public class DinoInfo : Node
         return upgradesInfo[dino];
     }
 
-    public double GetDinoTimerDelay(Enums.Dinos dinoType)
+    public float GetDinoTimerDelay(Enums.Dinos dinoType)
     {
-        return Convert.ToDouble(GetDinoProperty(dinoType, "spawnDelay"));
+        return (float)GetDinoProperty(dinoType, "spawnDelay");
     }
 
     // Instance dino, get variable we want, then remove it

@@ -85,8 +85,8 @@ public class CombatInfo : Node
         dinosDeploying.Add(dinoType);
 
         // Wait for the dino-specific delay
-        double delay = DinoInfo.Instance.GetDinoTimerDelay(dinoType);
-        // await ToSignal(GetTree().CreateTimer((float)delay), "timeout");
+        float delay = DinoInfo.Instance.GetDinoTimerDelay(dinoType);
+        // await ToSignal(GetTree().CreateTimer(delay), "timeout");
 
         // // remove dino from list
         // dinosDeploying.Remove(dinoId);
@@ -96,7 +96,7 @@ public class CombatInfo : Node
         AddChild(dinosDeployingTimer);
 
         dinosDeployingTimer.Connect("timeout", this, "OnDinosDeployingTimerTimeout", new Array(new Enums.Dinos[] { dinoType }));
-        dinosDeployingTimer.Start((float)delay);
+        dinosDeployingTimer.Start(delay);
     }
 
     void OnDinosDeployingTimerTimeout(Enums.Dinos dinoType)

@@ -8,7 +8,7 @@ public class Events : Node
     public static event Action<Enums.Dinos> dinoDied;
 
     public static event Action<double> dinoHit;
-    public static event Action<double> blockadeHit;
+    public static event Action<float> blockadeHit;
 
     public static event Action newRound;
     public static event Action roundWon; //! Connect oneshot in _ready, re-connect when newRound
@@ -38,7 +38,7 @@ public class Events : Node
     public static void publishDinoDied(Enums.Dinos type) => dinoDied?.Invoke(type);
 
     public static void publishDinoHit(double damage) => dinoHit?.Invoke(damage);
-    public static void publishBlockadeHit(double damage) => blockadeHit?.Invoke(damage);
+    public static void publishBlockadeHit(float damage) => blockadeHit?.Invoke(damage);
 
     public static void publishNewRound() => newRound?.Invoke();
     public static void publishroundWon() => roundWon?.Invoke();

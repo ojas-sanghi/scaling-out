@@ -159,7 +159,7 @@ public class BaseDino : Area2D
         dmgTaken += dinoDefense;
         dinoHealth -= dmgTaken;
         healthTween.InterpolateProperty(
-            this, "animatedHealth", animatedHealth, dinoHealth, (float)0.6, Tween.TransitionType.Linear, Tween.EaseType.In
+            this, "animatedHealth", animatedHealth, dinoHealth, 0.6f, Tween.TransitionType.Linear, Tween.EaseType.In
         );
 
         if (!healthTween.IsActive())
@@ -190,7 +190,7 @@ public class BaseDino : Area2D
 
     void OnAttackingTimerTimeout()
     {
-        Events.publishBlockadeHit(dinoDmg);
+        Events.publishBlockadeHit((float)dinoDmg);
         AttackBlockade();
     }
 

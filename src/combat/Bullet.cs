@@ -15,7 +15,7 @@ public class Bullet : Area2D
         if (mode == ArmyGunTypes.Shotgun)
         {
             bulletDmg = 6;
-            timer.WaitTime = (float)0.75;
+            timer.WaitTime = 0.75f;
         }
         else
         {

@@ -84,7 +84,7 @@ public class DinoSelector : Node2D
 
             newSelector.text = selectorPositionInList.ToString();
 
-            newSelector.customScale = new Vector2((float)0.07, (float)0.07);
+            newSelector.customScale = new Vector2(0.07f, 0.07f);
 
             newSelector.Shortcut = new ShortCut();
             newSelector.Shortcut.Shortcut = new InputEventKey();
@@ -163,7 +163,7 @@ public class DinoSelector : Node2D
         // Wait for 0.1 seconds to allow for the same signal to be registered and executed in Combat.cs
         // Only once that code executes will our un-fading code work properly
         // Kinda hacky but oh well
-        await ToSignal(GetTree().CreateTimer((float)0.1), "timeout");
+        await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
 
         // reset switch, re-enable all sprites once more dinos are bought
         if (CombatInfo.Instance.dinosRemaining > 0)

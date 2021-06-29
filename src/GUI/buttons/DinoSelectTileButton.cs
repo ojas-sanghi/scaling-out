@@ -71,7 +71,7 @@ public class DinoSelectTileButton : TextureButton
             var icon = GetNode<TextureRect>("Icon");
             var dinoIcon = DinoInfo.Instance.dinoIcons[dino];
             icon.Texture = dinoIcon;
-            icon.RectScale = new Vector2((float)1.75, (float)1.75);
+            icon.RectScale = new Vector2(1.75f, 1.75f);
             icon.RectPosition = new Vector2(26, 39);
         }
     }

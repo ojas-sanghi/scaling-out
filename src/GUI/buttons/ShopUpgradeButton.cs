@@ -155,7 +155,7 @@ public class ShopUpgradeButton : Button
         for (int i = 0; i < maxSquares; i++)
         {
             var newSquare = new ColorRect();
-            newSquare.Color = new Color(0, 0, 0, (float)0.5);
+            newSquare.Color = new Color(0, 0, 0, 0.5f);
             newSquare.RectMinSize = new Vector2(containerLength / maxSquares, containerHeight);
             newSquare.RectSize = newSquare.RectMinSize;
 
@@ -231,7 +231,7 @@ public class ShopUpgradeButton : Button
             return;
         }
 
-        tween.InterpolateProperty(GetNode<TextureProgress>("TextureProgress"), "value", 0, 100, (float)1.5);
+        tween.InterpolateProperty(GetNode<TextureProgress>("TextureProgress"), "value", 0, 100, 1.5f);
         tween.Start();
     }
 

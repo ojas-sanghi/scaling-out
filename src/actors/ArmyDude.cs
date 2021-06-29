@@ -7,7 +7,7 @@ public class ArmyDude : Area2D
 
     double rps;
     int magSize;
-    double reloadTime;
+    float reloadTime;
 
     int bulletsLeft;
 
@@ -29,21 +29,21 @@ public class ArmyDude : Area2D
                 mode = ArmyGunTypes.Pistol;
                 rps = 1;
                 magSize = 15;
-                reloadTime = 2;
+                reloadTime = 2f;
                 break;
 
             case 1:
                 mode = ArmyGunTypes.Rifle;
                 rps = 2;
                 magSize = 20;
-                reloadTime = 3;
+                reloadTime = 3f;
                 break;
 
             case 2:
                 mode = ArmyGunTypes.Shotgun;
                 rps = 1.2;
                 magSize = 5;
-                reloadTime = 2.5;
+                reloadTime = 2.5f;
                 break;
         }
 
@@ -53,7 +53,7 @@ public class ArmyDude : Area2D
         //? what happens when you cast enum to strin    
 
         animPlayer.Play("shoot_" + mode.ToString().ToLower());
-        animPlayer.Seek((float)0.1, true);
+        animPlayer.Seek(0.1f, true);
 
         rayCast.CastTo = new Vector2(-GetViewport().Size.x, 0);
 
@@ -81,14 +81,14 @@ public class ArmyDude : Area2D
     {
         if (type == Enums.Genes.Ice)
         {
-            animPlayer.PlaybackSpeed = (float)0.5;
-            await ToSignal(GetTree().CreateTimer((float)10.0), "timeout");
-            animPlayer.PlaybackSpeed = (float)1.0;
+            animPlayer.PlaybackSpeed = 0.5f;
+            await ToSignal(GetTree().CreateTimer(10f), "timeout");
+            animPlayer.PlaybackSpeed = 1f;
         }
         else if (type == Enums.Genes.Fire)
         {
             animPlayer.Stop();
-            await ToSignal(GetTree().CreateTimer((float)3), "timeout");
+            await ToSignal(GetTree().CreateTimer(3f), "timeout");
             animPlayer.Play("shoot_" + mode.ToString().ToLower());
         }
 
@@ -105,7 +105,7 @@ public class ArmyDude : Area2D
             animPlayer.Stop();
 
             // play reload anim
-            await ToSignal(GetTree().CreateTimer((float)reloadTime), "timeout");
+            await ToSignal(GetTree().CreateTimer(reloadTime), "timeout");
             bulletsLeft = magSize;
             animPlayer.Play("shoot_" + mode.ToString().ToLower());
         }

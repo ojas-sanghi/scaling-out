@@ -2,14 +2,14 @@ using Godot;
 
 public class Blockade : Area2D
 {
-    double health = 150;
+    float health = 150f;
 
     int numSprites;
-    double healthPerSprite;
+    float healthPerSprite;
 
     int currentSpriteNum;
     Sprite currentSprite;
-    double currentSpriteHealth;
+    float currentSpriteHealth;
 
     Node2D sprites;
 
@@ -41,7 +41,7 @@ public class Blockade : Area2D
         currentSpriteHealth = healthPerSprite;
     }
 
-    void OnBlockadeHit(double dmg)
+    void OnBlockadeHit(float dmg)
     {
         health -= dmg;
         currentSpriteHealth -= dmg;
@@ -49,7 +49,7 @@ public class Blockade : Area2D
         // set transparency to health / max health
         if (currentSpriteHealth > 0)
         {
-            currentSprite.Modulate = new Color(1, 1, 1, (float)(currentSpriteHealth / healthPerSprite));
+            currentSprite.Modulate = new Color(1, 1, 1, (currentSpriteHealth / healthPerSprite));
         }
         else // if destroyed, hide it and move to next sprite
         {
