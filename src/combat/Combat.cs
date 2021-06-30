@@ -11,6 +11,7 @@ public class Combat : Node
     public override void _Ready()
     {
         c.Reset(maxDinos, maxRounds);
+        c.currentRound = 1;
 
         //! Note I have no idea what the next comments are, they just are
         // can't put that in reset() since otherwise it would do that between rounds

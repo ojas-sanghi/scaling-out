@@ -45,7 +45,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 385.059, 93.2492, 0, 0, 0, 0, 409.009, -58.6415, 0, 0, 0, 0, 501.025, -42.2549, 0, 0, 0, 0, 558.378, -162.633 )
 }
 
-[node name="StealthIce" type="Node2D"]
+[node name="StealthCryo" type="Node2D"]
 script = ExtResource( 12 )
 rewardGene = 1
 
