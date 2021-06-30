@@ -7,6 +7,7 @@ public class UpgradeInfo
 {
     public int unlockCostGold;
     public int unlockCostGenes;
+    public int deployCost;
     public Dictionary<Enums.Stats, Stats> stats;
     public DinoInfoResource data;
 
@@ -16,6 +17,7 @@ public class UpgradeInfo
 
         unlockCostGold = data.unlockCost.gold;
         unlockCostGenes = data.unlockCost.genes;
+        deployCost = data.deployCost;
         stats = new Dictionary<Enums.Stats, Stats>()
         {
             {Enums.Stats.Hp, data.hpStat},

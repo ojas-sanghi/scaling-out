@@ -105,6 +105,7 @@ genes = 0
 [resource]
 script = ExtResource( 2 )
 unlockCost = SubResource( 15 )
+deployCost = 10
 hpStat = SubResource( 10 )
 delayStat = SubResource( 4 )
 defStat = SubResource( 2 )

@@ -40,6 +40,9 @@ public class DinoProjectile : Area2D
     {
         if (disabled) return;
 
+        // TODO: figure out what happens when multiple ice projectiles hit the barrrier
+        // maybe ignore them once the first one hits?
+
         Events.publishProjectileHit(type);
         GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred("disabled", true);
     }

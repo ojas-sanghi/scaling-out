@@ -12,15 +12,13 @@ public class DinoSelector : Node2D
 
     DinoInfo d = DinoInfo.Instance;
 
-    bool allDinosExpended = false;
-
     public override void _Ready()
     {
-        Events.dinoFullySpawned += validateAbilityStatus;
-        Events.dinoDiedType += validateAbilityStatus;
-        Events.allDinosExpended += OnAllDinosExpended;
-        Events.dinosPurchased += OnDinosPurchased;
+        Events.dinoDeployed += OnDinoDeployed;
+        Events.dinoFullySpawned += ValidateAbilityStatus;
+        Events.dinoDiedType += ValidateAbilityStatus;
         Events.selectorSelected += OnSelectorSelected;
+        Events.newRound += OnNewRound;
 
         hBox = (HBoxContainer)FindNode("HBoxContainer");
 
@@ -32,10 +30,11 @@ public class DinoSelector : Node2D
 
     public override void _ExitTree()
     {
-        Events.dinoFullySpawned -= validateAbilityStatus;
-        Events.dinoDiedType -= validateAbilityStatus;
-        Events.allDinosExpended -= OnAllDinosExpended;
-        Events.dinosPurchased -= OnDinosPurchased;
+        Events.dinoDeployed += OnDinoDeployed;
+        Events.dinoFullySpawned -= ValidateAbilityStatus;
+        Events.dinoDiedType -= ValidateAbilityStatus;
+        Events.selectorSelected -= OnSelectorSelected;
+        Events.newRound -= OnNewRound;
     }
 
     void SetupSelectors()
@@ -107,13 +106,19 @@ public class DinoSelector : Node2D
 
     void OnSelectorSelected(SelectorSprite selector)
     {
+        // if dino
         if (!selector.isAbilitySelector)
         {
-            if (allDinosExpended) return;
+            // if (allDinosExpended) return;
+            // if can afford dino, turn it on
+            if (DinoInfo.Instance.CanAffordDino(selector.dinoType))
+            {
+                CombatInfo.Instance.selectedDinoType = selector.dinoType;
+                EnableExclusiveParticles(selector);
+            }
 
-            CombatInfo.Instance.selectedDinoType = selector.dinoType;
-            EnableExclusiveParticles(selector);
         }
+        // if ability
         else
         {
             if (!CombatInfo.Instance.IsAbilityDeployable(selector.abilitySelectorAssociatedDino))
@@ -121,6 +126,8 @@ public class DinoSelector : Node2D
                 return;
             }
 
+            // if deployable, and activated
+            // shoot projectile from each dino
             foreach (BaseDino d in GetTree().GetNodesInGroup("dinos"))
             {
                 if (d.dinoType == selector.abilitySelectorAssociatedDino)
@@ -138,7 +145,7 @@ public class DinoSelector : Node2D
     }
 
     // when dinos are spawned/die, check if any associated special abilities should be enabled/disabled
-    void validateAbilityStatus(Enums.Dinos dinoType)
+    void ValidateAbilityStatus(Enums.Dinos dinoType)
     {
         // get ability selector for associated dino type
         // then turn it on/off according 
@@ -153,30 +160,25 @@ public class DinoSelector : Node2D
         {
             selector.DisableSprite();
         }
-
     }
 
-    async void OnDinosPurchased(int numDinos)
+    void ValidateAffordStatus()
     {
-        // Wait for 0.1 seconds to allow for the same signal to be registered and executed in Combat.cs
-        // Only once that code executes will our un-fading code work properly
-        // Kinda hacky but oh well
-        await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
-
-        // reset switch, re-enable all sprites once more dinos are bought
-        if (CombatInfo.Instance.dinosRemaining > 0)
-        {
-            allDinosExpended = false;
-            foreach (SelectorSprite ss in selectorList)
-            {
-                ss.EnableSprite();
-            }
-        }
+        // for each selector, check if they can still afford the dino
+        // if not, then they'll fade themselves
+        foreach (SelectorSprite ss in selectorList)
+            ss.CheckCanAfford();
     }
 
-    void OnAllDinosExpended()
+    void OnDinoDeployed(Enums.Dinos dino)
     {
-        allDinosExpended = true;
+        ValidateAffordStatus();
+    }
+
+    void OnNewRound()
+    {
+        CombatInfo.Instance.dinosDeploying.Clear();
+        ValidateAffordStatus();
     }
 
     SelectorSprite GetDinoSelectorOrNull(Enums.Dinos dinoType)

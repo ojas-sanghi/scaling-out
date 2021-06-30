@@ -1,14 +1,14 @@
 [gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://src/GUI/infos/CredCounter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/GUI/GameTimer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/GUI/combat_selector/DinoSelector.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/combat/Blockade.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/actors/CombatArmySoldier.tscn" type="PackedScene" id=5]
-[ext_resource path="res://src/GUI/DinoCounter.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/combat/Combat.cs" type="Script" id=7]
 [ext_resource path="res://src/combat/lanes/LanesCreator.cs" type="Script" id=8]
 [ext_resource path="res://assets/music/Battle Music.wav" type="AudioStream" id=9]
-[ext_resource path="res://src/GUI/BuyMenu.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/GUI/PostRoundMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/GUI/RoundCounter.tscn" type="PackedScene" id=12]
 
 [node name="CombatScreen" type="Control"]
@@ -83,21 +83,21 @@ margin_top = 31.2911
 margin_right = 1159.78
 margin_bottom = 31.2911
 
-[node name="DinoCounter" parent="Selectors" instance=ExtResource( 6 )]
-margin_left = -201.574
-margin_top = 31.2911
-margin_right = -201.574
-margin_bottom = 31.2911
-
 [node name="RoundCounter" parent="Selectors" instance=ExtResource( 12 )]
 margin_left = 326.683
 margin_top = 31.1127
 margin_right = 326.683
 margin_bottom = 31.1127
 
+[node name="CredCounter" parent="Selectors" instance=ExtResource( 1 )]
+margin_left = -196.656
+margin_top = 4.29114
+margin_right = -196.656
+margin_bottom = 4.29114
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
 autoplay = true
 
-[node name="BuyMenu" parent="." instance=ExtResource( 11 )]
+[node name="PostRoundMenu" parent="." instance=ExtResource( 11 )]
 visible = false

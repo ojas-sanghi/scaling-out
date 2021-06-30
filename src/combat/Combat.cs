@@ -2,7 +2,6 @@ using Godot;
 
 public class Combat : Node
 {
-    [Export] int maxDinos = 10;
     [Export] int maxRounds = 3;
     [Export] int roundLengthSeconds = 120;
 
@@ -10,7 +9,7 @@ public class Combat : Node
 
     public override void _Ready()
     {
-        c.Reset(maxDinos, maxRounds);
+        c.Reset(maxRounds);
         c.currentRound = 1;
 
         //! Note I have no idea what the next comments are, they just are
@@ -27,7 +26,6 @@ public class Combat : Node
 
         Events.conquestLost += OnConquestLost;
         Events.conquestWon += OnConquestWon;
-        Events.dinosPurchased += OnDinosPurchased;
     }
 
     public override void _ExitTree()
@@ -37,7 +35,6 @@ public class Combat : Node
 
         Events.conquestLost -= OnConquestLost;
         Events.conquestWon -= OnConquestWon;
-        Events.dinosPurchased -= OnDinosPurchased;
     }
 
     void OnRoundWon()
@@ -47,11 +44,6 @@ public class Combat : Node
         c.currentRound++;
         c.creds += 150; // TODO: extract this to a singleton (once we figure out post-round credit granting mechanic)
 
-        // set the remaining to the max
-        // the dinos that are bought will be added to the max later
-        maxDinos = c.dinosRemaining;
-        c.Reset(maxDinos);
-
         if (c.currentRound > c.maxRounds)
         {
             Events.publishConquestWon();
@@ -59,7 +51,7 @@ public class Combat : Node
         }
 
         GetTree().Paused = true;
-        GetNode<BuyMenu>("BuyMenu").Show();
+        GetNode<PostRoundMenu>("PostRoundMenu").Show();
     }
 
     // When a new round starts, re-connect the won round signal
@@ -79,12 +71,4 @@ public class Combat : Node
 
         PlayerStats.gold += CityInfo.Instance.currentCity.rewardGold;
     }
-
-    void OnDinosPurchased(int num)
-    {
-        maxDinos += num;
-        c.creds -= num * DinoInfo.Instance.dinoCredCost;
-        c.Reset(maxDinos);
-    }
-
 }

@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/GUI/infos/CredCounter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/fonts/Font100.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/fonts/Font50.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/GUI/PostRoundMenu.cs" type="Script" id=4]
+[ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/fonts/Font35.tres" type="DynamicFont" id=6]
+
+[node name="PostRoundMenu" type="Control"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BG" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="MenuBG" type="ColorRect" parent="."]
+margin_left = 291.602
+margin_top = 133.358
+margin_right = 1593.6
+margin_bottom = 962.358
+color = Color( 0.0392157, 0.356863, 0.32549, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CredCounter" parent="." instance=ExtResource( 1 )]
+margin_left = 1393.14
+margin_top = 133.358
+margin_right = 1305.3
+margin_bottom = 105.038
+
+[node name="Labels" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Labels"]
+margin_left = 631.786
+margin_top = 193.663
+margin_right = 1268.79
+margin_bottom = 306.663
+custom_fonts/font = ExtResource( 2 )
+text = "ROUND WIN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WinBonus" type="Label" parent="Labels"]
+margin_left = 442.579
+margin_top = 345.542
+margin_right = 1032.58
+margin_bottom = 458.542
+custom_fonts/font = ExtResource( 3 )
+text = "Round win bonus: +150"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ArmyElimBonus" type="Label" parent="Labels"]
+visible = false
+margin_left = 442.579
+margin_top = 450.194
+margin_right = 1264.58
+margin_bottom = 563.194
+custom_fonts/font = ExtResource( 3 )
+text = "Army elimination bonus: +50 x 5"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueConquest" parent="." instance=ExtResource( 5 )]
+margin_left = 232.0
+margin_top = 262.0
+margin_right = 609.0
+margin_bottom = 391.0
+custom_fonts/font = ExtResource( 6 )
+text = "Continue Conquest"
+buttonMode = 12
+
+[connection signal="pressed" from="ContinueConquest" to="." method="OnContinueConquestPressed"]

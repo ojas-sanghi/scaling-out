@@ -80,16 +80,20 @@ public class Lane : Path2D
 
     void OnButtonPressed()
     {
-        if (CombatInfo.Instance.dinosRemaining <= 0)
-        {
-            return;
-        }
-
         // dont deploy if the delay isn't over yet
         if (CombatInfo.Instance.dinosDeploying.Contains(CombatInfo.Instance.selectedDinoType))
         {
             return;
         }
+
+        // dont deploy if we can't afford it
+        if (!DinoInfo.Instance.CanAffordDino(CombatInfo.Instance.selectedDinoType))
+        {
+            return;
+        }
+
+        // deduct dino cost
+        CombatInfo.Instance.creds -= DinoInfo.Instance.GetDinoDeployCost(CombatInfo.Instance.selectedDinoType);
 
         // make a new pathfollow
         PathFollow2D pathFollow = new PathFollow2D();

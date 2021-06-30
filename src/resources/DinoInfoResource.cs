@@ -3,6 +3,7 @@ using Godot;
 public class DinoInfoResource : Resource
 {
     [Export] public UnlockCost unlockCost;
+    [Export] public int deployCost = 10;
     [Export] public Stats hpStat;
     [Export] public Stats delayStat;
     [Export] public Stats defStat;

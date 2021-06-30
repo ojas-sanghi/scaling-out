@@ -21,6 +21,7 @@ public class SelectorSprite : Button
 
     Material blackWhiteShader;
 
+    CombatInfo c = CombatInfo.Instance;
     DinoInfo d = DinoInfo.Instance;
 
     public override void _Ready()
@@ -40,7 +41,7 @@ public class SelectorSprite : Button
         sprite.Texture = spriteTexture;
         sprite.Scale = customScale;
         label.Text = text;
-        deployTimer.dinoType = this.dinoType;
+        deployTimer.dinoType = dinoType;
         HideParticles();
 
         // if it's an ability, then disable it at the starting
@@ -51,13 +52,11 @@ public class SelectorSprite : Button
         }
 
         Events.dinoDeployed += OnDinoDeployed;
-        Events.allDinosExpended += OnAllDinosExpended;
     }
 
     public override void _ExitTree()
     {
         Events.dinoDeployed -= OnDinoDeployed;
-        Events.allDinosExpended -= OnAllDinosExpended;
     }
 
     void OnSelectorSpritePressed()
@@ -78,12 +77,13 @@ public class SelectorSprite : Button
     public void UnFadeSprite()
     {
         // only execute if we're a dino
-        if (!isAbilitySelector)
+        // AND if we can afford it
+        // AND if we're not on cooldown
+        if (!isAbilitySelector && d.CanAffordDino(dinoType) && !c.dinosDeploying.Contains(dinoType))
         {
             sprite.Modulate = new Color(1, 1, 1, 1);
             label.Modulate = new Color(1, 1, 1, 1);
         }
-
     }
 
     // this just makes the sprite black and white
@@ -95,20 +95,17 @@ public class SelectorSprite : Button
     // this just makes the sprite back to normal color, no longer black and white
     public void EnableSprite()
     {
-        // if we're an ability selector, cast ourselves to that specific class
-        // then call that specific EnableSprite()
         if (isAbilitySelector)
         {
             // only enable self if we're actually deployable
             if (CombatInfo.Instance.IsAbilityDeployable(abilitySelectorAssociatedDino))
-            {
                 sprite.Material = null;
-            }
         }
         else
         {
-            // if we're a dino -- then enable it regardless
-            sprite.Material = null;
+            // only enable self if we can afford it
+            if (d.CanAffordDino(dinoType))
+                sprite.Material = null;
         }
     }
 
@@ -128,6 +125,29 @@ public class SelectorSprite : Button
         }
     }
 
+    public void CheckCanAfford()
+    {
+        // only bother if we're a dino selector
+        // even if u dont have money left to deploy dinos, u can still use their abilities
+        if (isAbilitySelector) return;
+
+        // enable if can afford
+        if (d.CanAffordDino(dinoType))
+        {
+            if (IsInstanceValid(deployTimer)) deployTimer.Show();
+            UnFadeSprite();
+            EnableSprite();
+        }
+        else
+        {
+            cooldownTimer.Stop();
+            deployTimer.Hide();
+            FadeSprite();
+            DisableSprite();
+            HideParticles();
+        }
+    }
+
     async void OnDinoDeployed(Enums.Dinos _dinoType)
     {
         // only bother if the dino being deployed is our associated ID
@@ -138,27 +158,10 @@ public class SelectorSprite : Button
         }
 
         FadeSprite();
-        cooldownTimer.Start(DinoInfo.Instance.GetDinoTimerDelay(dinoType));
+        c.dinosDeploying.Add(dinoType); // Add to list of dinos just deployed, prevents it from being deployed till cooldown over
+        cooldownTimer.Start(d.GetDinoTimerDelay(dinoType));
         await ToSignal(cooldownTimer, "timeout");
+        c.dinosDeploying.Remove(dinoType); // remove from list, let it be deployed again
         UnFadeSprite();
-    }
-
-    void OnAllDinosExpended()
-    {
-        // don't fade the sprite if it's an ability
-        // even if there aren't any dinos left to deploy you can still use abilities
-        if (isAbilitySelector)
-        {
-            return;
-        }
-        // if the dino is in the middle of a cooldown after being deployed, then stop it
-        cooldownTimer.Stop();
-
-        // unfade them so that they don't look weird when made B&W
-        UnFadeSprite();
-
-        DisableSprite();
-        HideParticles();
-        deployTimer.Hide();
     }
 }

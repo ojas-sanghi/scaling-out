@@ -6,8 +6,6 @@ public class DinoInfo : Node
 {
     public static DinoInfo Instance;
 
-    public int dinoCredCost = 30;
-
     public Dictionary<Enums.Dinos, PackedScene> dinoList;
     public Dictionary<Enums.Dinos, StreamTexture> dinoIcons;
     public Dictionary<Enums.Dinos, UpgradeInfo> upgradesInfo;
@@ -80,6 +78,16 @@ public class DinoInfo : Node
         // lookup dictionary to get key by value
         // ty :) https://stackoverflow.com/questions/2444033/get-dictionary-key-by-value#2444064
         return dinoTypesAndAbilities.FirstOrDefault(x => x.Value == ability).Key;
+    }
+
+    public int GetDinoDeployCost(Enums.Dinos type)
+    {
+        UpgradeInfo info = GetDinoInfo(type);
+        return info.deployCost;
+    }
+    public bool CanAffordDino(Enums.Dinos type)
+    {
+        return CombatInfo.Instance.creds >= GetDinoDeployCost(type);
     }
 
     public float GetDinoTimerDelay(Enums.Dinos dinoType)

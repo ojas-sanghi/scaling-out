@@ -2,7 +2,7 @@ using Godot;
 
 public class DeployTimer : Control
 {
-    public Enums.Dinos dinoType = 0;
+    public Enums.Dinos dinoType = Enums.Dinos.None;
     Timer dinoTimer;
     TextureProgress progress;
     Tween tween;

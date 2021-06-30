@@ -38,6 +38,7 @@ public class BaseDino : Area2D
         animSprite = (AnimatedSprite)FindNode("AnimatedSprite");
         transparencyTween = (Tween)FindNode("TransparencyTween");
         var thumpSound = (AudioStreamPlayer)FindNode("ThumpSound");
+        thumpSound.Play();
 
         await SpawnDelay();
 
@@ -45,7 +46,6 @@ public class BaseDino : Area2D
         bar.Value = dinoHealth;
         bar.Show();
 
-        thumpSound.Play();
         animPlayer.Play(dinoVariation.ToString() + "walk");
 
         pathTween.InterpolateProperty(
@@ -54,7 +54,6 @@ public class BaseDino : Area2D
         pathTween.Start();
 
         Events.dinoHit += UpdateHealth;
-
     }
 
     public override void _ExitTree()
@@ -134,11 +133,11 @@ public class BaseDino : Area2D
         await ToSignal(transparencyTween, "tween_completed");
         await ToSignal(deathSound, "finished");
 
-        CombatInfo.Instance.dinosDied += 1;
-        if (CombatInfo.Instance.dinosDied == CombatInfo.Instance.maxDinos)
-        {
-            Events.publishConquestLost();
-        }
+        // TODO: logic for conquest lost when
+        // - all dinos dead
+        // - AND can't afford any more
+        // insert it here
+        // Events.publishConquestLost();
 
         QueueFree();
     }
