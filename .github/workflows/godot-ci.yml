@@ -70,7 +70,7 @@ jobs:
         with:
           name: Latest Release
           tag: "latest"
-          body: "Latest release, built from the most recent code! Click on \"Assets\" to view the .zip files to download for your platform. \n\n If there is a yellow dot next to the repo name, then the latest versions are still being compiled and will be available in a few minutes. If there is a green checkmark, then they are all ready and you can go ahead and download them."
+          body: "Latest release, built from the most recent code! \n If there is a yellow dot next to the repo name, then the latest versions are still being compiled and will be available in a few minutes. If there is a green checkmark, then they are all ready and you can go ahead and download them. \n\n TO DOWNLOAD: Click on \"Assets\" and then download the .zip file that has your platform's name (Windows/Mac/Linux). Once you've done that, extract the files in there and then run the game!"
           prerelease: true
           allowUpdates: true
           token: ${{ secrets.GITHUB_TOKEN }}
