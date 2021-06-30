@@ -67,7 +67,7 @@ public class DinoSelector : Node2D
             Enums.Dinos associatedDino = d.GetDinoTypeFromAbility(n.Key);
 
             // skip if not unlocked the speical for the dino yet or if not unlocked the dino itself
-            if (!PlayerStats.Instance.dinosUnlocked.Contains(associatedDino) || !d.GetDinoInfo(associatedDino).HasSpecial())
+            if (!PlayerStats.Instance.dinosUnlocked.Contains(associatedDino) || !d.GetDinoInfo(associatedDino).UnlockedSpecial())
             {
                 continue;
             }
