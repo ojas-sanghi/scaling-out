@@ -1,9 +1,9 @@
 using Enums;
 using Godot;
 
-public class ArmyDude : Area2D
+public class CombatArmySoldier : Area2D
 {
-    ArmyGunTypes mode;
+    public ArmyGunTypes mode;
 
     double rps;
     int magSize;
@@ -11,7 +11,7 @@ public class ArmyDude : Area2D
 
     int bulletsLeft;
 
-    AnimationPlayer animPlayer;
+    public AnimationPlayer animPlayer;
     RayCast2D selfRayCast; // always points to its own lane
     RayCast2D generalRayCast; // points wherever the army dude is looking at
     Lane selfLane;
@@ -60,13 +60,6 @@ public class ArmyDude : Area2D
 
         selfRayCast.CastTo = new Vector2(GetViewport().Size.x, 0);
         generalRayCast.CastTo = new Vector2(GetViewport().Size.x, 0);
-
-        Events.projectileHit += OnProjectileHit;
-    }
-
-    public override void _ExitTree()
-    {
-        Events.projectileHit -= OnProjectileHit;
     }
 
     public override void _Process(float delta)
@@ -109,23 +102,6 @@ public class ArmyDude : Area2D
         }
         else
             animPlayer.Stop();
-    }
-
-    async void OnProjectileHit(Enums.Genes type)
-    {
-        if (type == Enums.Genes.Cryo)
-        {
-            animPlayer.PlaybackSpeed = 0.5f;
-            await ToSignal(GetTree().CreateTimer(10f), "timeout");
-            animPlayer.PlaybackSpeed = 1f;
-        }
-        else if (type == Enums.Genes.Fire)
-        {
-            animPlayer.Stop();
-            await ToSignal(GetTree().CreateTimer(3f), "timeout");
-            animPlayer.Play("shoot_" + mode.ToString().ToLower());
-        }
-
     }
 
     async void CheckReload()

@@ -16,8 +16,8 @@ statName = ""
 script = ExtResource( 1 )
 level = 0
 statName = "Def"
-stats = [ 1.0, 0.98, 0.95, 0.92, 0.87 ]
 cost = SubResource( 1 )
+stats = [ 1.0, 0.98, 0.95, 0.92, 0.87 ]
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 4 )
@@ -29,8 +29,8 @@ statName = ""
 script = ExtResource( 1 )
 level = 0
 statName = "Delay"
-stats = [ 2.0, 1.75, 1.5 ]
 cost = SubResource( 3 )
+stats = [ 2.0, 1.75, 1.5 ]
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 4 )
@@ -42,8 +42,8 @@ statName = ""
 script = ExtResource( 1 )
 level = 1
 statName = "Dmg"
-stats = [ 2.0, 3.5, 5.0, 6.0, 7.5, 8.0, 9.0, 10.0, 10.5, 11.0 ]
 cost = SubResource( 5 )
+stats = [ 2.0, 3.5, 5.0, 6.0, 7.5, 8.0, 9.0, 10.0, 10.5, 11.0 ]
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 4 )
@@ -55,8 +55,8 @@ statName = ""
 script = ExtResource( 1 )
 level = 0
 statName = "Dodge"
-stats = [ 0.0 ]
 cost = SubResource( 7 )
+stats = [ 0.0 ]
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 4 )
@@ -68,8 +68,8 @@ statName = "Cost HP"
 script = ExtResource( 1 )
 level = 0
 statName = "HP"
-stats = [ 100.0, 135.0, 150.0 ]
 cost = SubResource( 9 )
+stats = [ 100.0, 135.0, 150.0 ]
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 4 )
@@ -81,8 +81,8 @@ statName = "Cost Special"
 script = ExtResource( 3 )
 level = 0
 statName = "Special"
-special = "Fire"
 cost = SubResource( 11 )
+special = "Fire"
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 4 )
@@ -94,8 +94,8 @@ statName = ""
 script = ExtResource( 1 )
 level = 7
 statName = "Speed"
-stats = [ 70.0, 55.0, 60.0, 66.0, 70.0, 77.0, 84.0, 88.0 ]
 cost = SubResource( 13 )
+stats = [ 70.0, 55.0, 60.0, 66.0, 70.0, 77.0, 84.0, 88.0 ]
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 5 )
@@ -104,12 +104,12 @@ genes = 200
 
 [resource]
 script = ExtResource( 2 )
-unlockCost = SubResource( 15 )
 specialStat = SubResource( 12 )
+defStat = SubResource( 2 )
+dodgeStat = SubResource( 8 )
 requiredGene = 2
+delayStat = SubResource( 4 )
+unlockCost = SubResource( 15 )
 speedStat = SubResource( 14 )
 dmgStat = SubResource( 6 )
-defStat = SubResource( 2 )
-delayStat = SubResource( 4 )
-dodgeStat = SubResource( 8 )
 hpStat = SubResource( 10 )

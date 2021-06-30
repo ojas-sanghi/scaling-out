@@ -24,7 +24,7 @@ public class Events : Node
     public static event Action levelPassed;
     public static event Action levelFailed; //! Connect oneshot in _ready, re-connect when newRound
 
-    public static event Action<Enums.Genes> projectileHit;
+    public static event Action<Enums.SpecialAbilities> projectileHit;
 
     public static event Action allDinosExpended;
 
@@ -55,7 +55,7 @@ public class Events : Node
     public static void publishLevelPassed() => levelPassed?.Invoke();
     public static void publishLevelFailed() => levelFailed?.Invoke();
 
-    public static void publishProjectileHit(Enums.Genes type) => projectileHit?.Invoke(type);
+    public static void publishProjectileHit(Enums.SpecialAbilities type) => projectileHit?.Invoke(type);
 
     public static void publishAllDinosExpended() => allDinosExpended?.Invoke();
 

@@ -49,7 +49,7 @@ public class BulletSpawner : Node2D
             bulletsGroup.AddChild(b);
         }
         // add bullets to combatscreen to ensure they wont randomly change direction when the army person rotates
-        bulletsGroup.RotationDegrees = ((ArmyDude)GetParent()).RotationDegrees;
+        bulletsGroup.RotationDegrees = ((CombatArmySoldier)GetParent()).RotationDegrees;
         bulletsGroup.GlobalPosition = GlobalPosition;
         GetNode("/root/CombatScreen").AddChild(bulletsGroup);
 

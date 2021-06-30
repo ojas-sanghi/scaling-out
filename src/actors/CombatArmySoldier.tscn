@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=2]
 
-[ext_resource path="res://src/actors/ArmyDude.cs" type="Script" id=1]
+[ext_resource path="res://src/actors/CombatArmySoldier.cs" type="Script" id=1]
 [ext_resource path="res://assets/army/rifle/survivor-shoot_rifle_2.png" type="Texture" id=2]
 [ext_resource path="res://assets/army/handgun/survivor-shoot_handgun_0.png" type="Texture" id=3]
 [ext_resource path="res://assets/army/handgun/survivor-shoot_handgun_2.png" type="Texture" id=4]
@@ -150,8 +150,8 @@ tracks/2/keys = {
 } ]
 }
 
-[node name="ArmyDude" type="Area2D" groups=[
-"army",
+[node name="CombatArmySolider" type="Area2D" groups=[
+"combat_army",
 ]]
 rotation = 3.14159
 collision_layer = 8

@@ -99,15 +99,6 @@ public class BaseDino : Area2D
         dinoDodgeChance = dinoInfo.GetStat(Enums.Stats.Dodge);
         dinoDmg = dinoInfo.GetStat(Enums.Stats.Dmg);
         dinoSpeed = new Vector2((float)dinoInfo.GetStat(Enums.Stats.Speed), 0);
-
-        // add benefits if the dino is favored in the current biome
-        //? maybe also do this in the selector sprite area for the small ui popup that will show?
-        Enums.Biomes currentBiome = CityInfo.Instance.currentCity.biome;
-        bool isFavored = CityInfo.Instance.biomeFavoredDinos[currentBiome].Contains(this.dinoType);
-        if (isFavored)
-        {
-            // INSERT THE BENEFITS TO THE STATS OR WHATEVER HERE :)
-        }
     }
 
     async Task KillDino()

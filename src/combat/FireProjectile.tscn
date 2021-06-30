@@ -1,13 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/combat/DinoProjectile.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/dinos/misc/fire.png" type="Texture" id=2]
+[ext_resource path="res://src/combat/FireProjectile.cs" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 138.439, 43.3697 )
 
 [node name="FireProjectile" instance=ExtResource( 1 )]
-type = 2
+script = ExtResource( 3 )
 
 [node name="Sprite" parent="." index="0"]
 scale = Vector2( 0.15, 0.15 )

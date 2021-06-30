@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Linq;
 using Godot;
 
 public class DinoInfo : Node
@@ -73,6 +73,13 @@ public class DinoInfo : Node
     public UpgradeInfo GetDinoInfo(Enums.Dinos dino)
     {
         return upgradesInfo[dino];
+    }
+
+    public Enums.Dinos GetDinoTypeFromAbility(Enums.SpecialAbilities ability)
+    {
+        // lookup dictionary to get key by value
+        // ty :) https://stackoverflow.com/questions/2444033/get-dictionary-key-by-value#2444064
+        return dinoTypesAndAbilities.FirstOrDefault(x => x.Value == ability).Key;
     }
 
     public float GetDinoTimerDelay(Enums.Dinos dinoType)

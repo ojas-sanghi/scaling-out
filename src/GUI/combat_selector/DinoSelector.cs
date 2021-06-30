@@ -65,9 +65,7 @@ public class DinoSelector : Node2D
 
         foreach (KeyValuePair<Enums.SpecialAbilities, StreamTexture> n in d.specialAbilityIcons)
         {
-            // lookup dictionary to get key by value
-            // ty :) https://stackoverflow.com/questions/2444033/get-dictionary-key-by-value#2444064
-            Enums.Dinos associatedDino = d.dinoTypesAndAbilities.FirstOrDefault(x => x.Value == n.Key).Key;
+            Enums.Dinos associatedDino = d.GetDinoTypeFromAbility(n.Key);
 
             // skip if not unlocked the speical for the dino yet or if not unlocked the dino itself
             if (!PlayerStats.Instance.dinosUnlocked.Contains(associatedDino) || !d.GetDinoInfo(associatedDino).HasSpecial())
