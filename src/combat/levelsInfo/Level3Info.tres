@@ -4,13 +4,13 @@
 
 [resource]
 script = ExtResource( 1 )
-state = 2
-city = 5
-capitalCity = true
+state = 0
+city = 0
+capitalCity = false
 biome = 0
-levelNum = 2
-lanesInfo = [ 0, 1, 0 ]
+levelNum = 0
+lanesInfo = null
 rounds = 3
-timePerRoundSeconds = [ 100, 100, 100 ]
-roundWinCreditBonus = [ 150, 125, 100 ]
-rewardGold = 200
+timePerRoundSeconds = null
+roundWinCreditBonus = null
+rewardGold = 0

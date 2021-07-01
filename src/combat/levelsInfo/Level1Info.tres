@@ -4,8 +4,8 @@
 
 [resource]
 script = ExtResource( 1 )
-state = 3
-city = 0
+state = 2
+city = 4
 capitalCity = false
 biome = 0
 levelNum = 1

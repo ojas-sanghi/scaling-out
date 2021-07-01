@@ -50,8 +50,11 @@ public class Combat : Node
 
         roundBonusCreds = CityInfo.Instance.currentCity.roundWinCreditBonus[c.currentRound - 1];
         timeBonusCreds = (int)Mathf.Round(CombatTimer.timer.TimeLeft); // 1 second left = 1 more credit
-
         c.creds += roundBonusCreds + timeBonusCreds;
+
+        c.abilitiesUsed.Clear();
+        c.lanesInDanger.Clear();
+        c.allMoneyExpended = false;
 
         GetTree().Paused = true;
         GetNode<PostRoundMenu>("PostRoundMenu").Show();

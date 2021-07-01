@@ -149,6 +149,8 @@ public class Lane : Path2D
             child.QueueFree();
         }
         newChildren.Clear();
+        dangerDinos.Clear();
+        inDanger = false;
     }
 
     void OnTimerTimeout()

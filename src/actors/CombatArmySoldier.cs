@@ -68,8 +68,10 @@ public class CombatArmySoldier : Area2D
         // when found, stop running the _process loop
         selfRayCast.RotationDegrees = 180;
         if (selfRayCast.IsColliding())
+        {
             selfLane = ((Node)selfRayCast.GetCollider()).GetParent<Lane>();
             SetProcess(false);
+        }
     }
 
     public override void _PhysicsProcess(float delta)
@@ -83,7 +85,7 @@ public class CombatArmySoldier : Area2D
         if (selfLane.inDanger) // always look at our own lane if it's in danger
         {
             this.RotationDegrees = 180;
-        } 
+        }
         else if (lanesInDanger.Count > 0) // look at other lane if they are in danger AND we are not in danger
         {
             BaseDino closestDino = lanesInDanger[0].dangerDinos[0];
@@ -92,14 +94,12 @@ public class CombatArmySoldier : Area2D
         }
         else if (lanesInDanger.Count == 0) // look at our lane if no other lane is in danger
         {
-            RotationDegrees = 180;   
+            RotationDegrees = 180;
         }
 
         // shoot if we see something, else stop
         if (generalRayCast.IsColliding())
-        {
             animPlayer.Play();
-        }
         else
             animPlayer.Stop();
     }
