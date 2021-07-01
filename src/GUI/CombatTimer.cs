@@ -1,39 +1,46 @@
 using Godot;
 
-public class GameTimer : Control
+public class CombatTimer : Control
 {
     string labelText = "Time left: ";
 
-    Timer timer;
+    public Timer timer;
     Label label;
 
     public int timerDuration = 0;
-
 
     public override void _Ready()
     {
         timer = (Timer)FindNode("Timer");
         label = (Label)FindNode("Label");
 
-        Events.newRound += OnNewRound;
+        StartTimer();
+
+        Events.newRound += StartTimer;
+    }
+
+    public override void _ExitTree()
+    {
+        Events.newRound -= StartTimer;
     }
 
     public void StartTimer()
     {
-        timer.Start(timerDuration);
+        int timerDuration = CityInfo.Instance.currentCity.timePerRoundSeconds[CombatInfo.Instance.currentRound - 1];
+        timer.Start(timer.TimeLeft + timerDuration);
     }
 
     public override void _Process(float delta)
     {
         // Get time left in seconds and round it to an int
         float timeLeftF = timer.TimeLeft;
-        int timeLeft = Mathf.RoundToInt(timeLeftF);
+        int timeLeft = (int)Mathf.Round(timer.TimeLeft);
 
         // Get minutes remaining
-        int timeLeftM = Mathf.RoundToInt(timeLeft / 60);
+        int timeLeftM = (int)timeLeft / 60;
 
         // Get seconds remaining
-        int timeLeftS = Mathf.RoundToInt(timeLeft % 60);
+        int timeLeftS = (int)timeLeft % 60;
 
         // Make str of remaining time: "3m 37s"
         string timeLeftStr = timeLeftM.ToString() + "m " + timeLeftS.ToString() + "s";
@@ -43,12 +50,6 @@ public class GameTimer : Control
 
         // Assign new text
         label.Text = labelText;
-    }
-
-    void OnNewRound()
-    {
-        // restart Timer with more time in a new round
-        timer.Start(timer.TimeLeft + timerDuration);
     }
 
     void OnTimerTimeout()

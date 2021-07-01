@@ -19,10 +19,10 @@ public class CombatInfo : Node
 
     public List<Lane> lanesInDanger = new List<Lane>();
 
-    public int currentRound = 1;
-    public int maxRounds = 3;
+    public int currentRound;
+    public int maxRounds;
 
-    public int creds = 200;
+    public int creds;
 
     public CombatInfo()
     {
@@ -36,7 +36,7 @@ public class CombatInfo : Node
         Instance = this;
     }
 
-    public void Reset(int _MaxRounds = 3)
+    public void Reset(int _creds = 150, int _maxRounds = 3)
     {
         selectedDinoType = Enums.Dinos.Mega;
 
@@ -46,7 +46,10 @@ public class CombatInfo : Node
         abilitiesUsed.Clear();
         lanesInDanger.Clear();
 
-        maxRounds = _MaxRounds;
+        currentRound = 1;
+
+        this.maxRounds = _maxRounds;
+        this.creds = _creds;
     }
 
     public bool IsAbilityDeployable(Enums.Dinos dinoType)

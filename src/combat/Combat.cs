@@ -2,24 +2,25 @@ using Godot;
 
 public class Combat : Node
 {
-    [Export] int maxRounds = 3;
-    [Export] int roundLengthSeconds = 120;
+    int maxRounds = CityInfo.Instance.currentCity.rounds;
 
     CombatInfo c = CombatInfo.Instance;
 
+    public CombatTimer CombatTimer;
+    public int roundBonusCreds;
+    public int timeBonusCreds;
+
     public override void _Ready()
     {
-        c.Reset(maxRounds);
-        c.currentRound = 1;
+        int startingCreds = CityInfo.Instance.currentCity.roundWinCreditBonus[0];
+        c.Reset(startingCreds, maxRounds);
 
         //! Note I have no idea what the next comments are, they just are
         // can't put that in reset() since otherwise it would do that between rounds
         // note: this executes AFTER RoundCounter grabs the data, so...
         //	CombatInfo.current_round = 3
 
-        GameTimer gameTimer = (GameTimer)FindNode("GameTimer");
-        gameTimer.timerDuration = roundLengthSeconds;
-        gameTimer.StartTimer();
+        CombatTimer = (CombatTimer)FindNode("CombatTimer");
 
         Events.roundWon += OnRoundWon;
         Events.newRound += OnNewRound;
@@ -42,13 +43,16 @@ public class Combat : Node
         Events.roundWon -= OnRoundWon;
 
         c.currentRound++;
-        c.creds += 150; // TODO: extract this to a singleton (once we figure out post-round credit granting mechanic)
-
         if (c.currentRound > c.maxRounds)
         {
             Events.publishConquestWon();
             return;
         }
+
+        roundBonusCreds = CityInfo.Instance.currentCity.roundWinCreditBonus[c.currentRound - 1];
+        timeBonusCreds = (int)Mathf.Round(CombatTimer.timer.TimeLeft); // 1 second left = 1 more credit
+
+        c.creds += roundBonusCreds + timeBonusCreds;
 
         GetTree().Paused = true;
         GetNode<PostRoundMenu>("PostRoundMenu").Show();

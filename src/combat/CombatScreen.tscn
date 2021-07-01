@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://src/GUI/infos/CredCounter.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/GUI/GameTimer.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/GUI/CombatTimer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/GUI/combat_selector/DinoSelector.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/combat/Blockade.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/actors/CombatArmySoldier.tscn" type="PackedScene" id=5]
@@ -77,7 +77,7 @@ __meta__ = {
 [node name="DinoSelector" parent="Selectors" instance=ExtResource( 3 )]
 position = Vector2( 203.274, 980 )
 
-[node name="GameTimer" parent="Selectors" instance=ExtResource( 2 )]
+[node name="CombatTimer" parent="Selectors" instance=ExtResource( 2 )]
 margin_left = 1159.78
 margin_top = 31.2911
 margin_right = 1159.78

@@ -20,71 +20,109 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.392157 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="MenuBG" type="ColorRect" parent="."]
-margin_left = 291.602
-margin_top = 133.358
-margin_right = 1593.6
-margin_bottom = 962.358
+[node name="Menu" type="Control" parent="."]
+anchor_left = 0.147
+anchor_top = 0.12
+anchor_right = 0.833
+anchor_bottom = 0.881
+margin_left = 0.76001
+margin_top = 0.399994
+margin_right = -0.360107
+margin_bottom = -0.480042
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MenuBG" type="ColorRect" parent="Menu"]
+margin_right = 1316.0
+margin_bottom = 821.0
 color = Color( 0.0392157, 0.356863, 0.32549, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CredCounter" parent="." instance=ExtResource( 1 )]
-margin_left = 1393.14
-margin_top = 133.358
-margin_right = 1305.3
-margin_bottom = 105.038
-
-[node name="Labels" type="Control" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Title" type="Label" parent="Labels"]
-margin_left = 631.786
-margin_top = 193.663
-margin_right = 1268.79
-margin_bottom = 306.663
+[node name="Title" type="Label" parent="Menu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -318.5
+margin_top = 41.9526
+margin_right = 318.5
+margin_bottom = 154.953
 custom_fonts/font = ExtResource( 2 )
 text = "ROUND WIN"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="WinBonus" type="Label" parent="Labels"]
-margin_left = 442.579
-margin_top = 345.542
-margin_right = 1032.58
-margin_bottom = 458.542
+[node name="WinBonus" type="Label" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -290.0
+margin_top = -76.4458
+margin_right = 290.0
+margin_bottom = -19.4458
 custom_fonts/font = ExtResource( 3 )
 text = "Round win bonus: +150"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ArmyElimBonus" type="Label" parent="Labels"]
-visible = false
-margin_left = 442.579
-margin_top = 450.194
-margin_right = 1264.58
-margin_bottom = 563.194
+[node name="TimeBonus" type="Label" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -222.0
+margin_top = 10.4559
+margin_right = 222.0
+margin_bottom = 67.4559
 custom_fonts/font = ExtResource( 3 )
-text = "Army elimination bonus: +50 x 5"
+text = "Time bonus: +200"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ContinueConquest" parent="." instance=ExtResource( 5 )]
-margin_left = 232.0
-margin_top = 262.0
-margin_right = 609.0
-margin_bottom = 391.0
+[node name="TotalBonus" type="Label" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -186.081
+margin_top = 104.743
+margin_right = 257.919
+margin_bottom = 161.743
+custom_fonts/font = ExtResource( 3 )
+text = "Total bonus:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CredCounter" parent="Menu" instance=ExtResource( 1 )]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+margin_left = -186.0
+margin_right = 0.0
+margin_bottom = 108.0
+
+[node name="ContinueConquest" parent="Menu" instance=ExtResource( 5 )]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -380.709
+margin_top = -165.597
+margin_right = -21.7092
+margin_bottom = -23.5969
 custom_fonts/font = ExtResource( 6 )
 text = "Continue Conquest"
 buttonMode = 12
 
-[connection signal="pressed" from="ContinueConquest" to="." method="OnContinueConquestPressed"]
+[connection signal="visibility_changed" from="." to="." method="OnPostRoundMenuVisibilityChanged"]
+[connection signal="pressed" from="Menu/ContinueConquest" to="." method="OnContinueConquestPressed"]

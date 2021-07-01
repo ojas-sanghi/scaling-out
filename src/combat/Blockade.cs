@@ -46,7 +46,7 @@ public class Blockade : Area2D
         health -= dmg;
         currentSpriteHealth -= dmg;
 
-        // set transparency to health / max health
+        // set transparency to (health / max health)
         if (currentSpriteHealth > 0)
         {
             currentSprite.Modulate = new Color(1, 1, 1, (currentSpriteHealth / healthPerSprite));

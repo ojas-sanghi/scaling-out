@@ -16,8 +16,11 @@ public class CityInfoResource : Resource
 
     [Export] public int rounds = 3;
     [Export] public Array<int> timePerRoundSeconds; // list of how long each round is, as many entries as there are rounds
-
-    // [Export] public Array<int> credsPerRound; //? how will this work??  #119
+    
+    // list of how many credits player gets after each round, as many entries as there are rounds
+    // note: the first entry is the amount of credits the player gets at the start of the conquest
+    [Export] public Array<int> roundWinCreditBonus;
+    
 
     [Export] public int rewardGold;
 
