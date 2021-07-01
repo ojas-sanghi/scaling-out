@@ -3,7 +3,7 @@ using Godot;
 
 public class Bullet : Area2D
 {
-    public ArmyGunTypes mode = ArmyGunTypes.Pistol;
+    public ArmyGunTypes gunType = ArmyGunTypes.Pistol;
 
     public int speed;
     int bulletDmg = 14;
@@ -12,7 +12,7 @@ public class Bullet : Area2D
     {
         Timer timer = (Timer)FindNode("ExistenceTimer");
 
-        if (mode == ArmyGunTypes.Shotgun)
+        if (gunType == ArmyGunTypes.Shotgun)
         {
             bulletDmg = 6;
             timer.WaitTime = 0.75f;

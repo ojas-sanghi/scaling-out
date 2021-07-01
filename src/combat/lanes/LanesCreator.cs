@@ -12,6 +12,10 @@ public class LanesCreator : Node2D
         {5, 203f}
     };
 
+    // exposed because CombatArmyCreator uses it too
+    public float yPixelsForEachLane = 0;
+    public int numLanes = 1;
+
     // programmatically makes lanes at startup based on a config for how many lanes the specific conquest needs
     public override void _Ready()
     {
@@ -19,7 +23,7 @@ public class LanesCreator : Node2D
 
         // set number of lanes and position of the parent of the lanes (this node) based off dict
         // hard coded, but no other way
-        int numLanes = laneTypes.Count;
+        numLanes = laneTypes.Count;
         this.Position = new Vector2(700.5f, yPositionForNumLanes[numLanes]);
 
         // Calculate how much x and y space we have in total
@@ -29,8 +33,8 @@ public class LanesCreator : Node2D
         float lanesXAvailable = GetViewportRect().Size.x - ArmyBase.RectSize.x;
         float lanesYAvailable = GetViewportRect().Size.y - TopBar.RectSize.y - BottomBar.RectSize.y;
 
-        // Figure out how much y space for each alne
-        float yPixelsForEachLane = lanesYAvailable / numLanes;
+        // Figure out how much y space for each lane
+        yPixelsForEachLane = lanesYAvailable / numLanes;
 
         // info about which lane in the list we're on -- used to set position of the lane later
         int laneIndex = 0;
@@ -61,6 +65,7 @@ public class LanesCreator : Node2D
             AddChild(newLane);
 
             laneIndex++;
+
         }
     }
 

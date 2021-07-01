@@ -190,6 +190,4 @@ public class BaseDino : Area2D
             AttackBlockade();
         }
     }
-
-
 }

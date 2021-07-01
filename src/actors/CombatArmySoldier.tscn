@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/army/rifle/survivor-shoot_rifle_0.png" type="Texture" id=8]
 [ext_resource path="res://assets/army/shotgun/survivor-shoot_shotgun_0.png" type="Texture" id=9]
 [ext_resource path="res://assets/army/shotgun/survivor-shoot_shotgun_1.png" type="Texture" id=10]
-[ext_resource path="res://src/combat/BulletSpawner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://src/combat/bullets/BulletSpawner.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "shoot_pistol"
@@ -159,10 +159,9 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 9 )
+texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "shoot_pistol"
 anims/shoot_pistol = SubResource( 1 )
 anims/shoot_rifle = SubResource( 2 )
 anims/shoot_shotgun = SubResource( 3 )
@@ -172,7 +171,7 @@ position = Vector2( 50.0252, 23.6801 )
 
 [node name="SelfRayCast2D" type="RayCast2D" parent="."]
 enabled = true
-cast_to = Vector2( 1, 0 )
+cast_to = Vector2( 1920, 0 )
 collision_mask = 256
 collide_with_areas = true
 collide_with_bodies = false

@@ -5,14 +5,14 @@ public class RoundCounter : Control
 
     public override void _Ready()
     {
-        Events.roundWon += SetText;
+        Events.newRound += SetText;
 
         SetText();
     }
 
     public override void _ExitTree()
     {
-        Events.roundWon -= SetText;
+        Events.newRound -= SetText;
     }
 
     void SetText()

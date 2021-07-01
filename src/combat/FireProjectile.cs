@@ -25,7 +25,7 @@ public class FireProjectile : DinoProjectile
         await ToSignal(GetTree().CreateTimer(duration), "timeout");
 
         foreach (CombatArmySoldier soldier1 in armySoliders)
-            soldier1.animPlayer.Play("shoot_" + soldier1.mode.ToString().ToLower());
+            soldier1.animPlayer.Play("shoot_" + soldier1.gunType.ToString().ToLower());
 
         QueueFree();
     }

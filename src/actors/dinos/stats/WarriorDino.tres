@@ -41,7 +41,7 @@ genes = [ 30, 50, 80, 100, 130, 150, 175, 200, 220, 250 ]
 [sub_resource type="Resource" id=6]
 script = ExtResource( 1 )
 statName = "Dmg"
-stats = [ 2.0, 3.5, 5.0, 6.0, 7.5, 8.0, 9.0, 10.0, 10.5, 11.0 ]
+stats = [ 2.0, 300.5, 5.0, 6.0, 7.5, 8.0, 9.0, 10.0, 10.5, 11.0 ]
 cost = SubResource( 5 )
 level = 1
 
@@ -93,7 +93,7 @@ genes = [ 30, 50, 80, 100, 130, 150, 180, 200 ]
 [sub_resource type="Resource" id=14]
 script = ExtResource( 1 )
 statName = "Speed"
-stats = [ 70.0, 55.0, 60.0, 66.0, 70.0, 77.0, 84.0, 88.0 ]
+stats = [ 50.0, 55.0, 60.0, 66.0, 70.0, 77.0, 84.0, 880.0 ]
 cost = SubResource( 13 )
 level = 7
 

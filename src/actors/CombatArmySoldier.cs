@@ -3,7 +3,7 @@ using Godot;
 
 public class CombatArmySoldier : Area2D
 {
-    public ArmyGunTypes mode;
+    public ArmyGunTypes gunType;
 
     double rps;
     int magSize;
@@ -23,40 +23,32 @@ public class CombatArmySoldier : Area2D
         selfRayCast = (RayCast2D)FindNode("SelfRayCast2D");
         generalRayCast = (RayCast2D)FindNode("GeneralRayCast2D");
 
-        GD.Randomize();
-        uint random = GD.Randi() % 3;
-
-        switch (random)
+        switch (gunType)
         {
-            case 0:
-                mode = ArmyGunTypes.Pistol;
+            case ArmyGunTypes.Pistol:
                 rps = 1;
                 magSize = 15;
                 reloadTime = 2f;
                 break;
 
-            case 1:
-                mode = ArmyGunTypes.Rifle;
+            case ArmyGunTypes.Rifle:
                 rps = 2;
                 magSize = 20;
                 reloadTime = 3f;
                 break;
 
-            case 2:
-                mode = ArmyGunTypes.Shotgun;
+            case ArmyGunTypes.Shotgun:
                 rps = 1.2;
                 magSize = 5;
                 reloadTime = 2.5f;
                 break;
         }
 
-        spawner.mode = mode;
+        spawner.gunType = gunType;
         bulletsLeft = magSize;
 
-        //? what happens when you cast enum to strin    
-
-        animPlayer.Play("shoot_" + mode.ToString().ToLower());
-        animPlayer.Seek(0.1f, true);
+        animPlayer.AssignedAnimation = "shoot_" + gunType.ToString().ToLower();
+        animPlayer.Seek(0f, true);
 
         selfRayCast.CastTo = new Vector2(GetViewport().Size.x, 0);
         generalRayCast.CastTo = new Vector2(GetViewport().Size.x, 0);
@@ -99,9 +91,13 @@ public class CombatArmySoldier : Area2D
 
         // shoot if we see something, else stop
         if (generalRayCast.IsColliding())
+        {
             animPlayer.Play();
+        }
         else
+        {
             animPlayer.Stop();
+        }
     }
 
     async void CheckReload()
@@ -117,7 +113,7 @@ public class CombatArmySoldier : Area2D
             // play reload anim
             await ToSignal(GetTree().CreateTimer(reloadTime), "timeout");
             bulletsLeft = magSize;
-            animPlayer.Play("shoot_" + mode.ToString().ToLower());
+            animPlayer.Play("shoot_" + gunType.ToString().ToLower());
         }
     }
 }

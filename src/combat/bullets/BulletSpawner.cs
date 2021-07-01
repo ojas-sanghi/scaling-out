@@ -4,19 +4,19 @@ using Godot;
 
 public class BulletSpawner : Node2D
 {
-    PackedScene bullet = GD.Load<PackedScene>("res://src/combat/Bullet.tscn");
-    PackedScene bulletGroupScene = GD.Load<PackedScene>("res://src/combat/BulletsGroup.tscn");
+    PackedScene bullet = GD.Load<PackedScene>("res://src/combat/bullets/Bullet.tscn");
+    PackedScene bulletGroupScene = GD.Load<PackedScene>("res://src/combat/bullets/BulletsGroup.tscn");
 
     List<Bullet> bullets = new List<Bullet>();
 
-    public ArmyGunTypes mode;
+    public ArmyGunTypes gunType;
     public int bulletSpeed = 200;
 
     void NewBullet()
     {
         Bullet newBullet = (Bullet)bullet.Instance();
         newBullet.speed = bulletSpeed;
-        newBullet.mode = mode;
+        newBullet.gunType = gunType;
         bullets.Add(newBullet);
     }
 
@@ -26,9 +26,8 @@ public class BulletSpawner : Node2D
 
         BulletsGroup bulletsGroup = (BulletsGroup)bulletGroupScene.Instance();
         bulletsGroup.speed = bulletSpeed;
-        bulletsGroup.RotationDegrees = (float)GD.RandRange(-5, 5);
 
-        if (mode == ArmyGunTypes.Shotgun)
+        if (gunType == ArmyGunTypes.Shotgun)
         {
             // make three new bullets
             foreach (int i in GD.Range(0, 3))
@@ -50,6 +49,7 @@ public class BulletSpawner : Node2D
         }
         // add bullets to combatscreen to ensure they wont randomly change direction when the army person rotates
         bulletsGroup.RotationDegrees = ((CombatArmySoldier)GetParent()).RotationDegrees;
+        bulletsGroup.RotationDegrees += (float)GD.RandRange(-5, 5);
         bulletsGroup.GlobalPosition = GlobalPosition;
         GetNode("/root/CombatScreen").AddChild(bulletsGroup);
 
