@@ -28,10 +28,10 @@ Events="*res://src/singletons/Events.cs"
 SceneChanger="*res://src/singletons/SceneChanger.tscn"
 ShopInfo="*res://src/singletons/ShopInfo.cs"
 StealthInfo="*res://src/singletons/StealthInfo.cs"
+CityInfo="*res://src/singletons/CityInfo.cs"
 CombatInfo="*res://src/singletons/CombatInfo.cs"
 DinoInfo="*res://src/singletons/DinoInfo.cs"
 LaneInfo="*res://src/singletons/LaneInfo.cs"
-CityInfo="*res://src/singletons/CityInfo.cs"
 PlayerStats="*res://src/singletons/PlayerStats.cs"
 
 [debug]

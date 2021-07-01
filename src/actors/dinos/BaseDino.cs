@@ -133,12 +133,11 @@ public class BaseDino : Area2D
         await ToSignal(transparencyTween, "tween_completed");
         await ToSignal(deathSound, "finished");
 
-        // TODO: logic for conquest lost when
-        // - all dinos dead
-        // - AND can't afford any more
-        // insert it here
-        // Events.publishConquestLost();
-
+        // if there are no dinos, and all the money is spent, then trigger conquest lost signal
+        int numDinosLeft = GetTree().GetNodesInGroup("dinos").Count;
+        if (CombatInfo.Instance.allMoneyExpended && numDinosLeft == 0)
+            Events.publishConquestLost();
+        
         QueueFree();
     }
 

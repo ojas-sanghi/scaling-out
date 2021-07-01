@@ -2,8 +2,6 @@ using Godot;
 
 public class Combat : Node
 {
-    int maxRounds = CityInfo.Instance.currentCity.rounds;
-
     CombatInfo c = CombatInfo.Instance;
 
     public CombatTimer CombatTimer;
@@ -12,10 +10,11 @@ public class Combat : Node
 
     public override void _Ready()
     {
-        int startingCreds = CityInfo.Instance.currentCity.roundWinCreditBonus[0];
-        c.Reset(startingCreds, maxRounds);
+        c.Reset();
 
         //! Note I have no idea what the next comments are, they just are
+        //? Update 4 months later: I think these are talking about the current_round line which was just there to test the end-conquest screen
+        //? and how it a) must be done in this file and not combatinfo.cs and b) it leads to a visual glitch in the round counter but whatever
         // can't put that in reset() since otherwise it would do that between rounds
         // note: this executes AFTER RoundCounter grabs the data, so...
         //	CombatInfo.current_round = 3
