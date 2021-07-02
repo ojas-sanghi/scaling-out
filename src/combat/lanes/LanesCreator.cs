@@ -1,5 +1,5 @@
 using Godot;
-using Godot.Collections;
+using System.Collections.Generic;
 
 public class LanesCreator : Node2D
 {
@@ -15,6 +15,8 @@ public class LanesCreator : Node2D
     // exposed because CombatArmyCreator uses it too
     public float yPixelsForEachLane = 0;
     public int numLanes = 1;
+
+    public List<Lane> lanes = new List<Lane>();
 
     // programmatically makes lanes at startup based on a config for how many lanes the specific conquest needs
     public override void _Ready()
@@ -62,10 +64,10 @@ public class LanesCreator : Node2D
             TextureButton button = newLane.GetNode<TextureButton>("Button");
             button.RectPosition *= newScaleVector;
 
+            lanes.Add(newLane);
             AddChild(newLane);
 
             laneIndex++;
-
         }
     }
 

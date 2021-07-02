@@ -1,5 +1,6 @@
 using Enums;
 using Godot;
+using System.Collections.Generic;
 
 public class CombatArmySoldier : Area2D
 {
@@ -72,11 +73,13 @@ public class CombatArmySoldier : Area2D
         }
 
         // wait till we've made contact with our lane
-        var lanesInDanger = CombatInfo.Instance.lanesInDanger;
+        List<Lane> lanesInDanger = CombatInfo.Instance.lanesInDanger;
 
         if (selfLane.inDanger) // always look at our own lane if it's in danger
         {
-            this.RotationDegrees = 180;
+            BaseDino closestDino = selfLane.dangerDinos[0];
+            if (IsInstanceValid(closestDino))
+                LookAt(closestDino.GlobalPosition);
         }
         else if (lanesInDanger.Count > 0) // look at other lane if they are in danger AND we are not in danger
         {
@@ -86,18 +89,21 @@ public class CombatArmySoldier : Area2D
         }
         else if (lanesInDanger.Count == 0) // look at our lane if no other lane is in danger
         {
-            RotationDegrees = 180;
+            if (selfLane.dinosInLane.Count > 0)
+            {
+                BaseDino closestDino = selfLane.dinosInLane[0];
+                if (IsInstanceValid(closestDino))
+                    LookAt(closestDino.GlobalPosition);
+            }
+            else
+                RotationDegrees = 180;
         }
 
         // shoot if we see something, else stop
         if (generalRayCast.IsColliding())
-        {
             animPlayer.Play(animString);
-        }
         else
-        {
             animPlayer.Stop();
-        }
     }
 
     async void CheckReload()

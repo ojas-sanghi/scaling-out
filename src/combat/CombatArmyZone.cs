@@ -13,7 +13,7 @@ public class CombatArmyZone : Area2D
         CollisionShape2D collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         RectangleShape2D newShape = new RectangleShape2D();
         collisionShape.Shape = newShape;
-        newShape.Extents = areaExtents;
+        newShape.Extents = areaExtents; 
 
         armySoldierScene = GD.Load<PackedScene>("res://src/actors/CombatArmySoldier.tscn");
         armySoldiers = GetNode<Node2D>("ArmySoldiers");

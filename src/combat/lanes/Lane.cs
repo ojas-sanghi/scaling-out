@@ -6,11 +6,15 @@ public class Lane : Path2D
     [Export] public Texture laneImg;
     [Export] float curveSmoothFactor;
 
+    public List<BaseDino> dinosInLane = new List<BaseDino>();
     public List<BaseDino> dangerDinos = new List<BaseDino>();
     public bool inDanger = false;
 
     Vector2 spawnPoint;
     List<PathFollow2D> newChildren = new List<PathFollow2D>();
+
+    public CollisionShape2D dangerZoneCollision;
+    float dangerZonePositionModifier = 1.255f; // hardcoded number, how much the x position of the zone is divded
 
     public override void _Ready()
     {
@@ -35,14 +39,14 @@ public class Lane : Path2D
             return;
         }
 
-        // make a hitbox for the danger zone
-        var dangerBox = new RectangleShape2D();
+        dangerZoneCollision = GetNode("DangerZone").GetNode<CollisionShape2D>("DangerZoneCollision");
+        var dangerBox = new RectangleShape2D(); // make a hitbox for the danger zone
+        dangerZoneCollision.Shape = dangerBox;
+
         // divide by 1/2 since that's how extents work
         // divide x by 1/3 since we want it to be that big
         dangerBox.Extents = new Vector2(laneImg.GetSize().x / 2 / 3, laneImg.GetSize().y / 2 * GetNode<Sprite>("Sprite").Scale.y);
-        var dangerZoneCollision = GetNode("DangerZone").GetNode<CollisionShape2D>("DangerZoneCollision");
-        dangerZoneCollision.Shape = dangerBox;
-        dangerZoneCollision.Position = new Vector2(this.GlobalPosition.x / 1.255f, 0);
+        dangerZoneCollision.Position = new Vector2(this.GlobalPosition.x / dangerZonePositionModifier, 0);
     }
 
     public override void _ExitTree()
@@ -113,6 +117,7 @@ public class Lane : Path2D
         pathFollow.AddChild(dinoNode);
         // set dinos position
         dinoNode.GlobalPosition = spawnPoint;
+        dinosInLane.Add(dinoNode);
 
         Events.publishDinoDeployed(dinoNode.dinoType);
     }
@@ -135,6 +140,9 @@ public class Lane : Path2D
         if (dangerDinos.Contains(dino))
             dangerDinos.Remove(dino);
         
+        if (dinosInLane.Contains(dino))
+            dinosInLane.Remove(dino);
+        
         if (dangerDinos.Count == 0)
         {
             inDanger = false;
@@ -150,6 +158,7 @@ public class Lane : Path2D
         }
         newChildren.Clear();
         dangerDinos.Clear();
+        dinosInLane.Clear();
         inDanger = false;
     }
 
