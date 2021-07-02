@@ -195,5 +195,5 @@ buttonMode = 12
 [connection signal="visibility_changed" from="." to="." method="OnBuyMenuVisibilityChanged"]
 [connection signal="pressed" from="Buy/Minus" to="." method="_on_Minus_pressed"]
 [connection signal="pressed" from="Buy/Plus" to="." method="_on_Plus_pressed"]
-[connection signal="pressed" from="Buy/Purchase" to="." method="_on_Purchase_pressed"]
-[connection signal="pressed" from="Conquest" to="." method="_on_Conquest_pressed"]
+[connection signal="pressed" from="Buy/Purchase" to="." method="OnPurchasePressed"]
+[connection signal="pressed" from="Conquest" to="." method="OnConquestPressed"]

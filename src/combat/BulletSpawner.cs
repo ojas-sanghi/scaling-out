@@ -51,7 +51,7 @@ public class BulletSpawner : Node2D
         // add bullets to combatscreen to ensure they wont randomly change direction when the army person rotates
         bulletsGroup.RotationDegrees = ((ArmyDude)GetParent()).RotationDegrees;
         bulletsGroup.GlobalPosition = GlobalPosition;
-        GetNode("/root/CombatScreen").AddChild(bulletsGroup);
+        GetNode("/root/" + CombatInfo.combatScreenName).AddChild(bulletsGroup);
 
         GetNode<AudioStreamPlayer>("AudioStreamPlayer").Play();
 

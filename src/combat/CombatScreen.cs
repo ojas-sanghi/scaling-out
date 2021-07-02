@@ -1,6 +1,6 @@
 using Godot;
 
-public class Combat : Node
+public class CombatScreen : Control
 {
     [Export] int maxDinos = 10;
     [Export] int maxRounds = 3;
@@ -64,7 +64,7 @@ public class Combat : Node
     // When a new round starts, re-connect the won round signal
     void OnNewRound()
     {
-        Events.roundWon += OnRoundWon;
+        // Events.roundWon += OnRoundWon;
     }
 
     void OnConquestLost()
@@ -83,6 +83,7 @@ public class Combat : Node
     {
         maxDinos += num;
         c.creds -= num * DinoInfo.Instance.dinoCredCost;
+        GD.Print(maxDinos);
         c.Reset(maxDinos);
     }
 

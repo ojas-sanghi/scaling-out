@@ -8,6 +8,10 @@ using Godot.Collections;
 */
 public class CombatInfo : Node
 {
+    // the name of the combatscreen can change when going between reounds
+    // so we store it here to be retrieved by other nodes
+    public static string combatScreenName = "CombatScreen";
+    
     public static CombatInfo Instance;
 
     public int maxDinos;

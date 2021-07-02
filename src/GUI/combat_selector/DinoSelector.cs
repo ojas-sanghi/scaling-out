@@ -160,7 +160,7 @@ public class DinoSelector : Node2D
 
     async void OnDinosPurchased(int numDinos)
     {
-        // Wait for 0.1 seconds to allow for the same signal to be registered and executed in Combat.cs
+        // Wait for 0.1 seconds to allow for the same signal to be registered and executed in CombatScreen.cs
         // Only once that code executes will our un-fading code work properly
         // Kinda hacky but oh well
         await ToSignal(GetTree().CreateTimer(0.1f), "timeout");

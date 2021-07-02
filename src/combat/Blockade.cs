@@ -16,7 +16,6 @@ public class Blockade : Area2D
     public override void _Ready()
     {
         Events.blockadeHit += OnBlockadeHit;
-        Events.newRound += OnNewRound;
 
         sprites = GetNode<Node2D>("Sprites");
 
@@ -26,7 +25,6 @@ public class Blockade : Area2D
     public override void _ExitTree()
     {
         Events.blockadeHit -= OnBlockadeHit;
-        Events.newRound -= OnNewRound;
     }
 
     void Reset()
@@ -68,17 +66,5 @@ public class Blockade : Area2D
                 return;
             }
         }
-
     }
-
-    void OnNewRound()
-    {
-        foreach (Sprite sprite in sprites.GetChildren())
-        {
-            sprite.Modulate = new Color(1, 1, 1, 1);
-            sprite.Visible = true;
-        }
-        Reset();
-    }
-
 }

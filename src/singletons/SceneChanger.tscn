@@ -81,3 +81,5 @@ __meta__ = {
 autoplay = "start"
 anims/fade = SubResource( 1 )
 anims/start = SubResource( 2 )
+
+[node name="Tween" type="Tween" parent="."]

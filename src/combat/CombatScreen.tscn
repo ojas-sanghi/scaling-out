@@ -1,11 +1,11 @@
 [gd_scene load_steps=11 format=2]
 
+[ext_resource path="res://src/combat/CombatScreen.cs" type="Script" id=1]
 [ext_resource path="res://src/GUI/GameTimer.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/GUI/combat_selector/DinoSelector.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/combat/Blockade.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/actors/ArmyDude.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/GUI/DinoCounter.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/combat/Combat.cs" type="Script" id=7]
 [ext_resource path="res://src/combat/lanes/LanesCreator.cs" type="Script" id=8]
 [ext_resource path="res://assets/music/Battle Music.wav" type="AudioStream" id=9]
 [ext_resource path="res://src/GUI/BuyMenu.tscn" type="PackedScene" id=11]
@@ -14,7 +14,7 @@
 [node name="CombatScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 7 )
+script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

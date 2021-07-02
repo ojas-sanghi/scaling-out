@@ -18,7 +18,7 @@ public class BuyMenu : Control
         var bonusLabel = (Label)FindNode("ArmyElimBonus");
 
         UpdateMaxValue();
-        cred.SetCreds();
+        cred.UpdateCreds();
     }
 
     void UpdateMaxValue()
@@ -36,17 +36,18 @@ public class BuyMenu : Control
         spinBox.Value++;
     }
 
-    void _on_Purchase_pressed()
+    void OnPurchasePressed()
     {
         Events.publishDinosPurchased((int)spinBox.Value);
         UpdateMaxValue();
-        cred.SetCreds();
+        cred.UpdateCreds();
     }
 
-    void _on_Conquest_pressed()
+    async void OnConquestPressed()
     {
         Hide();
         GetTree().Paused = false;
+        await SceneChanger.Instance.NextCombatRound();
     }
 
 }
