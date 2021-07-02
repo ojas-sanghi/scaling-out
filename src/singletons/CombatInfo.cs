@@ -37,11 +37,13 @@ public class CombatInfo : Node
         Instance = this;
 
         Events.dinoDiedType += OnDinoDiedType;
+        Events.conquestWon += Reset; // reset after a conquest is won; this ensures that when a new round starts, currentRound is 1 (which is used in CombatArmyCreator.cs)
     }
 
     public override void _ExitTree()
     {
         Events.dinoDiedType -= OnDinoDiedType;
+        Events.conquestWon -= Reset;
     }
 
     public void Reset()

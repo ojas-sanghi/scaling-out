@@ -16,6 +16,8 @@ public class CombatArmySoldier : Area2D
     RayCast2D generalRayCast; // points wherever the army dude is looking at
     Lane selfLane;
 
+    string animString;
+
     public override void _Ready()
     {
         BulletSpawner spawner = (BulletSpawner)FindNode("BulletSpawner");
@@ -47,31 +49,29 @@ public class CombatArmySoldier : Area2D
         spawner.gunType = gunType;
         bulletsLeft = magSize;
 
-        animPlayer.AssignedAnimation = "shoot_" + gunType.ToString().ToLower();
+        animString = "shoot_" + gunType.ToString().ToLower();
+
+        animPlayer.AssignedAnimation = animString;
         animPlayer.Seek(0f, true);
 
         selfRayCast.CastTo = new Vector2(GetViewport().Size.x, 0);
         generalRayCast.CastTo = new Vector2(GetViewport().Size.x, 0);
     }
 
-    public override void _Process(float delta)
-    {
-        // get our own lane
-        // when found, stop running the _process loop
-        selfRayCast.RotationDegrees = 180;
-        if (selfRayCast.IsColliding())
-        {
-            selfLane = ((Node)selfRayCast.GetCollider()).GetParent<Lane>();
-            SetProcess(false);
-        }
-    }
-
     public override void _PhysicsProcess(float delta)
     {
-        // wait till we've made contact with our lane
+        // get our own lane
+        // if we couldn't, then quit and try next loop
+        selfRayCast.RotationDegrees = 180;
         if (selfLane == null)
-            return;
+        {
+            if (selfRayCast.IsColliding())
+                selfLane = ((Node)selfRayCast.GetCollider()).GetParent<Lane>();
+            else
+                return;
+        }
 
+        // wait till we've made contact with our lane
         var lanesInDanger = CombatInfo.Instance.lanesInDanger;
 
         if (selfLane.inDanger) // always look at our own lane if it's in danger
@@ -92,7 +92,7 @@ public class CombatArmySoldier : Area2D
         // shoot if we see something, else stop
         if (generalRayCast.IsColliding())
         {
-            animPlayer.Play();
+            animPlayer.Play(animString);
         }
         else
         {

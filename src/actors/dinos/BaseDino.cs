@@ -10,6 +10,7 @@ public class BaseDino : Area2D
     AnimatedSprite animSprite;
     Tween transparencyTween;
     Tween pathTween;
+    Timer attackTimer;
     public float pathFollowTime = 1; // set by the "Lane" node when the dino is instanced
 
     bool dinoDead = false;
@@ -37,6 +38,7 @@ public class BaseDino : Area2D
         animPlayer = (AnimationPlayer)FindNode("AnimationPlayer");
         animSprite = (AnimatedSprite)FindNode("AnimatedSprite");
         transparencyTween = (Tween)FindNode("TransparencyTween");
+        attackTimer = (Timer)FindNode("AttackingTimer");
         var thumpSound = (AudioStreamPlayer)FindNode("ThumpSound");
         thumpSound.Play();
 
@@ -105,6 +107,7 @@ public class BaseDino : Area2D
         var collision = (CollisionPolygon2D)FindNode("CollisionPolygon2D");
         var deathSound = (AudioStreamPlayer)FindNode("DeathSound");
 
+        attackTimer.Stop();
         RemoveFromGroup("dinos");
         Events.publishDinoDiedType(dinoType);
         Events.publishDinoDiedInstance(this);
@@ -169,8 +172,6 @@ public class BaseDino : Area2D
 
     void AttackBlockade()
     {
-        var attackTimer = (Timer)FindNode("AttackingTimer");
-
         pathTween.SetActive(false);
 
         animPlayer.Stop();
