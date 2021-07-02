@@ -113,6 +113,7 @@ public class SelectorSprite : Button
     {
         foreach (Particles2D particle in particles.GetChildren())
         {
+            particle.Hide();
             particle.Emitting = false;
         }
     }
@@ -121,6 +122,7 @@ public class SelectorSprite : Button
     {
         foreach (Particles2D particle in particles.GetChildren())
         {
+            particle.Show();
             particle.Emitting = true;
         }
     }

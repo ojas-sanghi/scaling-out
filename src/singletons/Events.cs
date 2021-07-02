@@ -66,5 +66,18 @@ public class Events : Node
     public override void _Ready()
     {
         OS.WindowMaximized = true;
+
+        
+        int releaseVolumeDb = -5;
+        int debugVolumeDb = -80;
+        var busIndex = AudioServer.GetBusIndex("Master");
+        if (OS.IsDebugBuild())
+        {
+            AudioServer.SetBusVolumeDb(busIndex, debugVolumeDb);
+        }
+        else
+        {
+            AudioServer.SetBusVolumeDb(busIndex, releaseVolumeDb);
+        }
     }
 }

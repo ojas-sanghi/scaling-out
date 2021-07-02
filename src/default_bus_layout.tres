@@ -1,7 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=2 format=2]
-
-[ext_resource path="res://src/MusicBus.cs" type="Script" id=1]
+[gd_resource type="AudioBusLayout" format=2]
 
 [resource]
 bus/0/volume_db = -65.1301
-script = ExtResource( 1 )
