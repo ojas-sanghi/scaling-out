@@ -31,14 +31,15 @@ public class CombatArmyCreator : Node2D
         for (int i = 0; i < numLanes; i++)
         {
             var newZone = armyZone.Instance<CombatArmyZone>();
+
             // note: we don't divide these earlier since ySize is used to get the yPos
             Vector2 areaExtents = new Vector2(armyZoneXSize / 2, (armyZoneYSize - armyZoneYPadding) / 2);
             newZone.areaExtents = areaExtents;
 
             armyZoneYPos = armyZoneYSize * (i + 1);
             newZone.Position = new Vector2(armyZoneXPos, armyZoneYPos);
-            armyZones.Add(newZone);
 
+            armyZones.Add(newZone);
             AddChild(newZone);
         }
 
@@ -69,4 +70,8 @@ public class CombatArmyCreator : Node2D
             zoneLastDeployedTo = zoneToDeployTo;
         }
     }
+
+    // TODO: two-pronged
+    // 1. do the extent calculation same as the danger box does it
+    // 2. always LookAt() dino when shootinf
 }

@@ -23,6 +23,7 @@ public class CombatArmyZone : Area2D
     {
         // the CollisionShape is at (0, 0); so half of it is to the left (of this.position) and half to the right (of this.position) 
         // we want to spawn a solider somewhere within this area, so we get a random range between this area
+        GD.Randomize();
         float newSoldierPosX = (float) GD.RandRange(-(areaExtents.x / 2), (areaExtents.x / 2));
         float newSoldierPosY = (float) GD.RandRange(-(areaExtents.y / 2), (areaExtents.y / 2));
 

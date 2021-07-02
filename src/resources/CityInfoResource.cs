@@ -25,6 +25,7 @@ public class CityInfoResource : Resource
     // what zone each soldier is in
     // these correspond to each soldier in numSoldiersPerRound
     // must be same length as the sum of everything in numSoldiersPerRound
+    // THE INDEX CAN'T GO OVER (NUMBER OF LANES - 1)
     [Export] public Array<int> soldierZoneIndex;
 
     [Export] public Array<int> timePerRoundSeconds; // list of how long each round is, as many entries as there are rounds

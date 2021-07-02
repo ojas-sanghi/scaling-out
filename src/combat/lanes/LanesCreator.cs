@@ -21,8 +21,8 @@ public class LanesCreator : Node2D
     {
         var laneTypes = CityInfo.Instance.currentCity.lanesInfo;
 
-        // set number of lanes and position of the parent of the lanes (this node) based off dict
-        // hard coded, but no other way
+        // set the number of lanes and position of the parent of the lanes (this node) based off dict
+        // it's hard coded, but no other way :/
         numLanes = laneTypes.Count;
         this.Position = new Vector2(700.5f, yPositionForNumLanes[numLanes]);
 
