@@ -14,15 +14,15 @@ public class IceProjectile : DinoProjectile
         if (disabled) return;
         base.OnDinoProjectileAreaEntered(area);
 
-        var armySoliders = GetTree().GetNodesInGroup("combat_army");
+        var armySoldiers = GetTree().GetNodesInGroup("combat_army");
         
         // make them shoot half as fast
-        foreach (CombatArmySoldier soldier in armySoliders)
+        foreach (CombatArmySoldier soldier in armySoldiers)
             soldier.animPlayer.PlaybackSpeed = 0.5f;
         
         await ToSignal(GetTree().CreateTimer(duration), "timeout");
 
-        foreach (CombatArmySoldier soldier1 in armySoliders)
+        foreach (CombatArmySoldier soldier1 in armySoldiers)
             soldier1.animPlayer.PlaybackSpeed = 1f;
 
         QueueFree();

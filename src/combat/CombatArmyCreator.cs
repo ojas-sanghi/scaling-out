@@ -42,29 +42,29 @@ public class CombatArmyCreator : Node2D
             AddChild(newZone);
         }
 
-        Events.newRound += MakeArmySoliders;
+        Events.newRound += MakeArmySoldiers;
 
-        MakeArmySoliders();
+        MakeArmySoldiers();
     }
 
     public override void _ExitTree()
     {
-        Events.newRound -= MakeArmySoliders;
+        Events.newRound -= MakeArmySoldiers;
     }
 
-    void MakeArmySoliders()
+    void MakeArmySoldiers()
     {
         CityInfoResource currentCity = CityInfo.Instance.currentCity;
 
         // make the amount of soliders specified for this round
-        int newSolidersThisRound = currentCity.numSoldiersPerRound[CombatInfo.Instance.currentRound - 1];
-        for (int i = 0; i < newSolidersThisRound; i++)
+        int newSoldiersThisRound = currentCity.numSoldiersPerRound[CombatInfo.Instance.currentRound - 1];
+        for (int i = 0; i < newSoldiersThisRound; i++)
         {
             Enums.ArmyGunTypes gunType = currentCity.soldierGunTypes[soldierNum];
             int zoneIndex = currentCity.soliderZoneIndex[soldierNum];
             CombatArmyZone zoneToDeployTo = armyZones[zoneIndex];
 
-            zoneToDeployTo.SummonArmySolider(soldierNum, gunType);
+            zoneToDeployTo.SummonArmySoldier(soldierNum, gunType);
             soldierNum++;
             zoneLastDeployedTo = zoneToDeployTo;
         }

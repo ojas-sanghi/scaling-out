@@ -15,16 +15,16 @@ public class FireProjectile : DinoProjectile
         if (disabled) return;
         base.OnDinoProjectileAreaEntered(area);
 
-        Array armySoliders = GetTree().GetNodesInGroup("combat_army");
+        Array armySoldiers = GetTree().GetNodesInGroup("combat_army");
 
         
         // stop shooting for duration
-        foreach (CombatArmySoldier soldier in armySoliders)
+        foreach (CombatArmySoldier soldier in armySoldiers)
             soldier.animPlayer.Stop();
 
         await ToSignal(GetTree().CreateTimer(duration), "timeout");
 
-        foreach (CombatArmySoldier soldier1 in armySoliders)
+        foreach (CombatArmySoldier soldier1 in armySoldiers)
             soldier1.animPlayer.Play("shoot_" + soldier1.gunType.ToString().ToLower());
 
         QueueFree();
