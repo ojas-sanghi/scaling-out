@@ -60,28 +60,13 @@ public class CombatArmyCreator : Node2D
         int newSolidersThisRound = currentCity.numSoldiersPerRound[CombatInfo.Instance.currentRound - 1];
         for (int i = 0; i < newSolidersThisRound; i++)
         {
-            Enums.ArmyGunTypes gunType = CityInfo.Instance.currentCity.soliderGunTypes[soldierNum];
-            CombatArmyZone zoneToDeployTo;
+            Enums.ArmyGunTypes gunType = currentCity.soldierGunTypes[soldierNum];
+            int zoneIndex = currentCity.soliderZoneIndex[soldierNum];
+            CombatArmyZone zoneToDeployTo = armyZones[zoneIndex];
 
-            // it's the first zone ever
-            if (zoneLastDeployedTo == null)
-                zoneToDeployTo = armyZones[0];
-            // for all other rounds
-            // get the index of the last zone and deploy to the zone after that
-            // if it's the last zone then wrap around
-            else
-            {
-                int indexOfLastZone = armyZones.IndexOf(zoneLastDeployedTo);
-                int indexOfNextZone = indexOfLastZone + 1;
-                if (indexOfNextZone >= armyZones.Count)
-                    indexOfNextZone = 0;
-                zoneToDeployTo = armyZones[indexOfNextZone];
-            }
-            
             zoneToDeployTo.SummonArmySolider(soldierNum, gunType);
             soldierNum++;
             zoneLastDeployedTo = zoneToDeployTo;
         }
     }
-    // todo: the zones are moved down too much, try to find a way to fix that programatically, numLanes-agnostic
 }
