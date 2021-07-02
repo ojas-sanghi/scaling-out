@@ -10,3 +10,5 @@ script = ExtResource( 1 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="ArmySoldiers" type="Node2D" parent="."]
+
+[node name="Tween" type="Tween" parent="."]

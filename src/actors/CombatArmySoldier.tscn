@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://src/actors/CombatArmySoldier.cs" type="Script" id=1]
 [ext_resource path="res://assets/army/rifle/survivor-shoot_rifle_2.png" type="Texture" id=2]
@@ -11,6 +11,117 @@
 [ext_resource path="res://assets/army/shotgun/survivor-shoot_shotgun_0.png" type="Texture" id=9]
 [ext_resource path="res://assets/army/shotgun/survivor-shoot_shotgun_1.png" type="Texture" id=10]
 [ext_resource path="res://src/combat/bullets/BulletSpawner.tscn" type="PackedScene" id=11]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_18.png" type="Texture" id=12]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_18.png" type="Texture" id=13]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_6.png" type="Texture" id=14]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_5.png" type="Texture" id=15]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_6.png" type="Texture" id=16]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_7.png" type="Texture" id=17]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_4.png" type="Texture" id=18]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_8.png" type="Texture" id=19]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_5.png" type="Texture" id=20]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_3.png" type="Texture" id=21]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_19.png" type="Texture" id=22]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_9.png" type="Texture" id=23]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_2.png" type="Texture" id=24]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_9.png" type="Texture" id=25]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_14.png" type="Texture" id=26]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_10.png" type="Texture" id=27]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_17.png" type="Texture" id=28]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_6.png" type="Texture" id=29]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_12.png" type="Texture" id=30]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_3.png" type="Texture" id=31]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_4.png" type="Texture" id=32]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_17.png" type="Texture" id=33]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_19.png" type="Texture" id=34]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_7.png" type="Texture" id=35]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_2.png" type="Texture" id=36]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_11.png" type="Texture" id=37]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_12.png" type="Texture" id=38]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_13.png" type="Texture" id=39]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_0.png" type="Texture" id=40]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_9.png" type="Texture" id=41]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_16.png" type="Texture" id=42]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_18.png" type="Texture" id=43]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_2.png" type="Texture" id=44]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_15.png" type="Texture" id=45]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_14.png" type="Texture" id=46]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_19.png" type="Texture" id=47]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_3.png" type="Texture" id=48]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_15.png" type="Texture" id=49]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_17.png" type="Texture" id=50]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_14.png" type="Texture" id=51]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_16.png" type="Texture" id=52]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_7.png" type="Texture" id=53]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_11.png" type="Texture" id=54]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_0.png" type="Texture" id=55]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_13.png" type="Texture" id=56]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_8.png" type="Texture" id=57]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_15.png" type="Texture" id=58]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_11.png" type="Texture" id=59]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_4.png" type="Texture" id=60]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_16.png" type="Texture" id=61]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_1.png" type="Texture" id=62]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_10.png" type="Texture" id=63]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_10.png" type="Texture" id=64]
+[ext_resource path="res://assets/army/shotgun/survivor-move_shotgun_0.png" type="Texture" id=65]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_1.png" type="Texture" id=66]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_5.png" type="Texture" id=67]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_12.png" type="Texture" id=68]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_1.png" type="Texture" id=69]
+[ext_resource path="res://assets/army/handgun/survivor-move_handgun_8.png" type="Texture" id=70]
+[ext_resource path="res://assets/army/rifle/survivor-move_rifle_13.png" type="Texture" id=71]
+
+[sub_resource type="Animation" id=4]
+resource_name = "move_pistol"
+length = 2.0
+step = 0.003
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.051, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 0.999, 1.05, 1.099, 1.149, 1.199, 1.249, 1.299, 1.349, 1.399, 1.449, 1.499, 1.549, 1.599, 1.649, 1.699, 1.749, 1.799, 1.849, 1.899, 1.949 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 40 ), ExtResource( 69 ), ExtResource( 24 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 53 ), ExtResource( 70 ), ExtResource( 25 ), ExtResource( 63 ), ExtResource( 54 ), ExtResource( 30 ), ExtResource( 56 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 52 ), ExtResource( 33 ), ExtResource( 12 ), ExtResource( 34 ), ExtResource( 40 ), ExtResource( 69 ), ExtResource( 24 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 53 ), ExtResource( 70 ), ExtResource( 25 ), ExtResource( 63 ), ExtResource( 54 ), ExtResource( 30 ), ExtResource( 56 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 52 ), ExtResource( 33 ), ExtResource( 12 ), ExtResource( 34 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "move_rifle"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 55 ), ExtResource( 66 ), ExtResource( 44 ), ExtResource( 21 ), ExtResource( 60 ), ExtResource( 67 ), ExtResource( 14 ), ExtResource( 35 ), ExtResource( 57 ), ExtResource( 41 ), ExtResource( 64 ), ExtResource( 59 ), ExtResource( 68 ), ExtResource( 71 ), ExtResource( 26 ), ExtResource( 45 ), ExtResource( 61 ), ExtResource( 28 ), ExtResource( 13 ), ExtResource( 22 ), ExtResource( 55 ), ExtResource( 66 ), ExtResource( 44 ), ExtResource( 21 ), ExtResource( 60 ), ExtResource( 67 ), ExtResource( 14 ), ExtResource( 35 ), ExtResource( 57 ), ExtResource( 41 ), ExtResource( 64 ), ExtResource( 59 ), ExtResource( 68 ), ExtResource( 71 ), ExtResource( 26 ), ExtResource( 45 ), ExtResource( 61 ), ExtResource( 28 ), ExtResource( 13 ), ExtResource( 22 ) ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "move_shotgun"
+length = 2.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1, 1.05, 1.1, 1.15, 1.2, 1.25, 1.3, 1.35, 1.4, 1.45, 1.5, 1.55, 1.6, 1.65, 1.7, 1.75, 1.8, 1.85, 1.9, 1.95 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 65 ), ExtResource( 62 ), ExtResource( 36 ), ExtResource( 48 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 29 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 46 ), ExtResource( 49 ), ExtResource( 42 ), ExtResource( 50 ), ExtResource( 43 ), ExtResource( 47 ), ExtResource( 65 ), ExtResource( 62 ), ExtResource( 36 ), ExtResource( 48 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 29 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 46 ), ExtResource( 49 ), ExtResource( 42 ), ExtResource( 50 ), ExtResource( 43 ), ExtResource( 47 ) ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "shoot_pistol"
@@ -159,9 +270,13 @@ script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 3 )
+texture = ExtResource( 47 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "move_pistol"
+anims/move_pistol = SubResource( 4 )
+anims/move_rifle = SubResource( 5 )
+anims/move_shotgun = SubResource( 6 )
 anims/shoot_pistol = SubResource( 1 )
 anims/shoot_rifle = SubResource( 2 )
 anims/shoot_shotgun = SubResource( 3 )

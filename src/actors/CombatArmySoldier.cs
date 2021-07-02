@@ -17,7 +17,7 @@ public class CombatArmySoldier : Area2D
     RayCast2D generalRayCast; // points wherever the army dude is looking at
     Lane selfLane;
 
-    string animString;
+    public string animString;
 
     public override void _Ready()
     {
@@ -51,9 +51,6 @@ public class CombatArmySoldier : Area2D
         bulletsLeft = magSize;
 
         animString = "shoot_" + gunType.ToString().ToLower();
-
-        animPlayer.AssignedAnimation = animString;
-        animPlayer.Seek(0f, true);
 
         selfRayCast.CastTo = new Vector2(GetViewport().Size.x, 0);
         generalRayCast.CastTo = new Vector2(GetViewport().Size.x, 0);
@@ -103,7 +100,9 @@ public class CombatArmySoldier : Area2D
         if (generalRayCast.IsColliding())
             animPlayer.Play(animString);
         else
-            animPlayer.Stop();
+            // don't stop the moving animation
+            if (!animPlayer.CurrentAnimation.StartsWith("move_"))
+                animPlayer.Stop();
     }
 
     async void CheckReload()
