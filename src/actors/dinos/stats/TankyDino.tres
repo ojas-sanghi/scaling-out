@@ -80,9 +80,9 @@ genes = [ 0, 100 ]
 [sub_resource type="Resource" id=12]
 script = ExtResource( 3 )
 cost = SubResource( 11 )
+level = 0
 statName = "Special"
 special = "Ice"
-level = 0
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 4 )
