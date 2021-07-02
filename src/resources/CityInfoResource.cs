@@ -15,17 +15,17 @@ public class CityInfoResource : Resource
     
     [Export] public int rounds = 3;
 
-    // number of NEW soliders that spawn each round; so [3, 3, 3] means 3 soliders then 6 soliders in round 2 then 9 guards in round 3
+    // number of NEW soldiers that spawn each round; so [3, 3, 3] means 3 soldiers then 6 soldiers in round 2 then 9 guards in round 3
     // must be same length as rounds
     [Export] public Array<int> numSoldiersPerRound;
-    // what gun each solider has
+    // what gun each soldier has
     // these correspond to each soldier in numSoldiersPerRound
     // must be same length as the sum of everything in numSoldiersPerRound
     [Export] public Array<Enums.ArmyGunTypes> soldierGunTypes;
     // what zone each soldier is in
     // these correspond to each soldier in numSoldiersPerRound
     // must be same length as the sum of everything in numSoldiersPerRound
-    [Export] public Array<int> soliderZoneIndex;
+    [Export] public Array<int> soldierZoneIndex;
 
     [Export] public Array<int> timePerRoundSeconds; // list of how long each round is, as many entries as there are rounds
     

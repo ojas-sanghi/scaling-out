@@ -56,12 +56,12 @@ public class CombatArmyCreator : Node2D
     {
         CityInfoResource currentCity = CityInfo.Instance.currentCity;
 
-        // make the amount of soliders specified for this round
+        // make the amount of soldiers specified for this round
         int newSoldiersThisRound = currentCity.numSoldiersPerRound[CombatInfo.Instance.currentRound - 1];
         for (int i = 0; i < newSoldiersThisRound; i++)
         {
             Enums.ArmyGunTypes gunType = currentCity.soldierGunTypes[soldierNum];
-            int zoneIndex = currentCity.soliderZoneIndex[soldierNum];
+            int zoneIndex = currentCity.soldierZoneIndex[soldierNum];
             CombatArmyZone zoneToDeployTo = armyZones[zoneIndex];
 
             zoneToDeployTo.SummonArmySoldier(soldierNum, gunType);
