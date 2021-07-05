@@ -11,7 +11,7 @@ public class CombatArmyZone : Area2D
 
     Tween tween;
 
-    Vector2 testOldPos = Vector2.Zero;
+    float spawnOffset = 350f; // how many pixels to the right guards spawn in so that they're off-screen initially
 
     public override void _Ready()
     {
@@ -40,7 +40,6 @@ public class CombatArmyZone : Area2D
         float newSoldierPosX = (float)GD.RandRange(-(areaExtents.x / 2), (areaExtents.x / 2));
         float newSoldierPosY = (float)GD.RandRange(-(areaExtents.y / 2), (areaExtents.y / 2));
 
-        Vector2 offScreenSpawnPos = new Vector2(newSoldierPosX + 350f, newSoldierPosY);
         Vector2 spawnPos = new Vector2(newSoldierPosX, newSoldierPosY);
 
         soldier.Position = spawnPos;
@@ -66,7 +65,7 @@ public class CombatArmyZone : Area2D
         // re-calculate the spawn and off-screen spawn positions 
         // also set the soldier's position to the off-screen value; prevously it was the final position to check for collisions
         Vector2 spawnPos = newSoldier.Position;
-        Vector2 offScreenSpawnPos = new Vector2(newSoldier.Position.x + 250f, newSoldier.Position.y);
+        Vector2 offScreenSpawnPos = new Vector2(newSoldier.Position.x + spawnOffset, newSoldier.Position.y);
         newSoldier.Position = offScreenSpawnPos;
 
         float animLength = 2f;
