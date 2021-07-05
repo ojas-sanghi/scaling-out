@@ -72,7 +72,7 @@
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_8.png" type="Texture" id=70]
 [ext_resource path="res://assets/army/rifle/survivor-move_rifle_13.png" type="Texture" id=71]
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=1]
 resource_name = "move_pistol"
 length = 2.0
 step = 0.003
@@ -89,7 +89,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 40 ), ExtResource( 69 ), ExtResource( 24 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 53 ), ExtResource( 70 ), ExtResource( 25 ), ExtResource( 63 ), ExtResource( 54 ), ExtResource( 30 ), ExtResource( 56 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 52 ), ExtResource( 33 ), ExtResource( 12 ), ExtResource( 34 ), ExtResource( 40 ), ExtResource( 69 ), ExtResource( 24 ), ExtResource( 31 ), ExtResource( 32 ), ExtResource( 20 ), ExtResource( 16 ), ExtResource( 53 ), ExtResource( 70 ), ExtResource( 25 ), ExtResource( 63 ), ExtResource( 54 ), ExtResource( 30 ), ExtResource( 56 ), ExtResource( 51 ), ExtResource( 58 ), ExtResource( 52 ), ExtResource( 33 ), ExtResource( 12 ), ExtResource( 34 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=2]
 resource_name = "move_rifle"
 length = 2.0
 step = 0.05
@@ -106,7 +106,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 55 ), ExtResource( 66 ), ExtResource( 44 ), ExtResource( 21 ), ExtResource( 60 ), ExtResource( 67 ), ExtResource( 14 ), ExtResource( 35 ), ExtResource( 57 ), ExtResource( 41 ), ExtResource( 64 ), ExtResource( 59 ), ExtResource( 68 ), ExtResource( 71 ), ExtResource( 26 ), ExtResource( 45 ), ExtResource( 61 ), ExtResource( 28 ), ExtResource( 13 ), ExtResource( 22 ), ExtResource( 55 ), ExtResource( 66 ), ExtResource( 44 ), ExtResource( 21 ), ExtResource( 60 ), ExtResource( 67 ), ExtResource( 14 ), ExtResource( 35 ), ExtResource( 57 ), ExtResource( 41 ), ExtResource( 64 ), ExtResource( 59 ), ExtResource( 68 ), ExtResource( 71 ), ExtResource( 26 ), ExtResource( 45 ), ExtResource( 61 ), ExtResource( 28 ), ExtResource( 13 ), ExtResource( 22 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=3]
 resource_name = "move_shotgun"
 length = 2.0
 step = 0.05
@@ -123,8 +123,7 @@ tracks/0/keys = {
 "values": [ ExtResource( 65 ), ExtResource( 62 ), ExtResource( 36 ), ExtResource( 48 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 29 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 46 ), ExtResource( 49 ), ExtResource( 42 ), ExtResource( 50 ), ExtResource( 43 ), ExtResource( 47 ), ExtResource( 65 ), ExtResource( 62 ), ExtResource( 36 ), ExtResource( 48 ), ExtResource( 18 ), ExtResource( 15 ), ExtResource( 29 ), ExtResource( 17 ), ExtResource( 19 ), ExtResource( 23 ), ExtResource( 27 ), ExtResource( 37 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 46 ), ExtResource( 49 ), ExtResource( 42 ), ExtResource( 50 ), ExtResource( 43 ), ExtResource( 47 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "shoot_pistol"
+[sub_resource type="Animation" id=4]
 loop = true
 step = 0.05
 tracks/0/type = "value"
@@ -167,9 +166,32 @@ tracks/2/keys = {
 "method": "SpawnBullets"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("NoSpawnPolygon2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -9.17713, 3.37117 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("NoSpawnPolygon2D:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( 135.155, 53.1595, 20.3043, 74.9846, 20.3046, -51.9553, 64.0053, -51.9552, 103.544, -22.8213, 135.744, 40.7991 ) ]
+}
 
-[sub_resource type="Animation" id=2]
-resource_name = "shoot_rifle"
+[sub_resource type="Animation" id=5]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:texture")
@@ -214,9 +236,32 @@ tracks/2/keys = {
 "method": "SpawnBullets"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("NoSpawnPolygon2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("NoSpawnPolygon2D:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( 135.155, 53.1595, 72.1761, 64.9311, -38.2436, 78.0341, -37.5435, 14.3381, -36.8433, -59.5073, 19.2032, -31.0093, 52.7509, -8.76023, 68.6446, 31.97, 135.744, 40.7991 ) ]
+}
 
-[sub_resource type="Animation" id=3]
-resource_name = "shoot_shotgun"
+[sub_resource type="Animation" id=6]
 length = 1.2
 loop = true
 step = 0.05
@@ -260,26 +305,55 @@ tracks/2/keys = {
 "method": "SpawnBullets"
 } ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("NoSpawnPolygon2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("NoSpawnPolygon2D:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ PoolVector2Array( 135.155, 53.1595, 72.1761, 64.9311, -38.2436, 78.0341, -37.5435, 14.3381, -36.8433, -59.5073, 19.2032, -31.0093, 52.7509, -8.76023, 68.6446, 31.97, 135.744, 40.7991 ) ]
+}
 
 [node name="CombatArmySoldier" type="Area2D" groups=[
 "combat_army",
 ]]
 rotation = 3.14159
 collision_layer = 8
+collision_mask = 8
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.45, 0.45 )
-texture = ExtResource( 47 )
+texture = ExtResource( 8 )
+
+[node name="NoSpawnPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 0.45, 0.45 )
+polygon = PoolVector2Array( 135.155, 53.1595, 72.1761, 64.9311, -38.2436, 78.0341, -37.5435, 14.3381, -36.8433, -59.5073, 19.2032, -31.0093, 52.7509, -8.76023, 68.6446, 31.97, 135.744, 40.7991 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "move_pistol"
-anims/move_pistol = SubResource( 4 )
-anims/move_rifle = SubResource( 5 )
-anims/move_shotgun = SubResource( 6 )
-anims/shoot_pistol = SubResource( 1 )
-anims/shoot_rifle = SubResource( 2 )
-anims/shoot_shotgun = SubResource( 3 )
+anims/move_pistol = SubResource( 1 )
+anims/move_rifle = SubResource( 2 )
+anims/move_shotgun = SubResource( 3 )
+anims/shoot_pistol = SubResource( 4 )
+anims/shoot_rifle = SubResource( 5 )
+anims/shoot_shotgun = SubResource( 6 )
 
 [node name="BulletSpawner" parent="." instance=ExtResource( 11 )]
 position = Vector2( 50.0252, 23.6801 )
