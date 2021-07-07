@@ -10,7 +10,7 @@ public class Scientist : KinematicBody2D
     Vector2 velocity;
     int coinsCollected = 0;
 
-    string nodePath = "";
+    Node2D rootStealthNode;
 
     public override void _Ready()
     {
@@ -20,14 +20,12 @@ public class Scientist : KinematicBody2D
         Events.levelPassed += OnLevelPassed;
         Events.coinGrabbed += OnCoinGrabbed;
 
-        // TODO: when more gene-specific scenes are made, change this
-        string geneString = StealthInfo.geneBeingPursued.ToString();
-        nodePath = "/root/Stealth" + geneString.First().ToString().ToUpper() + geneString.Substring(1) + "/";
+        rootStealthNode = (Node2D)GetParent();
     }
 
     public override void _ExitTree()
     {
-        Events.levelFailed -= OnLevelFailed; //? do we remove it here and in OnLevelFailed? Do we need a check here?
+        Events.levelFailed -= OnLevelFailed;
         Events.levelPassed -= OnLevelPassed;
         Events.coinGrabbed -= OnCoinGrabbed;
     }
@@ -99,12 +97,12 @@ public class Scientist : KinematicBody2D
         win.Play();
 
         await SceneChanger.Instance.Fade();
-        GetNode<CanvasModulate>(nodePath + "CanvasModulate").Hide();
-        GetNode<MoneyCounter>(nodePath + "CanvasLayer/CoinCounter").Hide();
-        await ToSignal(win, "finished");
-
-        GetNode<Vault>(nodePath + "Vault").Hide();
+        rootStealthNode.GetNode<CanvasModulate>("CanvasModulate").Hide();
+        rootStealthNode.GetNode<MoneyCounter>("CanvasLayer/CoinCounter").Hide();
         PlayerStats.gold += coinsCollected;
+        await ToSignal(win, "finished");
+        
+        rootStealthNode.GetNode<Vault>("Vault").Hide();
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/StealthWinDialogue.tscn");
     }
 
@@ -113,8 +111,6 @@ public class Scientist : KinematicBody2D
         // remove here since we want it to be one-shot
         Events.levelFailed -= OnLevelFailed;
 
-        GD.Print("YOU FAILED!");
-
         var caught = (AudioStreamPlayer)FindNode("Caught");
 
         SetPhysicsProcess(false);
@@ -122,11 +118,11 @@ public class Scientist : KinematicBody2D
         caught.Play();
 
         await SceneChanger.Instance.Fade();
-        GetNode<CanvasModulate>(nodePath + "CanvasModulate").Hide();
-        GetNode<MoneyCounter>(nodePath + "CanvasLayer/CoinCounter").Hide();
+        rootStealthNode.GetNode<CanvasModulate>("CanvasModulate").Hide();
+        rootStealthNode.GetNode<MoneyCounter>("CanvasLayer/CoinCounter").Hide();
         await ToSignal(caught, "finished");
 
-        GetNode<Vault>(nodePath + "Vault").Hide();
+        rootStealthNode.GetNode<Vault>("Vault").Hide();
         SceneChanger.Instance.GoToScene("res://src/GUI/dialogues/StealthLoseDialogue.tscn");
     }
 
