@@ -9,7 +9,7 @@ public class Scientist : KinematicBody2D
     Vector2 velocity;
     int coinsCollected = 0;
 
-    Node2D rootStealthNode;
+    Node rootStealthNode;
 
     public override void _Ready()
     {
@@ -19,7 +19,7 @@ public class Scientist : KinematicBody2D
         Events.levelPassed += OnLevelPassed;
         Events.coinGrabbed += OnCoinGrabbed;
 
-        rootStealthNode = (Node2D)GetParent();
+        rootStealthNode = GetParent();
     }
 
     public override void _ExitTree()
@@ -91,7 +91,6 @@ public class Scientist : KinematicBody2D
         animSprite.Stop();
         win.Play();
 
-        await SceneChanger.Instance.FadeOut();
         rootStealthNode.GetNode<CanvasModulate>("CanvasModulate").Hide();
         rootStealthNode.GetNode<MoneyCounter>("CanvasLayer/CoinCounter").Hide();
         PlayerStats.gold += coinsCollected;
@@ -112,7 +111,6 @@ public class Scientist : KinematicBody2D
         animSprite.Stop();
         caught.Play();
 
-        await SceneChanger.Instance.FadeOut();
         rootStealthNode.GetNode<CanvasModulate>("CanvasModulate").Hide();
         rootStealthNode.GetNode<MoneyCounter>("CanvasLayer/CoinCounter").Hide();
         await ToSignal(caught, "finished");
