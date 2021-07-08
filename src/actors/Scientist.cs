@@ -1,4 +1,3 @@
-using System.Linq;
 using Godot;
 
 public class Scientist : KinematicBody2D
@@ -35,22 +34,18 @@ public class Scientist : KinematicBody2D
     {
         // Detect up/down/left/right keystrokes and move only when pressed
         var newVelocity = Vector2.Zero;
+
         if (Input.IsActionPressed("ui_right"))
-        {
             newVelocity.x++;
-        }
+        
         if (Input.IsActionPressed("ui_left"))
-        {
             newVelocity.x--;
-        }
+        
         if (Input.IsActionPressed("ui_down"))
-        {
             newVelocity.y++;
-        }
+        
         if (Input.IsActionPressed("ui_up"))
-        {
             newVelocity.y--;
-        }
 
         return newVelocity;
     }
@@ -96,7 +91,7 @@ public class Scientist : KinematicBody2D
         animSprite.Stop();
         win.Play();
 
-        await SceneChanger.Instance.Fade();
+        await SceneChanger.Instance.FadeOut();
         rootStealthNode.GetNode<CanvasModulate>("CanvasModulate").Hide();
         rootStealthNode.GetNode<MoneyCounter>("CanvasLayer/CoinCounter").Hide();
         PlayerStats.gold += coinsCollected;
@@ -117,7 +112,7 @@ public class Scientist : KinematicBody2D
         animSprite.Stop();
         caught.Play();
 
-        await SceneChanger.Instance.Fade();
+        await SceneChanger.Instance.FadeOut();
         rootStealthNode.GetNode<CanvasModulate>("CanvasModulate").Hide();
         rootStealthNode.GetNode<MoneyCounter>("CanvasLayer/CoinCounter").Hide();
         await ToSignal(caught, "finished");
