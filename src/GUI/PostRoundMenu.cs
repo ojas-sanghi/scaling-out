@@ -5,6 +5,10 @@ public class PostRoundMenu : Control
     public override void _Ready()
     {
         Hide();
+
+        // Hide when a new round is triggered from scene changer
+        // dont hide when button is pressed since otherwise that looks weird
+        Events.newRound += Hide;
     }
 
     void OnPostRoundMenuVisibilityChanged()
@@ -22,7 +26,6 @@ public class PostRoundMenu : Control
 
     void OnContinueConquestPressed()
     {
-        Hide();
         GetTree().Paused = false;
     }
 }

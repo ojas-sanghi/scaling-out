@@ -115,7 +115,7 @@ public class GameButton : Button
                 break;
             // nothing for plus, minus, or buy dinos: those are handled in their own scenes
             case b.ContinueConquest:
-                Events.publishNewRound();
+                scnChng.NewRoundAnimation();
                 break;
         }
     }

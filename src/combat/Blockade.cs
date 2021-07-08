@@ -64,7 +64,7 @@ public class Blockade : Area2D
             }
             else
             {
-                Events.publishroundWon();
+                Events.publishRoundWon();
                 return;
             }
         }

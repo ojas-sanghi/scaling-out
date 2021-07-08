@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/singletons/SceneChanger.cs" type="Script" id=1]
+[ext_resource path="res://assets/fonts/Font100.tres" type="DynamicFont" id=2]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fade_in"
@@ -98,7 +99,23 @@ layer = 100
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0.2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RoundLabel" type="Label" parent="CanvasLayer"]
+self_modulate = Color( 1, 0, 0.166667, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -244.5
+margin_top = -56.5
+margin_right = 244.5
+margin_bottom = 56.5
+custom_fonts/font = ExtResource( 2 )
+text = "ROUND 2	"
 __meta__ = {
 "_edit_use_anchors_": false
 }

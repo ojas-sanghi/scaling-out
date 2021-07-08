@@ -11,8 +11,8 @@ public class Events : Node
     public static event Action<double> dinoHit;
     public static event Action<float> blockadeHit;
 
-    public static event Action newRound;
     public static event Action roundWon; //! Connect oneshot in _ready, re-connect when newRound
+    public static event Action newRound;
     public static event Action conquestWon;
     public static event Action conquestLost;
 
@@ -42,8 +42,8 @@ public class Events : Node
     public static void publishDinoHit(double damage) => dinoHit?.Invoke(damage);
     public static void publishBlockadeHit(float damage) => blockadeHit?.Invoke(damage);
 
+    public static void publishRoundWon() => roundWon?.Invoke();
     public static void publishNewRound() => newRound?.Invoke();
-    public static void publishroundWon() => roundWon?.Invoke();
     public static void publishConquestWon() => conquestWon?.Invoke();
     public static void publishConquestLost() => conquestLost?.Invoke();
 
