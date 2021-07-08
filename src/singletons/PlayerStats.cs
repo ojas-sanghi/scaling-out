@@ -34,7 +34,10 @@ public class PlayerStats : Node
 
     public void AddGeneFound(Enums.Genes gene)
     {
-        genesFound.Add(gene);
-        statsResource.SaveResource();
+        if (!genesFound.Contains(gene))
+        {
+            genesFound.Add(gene);
+            statsResource.SaveResource();
+        }
     }
 }

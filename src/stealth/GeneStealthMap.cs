@@ -22,5 +22,4 @@ public class GeneStealthMap : Node
 
         PlayerStats.Instance.AddGeneFound(rewardGene);
     }
-
 }
