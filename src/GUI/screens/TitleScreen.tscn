@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://assets/homescreen.PNG" type="Texture" id=1]
-[ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/music/Title Screen.wav" type="AudioStream" id=4]
+[ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/homescreen.PNG" type="Texture" id=2]
+[ext_resource path="res://assets/music/Title Screen.wav" type="AudioStream" id=3]
 
-[node name="MainMenuScreen" type="Control"]
+[node name="TitleScreen" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 __meta__ = {
@@ -14,13 +14,13 @@ __meta__ = {
 [node name="TextureRect" type="TextureRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 1 )
+texture = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Button" parent="." instance=ExtResource( 3 )]
+[node name="Button" parent="." instance=ExtResource( 1 )]
 margin_left = 587.302
 margin_top = -230.5
 margin_right = 857.302
@@ -28,7 +28,7 @@ margin_bottom = -105.5
 text = "Play"
 buttonMode = 2
 
-[node name="Button2" parent="." instance=ExtResource( 3 )]
+[node name="Button2" parent="." instance=ExtResource( 1 )]
 margin_left = 587.302
 margin_top = -66.0009
 margin_right = 852.302
@@ -37,5 +37,5 @@ text = "Quit"
 buttonMode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 4 )
+stream = ExtResource( 3 )
 autoplay = true
