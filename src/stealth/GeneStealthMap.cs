@@ -1,6 +1,6 @@
 using Godot;
 
-public class GeneStealthMap : Node
+public class GeneStealthMap : StealthMap
 {
     [Export] Enums.Genes rewardGene;
 
@@ -12,14 +12,14 @@ public class GeneStealthMap : Node
             GD.PrintStack();
             GetTree().Quit(1);
         }
+        difficulty = Enums.StealthMapDifficultyLevel.Hard;
 
-        Events.levelPassed += OnLevelPassed;
+        base._Ready();
     }
 
-    void OnLevelPassed()
+    public override void OnLevelPassed()
     {
-        PlayerStats.genes += 150; // TODO: store the rewards for this in some config file and draw from there
-
         PlayerStats.Instance.AddGeneFound(rewardGene);
+        base.OnLevelPassed();
     }
 }

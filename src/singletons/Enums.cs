@@ -54,7 +54,7 @@ namespace Enums
 
     public enum StealthMapDifficultyLevel
     {
-        Easy, Medium, Hard
+        None, Easy, Medium, Hard
     }
 
     public enum USAStates

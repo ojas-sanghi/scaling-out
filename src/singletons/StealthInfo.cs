@@ -10,6 +10,7 @@ public class StealthInfo : Node
 
     public Dictionary<Enums.Genes, PackedScene> geneStealthMaps;
     public Dictionary<Enums.StealthMapDifficultyLevel, PackedScene> normalStealthMaps;
+    public Dictionary<Enums.StealthMapDifficultyLevel, int> difficultyGeneRewards; // how many genes are rewarded for each difficulty
 
     Random rng = new Random();
 
@@ -31,6 +32,13 @@ public class StealthInfo : Node
         {
 
         };
+
+        difficultyGeneRewards = new Dictionary<Enums.StealthMapDifficultyLevel, int>()
+        {
+            { Enums.StealthMapDifficultyLevel.Easy, 100 },
+            { Enums.StealthMapDifficultyLevel.Medium, 250 },
+            { Enums.StealthMapDifficultyLevel.Hard, 500 },
+        };  
 
     }
 

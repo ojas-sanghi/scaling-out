@@ -2,7 +2,7 @@ using Godot;
 
 public class Scientist : KinematicBody2D
 {
-    [Export] int speed = 300;
+    [Export] int speed = 200;
 
     AnimatedSprite animSprite;
 
