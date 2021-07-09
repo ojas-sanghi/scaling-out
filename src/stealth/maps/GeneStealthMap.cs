@@ -20,6 +20,9 @@ public class GeneStealthMap : StealthMap
     public override void OnLevelPassed()
     {
         PlayerStats.Instance.AddGeneFound(rewardGene);
+        Events.publishGeneFound();
+        randomGeneChance = false;
+
         base.OnLevelPassed();
     }
 }

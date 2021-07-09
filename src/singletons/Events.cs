@@ -24,13 +24,13 @@ public class Events : Node
     public static event Action levelPassed;
     public static event Action levelFailed; //! Connect oneshot in _ready, re-connect when newRound
 
-    public static event Action<Enums.SpecialAbilities> projectileHit;
+    public static event Action geneFound; // TODO: cool vfx when this is found
 
-    public static event Action allDinosExpended;
+    public static event Action<SelectorSprite> selectorSelected;
+    public static event Action<Enums.SpecialAbilities> projectileHit;
 
     public static event Action dinoUpgraded;
 
-    public static event Action<SelectorSprite> selectorSelected;
 
     ///////////////////////////////////
 
@@ -55,13 +55,13 @@ public class Events : Node
     public static void publishLevelPassed() => levelPassed?.Invoke();
     public static void publishLevelFailed() => levelFailed?.Invoke();
 
-    public static void publishProjectileHit(Enums.SpecialAbilities type) => projectileHit?.Invoke(type);
+    public static void publishGeneFound() => geneFound?.Invoke();
 
-    public static void publishAllDinosExpended() => allDinosExpended?.Invoke();
+    public static void publishSelectorSelected(SelectorSprite selector) => selectorSelected?.Invoke(selector);
+    public static void publishProjectileHit(Enums.SpecialAbilities type) => projectileHit?.Invoke(type);
 
     public static void publishDinoUpgraded() => dinoUpgraded?.Invoke();
 
-    public static void publishSelectorSelected(SelectorSprite selector) => selectorSelected?.Invoke(selector);
 
     public override void _Ready()
     {

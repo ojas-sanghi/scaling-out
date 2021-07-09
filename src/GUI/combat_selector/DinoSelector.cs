@@ -109,7 +109,6 @@ public class DinoSelector : Node2D
         // if dino
         if (!selector.isAbilitySelector)
         {
-            // if (allDinosExpended) return;
             // if can afford dino, turn it on
             if (DinoInfo.Instance.CanAffordDino(selector.dinoType))
             {

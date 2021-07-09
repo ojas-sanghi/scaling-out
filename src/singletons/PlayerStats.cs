@@ -10,8 +10,8 @@ public class PlayerStats : Node
     public PlayerStatsResource statsResource;
 
     // these are pointers to the Resource file's list so it works out
-    public Array<Enums.Dinos> dinosUnlocked;
-    public Array<Enums.Genes> genesFound;
+    public Array<Enums.Dinos> dinosUnlocked { get; private set; }
+    public Array<Enums.Genes> genesFound { get; private set; }
 
     public PlayerStats()
     {
