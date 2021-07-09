@@ -83,6 +83,8 @@ public class GameButton : Button
     void OnButtonPressed()
     {
         SceneChanger scnChng = SceneChanger.Instance;
+        StealthInfo s = StealthInfo.Instance;
+
         switch (buttonMode)
         {
             case b.Quit:
@@ -107,11 +109,11 @@ public class GameButton : Button
                 break;
             case b.StealthIce:
                 StealthInfo.geneBeingPursued = Enums.Genes.Cryo;
-                scnChng.GoToScene("res://src/stealth/StealthIce.tscn");
+                scnChng.GoToScene(s.geneStealthMaps[StealthInfo.geneBeingPursued].ResourcePath);
                 break;
             case b.StealthFire:
                 StealthInfo.geneBeingPursued = Enums.Genes.Fire;
-                scnChng.GoToScene("res://src/stealth/StealthFire.tscn");
+                scnChng.GoToScene(s.geneStealthMaps[StealthInfo.geneBeingPursued].ResourcePath);
                 break;
             // nothing for plus, minus, or buy dinos: those are handled in their own scenes
             case b.ContinueConquest:

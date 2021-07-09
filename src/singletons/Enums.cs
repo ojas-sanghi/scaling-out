@@ -52,6 +52,11 @@ namespace Enums
         Desert, Forest, Grassland, Hills, River, Oceanside
     }
 
+    public enum StealthMapDifficultyLevel
+    {
+        Easy, Medium, Hard
+    }
+
     public enum USAStates
     {
         [Description("Alabama")] AL,
