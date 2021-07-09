@@ -54,6 +54,7 @@ public class Combat : Node
 
         c.abilitiesUsed.Clear();
         c.lanesInDanger.Clear();
+        c.dinosDeploying.Clear();
         c.allMoneyExpended = false;
 
         GetTree().Paused = true;

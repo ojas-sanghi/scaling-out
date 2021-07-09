@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 public class CombatArmyZone : Area2D
@@ -8,6 +9,9 @@ public class CombatArmyZone : Area2D
 
     PackedScene armySoldierScene;
     Node2D armySoldiers;
+
+    // dict of soldiers and their spawn points
+    Dictionary<CombatArmySoldier, Vector2> preparedSoldiers = new Dictionary<CombatArmySoldier, Vector2>();
 
     Tween tween;
 
@@ -45,7 +49,9 @@ public class CombatArmyZone : Area2D
         soldier.Position = spawnPos;
     }
 
-    async public void SummonArmySoldier(int soliderNum, Enums.ArmyGunTypes gunType)
+    // figure out the placement of the solider
+    // called by CombatArmyCreator during the round switch when the vfx are happening
+    async public Task PrepArmySoldier(int soliderNum, Enums.ArmyGunTypes gunType)
     {
         CombatArmySoldier newSoldier = armySoldierScene.Instance<CombatArmySoldier>();
         newSoldier.gunType = gunType;
@@ -68,17 +74,30 @@ public class CombatArmyZone : Area2D
         Vector2 offScreenSpawnPos = new Vector2(newSoldier.Position.x + spawnOffset, newSoldier.Position.y);
         newSoldier.Position = offScreenSpawnPos;
 
-        float animLength = 2f;
+        preparedSoldiers.Add(newSoldier, spawnPos);
+    }
 
-        // animate the soldier coming in from the right side of the screen
-        tween.InterpolateProperty(newSoldier, "position", offScreenSpawnPos, spawnPos, animLength);
-        tween.Start();
-        newSoldier.animPlayer.Play("move_" + newSoldier.gunType.ToString().ToLower());
+    // animate entrance of prepared soldiers
+    // called by CombatArmyCreator when the new round starts
+    async public void DeployArmySoldier()
+    {
+        float animLength = 1.5f;
 
-        await ToSignal(newSoldier.animPlayer, "animation_finished");
+        foreach (KeyValuePair<CombatArmySoldier, Vector2> kvp in preparedSoldiers)
+        {
+            CombatArmySoldier newSoldier = kvp.Key;
+            Vector2 spawnPos = kvp.Value;
 
-        // set the idle animation of their gun
-        newSoldier.animPlayer.AssignedAnimation = newSoldier.animString;
-        newSoldier.animPlayer.Seek(0f, true);
+            // animate the soldier coming in from the right side of the screen
+            tween.InterpolateProperty(newSoldier, "position", null, spawnPos, animLength);
+            tween.Start();
+            newSoldier.animPlayer.Play("move_" + newSoldier.gunType.ToString().ToLower());
+
+            await ToSignal(newSoldier.animPlayer, "animation_finished");
+
+            // set the idle animation of their gun
+            newSoldier.animPlayer.AssignedAnimation = newSoldier.animString;
+            newSoldier.animPlayer.Seek(0f, true);
+        }
     }
 }

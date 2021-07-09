@@ -29,7 +29,7 @@ public class Lane : Path2D
         spawnPoint = button.RectGlobalPosition + new Vector2(70, 30);
 
         GetNode<Sprite>("Sprite").Texture = laneImg;
-        Events.newRound += OnNewRound;
+        Events.roundWon += OnRoundWon;
         Events.dinoDiedInstance += OnDinoDiedInstance;
 
         // we're an empty lane, don't allow deploys
@@ -51,7 +51,7 @@ public class Lane : Path2D
 
     public override void _ExitTree()
     {
-        Events.newRound -= OnNewRound;
+        Events.roundWon -= OnRoundWon;
     }
 
 
@@ -150,7 +150,7 @@ public class Lane : Path2D
         }
     }
 
-    void OnNewRound()
+    void OnRoundWon()
     {
         foreach (PathFollow2D child in newChildren)
         {

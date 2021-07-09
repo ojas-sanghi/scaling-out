@@ -18,7 +18,7 @@ public class DinoSelector : Node2D
         Events.dinoFullySpawned += ValidateAbilityStatus;
         Events.dinoDiedType += ValidateAbilityStatus;
         Events.selectorSelected += OnSelectorSelected;
-        Events.newRound += OnNewRound;
+        Events.newRound += ValidateAffordStatus;
 
         hBox = (HBoxContainer)FindNode("HBoxContainer");
 
@@ -34,7 +34,7 @@ public class DinoSelector : Node2D
         Events.dinoFullySpawned -= ValidateAbilityStatus;
         Events.dinoDiedType -= ValidateAbilityStatus;
         Events.selectorSelected -= OnSelectorSelected;
-        Events.newRound -= OnNewRound;
+        Events.newRound -= ValidateAffordStatus;
     }
 
     void SetupSelectors()
@@ -172,12 +172,6 @@ public class DinoSelector : Node2D
 
     void OnDinoDeployed(Enums.Dinos dino)
     {
-        ValidateAffordStatus();
-    }
-
-    void OnNewRound()
-    {
-        CombatInfo.Instance.dinosDeploying.Clear();
         ValidateAffordStatus();
     }
 

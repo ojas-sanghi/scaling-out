@@ -1,5 +1,6 @@
-using Godot;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using Godot;
 
 public class CombatArmyCreator : Node2D
 {
@@ -18,7 +19,9 @@ public class CombatArmyCreator : Node2D
     CombatArmyZone zoneLastDeployedTo;
     int soldierNum = 0;
 
-    public override void _Ready()
+    List<CombatArmyZone> zonesToDeployTo = new List<CombatArmyZone>();
+
+    async public override void _Ready()
     {
         armyZone = GD.Load<PackedScene>("res://src/combat/CombatArmyZone.tscn");
         deployArea = GetNode<Area2D>("DeployArea");
@@ -37,7 +40,7 @@ public class CombatArmyCreator : Node2D
         {
             Lane associatedLane = lanesCreator.lanes[i];
             CollisionShape2D laneDangerZoneCollision = associatedLane.dangerZoneCollision;
-            
+
             float newZoneExtentsX = armyZoneXSize / 2;
             float newZoneExtentsY = ((RectangleShape2D)laneDangerZoneCollision.Shape).Extents.y;
 
@@ -49,18 +52,24 @@ public class CombatArmyCreator : Node2D
             AddChild(newZone);
         }
 
-        Events.newRound += MakeArmySoldiers;
+        Events.roundWon += OnRoundWon;
+        Events.newRound += DeployArmySoldiers;
 
-        MakeArmySoldiers();
+        await PrepArmySoldiers();
+        DeployArmySoldiers();
     }
 
     public override void _ExitTree()
     {
-        Events.newRound -= MakeArmySoldiers;
+        Events.roundWon -= OnRoundWon;
+        Events.newRound -= DeployArmySoldiers;
     }
 
-    void MakeArmySoldiers()
+    async Task PrepArmySoldiers()
     {
+        // wait for signal to allow RoundWon signal to process in Combat.cs firstx`
+        await ToSignal(GetTree().CreateTimer(0.1f), "timeout");
+
         CityInfoResource currentCity = CityInfo.Instance.currentCity;
 
         // make the amount of soldiers specified for this round
@@ -71,9 +80,27 @@ public class CombatArmyCreator : Node2D
             int zoneIndex = currentCity.soldierZoneIndex[soldierNum];
             CombatArmyZone zoneToDeployTo = armyZones[zoneIndex];
 
-            zoneToDeployTo.SummonArmySoldier(soldierNum, gunType);
+            // for each zone, both:
+            // 1. add it to the list which is used by the deploy function
+            // 2. and prepare the soldiers in that zone
+            zonesToDeployTo.Add(zoneToDeployTo);
+            await zoneToDeployTo.PrepArmySoldier(soldierNum, gunType);
+
             soldierNum++;
             zoneLastDeployedTo = zoneToDeployTo;
         }
+    }
+
+    void DeployArmySoldiers()
+    {
+        foreach (CombatArmyZone zone in zonesToDeployTo)
+        {
+            zone.DeployArmySoldier();
+        }
+    }
+
+    async void OnRoundWon()
+    {
+        await PrepArmySoldiers();
     }
 }
