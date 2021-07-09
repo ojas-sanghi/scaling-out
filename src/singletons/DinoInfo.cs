@@ -24,10 +24,10 @@ public class DinoInfo : Node
 
         dinoList = new Dictionary<Enums.Dinos, PackedScene>()
         {
-            {Enums.Dinos.Mega, GD.Load<PackedScene>("res://src/actors/dinos/MegaDino.tscn")},
-            {Enums.Dinos.Tanky, GD.Load<PackedScene>("res://src/actors/dinos/TankyDino.tscn")},
-            {Enums.Dinos.Warrior, GD.Load<PackedScene>("res://src/actors/dinos/WarriorDino.tscn")},
-            {Enums.Dinos.Gator, GD.Load<PackedScene>("res://src/actors/dinos/GatorGecko.tscn")},
+            {Enums.Dinos.Mega, GD.Load<PackedScene>("res://src/combat/dinos/MegaDino.tscn")}, 
+            {Enums.Dinos.Tanky, GD.Load<PackedScene>("res://src/combat/dinos/TankyDino.tscn")},
+            {Enums.Dinos.Warrior, GD.Load<PackedScene>("res://src/combat/dinos/WarriorDino.tscn")},
+            {Enums.Dinos.Gator, GD.Load<PackedScene>("res://src/combat/dinos/GatorGecko.tscn")},
         };
 
         dinoIcons = new Dictionary<Enums.Dinos, StreamTexture>()
@@ -40,10 +40,10 @@ public class DinoInfo : Node
 
         upgradesInfo = new Dictionary<Enums.Dinos, UpgradeInfo>()
         {
-            {Enums.Dinos.Mega, new UpgradeInfo("res://src/actors/dinos/stats/MegaDino.tres")},
-            {Enums.Dinos.Tanky, new UpgradeInfo("res://src/actors/dinos/stats/TankyDino.tres")},
-            {Enums.Dinos.Warrior, new UpgradeInfo("res://src/actors/dinos/stats/WarriorDino.tres")},
-            {Enums.Dinos.Gator, new UpgradeInfo("res://src/actors/dinos/stats/GatorGecko.tres")}
+            {Enums.Dinos.Mega, new UpgradeInfo("res://src/combat/dinos/stats/MegaDino.tres")},
+            {Enums.Dinos.Tanky, new UpgradeInfo("res://src/combat/dinos/stats/TankyDino.tres")},
+            {Enums.Dinos.Warrior, new UpgradeInfo("res://src/combat/dinos/stats/WarriorDino.tres")},
+            {Enums.Dinos.Gator, new UpgradeInfo("res://src/combat/dinos/stats/GatorGecko.tres")}
         };
 
         dinoTypesAndAbilities = new Dictionary<Enums.Dinos, Enums.SpecialAbilities>()

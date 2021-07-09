@@ -1,6 +1,6 @@
 [gd_scene load_steps=78 format=2]
 
-[ext_resource path="res://src/actors/CombatArmySoldier.cs" type="Script" id=1]
+[ext_resource path="res://src/combat/army/CombatArmySoldier.cs" type="Script" id=1]
 [ext_resource path="res://assets/army/rifle/survivor-shoot_rifle_2.png" type="Texture" id=2]
 [ext_resource path="res://assets/army/handgun/survivor-shoot_handgun_0.png" type="Texture" id=3]
 [ext_resource path="res://assets/army/handgun/survivor-shoot_handgun_2.png" type="Texture" id=4]
@@ -71,6 +71,7 @@
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_1.png" type="Texture" id=69]
 [ext_resource path="res://assets/army/handgun/survivor-move_handgun_8.png" type="Texture" id=70]
 [ext_resource path="res://assets/army/rifle/survivor-move_rifle_13.png" type="Texture" id=71]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "move_pistol"

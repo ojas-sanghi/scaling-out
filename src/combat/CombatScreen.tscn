@@ -7,9 +7,10 @@
 [ext_resource path="res://src/combat/Combat.cs" type="Script" id=7]
 [ext_resource path="res://src/combat/lanes/LanesCreator.cs" type="Script" id=8]
 [ext_resource path="res://assets/music/Battle Music.wav" type="AudioStream" id=9]
-[ext_resource path="res://src/combat/CombatArmyCreator.cs" type="Script" id=10]
+[ext_resource path="res://src/combat/army/CombatArmyCreator.cs" type="Script" id=10]
 [ext_resource path="res://src/GUI/PostRoundMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/GUI/RoundCounter.tscn" type="PackedScene" id=12]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 100, 417 )

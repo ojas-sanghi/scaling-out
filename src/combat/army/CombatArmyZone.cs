@@ -24,7 +24,7 @@ public class CombatArmyZone : Area2D
         collisionShape.Shape = newShape;
         newShape.Extents = areaExtents;
 
-        armySoldierScene = GD.Load<PackedScene>("res://src/actors/CombatArmySoldier.tscn");
+        armySoldierScene = GD.Load<PackedScene>("res://src/combat/army/CombatArmySoldier.tscn");
         armySoldiers = GetNode<Node2D>("ArmySoldiers");
 
         tween = GetNode<Tween>("Tween");

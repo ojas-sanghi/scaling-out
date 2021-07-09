@@ -1,8 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/dinos/misc/ice.png" type="Texture" id=1]
-[ext_resource path="res://src/combat/DinoProjectile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/combat/IceProjectile.cs" type="Script" id=3]
+[ext_resource path="res://src/combat/dinos/abilities/DinoProjectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/combat/dinos/abilities/IceProjectile.cs" type="Script" id=3]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 139.679, 41.4089 )

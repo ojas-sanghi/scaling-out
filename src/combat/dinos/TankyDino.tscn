@@ -1,9 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://src/actors/dinos/BaseDino.tscn" type="PackedScene" id=1]
-[ext_resource path="res://src/combat/IceProjectile.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/actors/dinos/TankyDino.cs" type="Script" id=3]
-[ext_resource path="res://src/actors/dinos/spriteframes/TankyDino.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://src/combat/dinos/BaseDino.tscn" type="PackedScene" id=1]
+[ext_resource path="res://src/combat/dinos/abilities/IceProjectile.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/combat/dinos/TankyDino.cs" type="Script" id=3]
+[ext_resource path="res://src/combat/dinos/spriteframes/TankyDino.tres" type="SpriteFrames" id=4]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "1walk"

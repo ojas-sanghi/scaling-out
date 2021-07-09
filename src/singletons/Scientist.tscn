@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/stealth/tinylightcircle.png" type="Texture" id=3]
 [ext_resource path="res://assets/stealth/scientist.png" type="Texture" id=4]
 [ext_resource path="res://assets/stealth/scientist_idle.png" type="Texture" id=5]
-[ext_resource path="res://src/actors/Scientist.cs" type="Script" id=6]
+[ext_resource path="res://src/singletons/Scientist.cs" type="Script" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 flags = 4

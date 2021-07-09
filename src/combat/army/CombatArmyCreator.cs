@@ -23,7 +23,7 @@ public class CombatArmyCreator : Node2D
 
     async public override void _Ready()
     {
-        armyZone = GD.Load<PackedScene>("res://src/combat/CombatArmyZone.tscn");
+        armyZone = GD.Load<PackedScene>("res://src/combat/army/CombatArmyZone.tscn");
         deployArea = GetNode<Area2D>("DeployArea");
         armyZoneXPos = deployArea.Position.x;
 

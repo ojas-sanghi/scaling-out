@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/stealth/Vault_Colbalt.png" type="Texture" id=2]
 [ext_resource path="res://assets/stealth/Vault_Metal.png" type="Texture" id=3]
-[ext_resource path="res://src/props/Vault.cs" type="Script" id=4]
+[ext_resource path="res://src/stealth/props/Vault.cs" type="Script" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
