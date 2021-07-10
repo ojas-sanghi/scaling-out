@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://src/stealth/guards/SecurityCamera.cs" type="Script" id=1]
+[ext_resource path="res://src/stealth/guards/GuardFOV.cs" type="Script" id=2]
+[ext_resource path="res://assets/stealth/camera.png" type="Texture" id=3]
+[ext_resource path="res://assets/stealth/tinylightcircle.png" type="Texture" id=4]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 5.5, 11.5 )
+
+[sub_resource type="OccluderPolygon2D" id=1]
+cull_mode = 1
+polygon = PoolVector2Array( 2.1034, 1.77139, 39.4789, 10.1141, -1.43402, -9.75784, -9.48742, -1.6108, 7.73392, 44.9835 )
+
+[node name="SecurityCamera" type="Node2D"]
+script = ExtResource( 1 )
+rotationDegEitherSide = 75.0
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 3 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.0662155, 3.87333 )
+shape = SubResource( 2 )
+
+[node name="FOV" type="Node2D" parent="."]
+script = ExtResource( 2 )
+fieldOfView = 35.0
+radiusWarn = 75.0
+radiusDanger = 0.0
+showFov = false
+fovColor = Color( 1, 1, 0, 1 )
+
+[node name="Light2D" type="Light2D" parent="FOV"]
+position = Vector2( -0.264862, 18.8055 )
+rotation = 0.785398
+texture = ExtResource( 4 )
+texture_scale = 3.0
+range_item_cull_mask = 2
+shadow_enabled = true
+shadow_item_cull_mask = 2
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="FOV"]
+light_mask = 2
+rotation = 0.785398
+occluder = SubResource( 1 )
+light_mask = 2
+__meta__ = {
+"_editor_description_": ""
+}

@@ -21,6 +21,8 @@ public class Events : Node
 
     public static event Action<int> coinGrabbed;
 
+    public static event Action scientistEnteredWarnZone;
+    public static event Action<Vector2> scientistEnteredCameraZone;
     public static event Action levelPassed;
     public static event Action levelFailed; //! Connect oneshot in _ready, re-connect when newRound
 
@@ -52,6 +54,8 @@ public class Events : Node
 
     public static void publishCoinGrabbed(int num) => coinGrabbed?.Invoke(num);
 
+    public static void publishScientistEnteredWarnZone() => scientistEnteredWarnZone?.Invoke();
+    public static void publishScientistEnteredCameraZone(Vector2 pos) => scientistEnteredCameraZone?.Invoke(pos);
     public static void publishLevelPassed() => levelPassed?.Invoke();
     public static void publishLevelFailed() => levelFailed?.Invoke();
 

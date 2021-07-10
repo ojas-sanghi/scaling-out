@@ -51,7 +51,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 15.1388, 11.4609 )
+extents = Vector2( 14, 11 )
 
 [node name="Scientist" type="KinematicBody2D" groups=[
 "scientist",

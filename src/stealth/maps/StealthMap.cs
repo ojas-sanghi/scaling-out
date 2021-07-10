@@ -1,10 +1,10 @@
 using Godot;
 using System.Collections.Generic;
 
-public class StealthMap : Node
+public class StealthMap : Node2D
 {
     [Export] protected Enums.StealthMapDifficultyLevel difficulty;
-
+ 
     // whether or not player has a chance of getting a random gene after finishing the map
     // turned off by the gene stealth maps when those are active
     protected bool randomGeneChance = true;
@@ -17,6 +17,14 @@ public class StealthMap : Node
             GD.PrintStack();
             GetTree().Quit(1);
         }
+
+        // Get all the tilemap nodes, and set the lightmasks to be both layers 1 and 2 -- player lights AND guard light
+        GetNode<TileMap>("TilesBG").LightMask = 3;
+        GetNode<TileMap>("TilesBG").OccluderLightMask = 3;
+        GetNode<TileMap>("TilesRock").LightMask = 3;
+        GetNode<TileMap>("TilesRock").OccluderLightMask = 3;
+        GetNode<TileMap>("Tiles").LightMask = 3;
+        GetNode<TileMap>("Tiles").OccluderLightMask = 3;
 
         Events.levelPassed += OnLevelPassed;
     }
