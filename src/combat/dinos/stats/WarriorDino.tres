@@ -15,9 +15,9 @@ statName = ""
 [sub_resource type="Resource" id=2]
 script = ExtResource( 1 )
 level = 2
-statName = "Def"
 stats = [ 1.0, 0.98, 0.95, 0.92, 0.87 ]
 cost = SubResource( 1 )
+statName = "Def"
 
 [sub_resource type="Resource" id=3]
 script = ExtResource( 4 )
@@ -28,9 +28,9 @@ statName = ""
 [sub_resource type="Resource" id=4]
 script = ExtResource( 1 )
 level = 0
-statName = "Delay"
 stats = [ 2.0, 1.75, 1.5 ]
 cost = SubResource( 3 )
+statName = "Delay"
 
 [sub_resource type="Resource" id=5]
 script = ExtResource( 4 )
@@ -40,10 +40,10 @@ statName = ""
 
 [sub_resource type="Resource" id=6]
 script = ExtResource( 1 )
-level = 2
-statName = "Dmg"
+level = 3
 stats = [ 2.0, 3.5, 5.0, 6.0, 7.5, 8.0, 9.0, 10.0, 10.5, 11.0 ]
 cost = SubResource( 5 )
+statName = "Dmg"
 
 [sub_resource type="Resource" id=7]
 script = ExtResource( 4 )
@@ -54,9 +54,9 @@ statName = ""
 [sub_resource type="Resource" id=8]
 script = ExtResource( 1 )
 level = 0
-statName = "Dodge"
 stats = [ 0.0 ]
 cost = SubResource( 7 )
+statName = "Dodge"
 
 [sub_resource type="Resource" id=9]
 script = ExtResource( 4 )
@@ -67,9 +67,9 @@ statName = "Cost HP"
 [sub_resource type="Resource" id=10]
 script = ExtResource( 1 )
 level = 1
-statName = "HP"
 stats = [ 100.0, 135.0, 150.0 ]
 cost = SubResource( 9 )
+statName = "HP"
 
 [sub_resource type="Resource" id=11]
 script = ExtResource( 4 )
@@ -80,8 +80,8 @@ statName = "Cost Special"
 [sub_resource type="Resource" id=12]
 script = ExtResource( 3 )
 level = 1
-statName = "Special"
 cost = SubResource( 11 )
+statName = "Special"
 special = "Fire"
 
 [sub_resource type="Resource" id=13]
@@ -93,9 +93,9 @@ statName = ""
 [sub_resource type="Resource" id=14]
 script = ExtResource( 1 )
 level = 7
-statName = "Speed"
 stats = [ 50.0, 55.0, 60.0, 66.0, 70.0, 77.0, 84.0, 88.0 ]
 cost = SubResource( 13 )
+statName = "Speed"
 
 [sub_resource type="Resource" id=15]
 script = ExtResource( 5 )
@@ -105,12 +105,12 @@ genes = 200
 [resource]
 script = ExtResource( 2 )
 deployCost = 20
-hpStat = SubResource( 10 )
 unlockCost = SubResource( 15 )
+requiredGene = 2
+hpStat = SubResource( 10 )
 defStat = SubResource( 2 )
+speedStat = SubResource( 14 )
+dmgStat = SubResource( 6 )
+specialStat = SubResource( 12 )
 dodgeStat = SubResource( 8 )
 delayStat = SubResource( 4 )
-dmgStat = SubResource( 6 )
-requiredGene = 2
-speedStat = SubResource( 14 )
-specialStat = SubResource( 12 )

@@ -21,8 +21,6 @@ public class Events : Node
 
     public static event Action<int> coinGrabbed;
 
-    public static event Action scientistEnteredWarnZone;
-    public static event Action<Vector2> scientistEnteredCameraZone;
     public static event Action levelPassed;
     public static event Action levelFailed; //! Connect oneshot in _ready, re-connect when newRound
 
@@ -54,8 +52,6 @@ public class Events : Node
 
     public static void publishCoinGrabbed(int num) => coinGrabbed?.Invoke(num);
 
-    public static void publishScientistEnteredWarnZone() => scientistEnteredWarnZone?.Invoke();
-    public static void publishScientistEnteredCameraZone(Vector2 pos) => scientistEnteredCameraZone?.Invoke(pos);
     public static void publishLevelPassed() => levelPassed?.Invoke();
     public static void publishLevelFailed() => levelFailed?.Invoke();
 
@@ -69,7 +65,7 @@ public class Events : Node
 
     public override void _Ready()
     {
-        OS.WindowMaximized = true;
+        // OS.WindowMaximized = true;
 
         
         int releaseVolumeDb = -5;
@@ -78,10 +74,12 @@ public class Events : Node
         if (OS.IsDebugBuild())
         {
             AudioServer.SetBusVolumeDb(busIndex, debugVolumeDb);
+            OS.WindowSize = new Vector2(960, 540);
         }
         else
         {
             AudioServer.SetBusVolumeDb(busIndex, releaseVolumeDb);
+            OS.WindowMaximized = true;
         }
     }
 }

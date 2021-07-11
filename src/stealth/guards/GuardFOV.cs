@@ -31,41 +31,6 @@ public class GuardFOV : Node2D
     List<ArcPoint> pointsArc = new();
     bool isUpdate = false;
 
-
-    public override void _Ready()
-    {
-        var directionDeg = Mathf.Rad2Deg(Transform.Rotation);
-        var startAngle = (directionDeg - (fieldOfView / 2)) + 45; // + 90
-        var endAngle = startAngle + fieldOfView;
-
-        var startVector = Position + DegToVector(startAngle) * radiusWarn;
-        var endVector = Position + DegToVector(endAngle) * radiusWarn;
-
-        LightOccluder2D occluder = GetNode<LightOccluder2D>("LightOccluder2D");
-
-        if (GetParent().Name == "SecurityCamera")
-        {
-            return;
-        }
-        
-        CollisionShape2D collisionShape2D = GetParent().GetNode<CollisionShape2D>("CollisionShape2D");
-        Vector2 shapeExtents = ((RectangleShape2D)collisionShape2D.Shape).Extents;
-
-        occluder.Occluder.Polygon = new Vector2[] { new Vector2(5, 0), startVector, new Vector2(-shapeExtents.x, -shapeExtents.y), new Vector2(-shapeExtents.x, shapeExtents.y), endVector};
-
-        // TODO
-        // detect and send signal when the soldier EXITS the warn area
-        // and then make the color go back to white form yellow
-
-        // figure out same lighting for the camera --> right now we just return if its the camera :D
-        
-        // and then, the rest of the implemention for the camera as professed in gitkraken boards
-        // AND implemention for soldier as profressed in my notes app :)
-
-        //? better infra for stealth enemies -- maybe BaseStealthEnemy that has exported fov that the actual fov thing uses to calculate the vision? and also the light stuff uses to make the occluders and everything?? not sure. but the infra right now is bad so need to make it better
-    }
-
-
     public override void _Process(float delta)
     {
         isUpdate = true;
@@ -130,7 +95,8 @@ public class GuardFOV : Node2D
         for (int i = 0; i < viewDetail + 1; i++)
         {
             var currentAngle = startAngle + (i * (fieldOfView / viewDetail)) + 90;
-            Vector2 point = Position + DegToVector(currentAngle) * radiusWarn;
+            //! NOTE: change `radiusDanger` to `radiusWarn` if you want to use that value, AND change `radiusWarn` to be same as `radiusDanger` in existing scenes
+            Vector2 point = Position + DegToVector(currentAngle) * radiusDanger;
 
             // use global coordinates, not local to node
             Dictionary result = spaceState.IntersectRay(
@@ -173,7 +139,6 @@ public class GuardFOV : Node2D
                         else
                         {
                             inWarnArea.Add(resultCollider);
-                            Events.publishScientistEnteredWarnZone();
                         }
                         // check if directly to target, we can "shoot"
                         var tgtPos = resultCollider.GetGlobalTransform().origin;

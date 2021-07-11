@@ -18,14 +18,6 @@ public class StealthMap : Node2D
             GetTree().Quit(1);
         }
 
-        // Get all the tilemap nodes, and set the lightmasks to be both layers 1 and 2 -- player lights AND guard light
-        GetNode<TileMap>("TilesBG").LightMask = 3;
-        GetNode<TileMap>("TilesBG").OccluderLightMask = 3;
-        GetNode<TileMap>("TilesRock").LightMask = 3;
-        GetNode<TileMap>("TilesRock").OccluderLightMask = 3;
-        GetNode<TileMap>("Tiles").LightMask = 3;
-        GetNode<TileMap>("Tiles").OccluderLightMask = 3;
-
         Events.levelPassed += OnLevelPassed;
     }
 
