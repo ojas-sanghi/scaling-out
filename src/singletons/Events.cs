@@ -65,7 +65,7 @@ public class Events : Node
 
     public override void _Ready()
     {
-        // OS.WindowMaximized = true;
+        OS.WindowMaximized = true;
 
         
         int releaseVolumeDb = -5;
@@ -74,7 +74,6 @@ public class Events : Node
         if (OS.IsDebugBuild())
         {
             AudioServer.SetBusVolumeDb(busIndex, debugVolumeDb);
-            OS.WindowSize = new Vector2(960, 540);
         }
         else
         {
