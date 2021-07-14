@@ -1,8 +1,8 @@
 [gd_scene load_steps=18 format=2]
 
-[ext_resource path="res://assets/tilesets/gray.tres" type="TileSet" id=1]
-[ext_resource path="res://assets/tilesets/gray_bg.tres" type="TileSet" id=2]
-[ext_resource path="res://assets/tilesets/gray_rock.tres" type="TileSet" id=3]
+[ext_resource path="res://assets/tilesets/gray/g_wall_tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/tilesets/gray/g_bg_tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/tilesets/gray/g_rock_tiles.tres" type="TileSet" id=3]
 [ext_resource path="res://src/GUI/dialogues/StealthLoseDialogue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/stealth/props/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/singletons/Scientist.tscn" type="PackedScene" id=6]

@@ -7,9 +7,9 @@ public class PathFollowGuard : Path2D
     BaseGuard baseGuard;
     Tween tween;
 
-    int walkTime = 4;
-    float turnTime = 1.5f;
-    float pauseTime = 0.5f;
+    [Export] int walkTime = 4;
+    [Export] float turnTime = 1.5f;
+    [Export] float pauseTime = 0.5f;
 
     public override void _Ready()
     {
@@ -59,7 +59,7 @@ public class PathFollowGuard : Path2D
         var degToTurnTo = baseGuard.RotationDegrees == 0 ? 180 : 0;
 
         tween.InterpolateProperty(
-            baseGuard, "rotation_degrees", null, degToTurnTo, turnTime
+            baseGuard, "rotation_degrees", null, degToTurnTo, turnTime, Tween.TransitionType.Sine, Tween.EaseType.InOut
         );
         tween.Start();
 

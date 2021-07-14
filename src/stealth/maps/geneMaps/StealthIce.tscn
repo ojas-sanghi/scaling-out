@@ -1,8 +1,8 @@
 [gd_scene load_steps=22 format=2]
 
-[ext_resource path="res://assets/tilesets/gray.tres" type="TileSet" id=1]
-[ext_resource path="res://assets/tilesets/gray_bg.tres" type="TileSet" id=2]
-[ext_resource path="res://assets/tilesets/gray_rock.tres" type="TileSet" id=3]
+[ext_resource path="res://assets/tilesets/gray/g_wall_tiles.tres" type="TileSet" id=1]
+[ext_resource path="res://assets/tilesets/gray/g_bg_tiles.tres" type="TileSet" id=2]
+[ext_resource path="res://assets/tilesets/gray/g_rock_tiles.tres" type="TileSet" id=3]
 [ext_resource path="res://src/GUI/dialogues/StealthLoseDialogue.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/stealth/props/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/singletons/Scientist.tscn" type="PackedScene" id=6]
@@ -33,17 +33,17 @@ _data = {
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 394.102, 16.9644, 0, 0, 0, 0, 485.247, -75.5414, 0, 0, 0, 0, 507.013, -248.309 )
+"points": PoolVector2Array( 0, 0, 0, 0, 385.059, 93.2492, 0, 0, 0, 0, 409.009, -58.6415, 0, 0, 0, 0, 501.025, -42.2549, 0, 0, 0, 0, 558.378, -162.633 )
 }
 
 [sub_resource type="Curve2D" id=5]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 393.47, -0.859131, 0, 0, 0, 0, 391.417, -183.61, 0, 0, 0, 0, 566.467, -185.15, 0, 0, 0, 0, 563.387, 17.1079, 0, 0, 0, 0, 393.47, -0.859131 )
+"points": PoolVector2Array( 0, 0, 0, 0, 394.102, 16.9644, 0, 0, 0, 0, 485.247, -75.5414, 0, 0, 0, 0, 507.013, -248.309 )
 }
 
 [sub_resource type="Curve2D" id=6]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 385.059, 93.2492, 0, 0, 0, 0, 409.009, -58.6415, 0, 0, 0, 0, 501.025, -42.2549, 0, 0, 0, 0, 558.378, -162.633 )
+"points": PoolVector2Array( 0, 0, 0, 0, 393.47, -0.859131, 0, 0, 0, 0, 391.417, -183.61, 0, 0, 0, 0, 566.467, -185.15, 0, 0, 0, 0, 563.387, 17.1079, 0, 0, 0, 0, 393.47, -0.859131 )
 }
 
 [node name="StealthCryo" type="Node2D"]
@@ -102,16 +102,16 @@ curve = SubResource( 2 )
 position = Vector2( 485.655, 589.044 )
 curve = SubResource( 3 )
 
+[node name="Guard4" parent="Guards" instance=ExtResource( 8 )]
+position = Vector2( 303.949, 202.305 )
+curve = SubResource( 4 )
+
 [node name="Guard5" parent="Guards" instance=ExtResource( 8 )]
 position = Vector2( 493.817, 476.132 )
-curve = SubResource( 4 )
+curve = SubResource( 5 )
 
 [node name="Guard6" parent="Guards" instance=ExtResource( 8 )]
 position = Vector2( 4.06519, 346.492 )
-curve = SubResource( 5 )
-
-[node name="Guard4" parent="Guards" instance=ExtResource( 8 )]
-position = Vector2( 303.949, 202.305 )
 curve = SubResource( 6 )
 
 [node name="Cameras" type="Node2D" parent="."]

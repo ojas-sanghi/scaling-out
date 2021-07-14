@@ -32,7 +32,7 @@ public class StealthInfo : Node
         };
         normalStealthMaps = new Dictionary<Enums.StealthMapDifficultyLevel, PackedScene>()
         {
-
+            
         };
 
         difficultyGeneRewards = new Dictionary<Enums.StealthMapDifficultyLevel, int>()
