@@ -15,8 +15,6 @@ curve = SubResource( 1 )
 script = ExtResource( 61 )
 
 [node name="Follow" type="PathFollow2D" parent="."]
-position = Vector2( 288.907, 10.475 )
-rotation = 3.12786
 loop = false
 
 [node name="BaseGuard" parent="Follow" instance=ExtResource( 1 )]

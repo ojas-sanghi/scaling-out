@@ -65,14 +65,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 15 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 61 ), ExtResource( 5 ), ExtResource( 37 ), ExtResource( 47 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 30 ), ExtResource( 17 ), ExtResource( 4 ), ExtResource( 32 ), ExtResource( 62 ), ExtResource( 60 ), ExtResource( 41 ), ExtResource( 12 ) ],
-"loop": true,
-"name": "move_pistol",
-"speed": 19.0
-}, {
 "frames": [ ExtResource( 59 ), ExtResource( 34 ), ExtResource( 51 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 22 ), ExtResource( 46 ), ExtResource( 38 ), ExtResource( 8 ), ExtResource( 39 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 49 ), ExtResource( 42 ), ExtResource( 35 ), ExtResource( 26 ), ExtResource( 56 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 50 ) ],
 "loop": true,
 "name": "move_shotgun",
+"speed": 19.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 3 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 61 ), ExtResource( 5 ), ExtResource( 37 ), ExtResource( 47 ), ExtResource( 18 ), ExtResource( 11 ), ExtResource( 20 ), ExtResource( 10 ), ExtResource( 30 ), ExtResource( 17 ), ExtResource( 4 ), ExtResource( 32 ), ExtResource( 62 ), ExtResource( 60 ), ExtResource( 41 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "move_pistol",
 "speed": 19.0
 }, {
 "frames": [ ExtResource( 54 ), ExtResource( 45 ), ExtResource( 48 ), ExtResource( 52 ), ExtResource( 19 ), ExtResource( 58 ), ExtResource( 40 ), ExtResource( 13 ), ExtResource( 28 ), ExtResource( 2 ), ExtResource( 55 ), ExtResource( 14 ), ExtResource( 43 ), ExtResource( 23 ), ExtResource( 57 ), ExtResource( 16 ), ExtResource( 31 ), ExtResource( 7 ), ExtResource( 44 ), ExtResource( 53 ) ],
@@ -94,7 +94,7 @@ script = ExtResource( 21 )
 position = Vector2( 0, -8 )
 frames = SubResource( 1 )
 animation = "move_pistol"
-frame = 10
+frame = 7
 playing = true
 
 [node name="Tween" type="Tween" parent="."]
@@ -108,5 +108,19 @@ script = ExtResource( 1 )
 radiusWarn = 1.0
 radiusDanger = 250.0
 fovColor = Color( 1, 0, 0, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+margin_left = 3.52897
+margin_top = 4.00678
+margin_right = 5.52897
+margin_bottom = 11.0068
+rect_rotation = -180.0
+color = Color( 0.12549, 1, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="body_entered" from="." to="." method="OnBaseGuardBodyEntered"]
