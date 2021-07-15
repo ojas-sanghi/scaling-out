@@ -94,7 +94,7 @@ script = ExtResource( 21 )
 position = Vector2( 0, -8 )
 frames = SubResource( 1 )
 animation = "move_pistol"
-frame = 7
+frame = 6
 playing = true
 
 [node name="Tween" type="Tween" parent="."]
@@ -108,19 +108,5 @@ script = ExtResource( 1 )
 radiusWarn = 1.0
 radiusDanger = 250.0
 fovColor = Color( 1, 0, 0, 1 )
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-margin_left = 3.52897
-margin_top = 4.00678
-margin_right = 5.52897
-margin_bottom = 11.0068
-rect_rotation = -180.0
-color = Color( 0.12549, 1, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [connection signal="body_entered" from="." to="." method="OnBaseGuardBodyEntered"]
