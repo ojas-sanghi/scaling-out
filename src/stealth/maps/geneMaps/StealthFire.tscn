@@ -127,7 +127,7 @@ value = 10
 margin_left = 36.8894
 margin_top = 22.0462
 margin_right = 36.8894
-margin_bottom = 22.0461
+margin_bottom = 22.0462
 
 [node name="StealthLoseDialogue" parent="CanvasLayer" instance=ExtResource( 4 )]
 visible = false
