@@ -70,8 +70,8 @@ margin_top = 0.0318298
 margin_right = 257.265
 margin_bottom = 296.032
 rect_scale = Vector2( 0.5, 0.5 )
-dino = 1
 edgeColor = Color( 0.14902, 0.482353, 0.462745, 1 )
+dino = 1
 
 [node name="DinoSelectTileButton2" parent="DinoTiles/Row1" instance=ExtResource( 2 )]
 margin_left = 139.265
@@ -128,8 +128,8 @@ margin_top = -74.1111
 margin_right = 190.361
 margin_bottom = 221.889
 rect_scale = Vector2( 0.5, 0.5 )
-dino = 2
 edgeColor = Color( 0.219608, 0.427451, 0.831373, 1 )
+dino = 2
 
 [node name="DinoSelectTileButton2" parent="DinoTiles/Row2" instance=ExtResource( 2 )]
 margin_left = 73.6464
@@ -137,8 +137,8 @@ margin_top = -76.492
 margin_right = 329.646
 margin_bottom = 219.508
 rect_scale = Vector2( 0.5, 0.5 )
-dino = 3
 edgeColor = Color( 0.941176, 0.0784314, 0.0784314, 1 )
+dino = 3
 
 [node name="DinoSelectTileButton3" parent="DinoTiles/Row2" instance=ExtResource( 2 )]
 margin_left = 209.361
@@ -313,7 +313,7 @@ margin_top = -0.114014
 margin_right = -0.251007
 margin_bottom = 0.52594
 text = "Return Home"
-buttonMode = 7
+buttonMode = 6
 
 [node name="DebugResetALLButton" type="Button" parent="."]
 margin_right = 12.0

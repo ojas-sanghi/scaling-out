@@ -1,0 +1,123 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/fonts/Font60.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/Font40.tres" type="DynamicFont" id=3]
+[ext_resource path="res://src/GUI/buttons/GameButton.tscn" type="PackedScene" id=5]
+
+[node name="StealthSelectScreen" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.596078, 0.164706, 0.529412, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -381.0
+margin_top = 69.9245
+margin_right = 381.0
+margin_bottom = 137.924
+custom_fonts/font = ExtResource( 1 )
+text = "CHOOSE STEALTH MAP"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NormalMapLabel" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -795.0
+margin_top = 227.0
+margin_right = 239.0
+margin_bottom = 323.0
+custom_fonts/font = ExtResource( 3 )
+text = "Harder maps will net more genes, but pose more of a challenge."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_left = 165.0
+margin_top = 408.0
+margin_right = 1742.0
+margin_bottom = 501.0
+custom_constants/separation = 200
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EasyMap" parent="HBoxContainer" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 392.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+text = "EASY MAP"
+buttonMode = 9
+
+[node name="MediumMap" parent="HBoxContainer" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 592.0
+margin_top = 0.0
+margin_right = 984.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+text = "MEDIUM MAP"
+buttonMode = 10
+
+[node name="HardMap2" parent="HBoxContainer" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1184.0
+margin_top = 0.0
+margin_right = 1577.0
+margin_bottom = 93.0
+size_flags_horizontal = 3
+text = "HARD MAP"
+buttonMode = 11
+
+[node name="GeneMapLabel2" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -795.0
+margin_top = 595.0
+margin_right = 279.0
+margin_bottom = 690.0
+custom_fonts/font = ExtResource( 3 )
+text = "Gene maps will give you a guaranteed gene if you can beat them, but they are hard."
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GeneMap" parent="." instance=ExtResource( 5 )]
+anchor_left = 0.086
+anchor_top = 0.707
+anchor_right = 0.329
+anchor_bottom = 0.815
+margin_left = -0.12001
+margin_top = 0.440002
+margin_right = 0.319946
+margin_bottom = -0.200073
+size_flags_horizontal = 3
+text = "RANDOM GENE MAP"
+buttonMode = 12

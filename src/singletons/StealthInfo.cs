@@ -6,6 +6,7 @@ using Godot;
 public class StealthInfo : Node
 {
     public static Enums.Genes geneBeingPursued;
+    public static PackedScene currentStealthMap;
 
     public static StealthInfo Instance;
 
@@ -29,10 +30,11 @@ public class StealthInfo : Node
         {
             { Enums.Genes.Cryo, GD.Load<PackedScene>("res://src/stealth/maps/geneMaps/StealthIce.tscn") },
             { Enums.Genes.Fire, GD.Load<PackedScene>("res://src/stealth/maps/geneMaps/StealthFire.tscn") },
+            { Enums.Genes.Florida, new PackedScene() },
         };
         normalStealthMaps = new Dictionary<Enums.StealthMapDifficultyLevel, PackedScene>()
         {
-            
+            { Enums.StealthMapDifficultyLevel.Easy, GD.Load<PackedScene>("res://src/stealth/maps/normalMaps/easy/StealthEasy1.tscn") }
         };
 
         difficultyGeneRewards = new Dictionary<Enums.StealthMapDifficultyLevel, int>()
@@ -59,6 +61,7 @@ public class StealthInfo : Node
     public PackedScene GetUnbeatenGeneMap()
     {
         List<Enums.Genes> notFoundGenes = GetNotFoundGenes();
+        GD.Print(notFoundGenes);
 
         if (notFoundGenes.Count > 0)
         {

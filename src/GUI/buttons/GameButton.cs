@@ -6,6 +6,8 @@ public class GameButton : Button
 {
     [Export] public b buttonMode;
 
+    PackedScene newMap;
+
     public override void _Ready()
     {
         if (Engine.EditorHint)
@@ -19,6 +21,8 @@ public class GameButton : Button
             GD.PrintStack();
             GetTree().Quit(1);
         }
+
+        SetButtonText();
     }
 
     public override void _Process(float delta)
@@ -59,23 +63,25 @@ public class GameButton : Button
                 Text = "Return";
                 this.GrabFocus();
                 break;
-            case b.StealthIce:
-                Text = "Ice Stealth";
-                break;
-            case b.StealthFire:
-                Text = "Fire Stealth";
-                break;
-            case b.PlusDino:
-                Text = "+";
-                break;
-            case b.MinusDino:
-                Text = "-";
-                break;
-            case b.BuyDinos:
-                Text = "Purchase";
+            case b.StealthSelectScreen:
+                Text = "Go to Stealth";
                 break;
             case b.ContinueConquest:
                 Text = "Continue Conquest";
+                break;
+            case b.EasyStealthMap:
+                Text = "EASY MAP";
+                break;
+            case b.MediumStealthMap:
+                Text = "MEDIUM MAP";
+                break;
+            case b.HardStealthMap:
+                Text = "HARD MAP";
+                break;
+            case b.GeneStealthMap:
+                Text = "RANDOM GENE MAP";
+                if (StealthInfo.Instance.GetUnbeatenGeneMap() == null)
+                    Disabled = true;
                 break;
         }
     }
@@ -98,8 +104,7 @@ public class GameButton : Button
                 scnChng.GoToScene("res://src/combat/CombatScreen.tscn");
                 break;
             case b.RetryStealth:
-                var stealthMap = StealthInfo.Instance.geneStealthMaps[StealthInfo.geneBeingPursued];
-                scnChng.GoToScene(stealthMap.ResourcePath);
+                scnChng.GoToPackedScene(StealthInfo.currentStealthMap);
                 break;
             case b.ReturnHomeScreen:
                 scnChng.GoToScene("res://src/GUI/screens/HomeScreen.tscn");
@@ -107,17 +112,30 @@ public class GameButton : Button
             case b.ReturnUpgradeSelect:
                 scnChng.GoToScene("res://src/GUI/screens/DinoUpgradeSelectScreen.tscn");
                 break;
-            case b.StealthIce:
-                StealthInfo.geneBeingPursued = Enums.Genes.Cryo;
-                scnChng.GoToScene(s.geneStealthMaps[StealthInfo.geneBeingPursued].ResourcePath);
-                break;
-            case b.StealthFire:
-                StealthInfo.geneBeingPursued = Enums.Genes.Fire;
-                scnChng.GoToScene(s.geneStealthMaps[StealthInfo.geneBeingPursued].ResourcePath);
+            case b.StealthSelectScreen:
+                scnChng.GoToScene("res://src/GUI/screens/StealthSelectScreen.tscn");
                 break;
             // nothing for plus, minus, or buy dinos: those are handled in their own scenes
             case b.ContinueConquest:
                 scnChng.NewRoundAnimation();
+                break;
+            case b.EasyStealthMap:
+                newMap = StealthInfo.Instance.GetNormalMap(Enums.StealthMapDifficultyLevel.Easy);
+                StealthInfo.currentStealthMap = newMap;
+                scnChng.GoToPackedScene(newMap);
+                break;
+            case b.MediumStealthMap:
+                newMap = StealthInfo.Instance.GetNormalMap(Enums.StealthMapDifficultyLevel.Medium);
+                StealthInfo.currentStealthMap = newMap;
+                scnChng.GoToPackedScene(newMap);
+                break;
+            case b.HardStealthMap:
+                newMap = StealthInfo.Instance.GetNormalMap(Enums.StealthMapDifficultyLevel.Hard);
+                StealthInfo.currentStealthMap = newMap;
+                scnChng.GoToPackedScene(newMap);
+                break;
+            case b.GeneStealthMap:
+                scnChng.GoToPackedScene(StealthInfo.Instance.GetUnbeatenGeneMap());
                 break;
         }
     }

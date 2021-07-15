@@ -39,6 +39,11 @@ public class SceneChanger : Control
         await ToSignal(player, "animation_finished");
     }
 
+    public void GoToPackedScene(PackedScene packedScene)
+    {
+        GoToScene(packedScene.ResourcePath);
+    }
+
     async public void GoToScene(string scenePath)
     {
         await FadeOut();

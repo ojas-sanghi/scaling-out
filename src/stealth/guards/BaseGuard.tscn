@@ -71,14 +71,14 @@ animations = [ {
 "name": "move_pistol",
 "speed": 19.0
 }, {
-"frames": [ ExtResource( 59 ), ExtResource( 34 ), ExtResource( 51 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 22 ), ExtResource( 46 ), ExtResource( 38 ), ExtResource( 8 ), ExtResource( 39 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 49 ), ExtResource( 42 ), ExtResource( 35 ), ExtResource( 26 ), ExtResource( 56 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 50 ) ],
-"loop": true,
-"name": "move_shotgun",
-"speed": 19.0
-}, {
 "frames": [ ExtResource( 54 ), ExtResource( 45 ), ExtResource( 48 ), ExtResource( 52 ), ExtResource( 19 ), ExtResource( 58 ), ExtResource( 40 ), ExtResource( 13 ), ExtResource( 28 ), ExtResource( 2 ), ExtResource( 55 ), ExtResource( 14 ), ExtResource( 43 ), ExtResource( 23 ), ExtResource( 57 ), ExtResource( 16 ), ExtResource( 31 ), ExtResource( 7 ), ExtResource( 44 ), ExtResource( 53 ) ],
 "loop": true,
 "name": "move_rifle",
+"speed": 19.0
+}, {
+"frames": [ ExtResource( 59 ), ExtResource( 34 ), ExtResource( 51 ), ExtResource( 33 ), ExtResource( 36 ), ExtResource( 22 ), ExtResource( 46 ), ExtResource( 38 ), ExtResource( 8 ), ExtResource( 39 ), ExtResource( 29 ), ExtResource( 27 ), ExtResource( 49 ), ExtResource( 42 ), ExtResource( 35 ), ExtResource( 26 ), ExtResource( 56 ), ExtResource( 24 ), ExtResource( 25 ), ExtResource( 50 ) ],
+"loop": true,
+"name": "move_shotgun",
 "speed": 19.0
 } ]
 
@@ -95,7 +95,7 @@ script = ExtResource( 21 )
 position = Vector2( 0, -8 )
 frames = SubResource( 1 )
 animation = "move_pistol"
-frame = 14
+frame = 1
 playing = true
 
 [node name="Tween" type="Tween" parent="."]

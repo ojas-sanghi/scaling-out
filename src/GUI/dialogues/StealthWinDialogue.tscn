@@ -52,4 +52,4 @@ margin_top = 80.0
 margin_right = 279.124
 margin_bottom = 204.0
 text = "Return Home"
-buttonMode = 7
+buttonMode = 6

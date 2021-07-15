@@ -122,7 +122,7 @@ margin_right = -21.7092
 margin_bottom = -23.5969
 custom_fonts/font = ExtResource( 6 )
 text = "Continue Conquest"
-buttonMode = 12
+buttonMode = 8
 
 [connection signal="visibility_changed" from="." to="." method="OnPostRoundMenuVisibilityChanged"]
 [connection signal="pressed" from="Menu/ContinueConquest" to="." method="OnContinueConquestPressed"]

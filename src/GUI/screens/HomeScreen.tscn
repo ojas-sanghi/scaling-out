@@ -65,19 +65,11 @@ stream = ExtResource( 2 )
 autoplay = true
 
 [node name="Button" parent="." instance=ExtResource( 8 )]
-margin_left = -142.498
-margin_top = -168.825
-margin_right = 163.502
-margin_bottom = 3.1748
-text = "Ice Stealth"
+margin_left = -201.054
+margin_top = -75.6697
+margin_right = 242.946
+margin_bottom = 173.33
+text = "Go to Stealth"
 buttonMode = 5
-
-[node name="Button2" parent="." instance=ExtResource( 8 )]
-margin_left = -142.498
-margin_top = 89.9212
-margin_right = 163.502
-margin_bottom = 261.921
-text = "Fire Stealth"
-buttonMode = 6
 
 [editable path="Flask"]
