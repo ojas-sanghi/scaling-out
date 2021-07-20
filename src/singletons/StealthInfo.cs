@@ -34,7 +34,9 @@ public class StealthInfo : Node
         };
         normalStealthMaps = new Dictionary<Enums.StealthMapDifficultyLevel, PackedScene>()
         {
-            { Enums.StealthMapDifficultyLevel.Easy, GD.Load<PackedScene>("res://src/stealth/maps/normalMaps/easy/StealthEasy1.tscn") }
+            { Enums.StealthMapDifficultyLevel.Easy, GD.Load<PackedScene>("res://src/stealth/maps/normalMaps/easy/StealthEasy1.tscn") },
+            { Enums.StealthMapDifficultyLevel.Medium, GD.Load<PackedScene>("res://src/stealth/maps/normalMaps/medium/StealthMedium1.tscn") },
+            { Enums.StealthMapDifficultyLevel.Hard, GD.Load<PackedScene>("res://src/stealth/maps/normalMaps/hard/StealthHard1.tscn") },
         };
 
         difficultyGeneRewards = new Dictionary<Enums.StealthMapDifficultyLevel, int>()
@@ -61,7 +63,6 @@ public class StealthInfo : Node
     public PackedScene GetUnbeatenGeneMap()
     {
         List<Enums.Genes> notFoundGenes = GetNotFoundGenes();
-        GD.Print(notFoundGenes);
 
         if (notFoundGenes.Count > 0)
         {

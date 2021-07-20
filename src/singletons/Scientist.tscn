@@ -50,8 +50,9 @@ animations = [ {
 "speed": 6.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=8]
-extents = Vector2( 14, 11 )
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 7.20916
+height = 16.595
 
 [node name="Scientist" type="KinematicBody2D" groups=[
 "scientist",
@@ -67,8 +68,9 @@ animation = "idle"
 playing = true
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2( -2.4075, -3.77616 )
-shape = SubResource( 8 )
+position = Vector2( -2.4075, -5.42794 )
+rotation = -1.57079
+shape = SubResource( 9 )
 
 [node name="Light2D" type="Light2D" parent="."]
 scale = Vector2( 1.4043, 1.4043 )
