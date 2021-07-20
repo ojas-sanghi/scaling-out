@@ -168,6 +168,12 @@ margin_bottom = 212.365
 rect_scale = Vector2( 0.5, 0.5 )
 edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
 
+[node name="Edge" parent="DinoTiles/Row2/DinoSelectTileButton6" index="1"]
+modulate = Color( 0.839216, 0.929412, 0.0313726, 1 )
+
+[node name="Icon" parent="DinoTiles/Row2/DinoSelectTileButton6" index="2"]
+flip_h = true
+
 [node name="Row3" type="Control" parent="DinoTiles"]
 margin_left = 379.0
 margin_top = 430.0
@@ -225,6 +231,12 @@ margin_bottom = 221.175
 rect_scale = Vector2( 0.5, 0.5 )
 edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
 
+[node name="Edge" parent="DinoTiles/Row3/DinoSelectTileButton5" index="1"]
+modulate = Color( 0.839216, 0.929412, 0.0313726, 1 )
+
+[node name="Icon" parent="DinoTiles/Row3/DinoSelectTileButton5" index="2"]
+flip_h = true
+
 [node name="Row 4" type="Control" parent="DinoTiles"]
 margin_left = 308.0
 margin_top = 547.0
@@ -279,6 +291,12 @@ margin_bottom = 220.841
 rect_scale = Vector2( 0.5, 0.5 )
 edgeColor = Color( 0.839216, 0.929412, 0.0313726, 1 )
 
+[node name="Edge" parent="DinoTiles/Row 4/DinoSelectTileButton6" index="1"]
+modulate = Color( 0.839216, 0.929412, 0.0313726, 1 )
+
+[node name="Icon" parent="DinoTiles/Row 4/DinoSelectTileButton6" index="2"]
+flip_h = true
+
 [node name="BigRow5" type="Control" parent="DinoTiles"]
 margin_left = 927.574
 margin_top = 647.492
@@ -313,3 +331,7 @@ margin_right = -0.251007
 margin_bottom = 0.52594
 text = "Return Home"
 buttonMode = 6
+
+[editable path="DinoTiles/Row2/DinoSelectTileButton6"]
+[editable path="DinoTiles/Row3/DinoSelectTileButton5"]
+[editable path="DinoTiles/Row 4/DinoSelectTileButton6"]
