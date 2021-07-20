@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/tilesets/brown/b_bg_tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://assets/tilesets/brown/b_rock_tiles.tres" type="TileSet" id=2]
@@ -7,12 +7,38 @@
 [ext_resource path="res://src/stealth/props/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/singletons/Scientist.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/stealth/props/Vault.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/stealth/guards/PathFollowGuard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/GUI/infos/MoneyCounter.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/GUI/dialogues/StealthWinDialogue.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/music/stealth music.wav" type="AudioStream" id=11]
 [ext_resource path="res://src/stealth/maps/StealthMap.cs" type="Script" id=12]
 [ext_resource path="res://src/stealth/FPSLabel.cs" type="Script" id=13]
 [ext_resource path="res://assets/fonts/Font35.tres" type="DynamicFont" id=14]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -12.2382, 11.3819, 0, 0, 0, 0, 4.73503, -109.733, 0, 0, 0, 0, 16.8788, -185.451, 0, 0, 0, 0, 118.932, -187.341, 0, 0, 0, 0, 115.331, -104.976, 0, 0, 0, 0, 128.382, 28.7359 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -9.99802, 37.6496, 0, 0, 0, 0, 42.726, -70.6317, 0, 0, 0, 0, 184.005, 75.4092, 0, 0, 0, 0, 258.613, 21.4375 )
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -9.99802, 37.6496, 0, 0, 0, 0, -143.243, 68.5052, 0, 0, 0, 0, 9.75684, 128.505, 0, 0, 0, 0, 3.75684, 304.505 )
+}
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -9.99802, 37.6496, 0, 0, 0, 0, -14.2862, 127.129, 0, 0, 0, 0, -18.1666, 337.16, 0, 0, 0, 0, 54.1291, 403.01 )
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -9.99802, 37.6496, 0, 0, 0, 0, 365.952, 44.5472 )
+}
 
 [node name="StealthEasy1" type="Node2D"]
 script = ExtResource( 12 )
@@ -56,18 +82,88 @@ limit_smoothed = true
 smoothing_enabled = true
 editor_draw_limits = true
 
-[node name="Guards" type="Node2D" parent="."]
-
-[node name="Cameras" type="Node2D" parent="."]
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color( 0, 0, 0, 1 )
-
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( 728.039, 71.4192 )
 value = 10
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 238.036, 589.726 )
+value = 10
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 46.2522, 255.603 )
+value = 10
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 483.758, 48.837 )
+value = 10
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 605.596, 319 )
+value = 10
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 716.84, 205.638 )
+value = 10
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 1019.85, 57.4703 )
+value = 10
+
+[node name="Coin8" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 908.125, 211.62 )
+value = 10
+
+[node name="Coin9" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 981.664, 500.119 )
+value = 10
+
+[node name="Coin10" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 998.635, 620.327 )
+value = 10
+
+[node name="Coin11" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 785.089, 405.367 )
+value = 10
+
+[node name="Coin12" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 797.607, 612.146 )
+value = 10
+
+[node name="Guards" type="Node2D" parent="."]
+
+[node name="PathFollowGuard" parent="Guards" instance=ExtResource( 8 )]
+position = Vector2( 64.1879, 581.53 )
+curve = SubResource( 1 )
+walkTime = 3
+pauseTime = 1.0
+
+[node name="PathFollowGuard2" parent="Guards" instance=ExtResource( 8 )]
+position = Vector2( 433.939, 369.291 )
+curve = SubResource( 2 )
+turnTime = 2.5
+
+[node name="PathFollowGuard3" parent="Guards" instance=ExtResource( 8 )]
+position = Vector2( 815.243, 16.4948 )
+curve = SubResource( 3 )
+
+[node name="PathFollowGuard4" parent="Guards" instance=ExtResource( 8 )]
+position = Vector2( 921.27, 214.09 )
+curve = SubResource( 4 )
+walkTime = 5
+
+[node name="PathFollowGuard5" parent="Guards" instance=ExtResource( 8 )]
+position = Vector2( 366.275, 577.577 )
+curve = SubResource( 5 )
+walkTime = 6
+
+[node name="Cameras" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 0, 0, 0, 1 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

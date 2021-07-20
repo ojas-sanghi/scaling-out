@@ -62,6 +62,12 @@ limit_smoothed = true
 smoothing_enabled = true
 editor_draw_limits = true
 
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 728.039, 71.4192 )
+value = 10
+
 [node name="Guards" type="Node2D" parent="."]
 
 [node name="Guard" parent="Guards" instance=ExtResource( 8 )]
@@ -72,12 +78,6 @@ curve = SubResource( 1 )
 
 [node name="SecurityCamera" parent="Cameras" instance=ExtResource( 15 )]
 position = Vector2( 488.964, 55.7198 )
-
-[node name="Coins" type="Node2D" parent="."]
-
-[node name="Coin" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 728.039, 71.4192 )
-value = 10
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false

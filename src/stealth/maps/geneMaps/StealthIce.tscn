@@ -88,6 +88,36 @@ limit_smoothed = true
 smoothing_enabled = true
 editor_draw_limits = true
 
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 728.039, 71.4192 )
+value = 10
+
+[node name="Coin2" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 1015.33, 574.793 )
+value = 10
+
+[node name="Coin3" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 514.673, 515.281 )
+value = 10
+
+[node name="Coin4" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 335.725, 311.07 )
+value = 10
+
+[node name="Coin5" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 45.1975, 97.3849 )
+value = 10
+
+[node name="Coin6" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 185.198, 380.544 )
+value = 10
+
+[node name="Coin7" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 414.672, 181.596 )
+value = 10
+
 [node name="Guards" type="Node2D" parent="."]
 
 [node name="Guard" parent="Guards" instance=ExtResource( 8 )]
@@ -118,36 +148,6 @@ curve = SubResource( 6 )
 
 [node name="SecurityCamera" parent="Cameras" instance=ExtResource( 15 )]
 position = Vector2( 488.964, 55.7198 )
-
-[node name="Coins" type="Node2D" parent="."]
-
-[node name="Coin" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 728.039, 71.4192 )
-value = 10
-
-[node name="Coin2" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 1015.33, 574.793 )
-value = 10
-
-[node name="Coin3" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 514.673, 515.281 )
-value = 10
-
-[node name="Coin4" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 335.725, 311.07 )
-value = 10
-
-[node name="Coin5" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 45.1975, 97.3849 )
-value = 10
-
-[node name="Coin6" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 185.198, 380.544 )
-value = 10
-
-[node name="Coin7" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 414.672, 181.596 )
-value = 10
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )

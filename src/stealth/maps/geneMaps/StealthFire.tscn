@@ -77,24 +77,6 @@ limit_smoothed = true
 smoothing_enabled = true
 editor_draw_limits = true
 
-[node name="Guards" type="Node2D" parent="."]
-
-[node name="Guard" parent="Guards" instance=ExtResource( 8 )]
-position = Vector2( 88.6023, 345.379 )
-curve = SubResource( 1 )
-
-[node name="Guard3" parent="Guards" instance=ExtResource( 8 )]
-position = Vector2( 502.655, 588.044 )
-curve = SubResource( 2 )
-
-[node name="Guard5" parent="Guards" instance=ExtResource( 8 )]
-position = Vector2( 126.413, 564.776 )
-curve = SubResource( 3 )
-
-[node name="Guard4" parent="Guards" instance=ExtResource( 8 )]
-position = Vector2( 303.949, 202.305 )
-curve = SubResource( 4 )
-
 [node name="Coins" type="Node2D" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource( 5 )]
@@ -120,6 +102,24 @@ value = 10
 [node name="Coin7" parent="Coins" instance=ExtResource( 5 )]
 position = Vector2( 890.294, 186.109 )
 value = 10
+
+[node name="Guards" type="Node2D" parent="."]
+
+[node name="Guard" parent="Guards" instance=ExtResource( 8 )]
+position = Vector2( 88.6023, 345.379 )
+curve = SubResource( 1 )
+
+[node name="Guard3" parent="Guards" instance=ExtResource( 8 )]
+position = Vector2( 502.655, 588.044 )
+curve = SubResource( 2 )
+
+[node name="Guard5" parent="Guards" instance=ExtResource( 8 )]
+position = Vector2( 126.413, 564.776 )
+curve = SubResource( 3 )
+
+[node name="Guard4" parent="Guards" instance=ExtResource( 8 )]
+position = Vector2( 303.949, 202.305 )
+curve = SubResource( 4 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

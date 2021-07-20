@@ -56,18 +56,18 @@ limit_smoothed = true
 smoothing_enabled = true
 editor_draw_limits = true
 
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin" parent="Coins" instance=ExtResource( 5 )]
+position = Vector2( 728.039, 71.4192 )
+value = 10
+
 [node name="Guards" type="Node2D" parent="."]
 
 [node name="Cameras" type="Node2D" parent="."]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0, 1 )
-
-[node name="Coins" type="Node2D" parent="."]
-
-[node name="Coin" parent="Coins" instance=ExtResource( 5 )]
-position = Vector2( 728.039, 71.4192 )
-value = 10
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

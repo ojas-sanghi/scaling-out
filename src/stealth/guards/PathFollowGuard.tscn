@@ -1,20 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/stealth/guards/BaseGuard.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/stealth/guards/PathFollowGuard.cs" type="Script" id=61]
 
-[sub_resource type="Curve2D" id=1]
-_data = {
-"points": PoolVector2Array(  )
-}
-
 [node name="PathFollowGuard" type="Path2D" groups=[
 "guards",
 ]]
-curve = SubResource( 1 )
 script = ExtResource( 61 )
 
 [node name="Follow" type="PathFollow2D" parent="."]
 loop = false
+lookahead = 17.5
 
 [node name="BaseGuard" parent="Follow" instance=ExtResource( 1 )]
