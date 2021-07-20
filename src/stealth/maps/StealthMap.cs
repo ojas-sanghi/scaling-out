@@ -18,6 +18,8 @@ public class StealthMap : Node2D
             GetTree().Quit(1);
         }
 
+        GetNode<CanvasModulate>("CanvasModulate").Visible = true;
+
         Events.levelPassed += OnLevelPassed;
     }
 

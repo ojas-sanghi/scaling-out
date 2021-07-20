@@ -78,7 +78,6 @@ public class Events : Node
         else
         {
             AudioServer.SetBusVolumeDb(busIndex, releaseVolumeDb);
-            OS.WindowMaximized = true;
         }
     }
 }

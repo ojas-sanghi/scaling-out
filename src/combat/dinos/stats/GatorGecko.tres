@@ -80,9 +80,9 @@ genes = [ 0, 0 ]
 [sub_resource type="Resource" id=12]
 script = ExtResource( 3 )
 cost = SubResource( 11 )
+level = 0
 statName = "Special"
 special = ""
-level = 0
 
 [sub_resource type="Resource" id=13]
 script = ExtResource( 4 )
@@ -104,6 +104,7 @@ genes = 50
 
 [resource]
 script = ExtResource( 2 )
+dinoType = 4
 unlockCost = SubResource( 15 )
 deployCost = 20
 hpStat = SubResource( 10 )

@@ -38,12 +38,12 @@ public class DinoInfo : Node
             {Enums.Dinos.Gator, GD.Load<StreamTexture>("res://assets/dinos/gator_gecko/gator_gecko_icon.png")},
         };
 
-        upgradesInfo = new Dictionary<Enums.Dinos, UpgradeInfo>()
+        upgradesInfo = new Dictionary<Enums.Dinos, UpgradeInfo>() 
         {
-            {Enums.Dinos.Mega, new UpgradeInfo("res://src/combat/dinos/stats/MegaDino.tres")},
-            {Enums.Dinos.Tanky, new UpgradeInfo("res://src/combat/dinos/stats/TankyDino.tres")},
-            {Enums.Dinos.Warrior, new UpgradeInfo("res://src/combat/dinos/stats/WarriorDino.tres")},
-            {Enums.Dinos.Gator, new UpgradeInfo("res://src/combat/dinos/stats/GatorGecko.tres")}
+            {Enums.Dinos.Mega, new UpgradeInfo(GetDinoSaveLocation(Enums.Dinos.Mega))},
+            {Enums.Dinos.Tanky, new UpgradeInfo(GetDinoSaveLocation(Enums.Dinos.Tanky))},
+            {Enums.Dinos.Warrior, new UpgradeInfo(GetDinoSaveLocation(Enums.Dinos.Warrior))},
+            {Enums.Dinos.Gator, new UpgradeInfo(GetDinoSaveLocation(Enums.Dinos.Gator))}
         };
 
         dinoTypesAndAbilities = new Dictionary<Enums.Dinos, Enums.SpecialAbilities>()
@@ -105,6 +105,22 @@ public class DinoInfo : Node
 
         DinoInstance.QueueFree();
         return DinoProperty;
+    }
+
+    // returns location of Dino stats save
+    public string GetDinoSaveLocation(Enums.Dinos dinoType)
+    {
+        string dinoNameNoSpaces = EnumUtils.GetDinoName(dinoType).Replace(" ", string.Empty);
+        string userSaveLocation = $"user://{dinoNameNoSpaces}StatsSave.tres";
+
+        // make a savefile in the user:// location if none exists yet
+        if (!ResourceLoader.Exists(userSaveLocation))
+        {
+            string projectStatsLocation = $"res://src/combat/dinos/stats/{dinoNameNoSpaces}.tres";
+            ResourceSaver.Save(userSaveLocation, ResourceLoader.Load<DinoInfoResource>(projectStatsLocation, null, true));
+        }
+
+        return userSaveLocation;
     }
 
 }

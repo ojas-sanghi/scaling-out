@@ -2,6 +2,7 @@ using Godot;
 
 public class DinoInfoResource : Resource
 {
+    [Export] public Enums.Dinos dinoType;
     [Export] public UnlockCost unlockCost;
     [Export] public int deployCost = 10;
     [Export] public Stats hpStat;
@@ -21,7 +22,8 @@ public class DinoInfoResource : Resource
 
     public void SaveResource()
     {
-        ResourceSaver.Save(this.ResourcePath, this);
+        string saveLocation = DinoInfo.Instance.GetDinoSaveLocation(dinoType);
+        ResourceSaver.Save(saveLocation, this);
     }
 
 }

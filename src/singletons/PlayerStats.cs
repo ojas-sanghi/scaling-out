@@ -21,7 +21,16 @@ public class PlayerStats : Node
     public override void _Ready()
     {
         Instance = this;
-        statsResource = GD.Load<PlayerStatsResource>("res://src/resources/PlayerStats.tres");
+
+        // load player stats; make a new one if none exists from the pre-existing one in the project
+        string statsSaveLocation = "user://PlayerStatsSave.tres";
+        string projectStatsLocation = "res://src/resources/PlayerStats.tres";
+        if (!ResourceLoader.Exists(statsSaveLocation))
+        {
+            ResourceSaver.Save(statsSaveLocation, ResourceLoader.Load<PlayerStatsResource>(projectStatsLocation));
+        }
+        statsResource = ResourceLoader.Load<PlayerStatsResource>("user://PlayerStatsSave.tres", null, true);
+
         dinosUnlocked = statsResource.dinosUnlocked;
         genesFound = statsResource.genesFound;
     }
